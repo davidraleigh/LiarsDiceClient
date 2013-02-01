@@ -1,0 +1,704 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
+		87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
+		87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027D16BB470B008E5457 /* CoreGraphics.framework */; };
+		87E6028416BB470B008E5457 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028216BB470B008E5457 /* InfoPlist.strings */; };
+		87E6028616BB470B008E5457 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E6028516BB470B008E5457 /* main.m */; };
+		87E6028A16BB470B008E5457 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E6028916BB470B008E5457 /* AppDelegate.m */; };
+		87E6028C16BB470B008E5457 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028B16BB470B008E5457 /* Default.png */; };
+		87E6028E16BB470B008E5457 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028D16BB470B008E5457 /* Default@2x.png */; };
+		87E6029016BB470B008E5457 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028F16BB470B008E5457 /* Default-568h@2x.png */; };
+		87E6029816BB470B008E5457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6029716BB470B008E5457 /* SenTestingKit.framework */; };
+		87E6029916BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
+		87E6029A16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
+		87E602A216BB470B008E5457 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87E602A016BB470B008E5457 /* InfoPlist.strings */; };
+		87E602A516BB470B008E5457 /* LiarsDiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E602A416BB470B008E5457 /* LiarsDiceTests.m */; };
+		87E602B216BB47E7008E5457 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E602B116BB47E7008E5457 /* StartViewController.m */; };
+		87E602BB16BB4949008E5457 /* SetUserNameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */; };
+		87E602BE16BB4976008E5457 /* LobbyPassiveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602BD16BB4976008E5457 /* LobbyPassiveViewController.mm */; };
+		87E602C116BB498C008E5457 /* LobbyLeaderViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602C016BB498B008E5457 /* LobbyLeaderViewController.mm */; };
+		87E602C416BB4A27008E5457 /* MatchSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602C316BB4A27008E5457 /* MatchSettingsViewController.mm */; };
+		87F4730016BBFFF7009E90B5 /* RollForFirstPlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */; };
+		87F4730316BC002E009E90B5 /* RollDiceForRoundViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730216BC002E009E90B5 /* RollDiceForRoundViewController.mm */; };
+		87F4730616BC009E009E90B5 /* ActiveBidderViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730516BC009E009E90B5 /* ActiveBidderViewController.mm */; };
+		87F4730916BC0103009E90B5 /* WaitingToBidViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730816BC0103009E90B5 /* WaitingToBidViewController.mm */; };
+		87F4730C16BC01A6009E90B5 /* PlayersShowDiceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */; };
+		87F4730F16BC01D0009E90B5 /* SummarizeRoundViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */; };
+		87F4731216BC0214009E90B5 /* LosersLobbyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731116BC0214009E90B5 /* LosersLobbyViewController.mm */; };
+		87F4731516BC023E009E90B5 /* SummarizeMatchViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731416BC023E009E90B5 /* SummarizeMatchViewController.mm */; };
+		87F4731816BC02B1009E90B5 /* MatchStartLobbyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731716BC02B1009E90B5 /* MatchStartLobbyViewController.mm */; };
+		87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */; };
+		87F4731D16BC03F0009E90B5 /* StartViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */; };
+		87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */; };
+		87F4732216BC052D009E90B5 /* SetUserNameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */; };
+		87F4732916BC0593009E90B5 /* LobbyPassiveViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4732716BC0592009E90B5 /* LobbyPassiveViewController_iPhone.m */; };
+		87F4732A16BC0593009E90B5 /* LobbyPassiveViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4732816BC0592009E90B5 /* LobbyPassiveViewController_iPhone.xib */; };
+		87F4732E16BC05BF009E90B5 /* LobbyLeaderViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4732C16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.m */; };
+		87F4732F16BC05BF009E90B5 /* LobbyLeaderViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4732D16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.xib */; };
+		87F4733316BC0605009E90B5 /* MatchSettingsViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4733116BC0605009E90B5 /* MatchSettingsViewController_iPhone.m */; };
+		87F4733416BC0605009E90B5 /* MatchSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4733216BC0605009E90B5 /* MatchSettingsViewController_iPhone.xib */; };
+		87F4733816BC0625009E90B5 /* MatchStartLobbyViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4733616BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.m */; };
+		87F4733916BC0625009E90B5 /* MatchStartLobbyViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4733716BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.xib */; };
+		87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */; };
+		87F4733E16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */; };
+		87F4734216BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734016BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.m */; };
+		87F4734316BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4734116BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib */; };
+		87F4734716BC0697009E90B5 /* ActiveBidderViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734516BC0697009E90B5 /* ActiveBidderViewController_iPhone.m */; };
+		87F4734816BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4734616BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib */; };
+		87F4734C16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734A16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m */; };
+		87F4734D16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4734B16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib */; };
+		87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */; };
+		87F4735216BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */; };
+		87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */; };
+		87F4735716BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */; };
+		87F4735B16BC0733009E90B5 /* LosersLobbyViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4735916BC0733009E90B5 /* LosersLobbyViewController_iPhone.m */; };
+		87F4735C16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735A16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib */; };
+		87F4736016BC074E009E90B5 /* SummarizeMatchViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4735E16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.m */; };
+		87F4736116BC074E009E90B5 /* SummarizeMatchViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735F16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87E6029B16BB470B008E5457 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E6026E16BB470B008E5457 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87E6027516BB470B008E5457;
+			remoteInfo = LiarsDice;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		87E6027616BB470B008E5457 /* LiarsDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiarsDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E6027916BB470B008E5457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		87E6027B16BB470B008E5457 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		87E6027D16BB470B008E5457 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		87E6028116BB470B008E5457 /* LiarsDice-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiarsDice-Info.plist"; sourceTree = "<group>"; };
+		87E6028316BB470B008E5457 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		87E6028516BB470B008E5457 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		87E6028716BB470B008E5457 /* LiarsDice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiarsDice-Prefix.pch"; sourceTree = "<group>"; };
+		87E6028816BB470B008E5457 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		87E6028916BB470B008E5457 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		87E6028B16BB470B008E5457 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../../Resources/LiarsDice/Default.png; sourceTree = SOURCE_ROOT; };
+		87E6028D16BB470B008E5457 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../../Resources/LiarsDice/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		87E6028F16BB470B008E5457 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../../../Resources/LiarsDice/Default-568h@2x.png"; sourceTree = "<group>"; };
+		87E6029616BB470B008E5457 /* LiarsDiceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiarsDiceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E6029716BB470B008E5457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		87E6029F16BB470B008E5457 /* LiarsDiceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiarsDiceTests-Info.plist"; sourceTree = "<group>"; };
+		87E602A116BB470B008E5457 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		87E602A316BB470B008E5457 /* LiarsDiceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiarsDiceTests.h; sourceTree = "<group>"; };
+		87E602A416BB470B008E5457 /* LiarsDiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiarsDiceTests.m; sourceTree = "<group>"; };
+		87E602B016BB47E7008E5457 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		87E602B116BB47E7008E5457 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		87E602B916BB4949008E5457 /* SetUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController.h; sourceTree = "<group>"; };
+		87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SetUserNameViewController.mm; sourceTree = "<group>"; };
+		87E602BC16BB4976008E5457 /* LobbyPassiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyPassiveViewController.h; sourceTree = "<group>"; };
+		87E602BD16BB4976008E5457 /* LobbyPassiveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LobbyPassiveViewController.mm; sourceTree = "<group>"; };
+		87E602BF16BB498B008E5457 /* LobbyLeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyLeaderViewController.h; sourceTree = "<group>"; };
+		87E602C016BB498B008E5457 /* LobbyLeaderViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LobbyLeaderViewController.mm; sourceTree = "<group>"; };
+		87E602C216BB4A27008E5457 /* MatchSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSettingsViewController.h; sourceTree = "<group>"; };
+		87E602C316BB4A27008E5457 /* MatchSettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MatchSettingsViewController.mm; sourceTree = "<group>"; };
+		87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollForFirstPlayViewController.h; sourceTree = "<group>"; };
+		87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RollForFirstPlayViewController.mm; sourceTree = "<group>"; };
+		87F4730116BC002E009E90B5 /* RollDiceForRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollDiceForRoundViewController.h; sourceTree = "<group>"; };
+		87F4730216BC002E009E90B5 /* RollDiceForRoundViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RollDiceForRoundViewController.mm; sourceTree = "<group>"; };
+		87F4730416BC009E009E90B5 /* ActiveBidderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveBidderViewController.h; sourceTree = "<group>"; };
+		87F4730516BC009E009E90B5 /* ActiveBidderViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ActiveBidderViewController.mm; sourceTree = "<group>"; };
+		87F4730716BC0103009E90B5 /* WaitingToBidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingToBidViewController.h; sourceTree = "<group>"; };
+		87F4730816BC0103009E90B5 /* WaitingToBidViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaitingToBidViewController.mm; sourceTree = "<group>"; };
+		87F4730A16BC01A5009E90B5 /* PlayersShowDiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersShowDiceViewController.h; sourceTree = "<group>"; };
+		87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayersShowDiceViewController.mm; sourceTree = "<group>"; };
+		87F4730D16BC01D0009E90B5 /* SummarizeRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeRoundViewController.h; sourceTree = "<group>"; };
+		87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeRoundViewController.mm; sourceTree = "<group>"; };
+		87F4731016BC0214009E90B5 /* LosersLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LosersLobbyViewController.h; sourceTree = "<group>"; };
+		87F4731116BC0214009E90B5 /* LosersLobbyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LosersLobbyViewController.mm; sourceTree = "<group>"; };
+		87F4731316BC023E009E90B5 /* SummarizeMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeMatchViewController.h; sourceTree = "<group>"; };
+		87F4731416BC023E009E90B5 /* SummarizeMatchViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeMatchViewController.mm; sourceTree = "<group>"; };
+		87F4731616BC02B1009E90B5 /* MatchStartLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchStartLobbyViewController.h; sourceTree = "<group>"; };
+		87F4731716BC02B1009E90B5 /* MatchStartLobbyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MatchStartLobbyViewController.mm; sourceTree = "<group>"; };
+		87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUserNameViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetUserNameViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4732616BC0592009E90B5 /* LobbyPassiveViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyPassiveViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4732716BC0592009E90B5 /* LobbyPassiveViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyPassiveViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4732816BC0592009E90B5 /* LobbyPassiveViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LobbyPassiveViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4732B16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyLeaderViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4732C16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyLeaderViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4732D16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LobbyLeaderViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4733016BC0605009E90B5 /* MatchSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSettingsViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4733116BC0605009E90B5 /* MatchSettingsViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchSettingsViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4733216BC0605009E90B5 /* MatchSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4733516BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchStartLobbyViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4733616BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchStartLobbyViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4733716BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchStartLobbyViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollForFirstPlayViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RollForFirstPlayViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollForFirstPlayViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4733F16BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollDiceForRoundViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4734016BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RollDiceForRoundViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4734116BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollDiceForRoundViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4734416BC0697009E90B5 /* ActiveBidderViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveBidderViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4734516BC0697009E90B5 /* ActiveBidderViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveBidderViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4734616BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveBidderViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4734916BC06CB009E90B5 /* WaitingToBidViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingToBidViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4734A16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingToBidViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4734B16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitingToBidViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersShowDiceViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersShowDiceViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayersShowDiceViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeRoundViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarizeRoundViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummarizeRoundViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4735816BC0732009E90B5 /* LosersLobbyViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LosersLobbyViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4735916BC0733009E90B5 /* LosersLobbyViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LosersLobbyViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4735A16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LosersLobbyViewController_iPhone.xib; sourceTree = "<group>"; };
+		87F4735D16BC074C009E90B5 /* SummarizeMatchViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeMatchViewController_iPhone.h; sourceTree = "<group>"; };
+		87F4735E16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarizeMatchViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4735F16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummarizeMatchViewController_iPhone.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87E6027316BB470B008E5457 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */,
+				87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */,
+				87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E6029216BB470B008E5457 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E6029816BB470B008E5457 /* SenTestingKit.framework in Frameworks */,
+				87E6029916BB470B008E5457 /* UIKit.framework in Frameworks */,
+				87E6029A16BB470B008E5457 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87E6026D16BB470B008E5457 = {
+			isa = PBXGroup;
+			children = (
+				87E6027F16BB470B008E5457 /* LiarsDice */,
+				87E6029D16BB470B008E5457 /* LiarsDiceTests */,
+				87E6027816BB470B008E5457 /* Frameworks */,
+				87E6027716BB470B008E5457 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87E6027716BB470B008E5457 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87E6027616BB470B008E5457 /* LiarsDice.app */,
+				87E6029616BB470B008E5457 /* LiarsDiceTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87E6027816BB470B008E5457 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87E6027916BB470B008E5457 /* UIKit.framework */,
+				87E6027B16BB470B008E5457 /* Foundation.framework */,
+				87E6027D16BB470B008E5457 /* CoreGraphics.framework */,
+				87E6029716BB470B008E5457 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		87E6027F16BB470B008E5457 /* LiarsDice */ = {
+			isa = PBXGroup;
+			children = (
+				87E602B316BB47EE008E5457 /* Universal */,
+				87E602AF16BB479C008E5457 /* iPad */,
+				87E602AE16BB4791008E5457 /* iPhone */,
+				87E6028816BB470B008E5457 /* AppDelegate.h */,
+				87E6028916BB470B008E5457 /* AppDelegate.m */,
+				87E6028016BB470B008E5457 /* Supporting Files */,
+			);
+			path = LiarsDice;
+			sourceTree = "<group>";
+		};
+		87E6028016BB470B008E5457 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87E6028116BB470B008E5457 /* LiarsDice-Info.plist */,
+				87E6028216BB470B008E5457 /* InfoPlist.strings */,
+				87E6028516BB470B008E5457 /* main.m */,
+				87E6028716BB470B008E5457 /* LiarsDice-Prefix.pch */,
+				87E6028B16BB470B008E5457 /* Default.png */,
+				87E6028D16BB470B008E5457 /* Default@2x.png */,
+				87E6028F16BB470B008E5457 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87E6029D16BB470B008E5457 /* LiarsDiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				87E602A316BB470B008E5457 /* LiarsDiceTests.h */,
+				87E602A416BB470B008E5457 /* LiarsDiceTests.m */,
+				87E6029E16BB470B008E5457 /* Supporting Files */,
+			);
+			path = LiarsDiceTests;
+			sourceTree = "<group>";
+		};
+		87E6029E16BB470B008E5457 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87E6029F16BB470B008E5457 /* LiarsDiceTests-Info.plist */,
+				87E602A016BB470B008E5457 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87E602AE16BB4791008E5457 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */,
+				87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */,
+				87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */,
+				87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */,
+				87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */,
+				87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */,
+				87F4732616BC0592009E90B5 /* LobbyPassiveViewController_iPhone.h */,
+				87F4732716BC0592009E90B5 /* LobbyPassiveViewController_iPhone.m */,
+				87F4732816BC0592009E90B5 /* LobbyPassiveViewController_iPhone.xib */,
+				87F4732B16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.h */,
+				87F4732C16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.m */,
+				87F4732D16BC05BE009E90B5 /* LobbyLeaderViewController_iPhone.xib */,
+				87F4733016BC0605009E90B5 /* MatchSettingsViewController_iPhone.h */,
+				87F4733116BC0605009E90B5 /* MatchSettingsViewController_iPhone.m */,
+				87F4733216BC0605009E90B5 /* MatchSettingsViewController_iPhone.xib */,
+				87F4733516BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.h */,
+				87F4733616BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.m */,
+				87F4733716BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.xib */,
+				87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */,
+				87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */,
+				87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */,
+				87F4733F16BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.h */,
+				87F4734016BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.m */,
+				87F4734116BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib */,
+				87F4734416BC0697009E90B5 /* ActiveBidderViewController_iPhone.h */,
+				87F4734516BC0697009E90B5 /* ActiveBidderViewController_iPhone.m */,
+				87F4734616BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib */,
+				87F4734916BC06CB009E90B5 /* WaitingToBidViewController_iPhone.h */,
+				87F4734A16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m */,
+				87F4734B16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib */,
+				87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */,
+				87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */,
+				87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */,
+				87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */,
+				87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */,
+				87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */,
+				87F4735816BC0732009E90B5 /* LosersLobbyViewController_iPhone.h */,
+				87F4735916BC0733009E90B5 /* LosersLobbyViewController_iPhone.m */,
+				87F4735A16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib */,
+				87F4735D16BC074C009E90B5 /* SummarizeMatchViewController_iPhone.h */,
+				87F4735E16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.m */,
+				87F4735F16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		87E602AF16BB479C008E5457 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		87E602B316BB47EE008E5457 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				87E602B016BB47E7008E5457 /* StartViewController.h */,
+				87E602B116BB47E7008E5457 /* StartViewController.m */,
+				87E602B916BB4949008E5457 /* SetUserNameViewController.h */,
+				87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */,
+				87E602BC16BB4976008E5457 /* LobbyPassiveViewController.h */,
+				87E602BD16BB4976008E5457 /* LobbyPassiveViewController.mm */,
+				87E602BF16BB498B008E5457 /* LobbyLeaderViewController.h */,
+				87E602C016BB498B008E5457 /* LobbyLeaderViewController.mm */,
+				87E602C216BB4A27008E5457 /* MatchSettingsViewController.h */,
+				87E602C316BB4A27008E5457 /* MatchSettingsViewController.mm */,
+				87F4731616BC02B1009E90B5 /* MatchStartLobbyViewController.h */,
+				87F4731716BC02B1009E90B5 /* MatchStartLobbyViewController.mm */,
+				87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */,
+				87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */,
+				87F4730116BC002E009E90B5 /* RollDiceForRoundViewController.h */,
+				87F4730216BC002E009E90B5 /* RollDiceForRoundViewController.mm */,
+				87F4730416BC009E009E90B5 /* ActiveBidderViewController.h */,
+				87F4730516BC009E009E90B5 /* ActiveBidderViewController.mm */,
+				87F4730716BC0103009E90B5 /* WaitingToBidViewController.h */,
+				87F4730816BC0103009E90B5 /* WaitingToBidViewController.mm */,
+				87F4730A16BC01A5009E90B5 /* PlayersShowDiceViewController.h */,
+				87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */,
+				87F4730D16BC01D0009E90B5 /* SummarizeRoundViewController.h */,
+				87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */,
+				87F4731016BC0214009E90B5 /* LosersLobbyViewController.h */,
+				87F4731116BC0214009E90B5 /* LosersLobbyViewController.mm */,
+				87F4731316BC023E009E90B5 /* SummarizeMatchViewController.h */,
+				87F4731416BC023E009E90B5 /* SummarizeMatchViewController.mm */,
+			);
+			name = Universal;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87E6027516BB470B008E5457 /* LiarsDice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E602A816BB470B008E5457 /* Build configuration list for PBXNativeTarget "LiarsDice" */;
+			buildPhases = (
+				87E6027216BB470B008E5457 /* Sources */,
+				87E6027316BB470B008E5457 /* Frameworks */,
+				87E6027416BB470B008E5457 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiarsDice;
+			productName = LiarsDice;
+			productReference = 87E6027616BB470B008E5457 /* LiarsDice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87E6029516BB470B008E5457 /* LiarsDiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E602AB16BB470B008E5457 /* Build configuration list for PBXNativeTarget "LiarsDiceTests" */;
+			buildPhases = (
+				87E6029116BB470B008E5457 /* Sources */,
+				87E6029216BB470B008E5457 /* Frameworks */,
+				87E6029316BB470B008E5457 /* Resources */,
+				87E6029416BB470B008E5457 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87E6029C16BB470B008E5457 /* PBXTargetDependency */,
+			);
+			name = LiarsDiceTests;
+			productName = LiarsDiceTests;
+			productReference = 87E6029616BB470B008E5457 /* LiarsDiceTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87E6026E16BB470B008E5457 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "David Raleigh";
+			};
+			buildConfigurationList = 87E6027116BB470B008E5457 /* Build configuration list for PBXProject "LiarsDice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 87E6026D16BB470B008E5457;
+			productRefGroup = 87E6027716BB470B008E5457 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87E6027516BB470B008E5457 /* LiarsDice */,
+				87E6029516BB470B008E5457 /* LiarsDiceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87E6027416BB470B008E5457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E6028416BB470B008E5457 /* InfoPlist.strings in Resources */,
+				87E6028C16BB470B008E5457 /* Default.png in Resources */,
+				87E6028E16BB470B008E5457 /* Default@2x.png in Resources */,
+				87E6029016BB470B008E5457 /* Default-568h@2x.png in Resources */,
+				87F4731D16BC03F0009E90B5 /* StartViewController_iPhone.xib in Resources */,
+				87F4732216BC052D009E90B5 /* SetUserNameViewController_iPhone.xib in Resources */,
+				87F4732A16BC0593009E90B5 /* LobbyPassiveViewController_iPhone.xib in Resources */,
+				87F4732F16BC05BF009E90B5 /* LobbyLeaderViewController_iPhone.xib in Resources */,
+				87F4733416BC0605009E90B5 /* MatchSettingsViewController_iPhone.xib in Resources */,
+				87F4733916BC0625009E90B5 /* MatchStartLobbyViewController_iPhone.xib in Resources */,
+				87F4733E16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib in Resources */,
+				87F4734316BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib in Resources */,
+				87F4734816BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib in Resources */,
+				87F4734D16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib in Resources */,
+				87F4735216BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib in Resources */,
+				87F4735716BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib in Resources */,
+				87F4735C16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib in Resources */,
+				87F4736116BC074E009E90B5 /* SummarizeMatchViewController_iPhone.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E6029316BB470B008E5457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E602A216BB470B008E5457 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		87E6029416BB470B008E5457 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87E6027216BB470B008E5457 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E6028616BB470B008E5457 /* main.m in Sources */,
+				87E6028A16BB470B008E5457 /* AppDelegate.m in Sources */,
+				87E602B216BB47E7008E5457 /* StartViewController.m in Sources */,
+				87E602BB16BB4949008E5457 /* SetUserNameViewController.mm in Sources */,
+				87E602BE16BB4976008E5457 /* LobbyPassiveViewController.mm in Sources */,
+				87E602C116BB498C008E5457 /* LobbyLeaderViewController.mm in Sources */,
+				87E602C416BB4A27008E5457 /* MatchSettingsViewController.mm in Sources */,
+				87F4730016BBFFF7009E90B5 /* RollForFirstPlayViewController.mm in Sources */,
+				87F4730316BC002E009E90B5 /* RollDiceForRoundViewController.mm in Sources */,
+				87F4730616BC009E009E90B5 /* ActiveBidderViewController.mm in Sources */,
+				87F4730916BC0103009E90B5 /* WaitingToBidViewController.mm in Sources */,
+				87F4730C16BC01A6009E90B5 /* PlayersShowDiceViewController.mm in Sources */,
+				87F4730F16BC01D0009E90B5 /* SummarizeRoundViewController.mm in Sources */,
+				87F4731216BC0214009E90B5 /* LosersLobbyViewController.mm in Sources */,
+				87F4731516BC023E009E90B5 /* SummarizeMatchViewController.mm in Sources */,
+				87F4731816BC02B1009E90B5 /* MatchStartLobbyViewController.mm in Sources */,
+				87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.m in Sources */,
+				87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.m in Sources */,
+				87F4732916BC0593009E90B5 /* LobbyPassiveViewController_iPhone.m in Sources */,
+				87F4732E16BC05BF009E90B5 /* LobbyLeaderViewController_iPhone.m in Sources */,
+				87F4733316BC0605009E90B5 /* MatchSettingsViewController_iPhone.m in Sources */,
+				87F4733816BC0625009E90B5 /* MatchStartLobbyViewController_iPhone.m in Sources */,
+				87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m in Sources */,
+				87F4734216BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.m in Sources */,
+				87F4734716BC0697009E90B5 /* ActiveBidderViewController_iPhone.m in Sources */,
+				87F4734C16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m in Sources */,
+				87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m in Sources */,
+				87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m in Sources */,
+				87F4735B16BC0733009E90B5 /* LosersLobbyViewController_iPhone.m in Sources */,
+				87F4736016BC074E009E90B5 /* SummarizeMatchViewController_iPhone.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E6029116BB470B008E5457 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E602A516BB470B008E5457 /* LiarsDiceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87E6029C16BB470B008E5457 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87E6027516BB470B008E5457 /* LiarsDice */;
+			targetProxy = 87E6029B16BB470B008E5457 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87E6028216BB470B008E5457 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87E6028316BB470B008E5457 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		87E602A016BB470B008E5457 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87E602A116BB470B008E5457 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87E602A616BB470B008E5457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87E602A716BB470B008E5457 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87E602A916BB470B008E5457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiarsDice/LiarsDice-Prefix.pch";
+				INFOPLIST_FILE = "LiarsDice/LiarsDice-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		87E602AA16BB470B008E5457 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiarsDice/LiarsDice-Prefix.pch";
+				INFOPLIST_FILE = "LiarsDice/LiarsDice-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		87E602AC16BB470B008E5457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LiarsDice.app/LiarsDice";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiarsDice/LiarsDice-Prefix.pch";
+				INFOPLIST_FILE = "LiarsDiceTests/LiarsDiceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		87E602AD16BB470B008E5457 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LiarsDice.app/LiarsDice";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiarsDice/LiarsDice-Prefix.pch";
+				INFOPLIST_FILE = "LiarsDiceTests/LiarsDiceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87E6027116BB470B008E5457 /* Build configuration list for PBXProject "LiarsDice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E602A616BB470B008E5457 /* Debug */,
+				87E602A716BB470B008E5457 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E602A816BB470B008E5457 /* Build configuration list for PBXNativeTarget "LiarsDice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E602A916BB470B008E5457 /* Debug */,
+				87E602AA16BB470B008E5457 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E602AB16BB470B008E5457 /* Build configuration list for PBXNativeTarget "LiarsDiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E602AC16BB470B008E5457 /* Debug */,
+				87E602AD16BB470B008E5457 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87E6026E16BB470B008E5457 /* Project object */;
+}
