@@ -1,18 +1,18 @@
 //
-//  MatchSetupViewController_iPhone.m
+//  SummarizeGameViewController.m
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "MatchSetupViewController_iPhone.h"
+#import "SummarizeGameViewController.h"
 
-@interface MatchSetupViewController_iPhone ()
+@interface SummarizeGameViewController ()
 
 @end
 
-@implementation MatchSetupViewController_iPhone
+@implementation SummarizeGameViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

@@ -1,5 +1,5 @@
 //
-//  GameLobbyViewController.h
+//  SummarizeGameViewController.h
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameLobbyViewController : UIViewController
+@interface SummarizeGameViewController : UIViewController
 
 @end

@@ -1,18 +1,18 @@
 //
-//  GameLobbyViewController_iPhone.m
+//  LiarsDiceLobbyViewController.m
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "GameLobbyViewController_iPhone.h"
+#import "LiarsDiceLobbyViewController.h"
 
-@interface GameLobbyViewController_iPhone ()
+@interface LiarsDiceLobbyViewController ()
 
 @end
 
-@implementation GameLobbyViewController_iPhone
+@implementation LiarsDiceLobbyViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

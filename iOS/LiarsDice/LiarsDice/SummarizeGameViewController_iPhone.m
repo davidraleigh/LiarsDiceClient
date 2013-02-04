@@ -1,18 +1,18 @@
 //
-//  GameLobbyViewController.m
+//  SummarizeGameViewController_iPhone.m
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "GameLobbyViewController.h"
+#import "SummarizeGameViewController_iPhone.h"
 
-@interface GameLobbyViewController ()
+@interface SummarizeGameViewController_iPhone ()
 
 @end
 
-@implementation GameLobbyViewController
+@implementation SummarizeGameViewController_iPhone
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

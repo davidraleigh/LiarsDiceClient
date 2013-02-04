@@ -1,18 +1,18 @@
 //
-//  PlayersMatchSettingsViewController.m
+//  LiarsDiceLobbyViewController_iPhone.m
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "PlayersMatchSettingsViewController.h"
+#import "LiarsDiceLobbyViewController_iPhone.h"
 
-@interface PlayersMatchSettingsViewController ()
+@interface LiarsDiceLobbyViewController_iPhone ()
 
 @end
 
-@implementation PlayersMatchSettingsViewController
+@implementation LiarsDiceLobbyViewController_iPhone
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

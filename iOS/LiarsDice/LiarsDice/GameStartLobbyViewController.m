@@ -1,18 +1,18 @@
 //
-//  MatchSetupViewController.m
+//  GameStartLobbyViewController.m
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "MatchSetupViewController.h"
+#import "GameStartLobbyViewController.h"
 
-@interface MatchSetupViewController ()
+@interface GameStartLobbyViewController ()
 
 @end
 
-@implementation MatchSetupViewController
+@implementation GameStartLobbyViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

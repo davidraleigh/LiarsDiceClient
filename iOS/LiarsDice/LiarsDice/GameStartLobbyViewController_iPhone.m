@@ -1,18 +1,18 @@
 //
-//  MatchStartLobbyViewController.m
+//  GameStartLobbyViewController_iPhone.m
 //  LiarsDice
 //
-//  Created by David Raleigh on 2/1/13.
+//  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "MatchStartLobbyViewController.h"
+#import "GameStartLobbyViewController_iPhone.h"
 
-@interface MatchStartLobbyViewController ()
+@interface GameStartLobbyViewController_iPhone ()
 
 @end
 
-@implementation MatchStartLobbyViewController
+@implementation GameStartLobbyViewController_iPhone
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

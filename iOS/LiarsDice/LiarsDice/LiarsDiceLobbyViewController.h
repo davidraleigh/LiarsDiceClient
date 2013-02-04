@@ -1,5 +1,5 @@
 //
-//  PlayersMatchSettingsViewController.h
+//  LiarsDiceLobbyViewController.h
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayersMatchSettingsViewController : UIViewController
+@interface LiarsDiceLobbyViewController : UIViewController
 
 @end
