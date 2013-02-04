@@ -1,18 +1,18 @@
 //
-//  LobbyLeaderViewController_iPhone.m
+//  PlayersMatchSettingsViewController_iPhone.m
 //  LiarsDice
 //
-//  Created by David Raleigh on 2/1/13.
+//  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "LobbyLeaderViewController_iPhone.h"
+#import "PlayersMatchSettingsViewController_iPhone.h"
 
-@interface LobbyLeaderViewController_iPhone ()
+@interface PlayersMatchSettingsViewController_iPhone ()
 
 @end
 
-@implementation LobbyLeaderViewController_iPhone
+@implementation PlayersMatchSettingsViewController_iPhone
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

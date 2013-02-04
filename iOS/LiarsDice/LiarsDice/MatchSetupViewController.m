@@ -1,18 +1,18 @@
 //
-//  LobbyPassiveViewController.m
+//  MatchSetupViewController.m
 //  LiarsDice
 //
-//  Created by David Raleigh on 2/1/13.
+//  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "LobbyPassiveViewController.h"
+#import "MatchSetupViewController.h"
 
-@interface LobbyPassiveViewController ()
+@interface MatchSetupViewController ()
 
 @end
 
-@implementation LobbyPassiveViewController
+@implementation MatchSetupViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

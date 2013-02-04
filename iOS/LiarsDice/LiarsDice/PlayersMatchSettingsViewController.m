@@ -1,18 +1,18 @@
 //
-//  MatchSettingsViewController.m
+//  PlayersMatchSettingsViewController.m
 //  LiarsDice
 //
-//  Created by David Raleigh on 2/1/13.
+//  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "MatchSettingsViewController.h"
+#import "PlayersMatchSettingsViewController.h"
 
-@interface MatchSettingsViewController ()
+@interface PlayersMatchSettingsViewController ()
 
 @end
 
-@implementation MatchSettingsViewController
+@implementation PlayersMatchSettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
