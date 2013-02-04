@@ -16,6 +16,8 @@
 		8796C4B316BFCC84004708E0 /* MatchSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8796C4B216BFCC84004708E0 /* MatchSetupViewController.m */; };
 		8796C4B716BFCCA7004708E0 /* MatchSetupViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 8796C4B516BFCCA7004708E0 /* MatchSetupViewController_iPhone.m */; };
 		8796C4B816BFCCA7004708E0 /* MatchSetupViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8796C4B616BFCCA7004708E0 /* MatchSetupViewController_iPhone.xib */; };
+		8796C4BB16BFE392004708E0 /* SelectBidButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8796C4BA16BFE390004708E0 /* SelectBidButtonsView.m */; };
+		8796C4BE16BFE3E0004708E0 /* SelectBidButtonsView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 8796C4BD16BFE3DC004708E0 /* SelectBidButtonsView_iPhone.m */; };
 		87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
 		87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027D16BB470B008E5457 /* CoreGraphics.framework */; };
@@ -32,6 +34,7 @@
 		87E602A516BB470B008E5457 /* LiarsDiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E602A416BB470B008E5457 /* LiarsDiceTests.m */; };
 		87E602B216BB47E7008E5457 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E602B116BB47E7008E5457 /* StartViewController.m */; };
 		87E602BB16BB4949008E5457 /* SetUserNameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */; };
+		87E9551E16BFE6950067F4DF /* SelectBidButtonsView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9551D16BFE6950067F4DF /* SelectBidButtonsView_iPhone.xib */; };
 		87F4730016BBFFF7009E90B5 /* RollForFirstPlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */; };
 		87F4730316BC002E009E90B5 /* RollDiceForRoundViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730216BC002E009E90B5 /* RollDiceForRoundViewController.mm */; };
 		87F4730616BC009E009E90B5 /* ActiveBidderViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730516BC009E009E90B5 /* ActiveBidderViewController.mm */; };
@@ -92,6 +95,10 @@
 		8796C4B416BFCCA7004708E0 /* MatchSetupViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSetupViewController_iPhone.h; sourceTree = "<group>"; };
 		8796C4B516BFCCA7004708E0 /* MatchSetupViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchSetupViewController_iPhone.m; sourceTree = "<group>"; };
 		8796C4B616BFCCA7004708E0 /* MatchSetupViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchSetupViewController_iPhone.xib; sourceTree = "<group>"; };
+		8796C4B916BFE38E004708E0 /* SelectBidButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBidButtonsView.h; sourceTree = "<group>"; };
+		8796C4BA16BFE390004708E0 /* SelectBidButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBidButtonsView.m; sourceTree = "<group>"; };
+		8796C4BC16BFE3DB004708E0 /* SelectBidButtonsView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBidButtonsView_iPhone.h; sourceTree = "<group>"; };
+		8796C4BD16BFE3DC004708E0 /* SelectBidButtonsView_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBidButtonsView_iPhone.m; sourceTree = "<group>"; };
 		87E6027616BB470B008E5457 /* LiarsDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiarsDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E6027916BB470B008E5457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87E6027B16BB470B008E5457 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +122,7 @@
 		87E602B116BB47E7008E5457 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		87E602B916BB4949008E5457 /* SetUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController.h; sourceTree = "<group>"; };
 		87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SetUserNameViewController.mm; sourceTree = "<group>"; };
+		87E9551D16BFE6950067F4DF /* SelectBidButtonsView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBidButtonsView_iPhone.xib; sourceTree = "<group>"; };
 		87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollForFirstPlayViewController.h; sourceTree = "<group>"; };
 		87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RollForFirstPlayViewController.mm; sourceTree = "<group>"; };
 		87F4730116BC002E009E90B5 /* RollDiceForRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollDiceForRoundViewController.h; sourceTree = "<group>"; };
@@ -194,6 +202,109 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8796C4BF16BFE3F7004708E0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				87E602B016BB47E7008E5457 /* StartViewController.h */,
+				87E602B116BB47E7008E5457 /* StartViewController.m */,
+				87E602B916BB4949008E5457 /* SetUserNameViewController.h */,
+				87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */,
+				8796C49C16BFC9F3004708E0 /* GameLobbyViewController.h */,
+				8796C49D16BFC9F3004708E0 /* GameLobbyViewController.m */,
+				8796C4B116BFCC84004708E0 /* MatchSetupViewController.h */,
+				8796C4B216BFCC84004708E0 /* MatchSetupViewController.m */,
+				87F4731616BC02B1009E90B5 /* MatchStartLobbyViewController.h */,
+				87F4731716BC02B1009E90B5 /* MatchStartLobbyViewController.mm */,
+				87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */,
+				87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */,
+				87F4730116BC002E009E90B5 /* RollDiceForRoundViewController.h */,
+				87F4730216BC002E009E90B5 /* RollDiceForRoundViewController.mm */,
+				87F4730416BC009E009E90B5 /* ActiveBidderViewController.h */,
+				87F4730516BC009E009E90B5 /* ActiveBidderViewController.mm */,
+				87F4730716BC0103009E90B5 /* WaitingToBidViewController.h */,
+				87F4730816BC0103009E90B5 /* WaitingToBidViewController.mm */,
+				87F4730A16BC01A5009E90B5 /* PlayersShowDiceViewController.h */,
+				87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */,
+				87F4730D16BC01D0009E90B5 /* SummarizeRoundViewController.h */,
+				87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */,
+				87F4731016BC0214009E90B5 /* LosersLobbyViewController.h */,
+				87F4731116BC0214009E90B5 /* LosersLobbyViewController.mm */,
+				87F4731316BC023E009E90B5 /* SummarizeMatchViewController.h */,
+				87F4731416BC023E009E90B5 /* SummarizeMatchViewController.mm */,
+				8796C4A416BFCB3D004708E0 /* PlayersMatchSettingsViewController.h */,
+				8796C4A516BFCB3D004708E0 /* PlayersMatchSettingsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8796C4C016BFE45A004708E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8796C4B916BFE38E004708E0 /* SelectBidButtonsView.h */,
+				8796C4BA16BFE390004708E0 /* SelectBidButtonsView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8796C4C116BFE464004708E0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */,
+				87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */,
+				87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */,
+				87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */,
+				87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */,
+				87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */,
+				8796C49F16BFCA14004708E0 /* GameLobbyViewController_iPhone.h */,
+				8796C4A016BFCA14004708E0 /* GameLobbyViewController_iPhone.m */,
+				8796C4A116BFCA14004708E0 /* GameLobbyViewController_iPhone.xib */,
+				8796C4B416BFCCA7004708E0 /* MatchSetupViewController_iPhone.h */,
+				8796C4B516BFCCA7004708E0 /* MatchSetupViewController_iPhone.m */,
+				8796C4B616BFCCA7004708E0 /* MatchSetupViewController_iPhone.xib */,
+				87F4733516BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.h */,
+				87F4733616BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.m */,
+				87F4733716BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.xib */,
+				87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */,
+				87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */,
+				87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */,
+				87F4733F16BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.h */,
+				87F4734016BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.m */,
+				87F4734116BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib */,
+				87F4734416BC0697009E90B5 /* ActiveBidderViewController_iPhone.h */,
+				87F4734516BC0697009E90B5 /* ActiveBidderViewController_iPhone.m */,
+				87F4734616BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib */,
+				87F4734916BC06CB009E90B5 /* WaitingToBidViewController_iPhone.h */,
+				87F4734A16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m */,
+				87F4734B16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib */,
+				87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */,
+				87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */,
+				87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */,
+				87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */,
+				87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */,
+				87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */,
+				87F4735816BC0732009E90B5 /* LosersLobbyViewController_iPhone.h */,
+				87F4735916BC0733009E90B5 /* LosersLobbyViewController_iPhone.m */,
+				87F4735A16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib */,
+				87F4735D16BC074C009E90B5 /* SummarizeMatchViewController_iPhone.h */,
+				87F4735E16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.m */,
+				87F4735F16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.xib */,
+				8796C4AC16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.h */,
+				8796C4AD16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.m */,
+				8796C4AE16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8796C4C216BFE4E7004708E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8796C4BC16BFE3DB004708E0 /* SelectBidButtonsView_iPhone.h */,
+				8796C4BD16BFE3DC004708E0 /* SelectBidButtonsView_iPhone.m */,
+				87E9551D16BFE6950067F4DF /* SelectBidButtonsView_iPhone.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		87E6026D16BB470B008E5457 = {
 			isa = PBXGroup;
 			children = (
@@ -275,48 +386,8 @@
 		87E602AE16BB4791008E5457 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */,
-				87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */,
-				87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */,
-				87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */,
-				87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */,
-				87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */,
-				8796C49F16BFCA14004708E0 /* GameLobbyViewController_iPhone.h */,
-				8796C4A016BFCA14004708E0 /* GameLobbyViewController_iPhone.m */,
-				8796C4A116BFCA14004708E0 /* GameLobbyViewController_iPhone.xib */,
-				8796C4B416BFCCA7004708E0 /* MatchSetupViewController_iPhone.h */,
-				8796C4B516BFCCA7004708E0 /* MatchSetupViewController_iPhone.m */,
-				8796C4B616BFCCA7004708E0 /* MatchSetupViewController_iPhone.xib */,
-				87F4733516BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.h */,
-				87F4733616BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.m */,
-				87F4733716BC0624009E90B5 /* MatchStartLobbyViewController_iPhone.xib */,
-				87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */,
-				87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */,
-				87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */,
-				87F4733F16BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.h */,
-				87F4734016BC067D009E90B5 /* RollDiceForRoundViewController_iPhone.m */,
-				87F4734116BC067E009E90B5 /* RollDiceForRoundViewController_iPhone.xib */,
-				87F4734416BC0697009E90B5 /* ActiveBidderViewController_iPhone.h */,
-				87F4734516BC0697009E90B5 /* ActiveBidderViewController_iPhone.m */,
-				87F4734616BC0697009E90B5 /* ActiveBidderViewController_iPhone.xib */,
-				87F4734916BC06CB009E90B5 /* WaitingToBidViewController_iPhone.h */,
-				87F4734A16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.m */,
-				87F4734B16BC06CB009E90B5 /* WaitingToBidViewController_iPhone.xib */,
-				87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */,
-				87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */,
-				87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */,
-				87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */,
-				87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */,
-				87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */,
-				87F4735816BC0732009E90B5 /* LosersLobbyViewController_iPhone.h */,
-				87F4735916BC0733009E90B5 /* LosersLobbyViewController_iPhone.m */,
-				87F4735A16BC0733009E90B5 /* LosersLobbyViewController_iPhone.xib */,
-				87F4735D16BC074C009E90B5 /* SummarizeMatchViewController_iPhone.h */,
-				87F4735E16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.m */,
-				87F4735F16BC074D009E90B5 /* SummarizeMatchViewController_iPhone.xib */,
-				8796C4AC16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.h */,
-				8796C4AD16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.m */,
-				8796C4AE16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.xib */,
+				8796C4C216BFE4E7004708E0 /* Views */,
+				8796C4C116BFE464004708E0 /* ViewControllers */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -331,34 +402,8 @@
 		87E602B316BB47EE008E5457 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
-				87E602B016BB47E7008E5457 /* StartViewController.h */,
-				87E602B116BB47E7008E5457 /* StartViewController.m */,
-				87E602B916BB4949008E5457 /* SetUserNameViewController.h */,
-				87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */,
-				8796C49C16BFC9F3004708E0 /* GameLobbyViewController.h */,
-				8796C49D16BFC9F3004708E0 /* GameLobbyViewController.m */,
-				8796C4B116BFCC84004708E0 /* MatchSetupViewController.h */,
-				8796C4B216BFCC84004708E0 /* MatchSetupViewController.m */,
-				87F4731616BC02B1009E90B5 /* MatchStartLobbyViewController.h */,
-				87F4731716BC02B1009E90B5 /* MatchStartLobbyViewController.mm */,
-				87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */,
-				87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */,
-				87F4730116BC002E009E90B5 /* RollDiceForRoundViewController.h */,
-				87F4730216BC002E009E90B5 /* RollDiceForRoundViewController.mm */,
-				87F4730416BC009E009E90B5 /* ActiveBidderViewController.h */,
-				87F4730516BC009E009E90B5 /* ActiveBidderViewController.mm */,
-				87F4730716BC0103009E90B5 /* WaitingToBidViewController.h */,
-				87F4730816BC0103009E90B5 /* WaitingToBidViewController.mm */,
-				87F4730A16BC01A5009E90B5 /* PlayersShowDiceViewController.h */,
-				87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */,
-				87F4730D16BC01D0009E90B5 /* SummarizeRoundViewController.h */,
-				87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */,
-				87F4731016BC0214009E90B5 /* LosersLobbyViewController.h */,
-				87F4731116BC0214009E90B5 /* LosersLobbyViewController.mm */,
-				87F4731316BC023E009E90B5 /* SummarizeMatchViewController.h */,
-				87F4731416BC023E009E90B5 /* SummarizeMatchViewController.mm */,
-				8796C4A416BFCB3D004708E0 /* PlayersMatchSettingsViewController.h */,
-				8796C4A516BFCB3D004708E0 /* PlayersMatchSettingsViewController.m */,
+				8796C4C016BFE45A004708E0 /* Views */,
+				8796C4BF16BFE3F7004708E0 /* ViewControllers */,
 			);
 			name = Universal;
 			sourceTree = "<group>";
@@ -452,6 +497,7 @@
 				8796C4A316BFCA14004708E0 /* GameLobbyViewController_iPhone.xib in Resources */,
 				8796C4B016BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.xib in Resources */,
 				8796C4B816BFCCA7004708E0 /* MatchSetupViewController_iPhone.xib in Resources */,
+				87E9551E16BFE6950067F4DF /* SelectBidButtonsView_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +563,8 @@
 				8796C4AF16BFCBB4004708E0 /* PlayersMatchSettingsViewController_iPhone.m in Sources */,
 				8796C4B316BFCC84004708E0 /* MatchSetupViewController.m in Sources */,
 				8796C4B716BFCCA7004708E0 /* MatchSetupViewController_iPhone.m in Sources */,
+				8796C4BB16BFE392004708E0 /* SelectBidButtonsView.m in Sources */,
+				8796C4BE16BFE3E0004708E0 /* SelectBidButtonsView_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
