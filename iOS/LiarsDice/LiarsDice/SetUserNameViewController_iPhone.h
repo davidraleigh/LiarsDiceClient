@@ -10,4 +10,6 @@
 
 @interface SetUserNameViewController_iPhone : SetUserNameViewController
 
+- (IBAction)mainMenuButton:(id)sender;
+
 @end

@@ -10,4 +10,5 @@
 
 @interface GameSetupViewController_iPhone : GameSetupViewController
 
+- (IBAction)startGameButton:(id)sender;
 @end

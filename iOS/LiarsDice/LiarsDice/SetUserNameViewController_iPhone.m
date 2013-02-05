@@ -8,6 +8,8 @@
 
 #import "SetUserNameViewController_iPhone.h"
 
+#import "StartViewController_iPhone.h"
+
 @interface SetUserNameViewController_iPhone ()
 
 @end
@@ -35,4 +37,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)mainMenuButton:(id)sender
+{
+    [[self navigationController] popToRootViewControllerAnimated:YES];
+}
 @end

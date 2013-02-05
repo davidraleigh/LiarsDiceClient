@@ -8,6 +8,8 @@
 
 #import "RollForFirstPlayViewController_iPhone.h"
 
+#import "RoundPlayViewController_iPhone.h"
+
 @interface RollForFirstPlayViewController_iPhone ()
 
 @end
@@ -35,4 +37,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)rollDiceButton:(id)sender
+{
+    RoundPlayViewController_iPhone *rpvc = [[RoundPlayViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:rpvc animated:YES];
+}
 @end

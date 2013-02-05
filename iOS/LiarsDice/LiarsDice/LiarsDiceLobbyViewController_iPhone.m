@@ -8,6 +8,8 @@
 
 #import "LiarsDiceLobbyViewController_iPhone.h"
 
+#import "GameSetupViewController_iPhone.h"
+
 @interface LiarsDiceLobbyViewController_iPhone ()
 
 @end
@@ -35,4 +37,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startGameButton:(id)sender
+{
+    GameSetupViewController_iPhone *gsvc = [[GameSetupViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:gsvc animated:YES];
+}
 @end

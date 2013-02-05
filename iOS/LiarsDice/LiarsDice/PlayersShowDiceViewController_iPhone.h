@@ -10,4 +10,5 @@
 
 @interface PlayersShowDiceViewController_iPhone : PlayersShowDiceViewController
 
+- (IBAction)QAButtonThrowAWayDice:(id)sender;
 @end

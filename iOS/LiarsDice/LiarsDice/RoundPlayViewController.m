@@ -1,18 +1,18 @@
 //
-//  LosersLobbyViewController_iPhone.m
+//  RoundPlayViewController.m
 //  LiarsDice
 //
-//  Created by David Raleigh on 2/1/13.
+//  Created by David Raleigh on 2/5/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "LosersLobbyViewController_iPhone.h"
+#import "RoundPlayViewController.h"
 
-@interface LosersLobbyViewController_iPhone ()
+@interface RoundPlayViewController ()
 
 @end
 
-@implementation LosersLobbyViewController_iPhone
+@implementation RoundPlayViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

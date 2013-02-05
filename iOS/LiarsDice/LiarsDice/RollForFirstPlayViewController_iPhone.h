@@ -10,4 +10,5 @@
 
 @interface RollForFirstPlayViewController_iPhone : RollForFirstPlayViewController
 
+- (IBAction)rollDiceButton:(id)sender;
 @end

@@ -10,4 +10,7 @@
 
 @interface StartViewController_iPhone : StartViewController
 
+- (IBAction)onlineGameButton:(id)sender;
+- (IBAction)settingsButton:(id)sender;
+
 @end

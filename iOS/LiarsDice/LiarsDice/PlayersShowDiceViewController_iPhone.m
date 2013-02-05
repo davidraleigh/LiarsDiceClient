@@ -8,6 +8,7 @@
 
 #import "PlayersShowDiceViewController_iPhone.h"
 
+#import "SummarizeRoundViewController_iPhone.h"
 @interface PlayersShowDiceViewController_iPhone ()
 
 @end
@@ -35,4 +36,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)QAButtonThrowAWayDice:(id)sender
+{
+    SummarizeRoundViewController_iPhone *srvc = [[SummarizeRoundViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:srvc animated:YES];
+}
 @end

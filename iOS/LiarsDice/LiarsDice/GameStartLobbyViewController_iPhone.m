@@ -8,6 +8,8 @@
 
 #import "GameStartLobbyViewController_iPhone.h"
 
+#import "RollForFirstPlayViewController_iPhone.h"
+
 @interface GameStartLobbyViewController_iPhone ()
 
 @end
@@ -35,4 +37,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)rollForFirstPlayButton:(id)sender
+{
+    RollForFirstPlayViewController_iPhone *rffpvc = [[RollForFirstPlayViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:rffpvc animated:YES];
+
+    
+}
 @end

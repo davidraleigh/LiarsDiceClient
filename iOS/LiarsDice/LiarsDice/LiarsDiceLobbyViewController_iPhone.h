@@ -10,4 +10,6 @@
 
 @interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController
 
+- (IBAction)startGameButton:(id)sender;
+
 @end

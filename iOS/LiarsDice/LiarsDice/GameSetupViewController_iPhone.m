@@ -8,6 +8,8 @@
 
 #import "GameSetupViewController_iPhone.h"
 
+#import "GameStartLobbyViewController_iPhone.h"
+
 @interface GameSetupViewController_iPhone ()
 
 @end
@@ -35,4 +37,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startGameButton:(id)sender
+{
+    GameStartLobbyViewController_iPhone *gslvc = [[GameStartLobbyViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:gslvc animated:YES];
+}
 @end

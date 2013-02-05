@@ -9,5 +9,6 @@
 #import "GameStartLobbyViewController.h"
 
 @interface GameStartLobbyViewController_iPhone : GameStartLobbyViewController
+- (IBAction)rollForFirstPlayButton:(id)sender;
 
 @end

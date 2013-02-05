@@ -1,13 +1,14 @@
 //
-//  SelectBidButtonsView_iPhone.h
+//  BidSelectionData.m
 //  LiarsDice
 //
 //  Created by David Raleigh on 2/4/13.
 //  Copyright (c) 2013 David Raleigh. All rights reserved.
 //
 
-#import "SelectBidButtonsView.h"
+#import "BidSelectionData.h"
 
-@interface SelectBidButtonsView_iPhone : SelectBidButtonsView
+
+@implementation BidSelectionData
 
 @end
