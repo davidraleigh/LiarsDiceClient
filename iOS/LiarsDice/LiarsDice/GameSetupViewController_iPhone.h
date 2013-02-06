@@ -10,5 +10,6 @@
 
 @interface GameSetupViewController_iPhone : GameSetupViewController
 
+- (IBAction)invitePlayersButton:(id)sender;
 - (IBAction)startGameButton:(id)sender;
 @end

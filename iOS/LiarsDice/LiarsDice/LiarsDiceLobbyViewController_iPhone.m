@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        sortByKey = 0;
     }
     return self;
 }
@@ -41,5 +42,25 @@
 {
     GameSetupViewController_iPhone *gsvc = [[GameSetupViewController_iPhone alloc] init];
     [[self navigationController] pushViewController:gsvc animated:YES];
+}
+
+- (IBAction)sortyByButton:(id)sender
+{
+    if (sortByKey == 0)
+    {
+        [sender setTitle:@"By Familiarity" forState:UIControlStateNormal];
+        sortByKey = 1;
+    }
+    else if (sortByKey == 1)
+    {
+        [sender setTitle:@"By Name" forState:UIControlStateNormal];
+        sortByKey = 2;
+    }
+    else if (sortByKey == 2)
+    {
+        [sender setTitle:@"By Distance" forState:UIControlStateNormal];
+        sortByKey = 0;
+    }
+    
 }
 @end

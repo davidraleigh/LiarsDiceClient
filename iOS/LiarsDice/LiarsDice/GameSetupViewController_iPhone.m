@@ -37,6 +37,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)invitePlayersButton:(id)sender
+{
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
 - (IBAction)startGameButton:(id)sender
 {
     GameStartLobbyViewController_iPhone *gslvc = [[GameStartLobbyViewController_iPhone alloc] init];

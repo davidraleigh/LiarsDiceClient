@@ -9,7 +9,12 @@
 #import "LiarsDiceLobbyViewController.h"
 
 @interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController
+{
+    __weak IBOutlet UIButton *sortByButtonText;
+    int sortByKey;
+}
 
 - (IBAction)startGameButton:(id)sender;
+- (IBAction)sortyByButton:(id)sender;
 
 @end

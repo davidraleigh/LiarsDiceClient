@@ -20,6 +20,9 @@
 		872CA63916C14CCB0056AF23 /* RoundPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63816C14CCB0056AF23 /* RoundPlayViewController.m */; };
 		872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */; };
 		872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */; };
+		87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */; };
+		87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */; };
+		87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */; };
 		87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
 		87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027D16BB470B008E5457 /* CoreGraphics.framework */; };
@@ -100,6 +103,11 @@
 		872CA63A16C14CF30056AF23 /* RoundPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundPlayViewController_iPhone.h; sourceTree = "<group>"; };
 		872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundPlayViewController_iPhone.m; sourceTree = "<group>"; };
 		872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundPlayViewController_iPhone.xib; sourceTree = "<group>"; };
+		87B09BA716C27C8C006F6E81 /* GeneralSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController.h; sourceTree = "<group>"; };
+		87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingsViewController.m; sourceTree = "<group>"; };
+		87B09BAA16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController_iPhone.h; sourceTree = "<group>"; };
+		87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingsViewController_iPhone.m; sourceTree = "<group>"; };
+		87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E6027616BB470B008E5457 /* LiarsDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiarsDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E6027916BB470B008E5457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87E6027B16BB470B008E5457 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -210,6 +218,8 @@
 			children = (
 				87E602B016BB47E7008E5457 /* StartViewController.h */,
 				87E602B116BB47E7008E5457 /* StartViewController.m */,
+				87B09BA716C27C8C006F6E81 /* GeneralSettingsViewController.h */,
+				87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */,
 				87E602B916BB4949008E5457 /* SetUserNameViewController.h */,
 				87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */,
 				87E9551F16BFFEB00067F4DF /* LiarsDiceLobbyViewController.h */,
@@ -240,6 +250,9 @@
 				87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */,
 				87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */,
 				87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */,
+				87B09BAA16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.h */,
+				87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */,
+				87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */,
 				87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */,
 				87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */,
 				87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */,
@@ -503,6 +516,7 @@
 				872CA63416C05DB60056AF23 /* LD_DiceScroll_7.png in Resources */,
 				872CA63616C05DC20056AF23 /* LD_TumblerBackdrop_1.png in Resources */,
 				872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */,
+				87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +577,8 @@
 				87E9554D16C01EAB0067F4DF /* BidSelectionData.m in Sources */,
 				872CA63916C14CCB0056AF23 /* RoundPlayViewController.m in Sources */,
 				872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.m in Sources */,
+				87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.m in Sources */,
+				87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

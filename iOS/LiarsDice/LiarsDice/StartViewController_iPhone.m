@@ -9,7 +9,7 @@
 #import "StartViewController_iPhone.h" 
 
 #import "LiarsDiceLobbyViewController_iPhone.h"
-#import "SetUserNameViewController_iPhone.h"
+#import "GeneralSettingsViewController_iPhone.h"
 
 @interface StartViewController_iPhone ()
 
@@ -46,7 +46,7 @@
 
 - (IBAction)settingsButton:(id)sender
 {
-    SetUserNameViewController_iPhone *sunvc = [[SetUserNameViewController_iPhone alloc] init];
-    [[self navigationController] pushViewController:sunvc animated:YES];
+    GeneralSettingsViewController_iPhone *gsvc = [[GeneralSettingsViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:gsvc animated:YES];
 }
 @end
