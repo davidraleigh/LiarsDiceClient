@@ -10,6 +10,13 @@
 
 #import "EasyTableView.h"
 
+
+// TODO REPLACE THIS TEST CODE
+#define MAX_BID_QUANTITY 32
+#define MIN_FACE_VALUE 3
+#define MIN_BID_QUANTITY 1
+// TODO REPLACE THIS TEST CODE
+
 // #defines for EasyTableView
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
@@ -43,8 +50,9 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+    
     }
     return self;
 }
@@ -54,6 +62,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
+    currentLowestQuantity = MIN_BID_QUANTITY;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -173,70 +182,120 @@
     return NUM_OF_CELLS;
 }
 
-//// The height of the header section view MUST be the same as your HORIZONTAL_TABLEVIEW_HEIGHT (horizontal EasyTableView only)
-//- (UIView *)easyTableView:(EasyTableView*)easyTableView
-//   viewForHeaderInSection:(NSInteger)section
-//{
-//    UILabel *label = [[UILabel alloc] init];
-//	label.text = @"HEADER";
-//	label.textColor = [UIColor whiteColor];
-//#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-//	label.textAlignment		= UITextAlignmentCenter;
-//#else
-//	label.textAlignment		= NSTextAlignmentCenter;
-//#endif
-//    
-//	if (easyTableView == self.horizontalView) {
-//		label.frame = CGRectMake(0, 0, TABLEVIEW_WIDTH, TABLEVIEW_HEIGHT);
-//	}
-////	if (easyTableView == self.verticalView) {
-////		label.frame = CGRectMake(0, 0, VERTICAL_TABLEVIEW_WIDTH, 20);
-////	}
-//    
-//    switch (section) {
-//        case 0:
-//            label.backgroundColor = [UIColor redColor];
-//            break;
-//        default:
-//            label.backgroundColor = [UIColor blueColor];
-//            break;
-//    }
-//    return label;
-//}
 
-//// The height of the footer section view MUST be the same as your HORIZONTAL_TABLEVIEW_HEIGHT (horizontal EasyTableView only)
-//- (UIView *)easyTableView:(EasyTableView*)easyTableView
-//   viewForFooterInSection:(NSInteger)section
-//{
-//    UILabel *label = [[UILabel alloc] init];
-//	label.text = @"FOOTER";
-//	label.textColor = [UIColor yellowColor];
-//#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-//	label.textAlignment		= UITextAlignmentCenter;
-//#else
-//	label.textAlignment		= NSTextAlignmentCenter;
-//#endif
-//	label.frame = CGRectMake(0, 0, TABLEVIEW_WIDTH, 20);
-//    
-//	if (easyTableView == self.horizontalView) {
-//		label.frame = CGRectMake(0, 0, TABLEVIEW_WIDTH, TABLEVIEW_HEIGHT);
-//	}
-////	if (easyTableView == self.verticalView) {
-////		label.frame = CGRectMake(0, 0, VERTICAL_TABLEVIEW_WIDTH, 20);
-////	}
-//	
-//    switch (section) {
-//        case 0:
-//            label.backgroundColor = [UIColor purpleColor];
-//            break;
-//        default:
-//            label.backgroundColor = [UIColor brownColor];
-//            break;
-//    }
-//    
-//    return label;
-//}
 
 #endif
 
+- (IBAction)quantityButton1:(id)sender
+{
+    //shift -3
+    [self changeButtonTexts:-3 withButtonPosition:1];
+}
+
+- (IBAction)quantityButton2:(id)sender
+{
+    // shift -2
+    [self changeButtonTexts:-2 withButtonPosition:2];
+}
+
+- (IBAction)quantityButton3:(id)sender
+{
+    // shift -1
+    [self changeButtonTexts:-1 withButtonPosition:3];
+}
+
+- (IBAction)quantityButton4:(id)sender
+{
+    // shift 1
+    [self changeButtonTexts:1 withButtonPosition:4];
+}
+
+- (IBAction)quantityButton5:(id)sender
+{
+    // shift 2
+    [self changeButtonTexts:2 withButtonPosition:5];
+}
+
+- (IBAction)quantityButton6:(id)sender
+{
+    // shift 3
+    [self changeButtonTexts:3 withButtonPosition:6];
+}
+
+- (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected
+{
+
+    
+    if (shiftValue + currentLowestQuantity < MIN_BID_QUANTITY && shiftValue < 0)
+        shiftValue = MIN_BID_QUANTITY - currentLowestQuantity;
+    else if(shiftValue + currentLowestQuantity + 5 > MAX_BID_QUANTITY)
+        shiftValue = MAX_BID_QUANTITY - 5 - currentLowestQuantity;
+    
+    if ((currentLowestQuantity == MIN_BID_QUANTITY && shiftValue < 0) ||
+        (currentLowestQuantity + 5 == MAX_BID_QUANTITY && shiftValue > 0))
+        shiftValue = 0;
+    
+    if (shiftValue > 3 || shiftValue < -3)
+        NSLog(@"Shift Value should never be greater than 3 or less than -3");
+    
+    int newSelectedPosition = buttonPositionSelected - shiftValue;
+    currentLowestQuantity += shiftValue;
+    
+    for (int tag = 661; tag < 667; tag++)
+    {
+        UIView *view = [self searchSubviewsForTaggedView:tag inSubviews:self.view];
+        if (!view || ![view isKindOfClass:[UIView class]])
+        {
+            NSLog(@"One of the tag numbers is not associated with a view or a tag is not properly associated with a UIButton");
+            continue;
+        }
+        UIButton *button = (UIButton *)view;
+        int additionalShift = tag - 661;
+        int currentPosition = additionalShift + 1;
+        int buttonValue = currentLowestQuantity + additionalShift;
+        NSString *buttonNumber = [[NSString alloc] initWithFormat:@"%d",buttonValue];
+        [button setTitle:buttonNumber forState:UIControlStateNormal];
+        if (newSelectedPosition != currentHighlightedPosition &&
+            currentHighlightedPosition == currentPosition)
+            [button setHighlighted:NO];
+        if (newSelectedPosition == currentPosition)
+            [NSOperationQueue.mainQueue addOperationWithBlock:^{ button.highlighted = YES; }];
+    }
+    currentHighlightedPosition = newSelectedPosition;
+
+}
+
+- (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view
+{
+    UIView *taggedView = nil;
+    for (UIView *subview in view.subviews)
+    {
+        if (subview.tag == tag)
+            return subview;
+        else if ([subview.subviews count] > 0)
+            taggedView = [self searchSubviewsForTaggedView:tag inSubviews:subview];
+        
+        if (taggedView != nil)
+            return taggedView;
+    }
+    return taggedView;
+}
+
+- (IBAction)faceValueButton1:(id)sender {
+}
+
+- (IBAction)faceValueButton2:(id)sender {
+}
+
+- (IBAction)faceValueButton3:(id)sender {
+}
+
+- (IBAction)faceValueButton4:(id)sender {
+}
+
+- (IBAction)faceValueButton5:(id)sender {
+}
+
+- (IBAction)faceValueButton6:(id)sender {
+}
 @end

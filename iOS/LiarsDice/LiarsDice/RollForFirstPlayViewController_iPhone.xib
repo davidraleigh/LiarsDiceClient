@@ -40,9 +40,8 @@
 					<object class="IBUILabel" id="503951088">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{209, 20}, {151, 21}}</string>
+						<string key="NSFrame">{{165, 20}, {151, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -71,9 +70,8 @@
 					<object class="IBUIButton" id="757036963">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{187, 257}, {195, 44}}</string>
+						<string key="NSFrame">{{143, 257}, {195, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -104,9 +102,8 @@
 						</object>
 					</object>
 				</array>
-				<string key="NSFrameSize">{568, 320}</string>
+				<string key="NSFrameSize">{480, 320}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -127,13 +124,13 @@
 							<integer value="3"/>
 						</array>
 						<array key="dict.values">
-							<string>{320, 568}</string>
-							<string>{568, 320}</string>
+							<string>{320, 480}</string>
+							<string>{480, 320}</string>
 						</array>
 					</object>
 					<string key="IBUITargetRuntime">IBCocoaTouchFramework</string>
-					<string key="IBUIDisplayName">Retina 4 Full Screen</string>
-					<int key="IBUIType">2</int>
+					<string key="IBUIDisplayName">Retina 3.5 Full Screen</string>
+					<int key="IBUIType">0</int>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -309,45 +306,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">14</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NSLayoutConstraint</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">RollForFirstPlayViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RollForFirstPlayViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">RollForFirstPlayViewController_iPhone</string>
-					<string key="superclassName">RollForFirstPlayViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">rollDiceButton:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">rollDiceButton:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">rollDiceButton:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RollForFirstPlayViewController_iPhone.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
