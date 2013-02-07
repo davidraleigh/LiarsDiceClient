@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "StartViewController_iPhone.h"
+#import "RoundPlayViewController_iPhone.h"
 
 @implementation AppDelegate
 
@@ -17,6 +18,7 @@
     // Override point for customization after application launch.
     
     StartViewController_iPhone  *svc_i = [[StartViewController_iPhone alloc] init];
+    //RoundPlayViewController_iPhone *svc_i = [[RoundPlayViewController_iPhone alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:svc_i];
     navController.navigationBar.hidden = YES;

@@ -20,6 +20,8 @@
 		872CA63916C14CCB0056AF23 /* RoundPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63816C14CCB0056AF23 /* RoundPlayViewController.m */; };
 		872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */; };
 		872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */; };
+		87815EC916C41C4E00269176 /* image_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 87815EC816C41C4E00269176 /* image_border.png */; };
+		87815ECB16C41C5900269176 /* selected_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 87815ECA16C41C5900269176 /* selected_border.png */; };
 		87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */; };
 		87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */; };
 		87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */; };
@@ -103,6 +105,8 @@
 		872CA63A16C14CF30056AF23 /* RoundPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundPlayViewController_iPhone.h; sourceTree = "<group>"; };
 		872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundPlayViewController_iPhone.m; sourceTree = "<group>"; };
 		872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundPlayViewController_iPhone.xib; sourceTree = "<group>"; };
+		87815EC816C41C4E00269176 /* image_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_border.png; path = ../../../../Resources/LiarsDice/image_border.png; sourceTree = "<group>"; };
+		87815ECA16C41C5900269176 /* selected_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selected_border.png; path = ../../../../Resources/LiarsDice/selected_border.png; sourceTree = "<group>"; };
 		87B09BA716C27C8C006F6E81 /* GeneralSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController.h; sourceTree = "<group>"; };
 		87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingsViewController.m; sourceTree = "<group>"; };
 		87B09BAA16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController_iPhone.h; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 		87E6028016BB470B008E5457 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				87815ECA16C41C5900269176 /* selected_border.png */,
+				87815EC816C41C4E00269176 /* image_border.png */,
 				872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */,
 				872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */,
 				872CA62816C05DB60056AF23 /* LD_DiceScroll_2.png */,
@@ -517,6 +523,8 @@
 				872CA63616C05DC20056AF23 /* LD_TumblerBackdrop_1.png in Resources */,
 				872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */,
 				87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */,
+				87815EC916C41C4E00269176 /* image_border.png in Resources */,
+				87815ECB16C41C5900269176 /* selected_border.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
