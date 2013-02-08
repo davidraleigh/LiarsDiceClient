@@ -9,6 +9,8 @@
 #import "RoundPlayViewController_iPhone.h"
 
 #import "EasyTableView.h"
+#import "PlayerBidItemStore.h"
+#import "PlayerBidItemView_iPhone.h"
 
 
 // TODO REPLACE THIS TEST CODE
@@ -29,6 +31,7 @@
 #define TABLE_BACKGROUND_COLOR		[UIColor clearColor]
 
 #define BORDER_VIEW_TAG				10
+#define PLAYER_BID_ITEM_TAG         11
 
 #ifdef SHOW_MULTIPLE_SECTIONS
 #define NUM_OF_CELLS			10
@@ -78,7 +81,8 @@
 #pragma mark -
 #pragma mark EasyTableView Initialization
 
-- (void)setupHorizontalView {
+- (void)setupHorizontalView
+{
 	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, LANDSCAPE_HEIGHT);
 	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:NUM_OF_CELLS ofWidth:TABLEVIEW_WIDTH];
 	self.horizontalView = view;
@@ -112,29 +116,35 @@
 
 - (UIView *)easyTableView:(EasyTableView *)easyTableView viewForRect:(CGRect)rect
 {
-	CGRect labelRect		= CGRectMake(10, 10, rect.size.width-20, rect.size.height-20);
-	UILabel *label			= [[UILabel alloc] initWithFrame:labelRect];
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-	label.textAlignment		= UITextAlignmentCenter;
-#else
-	label.textAlignment		= NSTextAlignmentCenter;
-#endif
-	label.textColor			= [UIColor whiteColor];
-	label.font				= [UIFont boldSystemFontOfSize:60];
-	
-	// Use a different color for the two different examples
-	if (easyTableView == horizontalView)
-		label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
-	else
-		label.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
-	
-	UIImageView *borderView		= [[UIImageView alloc] initWithFrame:label.bounds];
-	borderView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-	borderView.tag				= BORDER_VIEW_TAG;
-	
-	[label addSubview:borderView];
+    UIView *container = [[UIView alloc] initWithFrame:rect];
     
-	return label;
+//    PlayerBidItemView_iPhone *tempView = [[PlayerBidItemView_iPhone alloc] init];
+//    tempView.tag = PLAYER_BID_ITEM_TAG;
+//    [container addSubview:tempView];
+    
+//	CGRect labelRect		= CGRectMake(10, 10, rect.size.width-20, rect.size.height-20);
+//	UILabel *label			= [[UILabel alloc] initWithFrame:labelRect];
+//#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
+//	label.textAlignment		= UITextAlignmentCenter;
+//#else
+//	label.textAlignment		= NSTextAlignmentCenter;
+//#endif
+//	label.textColor			= [UIColor whiteColor];
+//	label.font				= [UIFont boldSystemFontOfSize:60];
+//	
+//	// Use a different color for the two different examples
+//	if (easyTableView == horizontalView)
+//		label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
+//	else
+//		label.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
+//	
+//	UIImageView *borderView		= [[UIImageView alloc] initWithFrame:label.bounds];
+//	borderView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//	borderView.tag				= BORDER_VIEW_TAG;
+//	
+//	[label addSubview:borderView];
+    
+	return container;
 }
 
 // Second delegate populates the views with data from a data source
@@ -143,12 +153,16 @@
        setDataForView:(UIView *)view
          forIndexPath:(NSIndexPath *)indexPath
 {
-	UILabel *label	= (UILabel *)view;
-	label.text		= [NSString stringWithFormat:@"%i", indexPath.row];
-	
-	// selectedIndexPath can be nil so we need to test for that condition
-	BOOL isSelected = (easyTableView.selectedIndexPath) ? ([easyTableView.selectedIndexPath compare:indexPath] == NSOrderedSame) : NO;
-	[self borderIsSelected:isSelected forView:view];
+//    UILabel *label	= (UILabel *)view;
+//    label.text		= [NSString stringWithFormat:@"%i", indexPath.row];
+//        
+//    CGRect rect = view.frame;
+//    
+//    // selectedIndexPath can be nil so we need to test for that condition
+//    BOOL isSelected = (easyTableView.selectedIndexPath) ? ([easyTableView.selectedIndexPath compare:indexPath] == NSOrderedSame) : NO;
+//    [self borderIsSelected:isSelected forView:view];
+    PlayerBidItemView_iPhone *playerBidItem = [[PlayerBidItemStore sharedStore] getItemByRound:0 andByBid:[indexPath row]];
+    [view addSubview:playerBidItem];
 }
 
 // Optional delegate to track the selection of a particular cell
@@ -173,12 +187,14 @@
 #ifdef SHOW_MULTIPLE_SECTIONS
 
 // Delivers the number of sections in the TableView
-- (NSUInteger)numberOfSectionsInEasyTableView:(EasyTableView*)easyTableView{
+- (NSUInteger)numberOfSectionsInEasyTableView:(EasyTableView*)easyTableView
+{
     return NUM_OF_SECTIONS;
 }
 
 // Delivers the number of cells in each section, this must be implemented if numberOfSectionsInEasyTableView is implemented
--(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section {
+-(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section
+{
     return NUM_OF_CELLS;
 }
 
