@@ -24,10 +24,23 @@
     __weak IBOutlet UILabel *playersOddsLabel;
     __weak IBOutlet UILabel *typicalOddsLabel;
     
+    __weak IBOutlet UIImageView *handleView;
+    
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;
     int currentHighlightedPosition;
+    
+    int landscapeHeight;
+    int tableviewHeight;
+    int tableviewWidth;
+    
+    double maxRollDuration;
+    
+    BOOL dragging;
+    float oldY;
+    
+        NSTimer *myTimer;
 }
 
 @property (nonatomic) EasyTableView *horizontalView;
@@ -46,6 +59,11 @@
 - (IBAction)faceValueButton5:(id)sender;
 - (IBAction)faceValueButton6:(id)sender;
 
+- (IBAction)rollDiceButton:(id)sender;
+
+
+
+- (void)rollDice;
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
 @end

@@ -14,9 +14,10 @@
     __weak IBOutlet UILabel *bidQuantityLabel;
     __weak IBOutlet UIImageView *bidFaceValueImageView;
     __weak IBOutlet UILabel *oddsLabel;
+    IBOutlet UIView *topView;
     
 }
 
 - (void)setPlayerName:(NSString *)name bidQuantity:(int)quantity bidFaceValue:(int)faceValue bidOdds:(int)odds;
-
+- (CGSize)getSize;
 @end

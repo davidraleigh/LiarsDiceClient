@@ -10,6 +10,17 @@
 
 @implementation PlayerBidItemView_iPhone
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Initialization code
+        NSArray *screens = [[NSBundle mainBundle] loadNibNamed:@"PlayerBidItemView_iPhone" owner:self options:nil];
+        [self addSubview:[screens objectAtIndex:0]];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -34,6 +45,9 @@
     [userNameTextView setText:name];
 }
 
-
+- (CGSize)getSize
+{
+    return topView.frame.size;
+}
 
 @end

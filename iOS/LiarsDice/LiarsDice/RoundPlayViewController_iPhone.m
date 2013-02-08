@@ -8,6 +8,7 @@
 
 #import "RoundPlayViewController_iPhone.h"
 
+#import "ScrollingDiceView.h"
 #import "EasyTableView.h"
 #import "PlayerBidItemStore.h"
 #import "PlayerBidItemView_iPhone.h"
@@ -17,17 +18,28 @@
 #define MAX_BID_QUANTITY 32
 #define MIN_FACE_VALUE 3
 #define MIN_BID_QUANTITY 1
+#define DICE_COUNT 7
 // TODO REPLACE THIS TEST CODE
 
-// #defines for EasyTableView
+// #DEFINES FOR SCROLLINGDICEVIEW
+#define SCROLLING_DICE_VIEW_X_ORIGIN 10
+#define CENTER_OF_WINDOW_Y 90
+#define DICE_COUNT 7
+#define DICE_PIXEL_SEPARATION 2
+// #DEFINES FOR SCROLLINGDICEVIEW
+
+#define Y_MIN_FOR_CURTAIN -258
+#define Y_MAX_FOR_CURTAIN 0
+
+// #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
 #define ORIGIN_Y                    16
 #define ORIGIN_X                    120
 #define LANDSCAPE_WIDTH             350
-#define LANDSCAPE_HEIGHT			98
-#define TABLEVIEW_HEIGHT            94
-#define TABLEVIEW_WIDTH             164
+//#define LANDSCAPE_HEIGHT			98
+//#define TABLEVIEW_HEIGHT            94
+//#define TABLEVIEW_WIDTH             164
 #define TABLE_BACKGROUND_COLOR		[UIColor clearColor]
 
 #define BORDER_VIEW_TAG				10
@@ -39,8 +51,7 @@
 #else
 #define NUM_OF_CELLS			21
 #endif
-
-// #defines for EasyTableView
+// #DEFINES FOR EASYTABLEVIEW
 
 @interface RoundPlayViewController_iPhone (MyPrivateMethods)
 - (void)setupHorizontalView;
@@ -55,7 +66,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-    
+        CGSize viewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
+        tableviewHeight = (int)viewSize.height;
+        tableviewWidth = (int)viewSize.width;
+        landscapeHeight = (int)tableviewHeight + 4;
+        maxRollDuration = 0;
     }
     return self;
 }
@@ -63,6 +78,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //liarsDice->StartRound();
+    //diceCount = liarsDice->GetPlayersDiceCount(liarsDice->GetCurrentUID());
+    //std::vector<int> hand = liarsDice->GetPlayersDice(liarsDice->GetCurrentUID());
+    double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
+    for (int i = 0; i < DICE_COUNT; i++)
+    {
+        NSString *fileName = [[NSString alloc] initWithFormat:@"LD_DiceScroll_%d.png", i + 1];
+        UIImage *uiImage = [UIImage imageNamed:fileName];
+        
+        CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, uiImage.size.width / 2, uiImage.size.height / 2);
+        xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
+        
+        // TODO REPLACE THIS WITH REAL GAME CODE
+        int dieValue = (arc4random()%6)+1;
+        // TODO REPLACE THIS WITH REAL GAME CODE
+        
+        ScrollingDiceView *scrollingDice = [[ScrollingDiceView alloc]initWithFrame:frame andFaceValue:dieValue];
+        
+        [scrollingDice setImage:uiImage];
+        [scrollingDice setTag:i + 1];
+        
+        double tempMaxDuration = [scrollingDice getCompleteDuration];
+        if (tempMaxDuration > maxRollDuration)
+            maxRollDuration = tempMaxDuration;
+        
+        [self.view insertSubview:scrollingDice atIndex:1 + i];
+    }
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
     currentLowestQuantity = MIN_BID_QUANTITY;
@@ -78,13 +121,55 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    //
+    if (CGRectContainsPoint([[self view] window].frame, touchLocation))
+    {
+        dragging = YES;
+        oldY = touchLocation.y;
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (dragging)
+    {
+        UITouch *touch = [[event allTouches] anyObject];
+        CGPoint touchLocation = [touch locationInView:self.view];
+        
+        for (UIView *subview in [self.view subviews])
+        {
+            if ([subview tag] == 99)
+            {
+                CGRect workingFrame = subview.frame;
+                workingFrame.origin.y += touchLocation.y - oldY;
+                oldY = touchLocation.y;
+                if (workingFrame.origin.y < Y_MIN_FOR_CURTAIN)
+                    workingFrame.origin.y = Y_MIN_FOR_CURTAIN;
+                else if (workingFrame.origin.y > Y_MAX_FOR_CURTAIN)
+                    workingFrame.origin.y = Y_MAX_FOR_CURTAIN;
+                
+                [subview setFrame:workingFrame];
+            }
+        }
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    dragging = NO;
+}
+
 #pragma mark -
 #pragma mark EasyTableView Initialization
 
 - (void)setupHorizontalView
 {
-	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, LANDSCAPE_HEIGHT);
-	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:NUM_OF_CELLS ofWidth:TABLEVIEW_WIDTH];
+	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, landscapeHeight);
+	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:NUM_OF_CELLS ofWidth:tableviewWidth];
 	self.horizontalView = view;
 	
 	horizontalView.delegate						= self;
@@ -94,7 +179,8 @@
 	horizontalView.cellBackgroundColor			= [UIColor darkGrayColor];
 	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	
-	[self.view addSubview:horizontalView];
+    UIView *gamePlayView = [self.view viewWithTag:99];
+	[gamePlayView addSubview:horizontalView];
 }
 
 
@@ -313,5 +399,33 @@
 }
 
 - (IBAction)faceValueButton6:(id)sender {
+}
+
+- (IBAction)rollDiceButton:(id)sender
+{
+    if ([self.view subviews])
+    {
+        // Make sure we have a chance to discover devices before showing the user that nothing was found (yet)
+        double interval = 1.0 / [ScrollingDiceView animationHZ];
+        myTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(rollDice) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)rollDice
+{
+    bool allViewsFinished = true;
+    
+    for (UIView *subview in [self.view subviews])
+    {
+        if ([subview isKindOfClass:[ScrollingDiceView class]])
+        {
+            ScrollingDiceView *scrollDice = (ScrollingDiceView *)subview;
+            //int dieIndex = [scrollDice tag];
+            [scrollDice scroll];
+            
+            if (![scrollDice isFinished])
+                allViewsFinished = false;
+        }
+    }
 }
 @end

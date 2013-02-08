@@ -48,9 +48,11 @@
     PlayerBidItemView_iPhone *playerBidItem = [[PlayerBidItemView_iPhone alloc] init];
     
     int odds = (arc4random() % 101);
-    int bidQuantity = (arc4random() % 99) + 1;
+    int bidQuantity = (arc4random() % 32) + 1;
     int faceValue = (arc4random() % 6) + 1;
-    [playerBidItem setPlayerName:@"Bob" bidQuantity:bidQuantity bidFaceValue:faceValue bidOdds:odds];
+    int toss = (arc4random() % 2);
+    if (toss == 1)
+        [playerBidItem setPlayerName:@"Bob" bidQuantity:bidQuantity bidFaceValue:faceValue bidOdds:odds];
     [roundDictionary setObject:playerBidItem forKey:bidNumber];
     
 }
