@@ -74,6 +74,7 @@
 						<string key="NSFrame">{{340, 260}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -517,7 +518,7 @@
 								<string key="NSFrame">{{410, 274}, {49, 44}}</string>
 								<reference key="NSSuperview" ref="150983669"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="524180314"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -3119,7 +3120,7 @@
 				<string key="386.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="389.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<array key="39.IBViewMetadataConstraints">
+				<array class="NSMutableArray" key="39.IBViewMetadataConstraints">
 					<reference ref="226517042"/>
 					<reference ref="682539841"/>
 					<reference ref="556140284"/>
@@ -3294,7 +3295,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">495</int>
+			<int key="maxID">509</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3387,7 +3388,6 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="handleView">UIImageView</string>
 						<string key="playersOddsLabel">UILabel</string>
 						<string key="quantityButtonText1">UIButton</string>
 						<string key="quantityButtonText2">UIButton</string>
@@ -3398,10 +3398,6 @@
 						<string key="typicalOddsLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="handleView">
-							<string key="name">handleView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="playersOddsLabel">
 							<string key="name">playersOddsLabel</string>
 							<string key="candidateClassName">UILabel</string>

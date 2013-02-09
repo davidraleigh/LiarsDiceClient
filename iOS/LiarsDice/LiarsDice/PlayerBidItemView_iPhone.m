@@ -37,7 +37,7 @@
 {
 
     [bidQuantityLabel setText:[[NSString alloc] initWithFormat:@"%d",quantity]];
-    [oddsLabel setText:[[NSString alloc] initWithFormat:@"%d",odds]];
+    [oddsLabel setText:[[NSString alloc] initWithFormat:@"%d%%",odds]];
     
     NSString *dieImageName = [[NSString alloc] initWithFormat:@"Die%d.png",faceValue];
     [bidFaceValueImageView setImage:[UIImage imageNamed:dieImageName]];

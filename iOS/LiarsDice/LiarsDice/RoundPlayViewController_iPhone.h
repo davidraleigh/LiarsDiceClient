@@ -23,9 +23,7 @@
  
     __weak IBOutlet UILabel *playersOddsLabel;
     __weak IBOutlet UILabel *typicalOddsLabel;
-    
-    __weak IBOutlet UIImageView *handleView;
-    
+        
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;

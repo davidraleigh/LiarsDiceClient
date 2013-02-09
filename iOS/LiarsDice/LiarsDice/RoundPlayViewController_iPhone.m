@@ -28,8 +28,10 @@
 #define DICE_PIXEL_SEPARATION 2
 // #DEFINES FOR SCROLLINGDICEVIEW
 
+//#DEFINE FOR CURTAIN
 #define Y_MIN_FOR_CURTAIN -258
 #define Y_MAX_FOR_CURTAIN 0
+//#DEFINE FOR CURTAIN
 
 // #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
