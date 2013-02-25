@@ -9,10 +9,17 @@
 #import "RoundPlayViewController.h"
 #import "EasyTableView.h"
 
+#import <memory>
 
+// forward declaration from this page
+// http://www.zedkep.com/blog/index.php?/archives/247-Forward-declaring-C++-classes-in-Objective-C.html
+struct LiarsDiceEngine;
+typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 @interface RoundPlayViewController_iPhone : RoundPlayViewController <EasyTableViewDelegate>
 {
+    std::shared_ptr<LiarsDiceEngine> liarsDice;
+    
 	EasyTableView *horizontalView;
     __weak IBOutlet UIButton *quantityButtonText1;
     __weak IBOutlet UIButton *quantityButtonText2;
@@ -23,7 +30,9 @@
  
     __weak IBOutlet UILabel *playersOddsLabel;
     __weak IBOutlet UILabel *typicalOddsLabel;
-        
+    
+    __weak IBOutlet UIImageView *handleView;
+    
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;
@@ -38,7 +47,7 @@
     BOOL dragging;
     float oldY;
     
-        NSTimer *myTimer;
+    NSTimer *myTimer;
 }
 
 @property (nonatomic) EasyTableView *horizontalView;

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8725FB1A16C8175000E43463 /* image_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 8725FB1816C8175000E43463 /* image_border.png */; };
-		8725FB1B16C8175000E43463 /* selected_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 8725FB1916C8175000E43463 /* selected_border.png */; };
 		872CA62516C05D930056AF23 /* LD_Bracket_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62316C05D930056AF23 /* LD_Bracket_1.png */; };
 		872CA62616C05D930056AF23 /* LD_Curtain_Blank_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */; };
 		872CA62E16C05DB60056AF23 /* LD_DiceScroll_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */; };
@@ -19,22 +17,38 @@
 		872CA63316C05DB60056AF23 /* LD_DiceScroll_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62C16C05DB60056AF23 /* LD_DiceScroll_6.png */; };
 		872CA63416C05DB60056AF23 /* LD_DiceScroll_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62D16C05DB60056AF23 /* LD_DiceScroll_7.png */; };
 		872CA63616C05DC20056AF23 /* LD_TumblerBackdrop_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */; };
-		872CA63916C14CCB0056AF23 /* RoundPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63816C14CCB0056AF23 /* RoundPlayViewController.m */; };
-		872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */; };
+		872CA63916C14CCB0056AF23 /* RoundPlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63816C14CCB0056AF23 /* RoundPlayViewController.mm */; };
+		872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */; };
 		872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */; };
-		876BC51316C5621400589EA4 /* ScrollingDiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 876BC51216C5621400589EA4 /* ScrollingDiceView.m */; };
-		87815ED216C5016500269176 /* PlayerBidItemView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87815ED116C5016500269176 /* PlayerBidItemView_iPhone.m */; };
+		876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 876BC51216C5621400589EA4 /* ScrollingDiceView.mm */; };
+		87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */; };
 		87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */; };
-		87815ED716C51B3B00269176 /* PlayerBidItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 87815ED616C51B3B00269176 /* PlayerBidItemStore.m */; };
-		87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */; };
-		87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */; };
+		878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */; };
+		878E9EFC16DA4D5C008E99A9 /* BidView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878E9EFB16DA4D5C008E99A9 /* BidView_iPhone.xib */; };
+		878E9F0216DA6CC7008E99A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
+		878E9F0F16DA6CE9008E99A9 /* PseudoRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F0D16DA6CE9008E99A9 /* PseudoRandom.cpp */; };
+		878E9F1616DA6D16008E99A9 /* LiarsDiceEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F1016DA6D16008E99A9 /* LiarsDiceEngine.cpp */; };
+		878E9F1716DA6D16008E99A9 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F1216DA6D16008E99A9 /* Player.cpp */; };
+		878E9F1816DA6D16008E99A9 /* Round.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F1416DA6D16008E99A9 /* Round.cpp */; };
+		878E9F1E16DA6DA2008E99A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
+		878E9F2316DA6DA2008E99A9 /* JSONcpp.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 878E9F2216DA6DA2008E99A9 /* JSONcpp.h */; };
+		878E9F2516DA6DA2008E99A9 /* JSONcpp.m in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F2416DA6DA2008E99A9 /* JSONcpp.m */; };
+		878E9F3116DA6E13008E99A9 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F2D16DA6E13008E99A9 /* json_reader.cpp */; };
+		878E9F3216DA6E13008E99A9 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F2E16DA6E13008E99A9 /* json_value.cpp */; };
+		878E9F3316DA6E13008E99A9 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F3016DA6E13008E99A9 /* json_writer.cpp */; };
+		878E9F4016DA6F48008E99A9 /* libJSONcpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 878E9F1D16DA6DA2008E99A9 /* libJSONcpp.a */; };
+		878E9F4316DA6F81008E99A9 /* MathUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F4116DA6F80008E99A9 /* MathUtilities.cpp */; };
+		878E9F4616DA6FD8008E99A9 /* GamePlayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F4416DA6FD8008E99A9 /* GamePlayers.cpp */; };
+		878E9F4916DA7221008E99A9 /* libLiarsDiceEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 878E9F0116DA6CC7008E99A9 /* libLiarsDiceEngine.a */; };
+		87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.mm */; };
+		87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm */; };
 		87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */; };
 		87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
 		87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027D16BB470B008E5457 /* CoreGraphics.framework */; };
 		87E6028416BB470B008E5457 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028216BB470B008E5457 /* InfoPlist.strings */; };
 		87E6028616BB470B008E5457 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E6028516BB470B008E5457 /* main.m */; };
-		87E6028A16BB470B008E5457 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E6028916BB470B008E5457 /* AppDelegate.m */; };
+		87E6028A16BB470B008E5457 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E6028916BB470B008E5457 /* AppDelegate.mm */; };
 		87E6028C16BB470B008E5457 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028B16BB470B008E5457 /* Default.png */; };
 		87E6028E16BB470B008E5457 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028D16BB470B008E5457 /* Default@2x.png */; };
 		87E6029016BB470B008E5457 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E6028F16BB470B008E5457 /* Default-568h@2x.png */; };
@@ -43,24 +57,23 @@
 		87E6029A16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		87E602A216BB470B008E5457 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87E602A016BB470B008E5457 /* InfoPlist.strings */; };
 		87E602A516BB470B008E5457 /* LiarsDiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E602A416BB470B008E5457 /* LiarsDiceTests.m */; };
-		87E602B216BB47E7008E5457 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E602B116BB47E7008E5457 /* StartViewController.m */; };
+		87E602B216BB47E7008E5457 /* StartViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602B116BB47E7008E5457 /* StartViewController.mm */; };
 		87E602BB16BB4949008E5457 /* SetUserNameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */; };
-		87E9552116BFFEB00067F4DF /* LiarsDiceLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552016BFFEB00067F4DF /* LiarsDiceLobbyViewController.m */; };
-		87E9552516BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552316BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.m */; };
+		87E9552116BFFEB00067F4DF /* LiarsDiceLobbyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552016BFFEB00067F4DF /* LiarsDiceLobbyViewController.mm */; };
+		87E9552516BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552316BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.mm */; };
 		87E9552616BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9552416BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.xib */; };
-		87E9552916BFFF180067F4DF /* GameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552816BFFF180067F4DF /* GameSetupViewController.m */; };
-		87E9552D16BFFF4C0067F4DF /* GameSetupViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552B16BFFF4C0067F4DF /* GameSetupViewController_iPhone.m */; };
+		87E9552916BFFF180067F4DF /* GameSetupViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552816BFFF180067F4DF /* GameSetupViewController.mm */; };
+		87E9552D16BFFF4C0067F4DF /* GameSetupViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9552B16BFFF4C0067F4DF /* GameSetupViewController_iPhone.mm */; };
 		87E9552E16BFFF4C0067F4DF /* GameSetupViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9552C16BFFF4C0067F4DF /* GameSetupViewController_iPhone.xib */; };
-		87E9553116BFFF850067F4DF /* GameStartLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553016BFFF850067F4DF /* GameStartLobbyViewController.m */; };
-		87E9553516BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553316BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.m */; };
+		87E9553116BFFF850067F4DF /* GameStartLobbyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553016BFFF850067F4DF /* GameStartLobbyViewController.mm */; };
+		87E9553516BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553316BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.mm */; };
 		87E9553616BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9553416BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.xib */; };
-		87E9553916BFFFED0067F4DF /* SummarizeGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553816BFFFED0067F4DF /* SummarizeGameViewController.m */; };
-		87E9553D16C0000E0067F4DF /* SummarizeGameViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553B16C0000D0067F4DF /* SummarizeGameViewController_iPhone.m */; };
+		87E9553916BFFFED0067F4DF /* SummarizeGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553816BFFFED0067F4DF /* SummarizeGameViewController.mm */; };
+		87E9553D16C0000E0067F4DF /* SummarizeGameViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9553B16C0000D0067F4DF /* SummarizeGameViewController_iPhone.mm */; };
 		87E9553E16C0000E0067F4DF /* SummarizeGameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9553C16C0000D0067F4DF /* SummarizeGameViewController_iPhone.xib */; };
-		87E9554116C0005C0067F4DF /* PlayersGameSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.m */; };
-		87E9554516C000790067F4DF /* PlayersGameSettingsViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.m */; };
+		87E9554116C0005C0067F4DF /* PlayersGameSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.mm */; };
+		87E9554516C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm */; };
 		87E9554616C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9554416C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib */; };
-		87E9554D16C01EAB0067F4DF /* BidSelectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554C16C01EAB0067F4DF /* BidSelectionData.m */; };
 		87E9555416C0258F0067F4DF /* Die1.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9554E16C0258F0067F4DF /* Die1.png */; };
 		87E9555516C0258F0067F4DF /* Die2.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9554F16C0258F0067F4DF /* Die2.png */; };
 		87E9555616C0258F0067F4DF /* Die3.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9555016C0258F0067F4DF /* Die3.png */; };
@@ -70,20 +83,34 @@
 		87F4730016BBFFF7009E90B5 /* RollForFirstPlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */; };
 		87F4730C16BC01A6009E90B5 /* PlayersShowDiceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */; };
 		87F4730F16BC01D0009E90B5 /* SummarizeRoundViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */; };
-		87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */; };
+		87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.mm */; };
 		87F4731D16BC03F0009E90B5 /* StartViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */; };
-		87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */; };
+		87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.mm */; };
 		87F4732216BC052D009E90B5 /* SetUserNameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */; };
-		87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */; };
+		87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm */; };
 		87F4733E16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */; };
-		87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */; };
+		87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm */; };
 		87F4735216BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */; };
-		87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */; };
+		87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm */; };
 		87F4735716BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */; };
 		87F4736516BC82DF009E90B5 /* EasyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4736416BC82DF009E90B5 /* EasyTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		878E9F3E16DA6F2C008E99A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E6026E16BB470B008E5457 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 878E9F1C16DA6DA2008E99A9;
+			remoteInfo = JSONcpp;
+		};
+		878E9F4716DA7211008E99A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E6026E16BB470B008E5457 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 878E9F0016DA6CC7008E99A9;
+			remoteInfo = LiarsDiceEngine;
+		};
 		87E6029B16BB470B008E5457 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 87E6026E16BB470B008E5457 /* Project object */;
@@ -93,9 +120,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		878E9EFF16DA6CC7008E99A9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878E9F1B16DA6DA2008E99A9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				878E9F2316DA6DA2008E99A9 /* JSONcpp.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		8725FB1816C8175000E43463 /* image_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_border.png; path = ../../../../../Resources/LiarsDice/image_border.png; sourceTree = "<group>"; };
-		8725FB1916C8175000E43463 /* selected_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selected_border.png; path = ../../../../../Resources/LiarsDice/selected_border.png; sourceTree = "<group>"; };
 		872CA62316C05D930056AF23 /* LD_Bracket_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_Bracket_1.png; path = ../../../../Resources/LiarsDice/LD_Bracket_1.png; sourceTree = SOURCE_ROOT; };
 		872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_Curtain_Blank_1.png; path = ../../../../Resources/LiarsDice/LD_Curtain_Blank_1.png; sourceTree = SOURCE_ROOT; };
 		872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_DiceScroll_1.png; path = ../../../../../Resources/LiarsDice/LD_DiceScroll_1.png; sourceTree = "<group>"; };
@@ -107,21 +154,55 @@
 		872CA62D16C05DB60056AF23 /* LD_DiceScroll_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_DiceScroll_7.png; path = ../../../../../Resources/LiarsDice/LD_DiceScroll_7.png; sourceTree = "<group>"; };
 		872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_TumblerBackdrop_1.png; path = ../../../../../Resources/LiarsDice/LD_TumblerBackdrop_1.png; sourceTree = "<group>"; };
 		872CA63716C14CCB0056AF23 /* RoundPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundPlayViewController.h; sourceTree = "<group>"; };
-		872CA63816C14CCB0056AF23 /* RoundPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundPlayViewController.m; sourceTree = "<group>"; };
+		872CA63816C14CCB0056AF23 /* RoundPlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RoundPlayViewController.mm; sourceTree = "<group>"; };
 		872CA63A16C14CF30056AF23 /* RoundPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundPlayViewController_iPhone.h; sourceTree = "<group>"; };
-		872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundPlayViewController_iPhone.m; sourceTree = "<group>"; };
+		872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RoundPlayViewController_iPhone.mm; sourceTree = "<group>"; };
 		872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundPlayViewController_iPhone.xib; sourceTree = "<group>"; };
 		876BC51116C5621400589EA4 /* ScrollingDiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingDiceView.h; sourceTree = "<group>"; };
-		876BC51216C5621400589EA4 /* ScrollingDiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingDiceView.m; sourceTree = "<group>"; };
+		876BC51216C5621400589EA4 /* ScrollingDiceView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollingDiceView.mm; sourceTree = "<group>"; };
 		87815ED016C5016500269176 /* PlayerBidItemView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBidItemView_iPhone.h; sourceTree = "<group>"; };
-		87815ED116C5016500269176 /* PlayerBidItemView_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerBidItemView_iPhone.m; sourceTree = "<group>"; };
+		87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerBidItemView_iPhone.mm; sourceTree = "<group>"; };
 		87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerBidItemView_iPhone.xib; sourceTree = "<group>"; };
-		87815ED516C51B3B00269176 /* PlayerBidItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBidItemStore.h; sourceTree = "<group>"; };
-		87815ED616C51B3B00269176 /* PlayerBidItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerBidItemStore.m; sourceTree = "<group>"; };
+		878E9EF416DA4CF2008E99A9 /* BidView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidView_iPhone.h; sourceTree = "<group>"; };
+		878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BidView_iPhone.mm; sourceTree = "<group>"; };
+		878E9EFB16DA4D5C008E99A9 /* BidView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidView_iPhone.xib; sourceTree = "<group>"; };
+		878E9F0116DA6CC7008E99A9 /* libLiarsDiceEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLiarsDiceEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		878E9F0516DA6CC7008E99A9 /* LiarsDiceEngine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiarsDiceEngine-Prefix.pch"; sourceTree = "<group>"; };
+		878E9F0D16DA6CE9008E99A9 /* PseudoRandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PseudoRandom.cpp; sourceTree = "<group>"; };
+		878E9F0E16DA6CE9008E99A9 /* PseudoRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PseudoRandom.h; sourceTree = "<group>"; };
+		878E9F1016DA6D16008E99A9 /* LiarsDiceEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiarsDiceEngine.cpp; sourceTree = "<group>"; };
+		878E9F1116DA6D16008E99A9 /* LiarsDiceEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiarsDiceEngine.h; sourceTree = "<group>"; };
+		878E9F1216DA6D16008E99A9 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		878E9F1316DA6D16008E99A9 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		878E9F1416DA6D16008E99A9 /* Round.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Round.cpp; sourceTree = "<group>"; };
+		878E9F1516DA6D16008E99A9 /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
+		878E9F1D16DA6DA2008E99A9 /* libJSONcpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJSONcpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		878E9F2116DA6DA2008E99A9 /* JSONcpp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONcpp-Prefix.pch"; sourceTree = "<group>"; };
+		878E9F2216DA6DA2008E99A9 /* JSONcpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONcpp.h; sourceTree = "<group>"; };
+		878E9F2416DA6DA2008E99A9 /* JSONcpp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONcpp.m; sourceTree = "<group>"; };
+		878E9F2A16DA6E13008E99A9 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
+		878E9F2B16DA6E13008E99A9 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
+		878E9F2C16DA6E13008E99A9 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
+		878E9F2D16DA6E13008E99A9 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		878E9F2E16DA6E13008E99A9 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		878E9F2F16DA6E13008E99A9 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+		878E9F3016DA6E13008E99A9 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		878E9F3616DA6E2E008E99A9 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		878E9F3716DA6E2E008E99A9 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		878E9F3816DA6E2E008E99A9 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
+		878E9F3916DA6E2E008E99A9 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
+		878E9F3A16DA6E2E008E99A9 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		878E9F3B16DA6E2E008E99A9 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		878E9F3C16DA6E2E008E99A9 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
+		878E9F3D16DA6E2E008E99A9 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		878E9F4116DA6F80008E99A9 /* MathUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathUtilities.cpp; sourceTree = "<group>"; };
+		878E9F4216DA6F80008E99A9 /* MathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtilities.h; sourceTree = "<group>"; };
+		878E9F4416DA6FD8008E99A9 /* GamePlayers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GamePlayers.cpp; sourceTree = "<group>"; };
+		878E9F4516DA6FD8008E99A9 /* GamePlayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayers.h; sourceTree = "<group>"; };
 		87B09BA716C27C8C006F6E81 /* GeneralSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController.h; sourceTree = "<group>"; };
-		87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingsViewController.m; sourceTree = "<group>"; };
+		87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeneralSettingsViewController.mm; sourceTree = "<group>"; };
 		87B09BAA16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController_iPhone.h; sourceTree = "<group>"; };
-		87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingsViewController_iPhone.m; sourceTree = "<group>"; };
+		87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeneralSettingsViewController_iPhone.mm; sourceTree = "<group>"; };
 		87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E6027616BB470B008E5457 /* LiarsDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiarsDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E6027916BB470B008E5457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -132,7 +213,7 @@
 		87E6028516BB470B008E5457 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87E6028716BB470B008E5457 /* LiarsDice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiarsDice-Prefix.pch"; sourceTree = "<group>"; };
 		87E6028816BB470B008E5457 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		87E6028916BB470B008E5457 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		87E6028916BB470B008E5457 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		87E6028B16BB470B008E5457 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../../Resources/LiarsDice/Default.png; sourceTree = SOURCE_ROOT; };
 		87E6028D16BB470B008E5457 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../../Resources/LiarsDice/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		87E6028F16BB470B008E5457 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../../../Resources/LiarsDice/Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -143,36 +224,34 @@
 		87E602A316BB470B008E5457 /* LiarsDiceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiarsDiceTests.h; sourceTree = "<group>"; };
 		87E602A416BB470B008E5457 /* LiarsDiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiarsDiceTests.m; sourceTree = "<group>"; };
 		87E602B016BB47E7008E5457 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		87E602B116BB47E7008E5457 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		87E602B116BB47E7008E5457 /* StartViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartViewController.mm; sourceTree = "<group>"; };
 		87E602B916BB4949008E5457 /* SetUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController.h; sourceTree = "<group>"; };
 		87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SetUserNameViewController.mm; sourceTree = "<group>"; };
 		87E9551F16BFFEB00067F4DF /* LiarsDiceLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiarsDiceLobbyViewController.h; sourceTree = "<group>"; };
-		87E9552016BFFEB00067F4DF /* LiarsDiceLobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiarsDiceLobbyViewController.m; sourceTree = "<group>"; };
+		87E9552016BFFEB00067F4DF /* LiarsDiceLobbyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LiarsDiceLobbyViewController.mm; sourceTree = "<group>"; };
 		87E9552216BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiarsDiceLobbyViewController_iPhone.h; sourceTree = "<group>"; };
-		87E9552316BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiarsDiceLobbyViewController_iPhone.m; sourceTree = "<group>"; };
+		87E9552316BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LiarsDiceLobbyViewController_iPhone.mm; sourceTree = "<group>"; };
 		87E9552416BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiarsDiceLobbyViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E9552716BFFF180067F4DF /* GameSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetupViewController.h; sourceTree = "<group>"; };
-		87E9552816BFFF180067F4DF /* GameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetupViewController.m; sourceTree = "<group>"; };
+		87E9552816BFFF180067F4DF /* GameSetupViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameSetupViewController.mm; sourceTree = "<group>"; };
 		87E9552A16BFFF4C0067F4DF /* GameSetupViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetupViewController_iPhone.h; sourceTree = "<group>"; };
-		87E9552B16BFFF4C0067F4DF /* GameSetupViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetupViewController_iPhone.m; sourceTree = "<group>"; };
+		87E9552B16BFFF4C0067F4DF /* GameSetupViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameSetupViewController_iPhone.mm; sourceTree = "<group>"; };
 		87E9552C16BFFF4C0067F4DF /* GameSetupViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSetupViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E9552F16BFFF850067F4DF /* GameStartLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStartLobbyViewController.h; sourceTree = "<group>"; };
-		87E9553016BFFF850067F4DF /* GameStartLobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStartLobbyViewController.m; sourceTree = "<group>"; };
+		87E9553016BFFF850067F4DF /* GameStartLobbyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameStartLobbyViewController.mm; sourceTree = "<group>"; };
 		87E9553216BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStartLobbyViewController_iPhone.h; sourceTree = "<group>"; };
-		87E9553316BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStartLobbyViewController_iPhone.m; sourceTree = "<group>"; };
+		87E9553316BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameStartLobbyViewController_iPhone.mm; sourceTree = "<group>"; };
 		87E9553416BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameStartLobbyViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E9553716BFFFED0067F4DF /* SummarizeGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeGameViewController.h; sourceTree = "<group>"; };
-		87E9553816BFFFED0067F4DF /* SummarizeGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarizeGameViewController.m; sourceTree = "<group>"; };
+		87E9553816BFFFED0067F4DF /* SummarizeGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeGameViewController.mm; sourceTree = "<group>"; };
 		87E9553A16C0000D0067F4DF /* SummarizeGameViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeGameViewController_iPhone.h; sourceTree = "<group>"; };
-		87E9553B16C0000D0067F4DF /* SummarizeGameViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarizeGameViewController_iPhone.m; sourceTree = "<group>"; };
+		87E9553B16C0000D0067F4DF /* SummarizeGameViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeGameViewController_iPhone.mm; sourceTree = "<group>"; };
 		87E9553C16C0000D0067F4DF /* SummarizeGameViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummarizeGameViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E9553F16C0005C0067F4DF /* PlayersGameSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersGameSettingsViewController.h; sourceTree = "<group>"; };
-		87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersGameSettingsViewController.m; sourceTree = "<group>"; };
+		87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayersGameSettingsViewController.mm; sourceTree = "<group>"; };
 		87E9554216C000790067F4DF /* PlayersGameSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersGameSettingsViewController_iPhone.h; sourceTree = "<group>"; };
-		87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersGameSettingsViewController_iPhone.m; sourceTree = "<group>"; };
+		87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayersGameSettingsViewController_iPhone.mm; sourceTree = "<group>"; };
 		87E9554416C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayersGameSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
-		87E9554B16C01EAB0067F4DF /* BidSelectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSelectionData.h; sourceTree = "<group>"; };
-		87E9554C16C01EAB0067F4DF /* BidSelectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSelectionData.m; sourceTree = "<group>"; };
 		87E9554E16C0258F0067F4DF /* Die1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die1.png; path = ../../../../Resources/LiarsDice/Die1.png; sourceTree = SOURCE_ROOT; };
 		87E9554F16C0258F0067F4DF /* Die2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die2.png; path = ../../../../Resources/LiarsDice/Die2.png; sourceTree = SOURCE_ROOT; };
 		87E9555016C0258F0067F4DF /* Die3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die3.png; path = ../../../../Resources/LiarsDice/Die3.png; sourceTree = SOURCE_ROOT; };
@@ -186,29 +265,47 @@
 		87F4730D16BC01D0009E90B5 /* SummarizeRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeRoundViewController.h; sourceTree = "<group>"; };
 		87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeRoundViewController.mm; sourceTree = "<group>"; };
 		87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController_iPhone.h; sourceTree = "<group>"; };
-		87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartViewController_iPhone.xib; sourceTree = "<group>"; };
 		87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController_iPhone.h; sourceTree = "<group>"; };
-		87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUserNameViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SetUserNameViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetUserNameViewController_iPhone.xib; sourceTree = "<group>"; };
 		87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollForFirstPlayViewController_iPhone.h; sourceTree = "<group>"; };
-		87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RollForFirstPlayViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RollForFirstPlayViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollForFirstPlayViewController_iPhone.xib; sourceTree = "<group>"; };
 		87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersShowDiceViewController_iPhone.h; sourceTree = "<group>"; };
-		87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersShowDiceViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayersShowDiceViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayersShowDiceViewController_iPhone.xib; sourceTree = "<group>"; };
 		87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeRoundViewController_iPhone.h; sourceTree = "<group>"; };
-		87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarizeRoundViewController_iPhone.m; sourceTree = "<group>"; };
+		87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeRoundViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummarizeRoundViewController_iPhone.xib; sourceTree = "<group>"; };
 		87F4736316BC82DF009E90B5 /* EasyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTableView.h; sourceTree = "<group>"; };
 		87F4736416BC82DF009E90B5 /* EasyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		878E9EFE16DA6CC7008E99A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878E9F4016DA6F48008E99A9 /* libJSONcpp.a in Frameworks */,
+				878E9F0216DA6CC7008E99A9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878E9F1A16DA6DA2008E99A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878E9F1E16DA6DA2008E99A9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87E6027316BB470B008E5457 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878E9F4916DA7221008E99A9 /* libLiarsDiceEngine.a in Frameworks */,
 				87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */,
 				87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */,
 				87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */,
@@ -232,41 +329,129 @@
 			isa = PBXGroup;
 			children = (
 				87815ED016C5016500269176 /* PlayerBidItemView_iPhone.h */,
-				87815ED116C5016500269176 /* PlayerBidItemView_iPhone.m */,
+				87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */,
 				87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */,
 				876BC51116C5621400589EA4 /* ScrollingDiceView.h */,
-				876BC51216C5621400589EA4 /* ScrollingDiceView.m */,
+				876BC51216C5621400589EA4 /* ScrollingDiceView.mm */,
+				878E9EF416DA4CF2008E99A9 /* BidView_iPhone.h */,
+				878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */,
+				878E9EFB16DA4D5C008E99A9 /* BidView_iPhone.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		878E9F0316DA6CC7008E99A9 /* LiarsDiceEngine */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F4516DA6FD8008E99A9 /* GamePlayers.h */,
+				878E9F4416DA6FD8008E99A9 /* GamePlayers.cpp */,
+				878E9F1116DA6D16008E99A9 /* LiarsDiceEngine.h */,
+				878E9F1016DA6D16008E99A9 /* LiarsDiceEngine.cpp */,
+				878E9F4216DA6F80008E99A9 /* MathUtilities.h */,
+				878E9F4116DA6F80008E99A9 /* MathUtilities.cpp */,
+				878E9F0E16DA6CE9008E99A9 /* PseudoRandom.h */,
+				878E9F0D16DA6CE9008E99A9 /* PseudoRandom.cpp */,
+				878E9F1316DA6D16008E99A9 /* Player.h */,
+				878E9F1216DA6D16008E99A9 /* Player.cpp */,
+				878E9F1516DA6D16008E99A9 /* Round.h */,
+				878E9F1416DA6D16008E99A9 /* Round.cpp */,
+				878E9F0416DA6CC7008E99A9 /* Supporting Files */,
+			);
+			path = LiarsDiceEngine;
+			sourceTree = "<group>";
+		};
+		878E9F0416DA6CC7008E99A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F0516DA6CC7008E99A9 /* LiarsDiceEngine-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		878E9F1F16DA6DA2008E99A9 /* JSONcpp */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F3416DA6E2E008E99A9 /* include */,
+				878E9F2916DA6E13008E99A9 /* lib_json */,
+				878E9F2216DA6DA2008E99A9 /* JSONcpp.h */,
+				878E9F2416DA6DA2008E99A9 /* JSONcpp.m */,
+				878E9F2016DA6DA2008E99A9 /* Supporting Files */,
+			);
+			path = JSONcpp;
+			sourceTree = "<group>";
+		};
+		878E9F2016DA6DA2008E99A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F2116DA6DA2008E99A9 /* JSONcpp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		878E9F2916DA6E13008E99A9 /* lib_json */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F2A16DA6E13008E99A9 /* json_batchallocator.h */,
+				878E9F2B16DA6E13008E99A9 /* json_internalarray.inl */,
+				878E9F2C16DA6E13008E99A9 /* json_internalmap.inl */,
+				878E9F2D16DA6E13008E99A9 /* json_reader.cpp */,
+				878E9F2E16DA6E13008E99A9 /* json_value.cpp */,
+				878E9F2F16DA6E13008E99A9 /* json_valueiterator.inl */,
+				878E9F3016DA6E13008E99A9 /* json_writer.cpp */,
+			);
+			path = lib_json;
+			sourceTree = "<group>";
+		};
+		878E9F3416DA6E2E008E99A9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F3516DA6E2E008E99A9 /* json */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		878E9F3516DA6E2E008E99A9 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				878E9F3616DA6E2E008E99A9 /* autolink.h */,
+				878E9F3716DA6E2E008E99A9 /* config.h */,
+				878E9F3816DA6E2E008E99A9 /* features.h */,
+				878E9F3916DA6E2E008E99A9 /* forwards.h */,
+				878E9F3A16DA6E2E008E99A9 /* json.h */,
+				878E9F3B16DA6E2E008E99A9 /* reader.h */,
+				878E9F3C16DA6E2E008E99A9 /* value.h */,
+				878E9F3D16DA6E2E008E99A9 /* writer.h */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 		8796C4BF16BFE3F7004708E0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				87E602B016BB47E7008E5457 /* StartViewController.h */,
-				87E602B116BB47E7008E5457 /* StartViewController.m */,
+				87E602B116BB47E7008E5457 /* StartViewController.mm */,
 				87B09BA716C27C8C006F6E81 /* GeneralSettingsViewController.h */,
-				87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.m */,
+				87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.mm */,
 				87E602B916BB4949008E5457 /* SetUserNameViewController.h */,
 				87E602BA16BB4949008E5457 /* SetUserNameViewController.mm */,
 				87E9551F16BFFEB00067F4DF /* LiarsDiceLobbyViewController.h */,
-				87E9552016BFFEB00067F4DF /* LiarsDiceLobbyViewController.m */,
+				87E9552016BFFEB00067F4DF /* LiarsDiceLobbyViewController.mm */,
 				87E9552716BFFF180067F4DF /* GameSetupViewController.h */,
-				87E9552816BFFF180067F4DF /* GameSetupViewController.m */,
+				87E9552816BFFF180067F4DF /* GameSetupViewController.mm */,
 				87E9552F16BFFF850067F4DF /* GameStartLobbyViewController.h */,
-				87E9553016BFFF850067F4DF /* GameStartLobbyViewController.m */,
+				87E9553016BFFF850067F4DF /* GameStartLobbyViewController.mm */,
 				87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */,
 				87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */,
 				872CA63716C14CCB0056AF23 /* RoundPlayViewController.h */,
-				872CA63816C14CCB0056AF23 /* RoundPlayViewController.m */,
+				872CA63816C14CCB0056AF23 /* RoundPlayViewController.mm */,
 				87F4730A16BC01A5009E90B5 /* PlayersShowDiceViewController.h */,
 				87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */,
 				87F4730D16BC01D0009E90B5 /* SummarizeRoundViewController.h */,
 				87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */,
 				87E9553716BFFFED0067F4DF /* SummarizeGameViewController.h */,
-				87E9553816BFFFED0067F4DF /* SummarizeGameViewController.m */,
+				87E9553816BFFFED0067F4DF /* SummarizeGameViewController.mm */,
 				87E9553F16C0005C0067F4DF /* PlayersGameSettingsViewController.h */,
-				87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.m */,
+				87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.mm */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -275,40 +460,40 @@
 			isa = PBXGroup;
 			children = (
 				87F4731916BC03F0009E90B5 /* StartViewController_iPhone.h */,
-				87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.m */,
+				87F4731A16BC03F0009E90B5 /* StartViewController_iPhone.mm */,
 				87F4731B16BC03F0009E90B5 /* StartViewController_iPhone.xib */,
 				87B09BAA16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.h */,
-				87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m */,
+				87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm */,
 				87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */,
 				87F4731E16BC052D009E90B5 /* SetUserNameViewController_iPhone.h */,
-				87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.m */,
+				87F4731F16BC052D009E90B5 /* SetUserNameViewController_iPhone.mm */,
 				87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */,
 				87E9552216BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.h */,
-				87E9552316BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.m */,
+				87E9552316BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.mm */,
 				87E9552416BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.xib */,
 				87E9552A16BFFF4C0067F4DF /* GameSetupViewController_iPhone.h */,
-				87E9552B16BFFF4C0067F4DF /* GameSetupViewController_iPhone.m */,
+				87E9552B16BFFF4C0067F4DF /* GameSetupViewController_iPhone.mm */,
 				87E9552C16BFFF4C0067F4DF /* GameSetupViewController_iPhone.xib */,
 				87E9553216BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.h */,
-				87E9553316BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.m */,
+				87E9553316BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.mm */,
 				87E9553416BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.xib */,
 				87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */,
-				87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m */,
+				87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm */,
 				87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */,
 				872CA63A16C14CF30056AF23 /* RoundPlayViewController_iPhone.h */,
-				872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.m */,
+				872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */,
 				872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */,
 				87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */,
-				87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m */,
+				87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm */,
 				87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */,
 				87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */,
-				87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m */,
+				87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm */,
 				87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */,
 				87E9553A16C0000D0067F4DF /* SummarizeGameViewController_iPhone.h */,
-				87E9553B16C0000D0067F4DF /* SummarizeGameViewController_iPhone.m */,
+				87E9553B16C0000D0067F4DF /* SummarizeGameViewController_iPhone.mm */,
 				87E9553C16C0000D0067F4DF /* SummarizeGameViewController_iPhone.xib */,
 				87E9554216C000790067F4DF /* PlayersGameSettingsViewController_iPhone.h */,
-				87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.m */,
+				87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm */,
 				87E9554416C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib */,
 			);
 			name = ViewControllers;
@@ -319,6 +504,8 @@
 			children = (
 				87E6027F16BB470B008E5457 /* LiarsDice */,
 				87E6029D16BB470B008E5457 /* LiarsDiceTests */,
+				878E9F0316DA6CC7008E99A9 /* LiarsDiceEngine */,
+				878E9F1F16DA6DA2008E99A9 /* JSONcpp */,
 				87E6027816BB470B008E5457 /* Frameworks */,
 				87E6027716BB470B008E5457 /* Products */,
 			);
@@ -329,6 +516,8 @@
 			children = (
 				87E6027616BB470B008E5457 /* LiarsDice.app */,
 				87E6029616BB470B008E5457 /* LiarsDiceTests.octest */,
+				878E9F0116DA6CC7008E99A9 /* libLiarsDiceEngine.a */,
+				878E9F1D16DA6DA2008E99A9 /* libJSONcpp.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,7 +541,7 @@
 				87E602AF16BB479C008E5457 /* iPad */,
 				87E602AE16BB4791008E5457 /* iPhone */,
 				87E6028816BB470B008E5457 /* AppDelegate.h */,
-				87E6028916BB470B008E5457 /* AppDelegate.m */,
+				87E6028916BB470B008E5457 /* AppDelegate.mm */,
 				87E6028016BB470B008E5457 /* Supporting Files */,
 			);
 			path = LiarsDice;
@@ -362,8 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */,
-				8725FB1816C8175000E43463 /* image_border.png */,
-				8725FB1916C8175000E43463 /* selected_border.png */,
 				872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */,
 				872CA62816C05DB60056AF23 /* LD_DiceScroll_2.png */,
 				872CA62916C05DB60056AF23 /* LD_DiceScroll_3.png */,
@@ -438,10 +625,6 @@
 		87E9554716C01D390067F4DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				87E9554B16C01EAB0067F4DF /* BidSelectionData.h */,
-				87E9554C16C01EAB0067F4DF /* BidSelectionData.m */,
-				87815ED516C51B3B00269176 /* PlayerBidItemStore.h */,
-				87815ED616C51B3B00269176 /* PlayerBidItemStore.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -449,6 +632,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		878E9F0016DA6CC7008E99A9 /* LiarsDiceEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 878E9F0A16DA6CC7008E99A9 /* Build configuration list for PBXNativeTarget "LiarsDiceEngine" */;
+			buildPhases = (
+				878E9EFD16DA6CC7008E99A9 /* Sources */,
+				878E9EFE16DA6CC7008E99A9 /* Frameworks */,
+				878E9EFF16DA6CC7008E99A9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				878E9F3F16DA6F2C008E99A9 /* PBXTargetDependency */,
+			);
+			name = LiarsDiceEngine;
+			productName = LiarsDiceEngine;
+			productReference = 878E9F0116DA6CC7008E99A9 /* libLiarsDiceEngine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		878E9F1C16DA6DA2008E99A9 /* JSONcpp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 878E9F2616DA6DA2008E99A9 /* Build configuration list for PBXNativeTarget "JSONcpp" */;
+			buildPhases = (
+				878E9F1916DA6DA2008E99A9 /* Sources */,
+				878E9F1A16DA6DA2008E99A9 /* Frameworks */,
+				878E9F1B16DA6DA2008E99A9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSONcpp;
+			productName = JSONcpp;
+			productReference = 878E9F1D16DA6DA2008E99A9 /* libJSONcpp.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		87E6027516BB470B008E5457 /* LiarsDice */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87E602A816BB470B008E5457 /* Build configuration list for PBXNativeTarget "LiarsDice" */;
@@ -460,6 +678,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				878E9F4816DA7211008E99A9 /* PBXTargetDependency */,
 			);
 			name = LiarsDice;
 			productName = LiarsDice;
@@ -508,6 +727,8 @@
 			targets = (
 				87E6027516BB470B008E5457 /* LiarsDice */,
 				87E6029516BB470B008E5457 /* LiarsDiceTests */,
+				878E9F0016DA6CC7008E99A9 /* LiarsDiceEngine */,
+				878E9F1C16DA6DA2008E99A9 /* JSONcpp */,
 			);
 		};
 /* End PBXProject section */
@@ -550,8 +771,7 @@
 				872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */,
 				87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */,
 				87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */,
-				8725FB1A16C8175000E43463 /* image_border.png in Resources */,
-				8725FB1B16C8175000E43463 /* selected_border.png in Resources */,
+				878E9EFC16DA4D5C008E99A9 /* BidView_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,41 +802,64 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		878E9EFD16DA6CC7008E99A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878E9F0F16DA6CE9008E99A9 /* PseudoRandom.cpp in Sources */,
+				878E9F1616DA6D16008E99A9 /* LiarsDiceEngine.cpp in Sources */,
+				878E9F1716DA6D16008E99A9 /* Player.cpp in Sources */,
+				878E9F1816DA6D16008E99A9 /* Round.cpp in Sources */,
+				878E9F4316DA6F81008E99A9 /* MathUtilities.cpp in Sources */,
+				878E9F4616DA6FD8008E99A9 /* GamePlayers.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878E9F1916DA6DA2008E99A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878E9F2516DA6DA2008E99A9 /* JSONcpp.m in Sources */,
+				878E9F3116DA6E13008E99A9 /* json_reader.cpp in Sources */,
+				878E9F3216DA6E13008E99A9 /* json_value.cpp in Sources */,
+				878E9F3316DA6E13008E99A9 /* json_writer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87E6027216BB470B008E5457 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				87E6028616BB470B008E5457 /* main.m in Sources */,
-				87E6028A16BB470B008E5457 /* AppDelegate.m in Sources */,
-				87E602B216BB47E7008E5457 /* StartViewController.m in Sources */,
+				87E6028A16BB470B008E5457 /* AppDelegate.mm in Sources */,
+				87E602B216BB47E7008E5457 /* StartViewController.mm in Sources */,
 				87E602BB16BB4949008E5457 /* SetUserNameViewController.mm in Sources */,
 				87F4730016BBFFF7009E90B5 /* RollForFirstPlayViewController.mm in Sources */,
 				87F4730C16BC01A6009E90B5 /* PlayersShowDiceViewController.mm in Sources */,
 				87F4730F16BC01D0009E90B5 /* SummarizeRoundViewController.mm in Sources */,
-				87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.m in Sources */,
-				87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.m in Sources */,
-				87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.m in Sources */,
-				87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.m in Sources */,
-				87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.m in Sources */,
+				87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.mm in Sources */,
+				87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.mm in Sources */,
+				87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm in Sources */,
+				87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm in Sources */,
+				87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm in Sources */,
 				87F4736516BC82DF009E90B5 /* EasyTableView.m in Sources */,
-				87E9552116BFFEB00067F4DF /* LiarsDiceLobbyViewController.m in Sources */,
-				87E9552516BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.m in Sources */,
-				87E9552916BFFF180067F4DF /* GameSetupViewController.m in Sources */,
-				87E9552D16BFFF4C0067F4DF /* GameSetupViewController_iPhone.m in Sources */,
-				87E9553116BFFF850067F4DF /* GameStartLobbyViewController.m in Sources */,
-				87E9553516BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.m in Sources */,
-				87E9553916BFFFED0067F4DF /* SummarizeGameViewController.m in Sources */,
-				87E9553D16C0000E0067F4DF /* SummarizeGameViewController_iPhone.m in Sources */,
-				87E9554116C0005C0067F4DF /* PlayersGameSettingsViewController.m in Sources */,
-				87E9554516C000790067F4DF /* PlayersGameSettingsViewController_iPhone.m in Sources */,
-				87E9554D16C01EAB0067F4DF /* BidSelectionData.m in Sources */,
-				872CA63916C14CCB0056AF23 /* RoundPlayViewController.m in Sources */,
-				872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.m in Sources */,
-				87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.m in Sources */,
-				87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.m in Sources */,
-				87815ED216C5016500269176 /* PlayerBidItemView_iPhone.m in Sources */,
-				87815ED716C51B3B00269176 /* PlayerBidItemStore.m in Sources */,
-				876BC51316C5621400589EA4 /* ScrollingDiceView.m in Sources */,
+				87E9552116BFFEB00067F4DF /* LiarsDiceLobbyViewController.mm in Sources */,
+				87E9552516BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.mm in Sources */,
+				87E9552916BFFF180067F4DF /* GameSetupViewController.mm in Sources */,
+				87E9552D16BFFF4C0067F4DF /* GameSetupViewController_iPhone.mm in Sources */,
+				87E9553116BFFF850067F4DF /* GameStartLobbyViewController.mm in Sources */,
+				87E9553516BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.mm in Sources */,
+				87E9553916BFFFED0067F4DF /* SummarizeGameViewController.mm in Sources */,
+				87E9553D16C0000E0067F4DF /* SummarizeGameViewController_iPhone.mm in Sources */,
+				87E9554116C0005C0067F4DF /* PlayersGameSettingsViewController.mm in Sources */,
+				87E9554516C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm in Sources */,
+				872CA63916C14CCB0056AF23 /* RoundPlayViewController.mm in Sources */,
+				872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.mm in Sources */,
+				87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.mm in Sources */,
+				87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm in Sources */,
+				87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */,
+				876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */,
+				878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +874,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		878E9F3F16DA6F2C008E99A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 878E9F1C16DA6DA2008E99A9 /* JSONcpp */;
+			targetProxy = 878E9F3E16DA6F2C008E99A9 /* PBXContainerItemProxy */;
+		};
+		878E9F4816DA7211008E99A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 878E9F0016DA6CC7008E99A9 /* LiarsDiceEngine */;
+			targetProxy = 878E9F4716DA7211008E99A9 /* PBXContainerItemProxy */;
+		};
 		87E6029C16BB470B008E5457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 87E6027516BB470B008E5457 /* LiarsDice */;
@@ -658,6 +911,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		878E9F0B16DA6CC7008E99A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LiarsDiceEngine.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiarsDiceEngine/LiarsDiceEngine-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		878E9F0C16DA6CC7008E99A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LiarsDiceEngine.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiarsDiceEngine/LiarsDiceEngine-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		878E9F2716DA6DA2008E99A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/JSONcpp.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JSONcpp/JSONcpp-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		878E9F2816DA6DA2008E99A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/JSONcpp.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JSONcpp/JSONcpp-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		87E602A616BB470B008E5457 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -719,6 +1028,8 @@
 		87E602A916BB470B008E5457 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiarsDice/LiarsDice-Prefix.pch";
 				INFOPLIST_FILE = "LiarsDice/LiarsDice-Info.plist";
@@ -731,6 +1042,8 @@
 		87E602AA16BB470B008E5457 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiarsDice/LiarsDice-Prefix.pch";
 				INFOPLIST_FILE = "LiarsDice/LiarsDice-Info.plist";
@@ -777,6 +1090,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		878E9F0A16DA6CC7008E99A9 /* Build configuration list for PBXNativeTarget "LiarsDiceEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878E9F0B16DA6CC7008E99A9 /* Debug */,
+				878E9F0C16DA6CC7008E99A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		878E9F2616DA6DA2008E99A9 /* Build configuration list for PBXNativeTarget "JSONcpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878E9F2716DA6DA2008E99A9 /* Debug */,
+				878E9F2816DA6DA2008E99A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		87E6027116BB470B008E5457 /* Build configuration list for PBXProject "LiarsDice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -26,22 +26,15 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (IBAction)backgroundTapped:(id)sender
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [[self view] endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)startGameButton:(id)sender
-{
-    GameSetupViewController_iPhone *gsvc = [[GameSetupViewController_iPhone alloc] init];
-    [[self navigationController] pushViewController:gsvc animated:YES];
 }
 
 - (IBAction)sortyByButton:(id)sender
@@ -63,4 +56,24 @@
     }
     
 }
+
+- (IBAction)startGameButton:(id)sender
+{
+    GameSetupViewController_iPhone *gsvc = [[GameSetupViewController_iPhone alloc] init];
+    [[self navigationController] pushViewController:gsvc animated:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+}
+
+
 @end

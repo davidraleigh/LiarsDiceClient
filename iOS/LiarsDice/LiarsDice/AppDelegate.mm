@@ -18,7 +18,12 @@
     // Override point for customization after application launch.
     
     StartViewController_iPhone  *svc_i = [[StartViewController_iPhone alloc] init];
+    
+    // TESTING
     //RoundPlayViewController_iPhone *svc_i = [[RoundPlayViewController_iPhone alloc] init];
+    
+    // TESTING
+    
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:svc_i];
     navController.navigationBar.hidden = YES;

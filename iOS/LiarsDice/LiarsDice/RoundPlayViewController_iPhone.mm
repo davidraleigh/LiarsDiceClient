@@ -10,8 +10,9 @@
 
 #import "ScrollingDiceView.h"
 #import "EasyTableView.h"
-#import "PlayerBidItemStore.h"
 #import "PlayerBidItemView_iPhone.h"
+#import "BidView_iPhone.h"
+#import <LiarsDiceEngine.h>
 
 
 // TODO REPLACE THIS TEST CODE
@@ -28,17 +29,15 @@
 #define DICE_PIXEL_SEPARATION 2
 // #DEFINES FOR SCROLLINGDICEVIEW
 
-//#DEFINE FOR CURTAIN
 #define Y_MIN_FOR_CURTAIN -258
 #define Y_MAX_FOR_CURTAIN 0
-//#DEFINE FOR CURTAIN
 
 // #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
-#define ORIGIN_Y                    16
-#define ORIGIN_X                    120
-#define LANDSCAPE_WIDTH             350
+#define ORIGIN_Y                    40
+#define ORIGIN_X                    20
+#define LANDSCAPE_WIDTH             460
 //#define LANDSCAPE_HEIGHT			98
 //#define TABLEVIEW_HEIGHT            94
 //#define TABLEVIEW_WIDTH             164
@@ -73,6 +72,13 @@
         tableviewWidth = (int)viewSize.width;
         landscapeHeight = (int)tableviewHeight + 4;
         maxRollDuration = 0;
+        BidView_iPhone *bidView = [[BidView_iPhone alloc] init];
+        CGRect bidViewFrame = bidView.frame;
+        bidViewFrame.origin = CGPointMake(0, 143);
+        bidView.frame = bidViewFrame;
+        [self.view addSubview:bidView];
+        
+        liarsDice = std::make_shared<LiarsDiceEngine>(3, false, 3);
     }
     return self;
 }
@@ -206,9 +212,9 @@
 {
     UIView *container = [[UIView alloc] initWithFrame:rect];
     
-//    PlayerBidItemView_iPhone *tempView = [[PlayerBidItemView_iPhone alloc] init];
-//    tempView.tag = PLAYER_BID_ITEM_TAG;
-//    [container addSubview:tempView];
+    PlayerBidItemView_iPhone *tempView = [[PlayerBidItemView_iPhone alloc] init];
+    tempView.tag = PLAYER_BID_ITEM_TAG;
+    [container addSubview:tempView];
     
 //	CGRect labelRect		= CGRectMake(10, 10, rect.size.width-20, rect.size.height-20);
 //	UILabel *label			= [[UILabel alloc] initWithFrame:labelRect];
@@ -241,15 +247,10 @@
        setDataForView:(UIView *)view
          forIndexPath:(NSIndexPath *)indexPath
 {
-//    UILabel *label	= (UILabel *)view;
-//    label.text		= [NSString stringWithFormat:@"%i", indexPath.row];
-//        
-//    CGRect rect = view.frame;
-//    
-//    // selectedIndexPath can be nil so we need to test for that condition
-//    BOOL isSelected = (easyTableView.selectedIndexPath) ? ([easyTableView.selectedIndexPath compare:indexPath] == NSOrderedSame) : NO;
-//    [self borderIsSelected:isSelected forView:view];
-    PlayerBidItemView_iPhone *playerBidItem = [[PlayerBidItemStore sharedStore] getItemByRound:0 andByBid:[indexPath row]];
+    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
+    // this is the index of the last bid
+    int indexOfBid = [indexPath row];
+    liarsDice->GetBid(indexOfBid);
     [view addSubview:playerBidItem];
 }
 

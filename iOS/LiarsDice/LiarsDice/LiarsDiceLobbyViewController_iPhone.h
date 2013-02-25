@@ -8,13 +8,16 @@
 
 #import "LiarsDiceLobbyViewController.h"
 
-@interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController
+@interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController <UITextFieldDelegate>
 {
+    __weak IBOutlet UITextField *availablePlayersTextField;
     __weak IBOutlet UIButton *sortByButtonText;
     int sortByKey;
 }
 
 - (IBAction)startGameButton:(id)sender;
 - (IBAction)sortyByButton:(id)sender;
+- (IBAction)backgroundTapped:(id)sender;
+
 
 @end
