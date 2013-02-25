@@ -38,17 +38,19 @@ public:
     static double Factorial(double n);
     
     /**
+     * Get the friction coefficient to take the startVelocity
+     * to the endVelocity using the maxDuration and the dt
+     */
+    static double GetFriction(double startVelocity, double endVelocity, double maxDuration, double dt);
+    
+    /**
      * Get the number of iterations it will take to go from the 
      * startVelocity to the endVelocity with the defined friction
      * and the defined dt
      */
     static int GetFrictionCount(double startVelocity, double endVelocity, double friction, double dt);
-    
-    /**
-     * Get the friction coefficient to take the startVelocity
-     * to the endVelocity using the maxDuration and the dt
-     */
-    static double GetFriction(double startVelocity, double endVelocity, double maxDuration, double dt);
+        
+    static void GetOrdinalString(int number, std::string ordinalNumber);
     
     /**
      * This basically uses the binomial cumulative

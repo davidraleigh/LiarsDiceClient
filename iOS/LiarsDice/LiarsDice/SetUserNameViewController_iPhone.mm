@@ -41,4 +41,15 @@
 {
     [[self navigationController] popToRootViewControllerAnimated:YES];
 }
+
+- (IBAction)backgroundTapped:(id)sender
+{
+    [[self view] endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 @end

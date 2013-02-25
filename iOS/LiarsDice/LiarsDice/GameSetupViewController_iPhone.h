@@ -8,7 +8,12 @@
 
 #import "GameSetupViewController.h"
 
-@interface GameSetupViewController_iPhone : GameSetupViewController
+@interface GameSetupViewController_iPhone : GameSetupViewController <UITextFieldDelegate>
+{
+    __weak IBOutlet UITextField *numberOfDiceTextField;
+    
+}
+- (IBAction)backgroundTapped:(id)sender;
 
 - (IBAction)invitePlayersButton:(id)sender;
 - (IBAction)startGameButton:(id)sender;

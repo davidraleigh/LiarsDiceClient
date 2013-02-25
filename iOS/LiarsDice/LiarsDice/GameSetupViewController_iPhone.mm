@@ -37,6 +37,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backgroundTapped:(id)sender
+{
+    [[self view] endEditing:YES];
+}
+
 - (IBAction)invitePlayersButton:(id)sender
 {
     [[self navigationController] popViewControllerAnimated:YES];
@@ -46,5 +51,11 @@
 {
     GameStartLobbyViewController_iPhone *gslvc = [[GameStartLobbyViewController_iPhone alloc] init];
     [[self navigationController] pushViewController:gslvc animated:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 @end

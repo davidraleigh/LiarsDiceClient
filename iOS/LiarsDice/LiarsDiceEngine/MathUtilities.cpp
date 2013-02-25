@@ -9,6 +9,13 @@
 #include "MathUtilities.h"
 
 #include <cmath>
+#include <sstream>
+
+
+double MathUtilities::ApplyFriction(double value, double friction, double dt)
+{
+    return value * ::pow(friction, dt);
+}
 
 double MathUtilities::Factorial(double n)
 {
@@ -25,6 +32,100 @@ double MathUtilities::Factorial(double n)
     }
     
     return factorial;
+}
+
+double MathUtilities::GetFriction(double startVelocity, double endVelocity, double maxDuration, double dt)
+{
+    if (startVelocity == endVelocity ||
+        maxDuration <= dt)
+        return 1.0;
+    if (endVelocity > startVelocity ||
+        endVelocity < 0.0 ||
+        startVelocity < 0.0)
+        return 0;
+    
+    double tolerence   = .00001;
+    double lowFriction = .0001;
+    double highFriction = 1.0 - lowFriction;
+    int desiredCount = (int)::floor(maxDuration / dt);
+    
+    // test highFriction point
+    int highCount = GetFrictionCount(startVelocity, endVelocity, highFriction, dt);
+    if (highCount == desiredCount)
+        return highFriction;
+    
+    // test lowFrition point
+    int lowCount = GetFrictionCount(startVelocity, endVelocity, lowFriction, dt);
+    if (lowCount == desiredCount)
+        return lowFriction;
+    
+    // TODO fix this so that the friction returned is the average
+    // of the highest and the lowest frictions that
+    while ((highFriction - lowFriction) > tolerence)
+    {
+        double testFriction = (highFriction - lowFriction) / 2.0 + lowFriction;
+        int testCount = GetFrictionCount(startVelocity, endVelocity, testFriction, dt);
+        if (testCount == desiredCount)
+            return testFriction;
+        
+        if (testCount < desiredCount)
+        {
+            lowCount = testCount;
+            lowFriction = testFriction;
+        }
+        else
+        {
+            highCount = testCount;
+            highFriction = testFriction;
+        }
+    }
+    
+    return 0.0;
+}
+
+int MathUtilities::GetFrictionCount(double startVelocity, double endVelocity, double friction, double dt)
+{
+    int count = 0;
+    while (startVelocity > endVelocity)
+    {
+        startVelocity = ApplyFriction(startVelocity, friction, dt);
+        count++;
+    }
+    return count;
+}
+
+void MathUtilities::GetOrdinalString(int number, std::string ordinalNumber)
+{
+    if (number <= 0)
+    {
+        ordinalNumber = "";
+        return;
+    }
+    
+    std::stringstream ss;
+    ss << number;
+    switch (number % 100)
+    {
+		case 11:
+		case 12:
+		case 13:
+		{
+            ordinalNumber = ss.str() + "th";
+			return;
+		}
+    }
+    
+    if (((number - 11) % 100 != 0) &&
+        ((number - 1) % 10 == 0))
+        ordinalNumber = ss.str() + "st";
+    else if (((number - 12) % 100 != 0) &&
+             ((number - 2) % 10 == 0))
+        ordinalNumber = ss.str() + "nd";
+    else if (((number - 13) % 100 != 0) &&
+             ((number - 3) % 10 == 0))
+        ordinalNumber = ss.str() + "rd";
+    else
+        ordinalNumber = ss.str() + "th";
 }
 
 int MathUtilities::GetProbability(int numberOfMatchingRolls,
@@ -75,70 +176,6 @@ int MathUtilities::GetProbability(int numberOfMatchingRolls,
     return returnValue;
 }
 
-double MathUtilities::ApplyFriction(double value, double friction, double dt)
-{
-    return value * ::pow(friction, dt);
-}
-
-int MathUtilities::GetFrictionCount(double startVelocity, double endVelocity, double friction, double dt)
-{
-    int count = 0;
-    while (startVelocity > endVelocity)
-    {
-        startVelocity = ApplyFriction(startVelocity, friction, dt);
-        count++;
-    }
-    return count;
-}
-
-double MathUtilities::GetFriction(double startVelocity, double endVelocity, double maxDuration, double dt)
-{
-    if (startVelocity == endVelocity ||
-        maxDuration <= dt)
-        return 1.0;
-    if (endVelocity > startVelocity ||
-        endVelocity < 0.0 ||
-        startVelocity < 0.0)
-        return 0;
-    
-    double tolerence   = .00001;
-    double lowFriction = .0001;
-    double highFriction = 1.0 - lowFriction;
-    int desiredCount = (int)::floor(maxDuration / dt);
-
-    // test highFriction point
-    int highCount = GetFrictionCount(startVelocity, endVelocity, highFriction, dt);
-    if (highCount == desiredCount)
-        return highFriction;
-    
-    // test lowFrition point
-    int lowCount = GetFrictionCount(startVelocity, endVelocity, lowFriction, dt);
-    if (lowCount == desiredCount)
-        return lowFriction;
-    
-    // TODO fix this so that the friction returned is the average
-    // of the highest and the lowest frictions that 
-    while ((highFriction - lowFriction) > tolerence)
-    {
-        double testFriction = (highFriction - lowFriction) / 2.0 + lowFriction;
-        int testCount = GetFrictionCount(startVelocity, endVelocity, testFriction, dt);
-        if (testCount == desiredCount)
-            return testFriction;
-        
-        if (testCount < desiredCount)
-        {
-            lowCount = testCount;
-            lowFriction = testFriction;
-        }
-        else
-        {
-            highCount = testCount;
-            highFriction = testFriction;
-        }
-    }
-    
-    return 0.0;
-}
 
 double MathUtilities::HaversinceDistance(double lonDegrees1, double latDegrees1, double lonDegrees2, double latDegrees2, double radius)
 {

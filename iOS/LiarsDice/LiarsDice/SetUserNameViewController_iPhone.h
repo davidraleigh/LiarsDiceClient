@@ -8,8 +8,10 @@
 
 #import "SetUserNameViewController.h"
 
-@interface SetUserNameViewController_iPhone : SetUserNameViewController
-
+@interface SetUserNameViewController_iPhone : SetUserNameViewController <UITextFieldDelegate>
+{
+    __weak IBOutlet UITextField *usernameTextField;
+}
 - (IBAction)mainMenuButton:(id)sender;
-
+- (IBAction)backgroundTapped:(id)sender;
 @end
