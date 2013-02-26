@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8708D54516DBA8CF00A1ED82 /* StringConversion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8708D54416DBA8CF00A1ED82 /* StringConversion.mm */; };
+		8708D54816DBAF4000A1ED82 /* PlayersInLobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8708D54616DBAF4000A1ED82 /* PlayersInLobby.cpp */; };
 		872CA62516C05D930056AF23 /* LD_Bracket_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62316C05D930056AF23 /* LD_Bracket_1.png */; };
 		872CA62616C05D930056AF23 /* LD_Curtain_Blank_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */; };
 		872CA62E16C05DB60056AF23 /* LD_DiceScroll_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */; };
@@ -143,6 +145,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8708D54316DBA8CF00A1ED82 /* StringConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringConversion.h; sourceTree = "<group>"; };
+		8708D54416DBA8CF00A1ED82 /* StringConversion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StringConversion.mm; sourceTree = "<group>"; };
+		8708D54616DBAF4000A1ED82 /* PlayersInLobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayersInLobby.cpp; sourceTree = "<group>"; };
+		8708D54716DBAF4000A1ED82 /* PlayersInLobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersInLobby.h; sourceTree = "<group>"; };
 		872CA62316C05D930056AF23 /* LD_Bracket_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_Bracket_1.png; path = ../../../../Resources/LiarsDice/LD_Bracket_1.png; sourceTree = SOURCE_ROOT; };
 		872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_Curtain_Blank_1.png; path = ../../../../Resources/LiarsDice/LD_Curtain_Blank_1.png; sourceTree = SOURCE_ROOT; };
 		872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_DiceScroll_1.png; path = ../../../../../Resources/LiarsDice/LD_DiceScroll_1.png; sourceTree = "<group>"; };
@@ -325,6 +331,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8708D54216DBA8B400A1ED82 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				87F4736316BC82DF009E90B5 /* EasyTableView.h */,
+				87F4736416BC82DF009E90B5 /* EasyTableView.m */,
+				8708D54316DBA8CF00A1ED82 /* StringConversion.h */,
+				8708D54416DBA8CF00A1ED82 /* StringConversion.mm */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		87815ECF16C5011D00269176 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +366,8 @@
 				878E9F1016DA6D16008E99A9 /* LiarsDiceEngine.cpp */,
 				878E9F4216DA6F80008E99A9 /* MathUtilities.h */,
 				878E9F4116DA6F80008E99A9 /* MathUtilities.cpp */,
+				8708D54716DBAF4000A1ED82 /* PlayersInLobby.h */,
+				8708D54616DBAF4000A1ED82 /* PlayersInLobby.cpp */,
 				878E9F0E16DA6CE9008E99A9 /* PseudoRandom.h */,
 				878E9F0D16DA6CE9008E99A9 /* PseudoRandom.cpp */,
 				878E9F1316DA6D16008E99A9 /* Player.h */,
@@ -550,6 +569,7 @@
 		87E6028016BB470B008E5457 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8708D54216DBA8B400A1ED82 /* Utilities */,
 				872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */,
 				872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */,
 				872CA62816C05DB60056AF23 /* LD_DiceScroll_2.png */,
@@ -566,8 +586,6 @@
 				87E9555116C0258F0067F4DF /* Die4.png */,
 				87E9555216C0258F0067F4DF /* Die5.png */,
 				87E9555316C0258F0067F4DF /* Die6.png */,
-				87F4736316BC82DF009E90B5 /* EasyTableView.h */,
-				87F4736416BC82DF009E90B5 /* EasyTableView.m */,
 				87E6028116BB470B008E5457 /* LiarsDice-Info.plist */,
 				87E6028216BB470B008E5457 /* InfoPlist.strings */,
 				87E6028516BB470B008E5457 /* main.m */,
@@ -812,6 +830,7 @@
 				878E9F1816DA6D16008E99A9 /* Round.cpp in Sources */,
 				878E9F4316DA6F81008E99A9 /* MathUtilities.cpp in Sources */,
 				878E9F4616DA6FD8008E99A9 /* GamePlayers.cpp in Sources */,
+				8708D54816DBAF4000A1ED82 /* PlayersInLobby.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +879,7 @@
 				87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */,
 				876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */,
 				878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */,
+				8708D54516DBA8CF00A1ED82 /* StringConversion.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

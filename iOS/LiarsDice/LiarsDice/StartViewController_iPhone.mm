@@ -40,6 +40,15 @@
 
 - (IBAction)onlineGameButton:(id)sender
 {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if ([ud objectForKey:@"playerName"] == nil)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Online Profile" message:@"You can't play an online game until you've setup your profile in the settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
     LiarsDiceLobbyViewController_iPhone *ldlvc = [[LiarsDiceLobbyViewController_iPhone alloc] init];
     [[self navigationController] pushViewController:ldlvc animated:YES];
 }

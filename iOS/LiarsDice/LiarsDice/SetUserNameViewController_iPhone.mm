@@ -25,10 +25,9 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (IBAction)backgroundTapped:(id)sender
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [[self view] endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,19 +36,54 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)mainMenuButton:(id)sender
+- (IBAction)saveUsernameButton:(id)sender
 {
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [usernameTextField resignFirstResponder];
+    NSString *newPlayerName = [[usernameTextField text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if ([newPlayerName length] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name Change" message:@"Your name needs to be composed of characters." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    [ud setObject:newPlayerName forKey:@"playerName"];
+    [ud setObject:[[NSNumber alloc] initWithUnsignedInt:1977] forKey:@"playerUID"];
 }
 
-- (IBAction)backgroundTapped:(id)sender
+- (IBAction)mainMenuButton:(id)sender
 {
-    [[self view] endEditing:YES];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if (([ud objectForKey:@"playerName"] == nil) || (![[usernameTextField text] isEqualToString:[ud objectForKey:@"playerName"]]))
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name Change" message:@"Your name change was not updated." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if ([ud objectForKey:@"playerName"] == nil)
+        return;
+    
+    [usernameTextField setText:[ud objectForKey:@"playerName"]];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
 }
 @end

@@ -12,6 +12,7 @@
 {
     __weak IBOutlet UITextField *usernameTextField;
 }
+- (IBAction)saveUsernameButton:(id)sender;
 - (IBAction)mainMenuButton:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
 @end
