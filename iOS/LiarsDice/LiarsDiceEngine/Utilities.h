@@ -75,7 +75,7 @@ public:
     static double HaversinceDistance(double lonDegrees1, double latDegrees1, double lonDegrees2, double latDegrees2, double radius);
 
     
-    static bool StringContains(std::string container, std::string contained);
+    static int StringContains(std::string container, std::string contained);
 
 };
 

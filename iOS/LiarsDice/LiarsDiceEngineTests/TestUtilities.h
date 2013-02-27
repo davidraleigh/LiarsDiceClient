@@ -26,6 +26,25 @@ public:
     {
     }
     
+    void testStringContains(void)
+    {
+        std::string string1("albert");
+        std::string string2("diLBeArd");
+        std::string string3("a");
+        std::string string4("t");
+        std::string string5("lbE");
+        std::string string6("lbe.");
+        TS_ASSERT_EQUALS(Utilities::StringContains(string1, string3), 0);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string1, string5), 1);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string1, string4), 5);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string1, string6), -1);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string2, string5), 2);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string1, string2), -1);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string2, string4), -1);
+        TS_ASSERT_EQUALS(Utilities::StringContains(string2, string3), 5);
+        
+    }
+    
     void testApplyFriction(void)
     {
         

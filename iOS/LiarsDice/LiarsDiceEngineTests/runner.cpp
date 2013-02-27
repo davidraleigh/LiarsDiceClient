@@ -182,9 +182,15 @@ static UtilitiesTestSuite suite_UtilitiesTestSuite;
 static CxxTest::List Tests_UtilitiesTestSuite = { 0, 0 };
 CxxTest::StaticSuiteDescription suiteDescription_UtilitiesTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestUtilities.h", 17, "UtilitiesTestSuite", suite_UtilitiesTestSuite, Tests_UtilitiesTestSuite );
 
+static class TestDescription_suite_UtilitiesTestSuite_testStringContains : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_UtilitiesTestSuite_testStringContains() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 29, "testStringContains" ) {}
+ void runTest() { suite_UtilitiesTestSuite.testStringContains(); }
+} testDescription_suite_UtilitiesTestSuite_testStringContains;
+
 static class TestDescription_suite_UtilitiesTestSuite_testApplyFriction : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 29, "testApplyFriction" ) {}
+ TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 48, "testApplyFriction" ) {}
  void runTest() { suite_UtilitiesTestSuite.testApplyFriction(); }
 } testDescription_suite_UtilitiesTestSuite_testApplyFriction;
 

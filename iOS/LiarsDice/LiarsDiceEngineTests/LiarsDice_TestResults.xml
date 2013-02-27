@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite name="cxxtest"  tests="16" errors="0" failures="0" time="0" >
+<testsuite name="cxxtest"  tests="17" errors="0" failures="0" time="0" >
     <testcase classname="GamePlayersTestSuite" name="testGamePlayer" line="19" />
     <testcase classname="LiarsDiceEngineTestSuite" name="testLiarsDiceEngine" line="34" />
     <testcase classname="LiarsDiceEngineTestSuite" name="testDestructor" line="48" />
@@ -15,5 +15,6 @@
     <testcase classname="GameStartupTestSuite" name="testDeviceDetails" line="184" />
     <testcase classname="GameStartupTestSuite" name="testAddition" line="202" />
     <testcase classname="MyTestSuite1" name="testAddition" line="17" />
-    <testcase classname="UtilitiesTestSuite" name="testApplyFriction" line="29" />
+    <testcase classname="UtilitiesTestSuite" name="testStringContains" line="29" />
+    <testcase classname="UtilitiesTestSuite" name="testApplyFriction" line="48" />
 </testsuite>
