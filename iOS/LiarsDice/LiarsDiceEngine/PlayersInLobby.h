@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <list>
+#include <deque>
 
 // forward declarations
 namespace Json {
@@ -149,6 +150,8 @@ public:
      */
     int GetPlayerPosition(unsigned int playerUID);  //Tested
     
+    std::deque<int> HidePlayers(std::string contained);
+    
     /**
      * Get the playerUID at the display index 
      */
@@ -175,6 +178,7 @@ public:
 
     bool RemovePlayers(std::string jsonString);
     
+    std::deque<int> RevealPlayers(std::string contained);
     
     
     int Size() { return (int)m_displayedPlayers.size(); }; // TESTED

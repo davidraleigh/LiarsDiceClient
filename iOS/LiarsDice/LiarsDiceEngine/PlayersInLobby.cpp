@@ -150,6 +150,25 @@ int PlayersInLobby::GetPlayerPosition(unsigned int playerUID)
     return position;
 }
 
+std::deque<int> PlayersInLobby::HidePlayers(std::string contained)
+{
+    std::deque<int> playersToHide;
+    int position = 0;
+    std::list<PlayersInLobby::player_t>::iterator iter;
+    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++, position++)
+    {
+        if (Utilities::StringContains((*iter).playerName, contained) == -1)
+        {
+            playersToHide.push_front(position);
+            m_hiddenPlayers.emplace_back((*iter));
+            m_displayedPlayers.erase(iter);
+        }
+    }
+
+    return playersToHide;
+}
+
+
 unsigned int PlayersInLobby::GetPlayerUID(int displayIndex)
 {
     if (m_displayedPlayers.size() == 0 || displayIndex > m_displayedPlayers.size())
@@ -214,6 +233,23 @@ Json::Value InvitePlayer(int displayIndex)
     return defaultVaue;
 }
 
+std::deque<int> PlayersInLobby::RevealPlayers(std::string contained)
+{
+    std::deque<int> playersToReveal;
+    std::list<PlayersInLobby::player_t>::iterator iter;
+    for (iter = m_hiddenPlayers.begin(); iter != m_hiddenPlayers.end(); iter++)
+    {
+        if (Utilities::StringContains((*iter).playerName, contained) != -1)
+        {
+            playersToReveal.push_back(m_displayedPlayers.size());
+            m_displayedPlayers.emplace_back((*iter));
+            m_hiddenPlayers.erase(iter);
+        }
+    }
+    
+    return playersToReveal;
+}
+
 void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
 {
     Json::Value arrayValues;
@@ -226,20 +262,35 @@ void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
         std::string name;
         switch (i) {
             case 0:
-                playerDetails["playerName"] = "Greg";
+                playerDetails["playerName"] = "Greg Powell";
                 break;
             case 1:
-                playerDetails["playerName"] = "Nick";
+                playerDetails["playerName"] = "Nick flegel";
                 break;
             case 2:
-                playerDetails["playerName"] = "DJ";
+                playerDetails["playerName"] = "DJ Hannah";
                 break;
             case 3:
-                playerDetails["playerName"] = "Bida";
+                playerDetails["playerName"] = "Brian Ida";
                 break;
             case 4:
                 playerDetails["playerName"] = "Brian Tayan";
                 break;
+            case 5:
+                playerDetails["playerName"] = "cory buckingham";
+                break;
+            case 6:
+                playerDetails["playerName"] = "David Jones";
+                break;
+            case 7:
+                playerDetails["playerName"] = "Jerrika Buckingham";
+                break;
+            case 8:
+                playerDetails["playerName"] = "Liz Flegel";
+                break;
+            case 9:
+                playerDetails["playerName"] = "Paula Hannah";
+                
 
 
             default:

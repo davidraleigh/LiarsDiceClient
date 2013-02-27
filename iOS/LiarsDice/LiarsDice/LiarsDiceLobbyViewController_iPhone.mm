@@ -15,6 +15,7 @@
 #include <PlayersInLobby.h>
 #include <json/json.h>
 
+#define TABLE_VIEW_AVAILABLE_PLAYERS_TAG 36
 
 @interface LiarsDiceLobbyViewController_iPhone ()
 
@@ -57,7 +58,7 @@
     {
         if (GamePlayers::getInstance().PlayerCount() == 1)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invite Error" message:@"You need to select a player from the left column to invite" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Error" message:@"You cannot remove yourself from the group" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             return;
         }
@@ -66,6 +67,16 @@
         
         [groupPlayersTable setEditing:YES animated:YES];
     }
+}
+
++ (NSMutableArray *)indexPathesToRemove:(std::deque<int>)indicesToRemove
+{
+    NSMutableArray *indexPathes = [[NSMutableArray alloc] init];
+    std::deque<int>::iterator iter;
+    for (iter = indicesToRemove.begin(); iter != indicesToRemove.end(); iter++)
+        [indexPathes addObject:[NSIndexPath indexPathForRow:(*iter) inSection:0]];
+
+    return indexPathes;
 }
 
 - (IBAction)invitePlayer:(id)sender
@@ -115,28 +126,40 @@
 
 - (IBAction)playerTextFieldChanged:(id)sender
 {
-    std::string userText = [[availablePlayersTextField text] getstringTrimmed];
+    // get the appropriate TableView
+    UITableView *tableView = (UITableView *)[self.view viewWithTag:TABLE_VIEW_AVAILABLE_PLAYERS_TAG];
+    
+    NSString *textField = [availablePlayersTextField text];
+    std::string userText = [textField getstringTrimmed];
     
     // user text is longer than before
     // remove more of the 'available players'
     // check that the first few letters are the same
     if (userText.size() > playerTextField.size() && userText.compare(0, playerTextField.size(), playerTextField) == 0)
     {
+        std::deque<int> indexStack = PlayersInLobby::getInstance().HidePlayers(userText);
         
+        [tableView deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
     }
     else if (userText.size() < playerTextField.size() && userText.compare(0, userText.size(), playerTextField))
     {
+        std::deque<int> indexVector = PlayersInLobby::getInstance().RevealPlayers(userText);
         
+        [tableView insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
     }
     else
     {
         
     }
     
+    playerTextField = userText;
+    
     // user text is shorter than before
     // add more to the 'available players'
     // check that the first few letters are the same
 }
+
+
 
 - (IBAction)sortyByButton:(id)sender
 {
@@ -273,6 +296,8 @@
     GamePlayers::getInstance().AddPlayer([clientPlayerName getstring], clientPlayerUID, true, false);
     // Set the device owner as his own group leader
     GamePlayers::getInstance().SetGroupLeader(clientPlayerUID);
+    
+    playerTextField = "";
 }
 
 

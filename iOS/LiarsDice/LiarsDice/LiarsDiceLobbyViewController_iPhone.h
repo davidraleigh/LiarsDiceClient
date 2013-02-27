@@ -9,6 +9,7 @@
 #import "LiarsDiceLobbyViewController.h"
 
 #include <string>
+#include <deque>
 
 @interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController <UITextFieldDelegate>
 {
@@ -35,4 +36,5 @@
 
 - (IBAction)playerTextFieldChanged:(id)sender;
 
++ (NSMutableArray *)indexPathesToRemove:(std::deque<int>) indicesToRemove;
 @end
