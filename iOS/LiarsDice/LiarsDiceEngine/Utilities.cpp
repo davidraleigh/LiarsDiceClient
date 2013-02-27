@@ -1,23 +1,23 @@
 //
-//  MathUtilities.cpp
+//  Utilities.cpp
 //  LiarsDiceClient
 //
 //  Created by David Raleigh on 9/24/12.
 //  Copyright (c) 2012 David Raleigh. All rights reserved.
 //
 
-#include "MathUtilities.h"
+#include "Utilities.h"
 
 #include <cmath>
 #include <sstream>
 
 
-double MathUtilities::ApplyFriction(double value, double friction, double dt)
+double Utilities::ApplyFriction(double value, double friction, double dt)
 {
     return value * ::pow(friction, dt);
 }
 
-double MathUtilities::Factorial(double n)
+double Utilities::Factorial(double n)
 {
     if (n == 0)
         return 1;
@@ -34,7 +34,7 @@ double MathUtilities::Factorial(double n)
     return factorial;
 }
 
-double MathUtilities::GetFriction(double startVelocity, double endVelocity, double maxDuration, double dt)
+double Utilities::GetFriction(double startVelocity, double endVelocity, double maxDuration, double dt)
 {
     if (startVelocity == endVelocity ||
         maxDuration <= dt)
@@ -83,7 +83,7 @@ double MathUtilities::GetFriction(double startVelocity, double endVelocity, doub
     return 0.0;
 }
 
-int MathUtilities::GetFrictionCount(double startVelocity, double endVelocity, double friction, double dt)
+int Utilities::GetFrictionCount(double startVelocity, double endVelocity, double friction, double dt)
 {
     int count = 0;
     while (startVelocity > endVelocity)
@@ -94,7 +94,7 @@ int MathUtilities::GetFrictionCount(double startVelocity, double endVelocity, do
     return count;
 }
 
-void MathUtilities::GetOrdinalString(int number, std::string ordinalNumber)
+void Utilities::GetOrdinalString(int number, std::string ordinalNumber)
 {
     if (number <= 0)
     {
@@ -128,7 +128,7 @@ void MathUtilities::GetOrdinalString(int number, std::string ordinalNumber)
         ordinalNumber = ss.str() + "th";
 }
 
-int MathUtilities::GetProbability(int numberOfMatchingRolls,
+int Utilities::GetProbability(int numberOfMatchingRolls,
                                     int totalNumberOfRolls,
                                     bool bBidIsWildValue,
                                     bool bWildOneUsedThisRound)
@@ -152,13 +152,13 @@ int MathUtilities::GetProbability(int numberOfMatchingRolls,
     if (bWildOneUsedThisRound && !bBidIsWildValue)
         p += 1.0 / 6.0;
     
-    double nFactorial = MathUtilities::Factorial(n);
+    double nFactorial = Utilities::Factorial(n);
     // I would prefer to use a for loop of double here
     // why have I never seen a for loop of doubles?
     for (int iDieCount = numberOfMatchingRolls; iDieCount <= totalNumberOfRolls; iDieCount++)
     {
         double q = (double)iDieCount;
-        double binomialCoefficient = nFactorial / (MathUtilities::Factorial(q) * MathUtilities::Factorial(n - q));
+        double binomialCoefficient = nFactorial / (Utilities::Factorial(q) * Utilities::Factorial(n - q));
         
         probabilityOfRoll += binomialCoefficient * pow(p, q) * pow((1 - p), n - q);
     }
@@ -177,7 +177,7 @@ int MathUtilities::GetProbability(int numberOfMatchingRolls,
 }
 
 
-double MathUtilities::HaversinceDistance(double lonDegrees1, double latDegrees1, double lonDegrees2, double latDegrees2, double radius)
+double Utilities::HaversinceDistance(double lonDegrees1, double latDegrees1, double lonDegrees2, double latDegrees2, double radius)
 {
     double degreesToRadians = 0.01745329238;
     
@@ -192,4 +192,9 @@ double MathUtilities::HaversinceDistance(double lonDegrees1, double latDegrees1,
     double arcValue = 2.0 * asin(sqrt(latHaversine + cosOfLats * lonHaversine));
     
     return 6372797.560856 * arcValue;
+}
+
+bool Utilities::StringContains(std::string container, std::string contained)
+{
+    return false;
 }

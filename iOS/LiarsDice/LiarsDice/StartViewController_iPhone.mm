@@ -26,12 +26,6 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -57,5 +51,11 @@
 {
     GeneralSettingsViewController_iPhone *gsvc = [[GeneralSettingsViewController_iPhone alloc] init];
     [[self navigationController] pushViewController:gsvc animated:YES];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
 }
 @end

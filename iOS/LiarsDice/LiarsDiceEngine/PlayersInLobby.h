@@ -10,8 +10,7 @@
 #define __LiarsDiceClient__PlayersInLobby__
 
 #include <iostream>
-#include <vector>
-#include <map>
+#include <list>
 
 // forward declarations
 namespace Json {
@@ -21,20 +20,40 @@ namespace Json {
 class PlayersInLobby
 {
 public:
+    
+    enum SortType
+    {
+        Distance  = 0,
+        FirstName = 1,
+        LastName  = 2,
+        Familiarity = 4,
+    };
+    
+    enum AvailabilityType
+    {
+        InYourGame = 0,
+        Available = 1,
+        OnlineInGame = 2,
+        Offline = 3,
+        Unknown = 4
+    };
+    
     struct player_t
     {
         unsigned int playerUID;
         unsigned int groupUID;
+        int previousIndex;
         std::string playerName;
         bool bIsGroupLeader;
         double distance;
-        player_t() : playerUID(0) , groupUID(0), bIsGroupLeader(false), distance(0)
+        AvailabilityType availability;
+        player_t() : playerUID(0) , groupUID(0), bIsGroupLeader(false), distance(0), availability(PlayersInLobby::Unknown)
         {
             
         }
     };
     
-    struct player_comparator
+    struct player_distance_comparator
     {
         bool operator ()(const player_t& a, const player_t& b) const
         {
@@ -52,13 +71,31 @@ public:
         }
     };
     
+    struct player_last_name_comparator
+    {
+        bool operator ()(const player_t& a, const player_t& b) const
+        {
+            // this assumes no trailing whitespace
+            std::size_t posA = a.playerName.find_last_of(" ");
+            std::string lastNameA = a.playerName.substr(posA, std::string::npos);
+            std::size_t posB = b.playerName.find_last_of(" ");
+            std::string lastNameB = b.playerName.substr(posB, std::string::npos);
+            if (lastNameB.compare(lastNameA) == -1)
+                return false;
+            return true;
+        }
+    };
+    
     static PlayersInLobby& getInstance()
     {
         static PlayersInLobby instance;
         return instance;
     }
     
-    
+    /**
+     * Is the player in the display list
+     */
+    bool ContainsPlayer(unsigned int playerUID);
     //bool AddPlayers(std::string jsonString);
     /**
      * Initialize the lobby with players, the current device's playerUID and the position
@@ -74,10 +111,7 @@ public:
                            double deviceLatitude,
                            double deviceLongitude); // Tested
     
-    /**
-     * Test if the lobby contains a player
-     */
-    bool ContainsPlayer(unsigned int playerUID); // Tested
+
     
     /**
      * Delete a player of a certain playerUID
@@ -85,9 +119,9 @@ public:
     bool DeletePlayerAtUID(unsigned int playerUID); // Tested
     
     /**
-     * Delete the player at the position specified
+     * Delete the player at the displayIndex specified
      */
-    bool DeletePlayerAtPosition(int position); // TESTED
+    bool DeletePlayerAtPosition(int displayIndex); // TESTED
     
     /**
      * Get the group leader
@@ -99,10 +133,10 @@ public:
     /**
      * Get the player details struct at the position
      * in the vector
-     * @param position in the ordered vector
+     * @param displayIndex in the ordered vector
      * @return player_t struct
      */
-    player_t GetPlayerAtPosition(int position); // Tested
+    player_t GetPlayerAtPosition(int displayIndex); // Tested
 
     
     /**
@@ -120,6 +154,11 @@ public:
      */
     unsigned int GetPlayerUID(int displayIndex); // Tested
     
+    void HidePlayerAtPosition(int displayIndex);
+    
+    int HidePlayer(std::string matchText);
+    
+    
     /**
      * Insert a player into the lobby
      * @param playerDetails struct
@@ -129,14 +168,16 @@ public:
      */
     bool InsertPlayer(player_t playerStruct); // TESTED
     
+    bool IsPlayerAvailable(int displayIndex);
     
     Json::Value InvitePlayer(int displayIndex);
-    Json::Value InvitePlayer(unsigned int playerUID);
+    //Json::Value InvitePlayer(unsigned int playerUID);
 
     bool RemovePlayers(std::string jsonString);
     
     
-    int Size() { return (int)m_availablePlayers.size(); }; // TESTED
+    
+    int Size() { return (int)m_displayedPlayers.size(); }; // TESTED
 
     inline unsigned int GetTimeStampEnd(){ return m_unixTimeStampEnd; };
 
@@ -147,15 +188,17 @@ private:
     PlayersInLobby(PlayersInLobby const&);
     PlayersInLobby& operator=(PlayersInLobby const&);
     
-
+    SortType m_sortType;
     unsigned int m_playerUID;
     double m_latitude;
     double m_longitude;
     unsigned int m_unixTimeStampStart;
     unsigned int m_unixTimeStampEnd;
-    std::vector<player_t> m_availablePlayers;
+    //std::map<unsigned int, player_t> m_allAvailablePlayers;
+    std::list<player_t> m_displayedPlayers;
+    std::list<player_t> m_hiddenPlayers;
     
-    std::vector<player_t>::iterator _GetPlayerDetailsFromUID(unsigned int playerUID);
+    std::list<player_t>::iterator _GetPlayerDetailsFromUID(unsigned int playerUID);
     static bool _IsValidPlayer(PlayersInLobby::player_t playerDetails);
 };
 

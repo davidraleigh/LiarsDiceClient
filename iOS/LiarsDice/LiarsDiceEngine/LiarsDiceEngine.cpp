@@ -7,7 +7,7 @@
 //
 
 #include "LiarsDiceEngine.h"
-#include "MathUtilities.h"
+#include "Utilities.h"
 #include "Player.h"
 #include "GamePlayers.h"
 
@@ -315,7 +315,7 @@ unsigned int LiarsDiceEngine::GetPreviousPlayerUID(unsigned int playerUID)
 int LiarsDiceEngine::GetProbabilityAtTable(int numberOfDice, int bidFaceValue)
 {
     bool bBidIsWildValue = IsBidAWildValue(bidFaceValue);
-    return MathUtilities::GetProbability(numberOfDice, m_totalNumberOfDiceLeft, bBidIsWildValue, m_roundDetails.back().IsRoundWild());
+    return Utilities::GetProbability(numberOfDice, m_totalNumberOfDiceLeft, bBidIsWildValue, m_roundDetails.back().IsRoundWild());
 }
 
 int LiarsDiceEngine::GetProbabilityForPlayer(int bidQuantity, int bidFaceValue, unsigned int playerUID)
@@ -355,7 +355,7 @@ int LiarsDiceEngine::GetProbabilityForPlayer(int bidQuantity, int bidFaceValue, 
     // wild round
     bool bBidIsWildValue = IsBidAWildValue(bidFaceValue);
     
-    return MathUtilities::GetProbability(bidQuantity, numberOfUnknownDie, bBidIsWildValue, m_roundDetails.back().IsRoundWild());
+    return Utilities::GetProbability(bidQuantity, numberOfUnknownDie, bBidIsWildValue, m_roundDetails.back().IsRoundWild());
 }
 
 int LiarsDiceEngine::GetRandCount()
@@ -381,7 +381,7 @@ int LiarsDiceEngine::GetRollProbability(int bidIndex)//(int rollNumber)
     // wild round
     bool bBidIsWildValue = IsBidAWildValue(bid.bidFaceValue);
     
-    return MathUtilities::GetProbability(bid.bidQuantity, m_totalNumberOfDiceLeft, bBidIsWildValue, m_roundDetails.back().IsRoundWild());
+    return Utilities::GetProbability(bid.bidQuantity, m_totalNumberOfDiceLeft, bBidIsWildValue, m_roundDetails.back().IsRoundWild());
 }
 
 

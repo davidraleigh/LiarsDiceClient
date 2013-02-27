@@ -9,9 +9,11 @@
 #import "LiarsDiceLobbyViewController_iPhone.h"
 
 #import "GameSetupViewController_iPhone.h"
+#import "StringConversion.h"
 
 #include <GamePlayers.h>
 #include <PlayersInLobby.h>
+#include <json/json.h>
 
 
 @interface LiarsDiceLobbyViewController_iPhone ()
@@ -85,7 +87,7 @@
     if (GamePlayers::getInstance().ContainsPlayer(playerDetails.playerUID) ||
         GamePlayers::getInstance().ContainsPlayer(playerDetails.playerName))
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invite Error" message:@"big error in invitePlayer" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invite Error" message:@"You have already invited this player" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
@@ -109,6 +111,31 @@
     
     // insert this new row into the table
     [groupPlayersTable insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (IBAction)playerTextFieldChanged:(id)sender
+{
+    std::string userText = [[availablePlayersTextField text] getstringTrimmed];
+    
+    // user text is longer than before
+    // remove more of the 'available players'
+    // check that the first few letters are the same
+    if (userText.size() > playerTextField.size() && userText.compare(0, playerTextField.size(), playerTextField) == 0)
+    {
+        
+    }
+    else if (userText.size() < playerTextField.size() && userText.compare(0, userText.size(), playerTextField))
+    {
+        
+    }
+    else
+    {
+        
+    }
+    
+    // user text is shorter than before
+    // add more to the 'available players'
+    // check that the first few letters are the same
 }
 
 - (IBAction)sortyByButton:(id)sender
@@ -153,6 +180,55 @@
     }
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView tag] == 36)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        // if there is no reusable cell of this type create a new one
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
+        }
+        
+        PlayersInLobby::player_t playerDetails = PlayersInLobby::getInstance().GetPlayerAtPosition([indexPath row]);
+        NSString *playerName = [NSString stringWithstring:playerDetails.playerName];
+        [[cell textLabel] setText:playerName];
+        
+        NSString *details = [[NSString alloc] initWithFormat:@"Group #:%d", playerDetails.groupUID];
+        if (playerDetails.bIsGroupLeader)
+            details = [[NSString alloc] initWithFormat:@"%@ Leader", details];
+        else
+            details = [[NSString alloc] initWithFormat:@"%@ Member", details];
+        
+        [[cell detailTextLabel] setText:details];
+        
+        return cell;
+    }
+    else
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        // if there is no reusable cell of this type create a new one
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
+        }
+        
+        Player *player = GamePlayers::getInstance().GetPlayerAtPosition([indexPath row]);
+        NSString *playerName = [NSString stringWithstring:player->GetPlayerName()];
+        [[cell textLabel] setText:playerName];
+        
+        // TESTING
+        unsigned int playerUID = player->GetPlayerUID();
+        short playerPosition = GamePlayers::getInstance().GetPlayerPosition(playerUID);
+        NSString *details = [[NSString alloc] initWithFormat:@"Player #%d, UID = %d", playerPosition + 1, playerUID];
+        [[cell detailTextLabel] setText:details];
+        // TESTING
+        
+        return cell;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([tableView tag] == 36)
@@ -175,6 +251,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    clientPlayerName = [ud objectForKey:@"playerName"];
+    clientPlayerUID = [[ud objectForKey:@"playerUID"] unsignedIntValue];
+    
+    currentGroupUID = clientPlayerUID;
+    Json::Value availablePlayers;
+    
+    // only for testing
+    PlayersInLobby::getInstance()._GenerateLobbyPlayers(availablePlayers);
+    // Query remote database for available players
+    
+    // TODO query location
+    double latitude = 30;
+    double longitude = 30;
+    
+    // put the available players in the lobby
+    PlayersInLobby::getInstance().InitializePlayers(availablePlayers, clientPlayerUID, latitude, longitude);
+    // add the deviced owner to the player list
+    GamePlayers::getInstance().AddPlayer([clientPlayerName getstring], clientPlayerUID, true, false);
+    // Set the device owner as his own group leader
+    GamePlayers::getInstance().SetGroupLeader(clientPlayerUID);
 }
 
 

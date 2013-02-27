@@ -17,4 +17,5 @@
 + (NSString*)stringWithstring:(const std::string&)string;
 - (std::wstring)getwstring;
 - (std::string)getstring;
+- (std::string)getstringTrimmed;
 @end

@@ -1,5 +1,5 @@
 //
-//  MathUtilities.h
+//  Utilities.h
 //  LiarsDiceClient
 //
 //  Created by David Raleigh on 9/24/12.
@@ -11,7 +11,8 @@
 
 #include <iostream>
 
-class MathUtilities {
+
+class Utilities {
     
     
 public:    
@@ -71,7 +72,14 @@ public:
                               bool bBidIsWildValue,
                               bool bWildOneUsedThisRound);
     
-    static double HaversinceDistance(double lonDegrees1, double latDegrees1, double lonDegrees2, double latDegrees2, double radius);};
+    static double HaversinceDistance(double lonDegrees1, double latDegrees1, double lonDegrees2, double latDegrees2, double radius);
+
+    
+    static bool StringContains(std::string container, std::string contained);
+
+};
+
+
 
 
 #endif /* defined(__LiarsDiceClient__MathUtilities__) */

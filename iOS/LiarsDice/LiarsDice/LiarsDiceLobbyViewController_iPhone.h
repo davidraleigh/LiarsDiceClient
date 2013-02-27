@@ -8,8 +8,15 @@
 
 #import "LiarsDiceLobbyViewController.h"
 
+#include <string>
+
 @interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController <UITextFieldDelegate>
 {
+    unsigned int clientPlayerUID;
+    NSString *clientPlayerName;
+    unsigned int currentGroupUID;
+    std::string playerTextField;
+    
     __weak IBOutlet UITableView *groupPlayersTable;
     __weak IBOutlet UITableView *availablePlayersTable;
    
@@ -26,5 +33,6 @@
 - (IBAction)editGroupButton:(id)sender;
 - (IBAction)invitePlayer:(id)sender;
 
+- (IBAction)playerTextFieldChanged:(id)sender;
 
 @end

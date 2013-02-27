@@ -40,4 +40,9 @@ const NSStringEncoding kEncoding_wchar_t = CFStringConvertEncodingToNSStringEnco
     return [self UTF8String];
 }
 
+- (std::string)getstringTrimmed
+{
+    return [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] UTF8String];
+}
+
 @end
