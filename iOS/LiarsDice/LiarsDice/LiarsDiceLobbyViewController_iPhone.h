@@ -8,8 +8,11 @@
 
 #import "LiarsDiceLobbyViewController.h"
 
+
+#include <PlayersInLobby.h>
 #include <string>
 #include <deque>
+#include <vector>
 
 @interface LiarsDiceLobbyViewController_iPhone : LiarsDiceLobbyViewController <UITextFieldDelegate>
 {
@@ -25,7 +28,7 @@
     
     __weak IBOutlet UIButton *editGroupButtonText;
     __weak IBOutlet UIButton *sortByButtonText;
-    int sortByKey;
+    PlayersInLobby::SortType sortByKey;
 }
 
 - (IBAction)startGameButton:(id)sender;
@@ -33,8 +36,8 @@
 - (IBAction)backgroundTapped:(id)sender;
 - (IBAction)editGroupButton:(id)sender;
 - (IBAction)invitePlayer:(id)sender;
-
 - (IBAction)playerTextFieldChanged:(id)sender;
 
 + (NSMutableArray *)indexPathesToRemove:(std::deque<int>) indicesToRemove;
+
 @end

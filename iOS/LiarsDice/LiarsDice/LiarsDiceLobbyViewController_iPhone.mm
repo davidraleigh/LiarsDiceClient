@@ -28,7 +28,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        sortByKey = 0;
+        sortByKey = PlayersInLobby::Distance;
+        PlayersInLobby::getInstance().SetSortType(sortByKey);
     }
     return self;
 }
@@ -163,22 +164,31 @@
 
 - (IBAction)sortyByButton:(id)sender
 {
-    if (sortByKey == 0)
+    PlayersInLobby::getInstance().SetSortType(sortByKey);
+    std::vector<int> shuffleIndices = PlayersInLobby::getInstance().Sort();
+    // get the appropriate TableView
+    UITableView *tableView = (UITableView *)[self.view viewWithTag:TABLE_VIEW_AVAILABLE_PLAYERS_TAG];
+    [tableView reloadData];
+    if (sortByKey == PlayersInLobby::Distance)
     {
         [sender setTitle:@"By Familiarity" forState:UIControlStateNormal];
-        sortByKey = 1;
+        sortByKey = PlayersInLobby::Familiarity;
     }
-    else if (sortByKey == 1)
+    else if (sortByKey == PlayersInLobby::Familiarity)
     {
-        [sender setTitle:@"By Name" forState:UIControlStateNormal];
-        sortByKey = 2;
+        [sender setTitle:@"By 1st Name" forState:UIControlStateNormal];
+        sortByKey = PlayersInLobby::FirstName;
+    }
+    else if (sortByKey == PlayersInLobby::FirstName)
+    {
+        [sender setTitle:@"By Last Name" forState:UIControlStateNormal];
+        sortByKey = PlayersInLobby::LastName;
     }
     else if (sortByKey == 2)
     {
         [sender setTitle:@"By Distance" forState:UIControlStateNormal];
-        sortByKey = 0;
+        sortByKey = PlayersInLobby::Distance;
     }
-    
 }
 
 - (IBAction)startGameButton:(id)sender

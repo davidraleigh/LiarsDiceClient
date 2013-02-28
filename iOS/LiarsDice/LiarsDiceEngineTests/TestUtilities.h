@@ -45,6 +45,24 @@ public:
         
     }
     
+    void testCapitalization(void)
+    {
+        std::string string1("albErT");
+        std::string string2("A chesty b.  jKingus");
+        Utilities::CapitalizeNames(string1);
+        Utilities::CapitalizeNames(string2);
+        std::string string3("  albErT  ");
+        std::string string4("  A chesty b.  jKingus  ");
+        Utilities::CapitalizeNames(string3);
+        Utilities::CapitalizeNames(string4);
+        
+        TS_ASSERT_EQUALS(string1.compare("AlbErT"), 0);
+        TS_ASSERT_EQUALS(string2.compare("A chesty b.  JKingus"), 0);
+        TS_ASSERT_EQUALS(string3.compare("  AlbErT  "), 0);
+        TS_ASSERT_EQUALS(string4.compare("  A chesty b.  JKingus  "), 0);
+        
+    }
+    
     void testApplyFriction(void)
     {
         

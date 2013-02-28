@@ -65,7 +65,6 @@ bool PlayersInLobby::InitializePlayers(Json::Value &allAvailablePlayersObj, unsi
     }
     
     m_displayedPlayers.sort(player_distance_comparator());
-//    sort(m_displayedPlayers.begin(), m_displayedPlayers.end(), player_distance_comparator());
     return true;
 }
 
@@ -114,6 +113,11 @@ PlayersInLobby::player_t PlayersInLobby::GetGroupLeader(unsigned int groupUID)
     return playerDetails;
 }
 
+PlayersInLobby::player_t PlayersInLobby::GetPlayerAtPosition(int displayIndex)
+{
+    return GetPlayerFromUID(GetPlayerUID(displayIndex));
+}
+
 PlayersInLobby::player_t PlayersInLobby::GetPlayerFromUID(unsigned int playerUID)
 {
     PlayersInLobby::player_t playerDetails;
@@ -121,20 +125,6 @@ PlayersInLobby::player_t PlayersInLobby::GetPlayerFromUID(unsigned int playerUID
     if (iter != m_displayedPlayers.end())
         playerDetails = *iter;
     return playerDetails;
-}
-
-std::list<PlayersInLobby::player_t>::iterator PlayersInLobby::_GetPlayerDetailsFromUID(unsigned int playerUID)
-{
-    std::list<PlayersInLobby::player_t>::iterator iter;
-    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++)
-        if ((*iter).playerUID == playerUID)
-            return iter;
-    return iter;
-}
-
-PlayersInLobby::player_t PlayersInLobby::GetPlayerAtPosition(int displayIndex)
-{
-    return GetPlayerFromUID(GetPlayerUID(displayIndex));
 }
 
 int PlayersInLobby::GetPlayerPosition(unsigned int playerUID)
@@ -148,6 +138,24 @@ int PlayersInLobby::GetPlayerPosition(unsigned int playerUID)
         if ((*iter).playerUID == playerUID)
             break;
     return position;
+}
+
+unsigned int PlayersInLobby::GetPlayerUID(int displayIndex)
+{
+    if (m_displayedPlayers.size() == 0 || displayIndex > m_displayedPlayers.size())
+        return 0;
+    int position = 0;
+    std::list<PlayersInLobby::player_t>::iterator iter;
+    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++, position++)
+    {
+        if (position == displayIndex)
+        {
+            return (*iter).playerUID;
+            break;
+        }
+    }
+    
+    return 0;
 }
 
 std::deque<int> PlayersInLobby::HidePlayers(std::string contained)
@@ -168,52 +176,13 @@ std::deque<int> PlayersInLobby::HidePlayers(std::string contained)
     return playersToHide;
 }
 
-
-unsigned int PlayersInLobby::GetPlayerUID(int displayIndex)
+Json::Value InvitePlayer(int displayIndex)
 {
-    if (m_displayedPlayers.size() == 0 || displayIndex > m_displayedPlayers.size())
-        return 0;
-    int position = 0;
-    std::list<PlayersInLobby::player_t>::iterator iter;
-    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++, position++)
-    {
-        if (position == displayIndex)
-        {
-            return (*iter).playerUID;
-            break;
-        }
-    }
+    Json::Value defaultVaue;
     
-    return 0;
-}
-
-void PlayersInLobby::HidePlayerAtPosition(int displayIndex)
-{
-    int position = 0;
-    std::list<PlayersInLobby::player_t>::iterator iter;
-    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++, position++)
-    {
-        if (position == displayIndex)
-        {
-            m_hiddenPlayers.emplace_back((*iter));
-            m_displayedPlayers.erase(iter);
-            break;
-        }
-    }
-}
-
-bool PlayersInLobby::InsertPlayer(PlayersInLobby::player_t playerDetails)
-{
-    if (m_playerUID == 0 ||
-        ContainsPlayer(playerDetails.playerUID) ||
-        !_IsValidPlayer(playerDetails))
-        return false;
+    // 
     
-    m_displayedPlayers.push_back(playerDetails);
-//    sort(m_displayedPlayers.begin(), m_displayedPlayers.end(), player_distance_comparator());
-    m_displayedPlayers.sort(player_distance_comparator());
-
-    return true;
+    return defaultVaue;
 }
 
 bool PlayersInLobby::IsPlayerAvailable(int displayIndex)
@@ -222,15 +191,6 @@ bool PlayersInLobby::IsPlayerAvailable(int displayIndex)
     if (availability == PlayersInLobby::Offline || availability == PlayersInLobby::OnlineInGame)
         return false;
     return true;
-}
-
-Json::Value InvitePlayer(int displayIndex)
-{
-    Json::Value defaultVaue;
-    
-    // 
-    
-    return defaultVaue;
 }
 
 std::deque<int> PlayersInLobby::RevealPlayers(std::string contained)
@@ -248,6 +208,33 @@ std::deque<int> PlayersInLobby::RevealPlayers(std::string contained)
     }
     
     return playersToReveal;
+}
+
+void PlayersInLobby::SetSortType(PlayersInLobby::SortType sortType)
+{
+    m_sortType = sortType;
+}
+
+std::vector<int> PlayersInLobby::Sort()
+{
+    std::vector<int> oldIndices;
+    std::list<player_t>::iterator iter;
+    int position = 0;
+    // save position information
+    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++, position++)
+        (*iter).previousIndex = position;
+    
+    if (m_sortType == PlayersInLobby::FirstName)
+        m_displayedPlayers.sort(player_first_name_comparator());
+    else if (m_sortType == PlayersInLobby::LastName)
+        m_displayedPlayers.sort(player_last_name_comparator());
+    else
+        m_displayedPlayers.sort(player_distance_comparator());
+
+    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++)
+        oldIndices.push_back((*iter).previousIndex);
+    
+    return oldIndices;
 }
 
 void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
@@ -320,6 +307,15 @@ void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
 
     Json::StyledWriter writer;
     std::string words = writer.write(allAvailablePlayers);
+}
+
+std::list<PlayersInLobby::player_t>::iterator PlayersInLobby::_GetPlayerDetailsFromUID(unsigned int playerUID)
+{
+    std::list<PlayersInLobby::player_t>::iterator iter;
+    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++)
+        if ((*iter).playerUID == playerUID)
+            return iter;
+    return iter;
 }
 
 bool PlayersInLobby::_IsValidPlayer(PlayersInLobby::player_t playerDetails)

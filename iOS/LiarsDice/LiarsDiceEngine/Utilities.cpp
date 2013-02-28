@@ -44,6 +44,21 @@ double Utilities::ApplyFriction(double value, double friction, double dt)
     return value * ::pow(friction, dt);
 }
 
+void Utilities::CapitalizeNames(std::string &name)
+{
+    //std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+    std::size_t firstPost = name.find_first_not_of(" ");
+    name[firstPost] = toupper( name[firstPost] );
+    
+    std::size_t pos = name.find_last_of(" ");
+    int count = 1;
+    while (pos == name.size() - (count++) && pos != std::string::npos)
+        pos = name.find_last_of(" ", pos - 1);
+    
+    if (pos != std::string::npos && pos != name.size() - 1)
+        name[pos + 1] = toupper( name [pos + 1] );
+}
+
 double Utilities::Factorial(double n)
 {
     if (n == 0)

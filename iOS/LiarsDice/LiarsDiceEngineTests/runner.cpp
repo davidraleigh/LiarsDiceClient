@@ -188,9 +188,15 @@ public:
  void runTest() { suite_UtilitiesTestSuite.testStringContains(); }
 } testDescription_suite_UtilitiesTestSuite_testStringContains;
 
+static class TestDescription_suite_UtilitiesTestSuite_testCapitalization : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_UtilitiesTestSuite_testCapitalization() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 48, "testCapitalization" ) {}
+ void runTest() { suite_UtilitiesTestSuite.testCapitalization(); }
+} testDescription_suite_UtilitiesTestSuite_testCapitalization;
+
 static class TestDescription_suite_UtilitiesTestSuite_testApplyFriction : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 48, "testApplyFriction" ) {}
+ TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 66, "testApplyFriction" ) {}
  void runTest() { suite_UtilitiesTestSuite.testApplyFriction(); }
 } testDescription_suite_UtilitiesTestSuite_testApplyFriction;
 
