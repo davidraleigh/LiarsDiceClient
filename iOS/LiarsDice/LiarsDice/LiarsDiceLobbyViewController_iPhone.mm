@@ -141,16 +141,31 @@
         std::deque<int> indexStack = PlayersInLobby::getInstance().HidePlayers(userText);
         
         [tableView deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
+        
+        PlayersInLobby::getInstance().Sort();
+        [tableView reloadData];
     }
-    else if (userText.size() < playerTextField.size() && userText.compare(0, userText.size(), playerTextField))
+    else if (userText.size() < playerTextField.size() && playerTextField.compare(0, userText.size(), userText) == 0)
     {
         std::deque<int> indexVector = PlayersInLobby::getInstance().RevealPlayers(userText);
         
         [tableView insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
-    }
-    else
-    {
         
+        PlayersInLobby::getInstance().Sort();
+        [tableView reloadData];
+    }
+    else if (playerTextField.compare(userText) != 0)
+    {
+        std::deque<int> indexVector = PlayersInLobby::getInstance().RevealPlayers(userText);
+        
+        [tableView insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
+        
+        std::deque<int> indexStack = PlayersInLobby::getInstance().HidePlayers(userText);
+        
+        [tableView deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
+        
+        PlayersInLobby::getInstance().Sort();
+        [tableView reloadData];
     }
     
     playerTextField = userText;
@@ -165,17 +180,17 @@
 - (IBAction)sortyByButton:(id)sender
 {
     PlayersInLobby::getInstance().SetSortType(sortByKey);
-    std::vector<int> shuffleIndices = PlayersInLobby::getInstance().Sort();
+    PlayersInLobby::getInstance().Sort();
     // get the appropriate TableView
     UITableView *tableView = (UITableView *)[self.view viewWithTag:TABLE_VIEW_AVAILABLE_PLAYERS_TAG];
     [tableView reloadData];
     if (sortByKey == PlayersInLobby::Distance)
     {
-        [sender setTitle:@"By Familiarity" forState:UIControlStateNormal];
-        sortByKey = PlayersInLobby::Familiarity;
-    }
-    else if (sortByKey == PlayersInLobby::Familiarity)
-    {
+//        [sender setTitle:@"By Familiarity" forState:UIControlStateNormal];
+//        sortByKey = PlayersInLobby::Familiarity;
+//    }
+//    else if (sortByKey == PlayersInLobby::Familiarity)
+//    {
         [sender setTitle:@"By 1st Name" forState:UIControlStateNormal];
         sortByKey = PlayersInLobby::FirstName;
     }

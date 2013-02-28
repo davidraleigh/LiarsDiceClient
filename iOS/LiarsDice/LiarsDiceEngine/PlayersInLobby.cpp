@@ -54,7 +54,6 @@ bool PlayersInLobby::InitializePlayers(Json::Value &allAvailablePlayersObj, unsi
         playerDetails.playerName.append(jsonPlayer.get("playerName", defaultValue).asString());
         playerDetails.groupUID = jsonPlayer.get("groupUID", defaultValue).asUInt();
         playerDetails.bIsGroupLeader = jsonPlayer.get("isGroupLeader", defaultValue).asBool();
-        playerDetails.previousIndex = i;
         double latitude = jsonPlayer.get("latitude", defaultValue).asDouble();
         double longitude = jsonPlayer.get("longitude", defaultValue).asDouble();
         playerDetails.distance = Utilities::HaversinceDistance(deviceLongitude, deviceLatitude, longitude, latitude, radius);
@@ -215,26 +214,14 @@ void PlayersInLobby::SetSortType(PlayersInLobby::SortType sortType)
     m_sortType = sortType;
 }
 
-std::vector<int> PlayersInLobby::Sort()
-{
-    std::vector<int> oldIndices;
-    std::list<player_t>::iterator iter;
-    int position = 0;
-    // save position information
-    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++, position++)
-        (*iter).previousIndex = position;
-    
+void PlayersInLobby::Sort()
+{    
     if (m_sortType == PlayersInLobby::FirstName)
         m_displayedPlayers.sort(player_first_name_comparator());
     else if (m_sortType == PlayersInLobby::LastName)
         m_displayedPlayers.sort(player_last_name_comparator());
     else
         m_displayedPlayers.sort(player_distance_comparator());
-
-    for (iter = m_displayedPlayers.begin(); iter != m_displayedPlayers.end(); iter++)
-        oldIndices.push_back((*iter).previousIndex);
-    
-    return oldIndices;
 }
 
 void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
@@ -252,7 +239,7 @@ void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
                 playerDetails["playerName"] = "Greg Powell";
                 break;
             case 1:
-                playerDetails["playerName"] = "Nick flegel";
+                playerDetails["playerName"] = "Nick Flegel";
                 break;
             case 2:
                 playerDetails["playerName"] = "DJ Hannah";
@@ -264,10 +251,10 @@ void PlayersInLobby::_GenerateLobbyPlayers(Json::Value &allAvailablePlayers)
                 playerDetails["playerName"] = "Brian Tayan";
                 break;
             case 5:
-                playerDetails["playerName"] = "cory buckingham";
+                playerDetails["playerName"] = "Cory Buckingham";
                 break;
             case 6:
-                playerDetails["playerName"] = "David Jones";
+                playerDetails["playerName"] = "David H. Jones";
                 break;
             case 7:
                 playerDetails["playerName"] = "Jerrika Buckingham";

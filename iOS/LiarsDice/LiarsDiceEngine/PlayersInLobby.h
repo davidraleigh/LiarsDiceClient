@@ -44,7 +44,6 @@ public:
     {
         unsigned int playerUID;
         unsigned int groupUID;
-        int previousIndex;
         std::string playerName;
         bool bIsGroupLeader;
         double distance;
@@ -185,7 +184,7 @@ public:
      * Sorts Displayed players and returns an array of the previous
      * positions of those players (so ui can be updated accordingly
      */
-    std::vector<int> Sort();
+    void Sort();
     
     void _GenerateLobbyPlayers(Json::Value &jsonValue);
     
