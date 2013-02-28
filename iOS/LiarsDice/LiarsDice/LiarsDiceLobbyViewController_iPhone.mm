@@ -92,9 +92,9 @@
     PlayersInLobby::player_t playerDetails = PlayersInLobby::getInstance().GetPlayerAtPosition([selectedIndex row]);
     
     
-    PlayersInLobby::getInstance().DeletePlayerAtPosition([selectedIndex row]);
-    
-    [availablePlayersTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndex] withRowAnimation:UITableViewRowAnimationFade];
+//    PlayersInLobby::getInstance().DeletePlayerAtPosition([selectedIndex row]);
+//    
+//    [availablePlayersTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndex] withRowAnimation:UITableViewRowAnimationFade];
     
     if (GamePlayers::getInstance().ContainsPlayer(playerDetails.playerUID) ||
         GamePlayers::getInstance().ContainsPlayer(playerDetails.playerName))
@@ -199,7 +199,7 @@
         [sender setTitle:@"By Last Name" forState:UIControlStateNormal];
         sortByKey = PlayersInLobby::LastName;
     }
-    else if (sortByKey == 2)
+    else if (sortByKey == PlayersInLobby::LastName)
     {
         [sender setTitle:@"By Distance" forState:UIControlStateNormal];
         sortByKey = PlayersInLobby::Distance;
