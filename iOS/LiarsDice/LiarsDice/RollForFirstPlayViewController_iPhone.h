@@ -8,7 +8,19 @@
 
 #import "RollForFirstPlayViewController.h"
 
-@interface RollForFirstPlayViewController_iPhone : RollForFirstPlayViewController
+#include <memory>
+// forward declaration from this page
+// http://www.zedkep.com/blog/index.php?/archives/247-Forward-declaring-C++-classes-in-Objective-C.html
+struct LiarsDiceEngine;
+typedef struct LiarsDiceEngine LiarsDiceEngine;
 
+@interface RollForFirstPlayViewController_iPhone : RollForFirstPlayViewController
+{
+    std::shared_ptr<LiarsDiceEngine> liarsDice;
+    
+    double maxRollDuration;
+}
+
+- (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine;
 - (IBAction)rollDiceButton:(id)sender;
 @end

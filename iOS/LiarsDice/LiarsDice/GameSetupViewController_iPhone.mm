@@ -28,21 +28,15 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (IBAction)backgroundTapped:(id)sender
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [[self view] endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)backgroundTapped:(id)sender
-{
-    [[self view] endEditing:YES];
 }
 
 - (IBAction)editGroupOrderButton:(id)sender
@@ -170,5 +164,11 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
 }
 @end

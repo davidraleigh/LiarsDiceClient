@@ -12,7 +12,10 @@
 #import "EasyTableView.h"
 #import "PlayerBidItemView_iPhone.h"
 #import "BidView_iPhone.h"
+#import "StringConversion.h"
+
 #import <LiarsDiceEngine.h>
+#import <Round.h>
 
 
 // TODO REPLACE THIS TEST CODE
@@ -119,8 +122,10 @@
     currentLowestQuantity = MIN_BID_QUANTITY;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
 	[super viewWillAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,8 +134,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     //
@@ -166,8 +171,8 @@
     }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{    
     dragging = NO;
 }
 
@@ -177,14 +182,14 @@
 - (void)setupHorizontalView
 {
 	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, landscapeHeight);
-	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:NUM_OF_CELLS ofWidth:tableviewWidth];
+	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:3 ofWidth:tableviewWidth];
 	self.horizontalView = view;
 	
 	horizontalView.delegate						= self;
 	horizontalView.tableView.backgroundColor	= TABLE_BACKGROUND_COLOR;
 	horizontalView.tableView.allowsSelection	= YES;
-	horizontalView.tableView.separatorColor		= [UIColor darkGrayColor];
-	horizontalView.cellBackgroundColor			= [UIColor darkGrayColor];
+	horizontalView.tableView.separatorColor		= [UIColor clearColor];
+	horizontalView.cellBackgroundColor			= [UIColor clearColor];
 	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	
     UIView *gamePlayView = [self.view viewWithTag:99];
@@ -250,7 +255,34 @@
     PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
     // this is the index of the last bid
     int indexOfBid = [indexPath row];
-    liarsDice->GetBid(indexOfBid);
+    if (indexOfBid == 0)
+    {
+        unsigned int nextNextPlayerUID = liarsDice->GetNextPlayerUID(liarsDice->GetNextPlayerUID());
+        std::string playerNameString = liarsDice->GetPlayerName(nextNextPlayerUID);
+        NSString *playerName = [NSString stringWithstring: playerNameString];
+        [playerBidItem setPlayerName:playerName bidQuantity:0 bidFaceValue:0 bidOdds:0];
+    }
+    else if (indexOfBid == 1)
+    {
+        unsigned int nextPlayerUID = liarsDice->GetNextPlayerUID();
+        std::string playerNameString = liarsDice->GetPlayerName(nextPlayerUID);
+        NSString *playerName = [NSString stringWithstring: playerNameString];
+        [playerBidItem setPlayerName:playerName bidQuantity:0 bidFaceValue:0 bidOdds:0];
+    }
+    else if (indexOfBid == 2)
+    {
+        unsigned int currentPlayerUID = liarsDice->GetCurrentUID();
+        std::string playerNameString = liarsDice->GetPlayerName(currentPlayerUID);
+        NSString *playerName = [NSString stringWithstring: playerNameString];
+        [playerBidItem setPlayerName:playerName bidQuantity:0 bidFaceValue:0 bidOdds:0];
+    }
+    else if (indexOfBid > 2 && liarsDice->GetBidCount() > indexOfBid + 3)
+    {
+        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBid + 3);
+        std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
+        NSString *playerName = [NSString stringWithstring: playerNameString];
+        [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:0];
+    }
     [view addSubview:playerBidItem];
 }
 
@@ -266,7 +298,7 @@
 	if (deselectedView)
 		[self borderIsSelected:NO forView:deselectedView];
 	
-	UILabel *label	= (UILabel *)selectedView;
+	//UILabel *label	= (UILabel *)selectedView;
 	//bigLabel.text	= label.text;
 }
 
@@ -275,62 +307,28 @@
 
 #ifdef SHOW_MULTIPLE_SECTIONS
 
+// Delivers the number of cells in each section, this must be implemented if numberOfSectionsInEasyTableView is implemented
+-(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section
+{
+    return liarsDice->GetBidCount() + 3;
+}
+
 // Delivers the number of sections in the TableView
 - (NSUInteger)numberOfSectionsInEasyTableView:(EasyTableView*)easyTableView
 {
     return NUM_OF_SECTIONS;
 }
 
-// Delivers the number of cells in each section, this must be implemented if numberOfSectionsInEasyTableView is implemented
--(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section
-{
-    return NUM_OF_CELLS;
-}
+
 
 
 
 #endif
 
-- (IBAction)quantityButton1:(id)sender
-{
-    //shift -3
-    [self changeButtonTexts:-3 withButtonPosition:1];
-}
 
-- (IBAction)quantityButton2:(id)sender
-{
-    // shift -2
-    [self changeButtonTexts:-2 withButtonPosition:2];
-}
-
-- (IBAction)quantityButton3:(id)sender
-{
-    // shift -1
-    [self changeButtonTexts:-1 withButtonPosition:3];
-}
-
-- (IBAction)quantityButton4:(id)sender
-{
-    // shift 1
-    [self changeButtonTexts:1 withButtonPosition:4];
-}
-
-- (IBAction)quantityButton5:(id)sender
-{
-    // shift 2
-    [self changeButtonTexts:2 withButtonPosition:5];
-}
-
-- (IBAction)quantityButton6:(id)sender
-{
-    // shift 3
-    [self changeButtonTexts:3 withButtonPosition:6];
-}
 
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected
 {
-
-    
     if (shiftValue + currentLowestQuantity < MIN_BID_QUANTITY && shiftValue < 0)
         shiftValue = MIN_BID_QUANTITY - currentLowestQuantity;
     else if(shiftValue + currentLowestQuantity + 5 > MAX_BID_QUANTITY)
@@ -370,38 +368,64 @@
 
 }
 
-- (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view
+- (IBAction)faceValueButton1:(id)sender
 {
-    UIView *taggedView = nil;
-    for (UIView *subview in view.subviews)
-    {
-        if (subview.tag == tag)
-            return subview;
-        else if ([subview.subviews count] > 0)
-            taggedView = [self searchSubviewsForTaggedView:tag inSubviews:subview];
-        
-        if (taggedView != nil)
-            return taggedView;
-    }
-    return taggedView;
 }
 
-- (IBAction)faceValueButton1:(id)sender {
+- (IBAction)faceValueButton2:(id)sender
+{
 }
 
-- (IBAction)faceValueButton2:(id)sender {
+- (IBAction)faceValueButton3:(id)sender
+{
 }
 
-- (IBAction)faceValueButton3:(id)sender {
+- (IBAction)faceValueButton4:(id)sender
+{
 }
 
-- (IBAction)faceValueButton4:(id)sender {
+- (IBAction)faceValueButton5:(id)sender
+{
 }
 
-- (IBAction)faceValueButton5:(id)sender {
+- (IBAction)faceValueButton6:(id)sender
+{
 }
 
-- (IBAction)faceValueButton6:(id)sender {
+- (IBAction)quantityButton1:(id)sender
+{
+    //shift -3
+    [self changeButtonTexts:-3 withButtonPosition:1];
+}
+
+- (IBAction)quantityButton2:(id)sender
+{
+    // shift -2
+    [self changeButtonTexts:-2 withButtonPosition:2];
+}
+
+- (IBAction)quantityButton3:(id)sender
+{
+    // shift -1
+    [self changeButtonTexts:-1 withButtonPosition:3];
+}
+
+- (IBAction)quantityButton4:(id)sender
+{
+    // shift 1
+    [self changeButtonTexts:1 withButtonPosition:4];
+}
+
+- (IBAction)quantityButton5:(id)sender
+{
+    // shift 2
+    [self changeButtonTexts:2 withButtonPosition:5];
+}
+
+- (IBAction)quantityButton6:(id)sender
+{
+    // shift 3
+    [self changeButtonTexts:3 withButtonPosition:6];
 }
 
 - (IBAction)rollDiceButton:(id)sender
@@ -430,5 +454,26 @@
                 allViewsFinished = false;
         }
     }
+}
+
+- (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view
+{
+    UIView *taggedView = nil;
+    for (UIView *subview in view.subviews)
+    {
+        if (subview.tag == tag)
+            return subview;
+        else if ([subview.subviews count] > 0)
+            taggedView = [self searchSubviewsForTaggedView:tag inSubviews:subview];
+        
+        if (taggedView != nil)
+            return taggedView;
+    }
+    return taggedView;
+}
+
+- (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
+{
+    liarsDice = liarsDiceEngine;
 }
 @end

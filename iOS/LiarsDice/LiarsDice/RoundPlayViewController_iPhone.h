@@ -69,7 +69,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)rollDiceButton:(id)sender;
 
 
-
+- (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
 - (void)rollDice;
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
