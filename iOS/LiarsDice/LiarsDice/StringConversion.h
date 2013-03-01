@@ -18,4 +18,5 @@
 - (std::wstring)getwstring;
 - (std::string)getstring;
 - (std::string)getstringTrimmed;
+- (BOOL)isInteger;
 @end

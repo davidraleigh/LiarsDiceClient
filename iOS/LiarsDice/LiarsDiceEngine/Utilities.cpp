@@ -10,6 +10,7 @@
 
 #include <cmath>
 #include <sstream>
+#include <regex>
 
 
 // http://stackoverflow.com/questions/3152241/case-insensitive-stdstring-find
@@ -240,3 +241,31 @@ int Utilities::StringContains(std::string container, std::string contained)
 {
     return ci_find_substr(container, contained);
 }
+
+bool Utilities::StringIsInteger(std::string value)
+{
+    std::regex reg("\\s*[+-]?([1-9][0-9]*|0[0-7]*|0[xX][0-9a-fA-F]+)");
+    if (regex_match(value, reg))
+        return true;
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

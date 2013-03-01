@@ -63,6 +63,19 @@ public:
         
     }
     
+    void testStringIsInteger(void)
+    {
+        TS_ASSERT(Utilities::StringIsInteger("1"));
+        TS_ASSERT(Utilities::StringIsInteger("01"));
+        TS_ASSERT(!Utilities::StringIsInteger("1.1"));
+        TS_ASSERT(!Utilities::StringIsInteger(".1"));
+        TS_ASSERT(!Utilities::StringIsInteger("1="));
+        TS_ASSERT(!Utilities::StringIsInteger("1+1"));
+        TS_ASSERT(!Utilities::StringIsInteger("a"));
+        TS_ASSERT(!Utilities::StringIsInteger("1a"));
+        TS_ASSERT(!Utilities::StringIsInteger(""));
+    }
+    
     void testApplyFriction(void)
     {
         

@@ -94,6 +94,7 @@
     }
 }
 
+
 - (IBAction)invitePlayersButton:(id)sender
 {
     [[self navigationController] popViewControllerAnimated:YES];
@@ -101,7 +102,19 @@
 
 - (IBAction)startGameButton:(id)sender
 {
+    if (![[numberOfDiceTextField text] isInteger])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Edit Error" message:@"You cannot have a number of dice that is not an Integer. Edit field." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [numberOfDiceTextField setText:@""];
+        return;
+    }
+    
     GameStartLobbyViewController_iPhone *gslvc = [[GameStartLobbyViewController_iPhone alloc] init];
+
+    gslvc.diceCount = [[numberOfDiceTextField text] intValue];
+    gslvc.isWild = segmentedControl.selectedSegmentIndex == 0;
+    
     [[self navigationController] pushViewController:gslvc animated:YES];
 }
 
@@ -133,7 +146,6 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-
     GamePlayers::getInstance().MovePlayer([sourceIndexPath row], [destinationIndexPath row]);
 }
 
@@ -149,6 +161,8 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([numberOfDiceTextField isEditing])
+        [numberOfDiceTextField resignFirstResponder];
     return nil;
 }
 

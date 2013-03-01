@@ -194,9 +194,15 @@ public:
  void runTest() { suite_UtilitiesTestSuite.testCapitalization(); }
 } testDescription_suite_UtilitiesTestSuite_testCapitalization;
 
+static class TestDescription_suite_UtilitiesTestSuite_testStringIsInteger : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_UtilitiesTestSuite_testStringIsInteger() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 66, "testStringIsInteger" ) {}
+ void runTest() { suite_UtilitiesTestSuite.testStringIsInteger(); }
+} testDescription_suite_UtilitiesTestSuite_testStringIsInteger;
+
 static class TestDescription_suite_UtilitiesTestSuite_testApplyFriction : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 66, "testApplyFriction" ) {}
+ TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 79, "testApplyFriction" ) {}
  void runTest() { suite_UtilitiesTestSuite.testApplyFriction(); }
 } testDescription_suite_UtilitiesTestSuite_testApplyFriction;
 

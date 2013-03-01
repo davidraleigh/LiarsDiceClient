@@ -9,6 +9,14 @@
 #import "GameStartLobbyViewController.h"
 
 @interface GameStartLobbyViewController_iPhone : GameStartLobbyViewController
+{
+    __weak IBOutlet UITextField *wildSeedTextField;
+    
+}
+@property (readwrite)int diceCount;
+@property (readwrite)bool isWild;
+@property (readwrite)int wildSeed;
+
 - (IBAction)rollForFirstPlayButton:(id)sender;
 
 @end

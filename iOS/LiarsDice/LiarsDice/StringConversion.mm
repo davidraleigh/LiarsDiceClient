@@ -8,6 +8,8 @@
 
 #import "StringConversion.h"
 
+#include <Utilities.h>
+
 @implementation NSString (cppstring_additions)
 
 #if TARGET_RT_BIG_ENDIAN
@@ -45,4 +47,10 @@ const NSStringEncoding kEncoding_wchar_t = CFStringConvertEncodingToNSStringEnco
     return [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] UTF8String];
 }
 
+- (BOOL)isInteger
+{
+    if (Utilities::StringIsInteger([self getstring]))
+        return YES;
+    return NO;
+}
 @end

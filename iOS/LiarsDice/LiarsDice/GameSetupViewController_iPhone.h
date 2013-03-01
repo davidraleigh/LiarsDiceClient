@@ -13,8 +13,9 @@
     __weak IBOutlet UITextField *numberOfDiceTextField;
     __weak IBOutlet UITableView *groupSortTableView;
     __weak IBOutlet UIButton *editGroupButtonText;
-    
+    __weak IBOutlet UISegmentedControl *segmentedControl;
 }
+
 - (IBAction)backgroundTapped:(id)sender;
 - (IBAction)editGroupOrderButton:(id)sender;
 
