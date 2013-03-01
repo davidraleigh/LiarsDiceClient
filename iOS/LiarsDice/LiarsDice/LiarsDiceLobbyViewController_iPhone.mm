@@ -295,6 +295,14 @@
     return YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (GamePlayers::getInstance().PlayerCount() > 1)
+    {
+        [groupPlayersTable reloadData];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

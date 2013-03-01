@@ -11,9 +11,12 @@
 @interface GameSetupViewController_iPhone : GameSetupViewController <UITextFieldDelegate>
 {
     __weak IBOutlet UITextField *numberOfDiceTextField;
+    __weak IBOutlet UITableView *groupSortTableView;
+    __weak IBOutlet UIButton *editGroupButtonText;
     
 }
 - (IBAction)backgroundTapped:(id)sender;
+- (IBAction)editGroupOrderButton:(id)sender;
 
 - (IBAction)invitePlayersButton:(id)sender;
 - (IBAction)startGameButton:(id)sender;
