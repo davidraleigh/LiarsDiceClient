@@ -115,6 +115,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Player *player = GamePlayers::getInstance().GetPlayerAtPosition([indexPath row]);
     NSString *playerName = [NSString stringWithstring:player->GetPlayerName()];
     [[cell textLabel] setText:playerName];
@@ -143,8 +144,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return GamePlayers::getInstance().PlayerCount();;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -16,6 +16,7 @@
 #include <json/json.h>
 
 #define TABLE_VIEW_AVAILABLE_PLAYERS_TAG 36
+#define TABLE_VIEW_GROUP_PLAYERS_TAG 37
 
 @interface LiarsDiceLobbyViewController_iPhone ()
 
@@ -26,7 +27,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
         sortByKey = PlayersInLobby::Distance;
         PlayersInLobby::getInstance().SetSortType(sortByKey);
@@ -39,7 +41,6 @@
     [[self view] endEditing:YES];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,6 +49,9 @@
 
 - (IBAction)editGroupButton:(id)sender
 {
+    NSIndexPath *selectedIndex = [availablePlayersTable indexPathForSelectedRow];
+    [availablePlayersTable deselectRowAtIndexPath:selectedIndex animated:YES];
+    
     if ([groupPlayersTable isEditing])
     {
         [sender setTitle:@"Edit Group" forState:UIControlStateNormal];
@@ -123,12 +127,14 @@
     
     // insert this new row into the table
     [groupPlayersTable insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
+
+    [availablePlayersTable deselectRowAtIndexPath:selectedIndex animated:YES];
 }
 
 - (IBAction)playerTextFieldChanged:(id)sender
 {
-    // get the appropriate TableView
-    UITableView *tableView = (UITableView *)[self.view viewWithTag:TABLE_VIEW_AVAILABLE_PLAYERS_TAG];
+    NSIndexPath *selectedIndex = [availablePlayersTable indexPathForSelectedRow];
+    [availablePlayersTable deselectRowAtIndexPath:selectedIndex animated:YES];
     
     NSString *textField = [availablePlayersTextField text];
     std::string userText = [textField getstringTrimmed];
@@ -140,32 +146,32 @@
     {
         std::deque<int> indexStack = PlayersInLobby::getInstance().HidePlayers(userText);
         
-        [tableView deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
+        [availablePlayersTable deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
         
         PlayersInLobby::getInstance().Sort();
-        [tableView reloadData];
+        [availablePlayersTable reloadData];
     }
     else if (userText.size() < playerTextField.size() && playerTextField.compare(0, userText.size(), userText) == 0)
     {
         std::deque<int> indexVector = PlayersInLobby::getInstance().RevealPlayers(userText);
         
-        [tableView insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
+        [availablePlayersTable insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
         
         PlayersInLobby::getInstance().Sort();
-        [tableView reloadData];
+        [availablePlayersTable reloadData];
     }
     else if (playerTextField.compare(userText) != 0)
     {
         std::deque<int> indexVector = PlayersInLobby::getInstance().RevealPlayers(userText);
         
-        [tableView insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
+        [availablePlayersTable insertRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexVector] withRowAnimation:UITableViewRowAnimationTop];
         
         std::deque<int> indexStack = PlayersInLobby::getInstance().HidePlayers(userText);
         
-        [tableView deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
+        [availablePlayersTable deleteRowsAtIndexPaths:[LiarsDiceLobbyViewController_iPhone indexPathesToRemove:indexStack] withRowAnimation:UITableViewRowAnimationFade];
         
         PlayersInLobby::getInstance().Sort();
-        [tableView reloadData];
+        [availablePlayersTable reloadData];
     }
     
     playerTextField = userText;
@@ -175,10 +181,11 @@
     // check that the first few letters are the same
 }
 
-
-
 - (IBAction)sortyByButton:(id)sender
 {
+    NSIndexPath *selectedIndex = [availablePlayersTable indexPathForSelectedRow];
+    [availablePlayersTable deselectRowAtIndexPath:selectedIndex animated:YES];
+    
     PlayersInLobby::getInstance().SetSortType(sortByKey);
     PlayersInLobby::getInstance().Sort();
     // get the appropriate TableView
@@ -208,6 +215,9 @@
 
 - (IBAction)startGameButton:(id)sender
 {
+    NSIndexPath *selectedIndex = [availablePlayersTable indexPathForSelectedRow];
+    [availablePlayersTable deselectRowAtIndexPath:selectedIndex animated:YES];
+    
     GameSetupViewController_iPhone *gsvc = [[GameSetupViewController_iPhone alloc] init];
     [[self navigationController] pushViewController:gsvc animated:YES];
 }
@@ -218,7 +228,12 @@
     if (editingStyle == UITableViewCellEditingStyleDelete && [tableView tag] == 37)
     {
         // if player is "Me" then don't delete
-        
+        if (clientPlayerUID == GamePlayers::getInstance().GetPlayerUID([indexPath row]))
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Edit Error" message:@"You can't delete yourself" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+        }
         
         // remove from game players singleton
         GamePlayers::getInstance().DeletePlayerAtPosition([indexPath row]);
@@ -230,7 +245,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([tableView tag] == 36)
+    if ([tableView tag] == TABLE_VIEW_AVAILABLE_PLAYERS_TAG)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
         // if there is no reusable cell of this type create a new one
@@ -261,7 +276,7 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
         }
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         Player *player = GamePlayers::getInstance().GetPlayerAtPosition([indexPath row]);
         NSString *playerName = [NSString stringWithstring:player->GetPlayerName()];
         [[cell textLabel] setText:playerName];
@@ -287,6 +302,21 @@
     {
         return GamePlayers::getInstance().PlayerCount();;
     }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([availablePlayersTextField isEditing])
+        [availablePlayersTextField resignFirstResponder];
+    
+    if ([tableView tag] == TABLE_VIEW_GROUP_PLAYERS_TAG)
+    {
+        NSIndexPath *selectedIndex = [availablePlayersTable indexPathForSelectedRow];
+        [availablePlayersTable deselectRowAtIndexPath:selectedIndex animated:YES];
+        return nil;
+    }
+        
+    return indexPath;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
