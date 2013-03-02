@@ -202,7 +202,7 @@ public:
 
 static class TestDescription_suite_UtilitiesTestSuite_testApplyFriction : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 79, "testApplyFriction" ) {}
+ TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 80, "testApplyFriction" ) {}
  void runTest() { suite_UtilitiesTestSuite.testApplyFriction(); }
 } testDescription_suite_UtilitiesTestSuite_testApplyFriction;
 

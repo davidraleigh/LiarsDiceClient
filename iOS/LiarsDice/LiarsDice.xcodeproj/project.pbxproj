@@ -420,6 +420,32 @@
 			path = LiarsDiceEngineTests;
 			sourceTree = "<group>";
 		};
+		873D485216E25585007F2959 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				87E6028B16BB470B008E5457 /* Default.png */,
+				87E6028D16BB470B008E5457 /* Default@2x.png */,
+				87E6028F16BB470B008E5457 /* Default-568h@2x.png */,
+				872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */,
+				872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */,
+				872CA62816C05DB60056AF23 /* LD_DiceScroll_2.png */,
+				872CA62916C05DB60056AF23 /* LD_DiceScroll_3.png */,
+				872CA62A16C05DB60056AF23 /* LD_DiceScroll_4.png */,
+				872CA62B16C05DB60056AF23 /* LD_DiceScroll_5.png */,
+				872CA62C16C05DB60056AF23 /* LD_DiceScroll_6.png */,
+				872CA62D16C05DB60056AF23 /* LD_DiceScroll_7.png */,
+				872CA62316C05D930056AF23 /* LD_Bracket_1.png */,
+				872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */,
+				87E9554E16C0258F0067F4DF /* Die1.png */,
+				87E9554F16C0258F0067F4DF /* Die2.png */,
+				87E9555016C0258F0067F4DF /* Die3.png */,
+				87E9555116C0258F0067F4DF /* Die4.png */,
+				87E9555216C0258F0067F4DF /* Die5.png */,
+				87E9555316C0258F0067F4DF /* Die6.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		87815ECF16C5011D00269176 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,29 +677,11 @@
 			isa = PBXGroup;
 			children = (
 				8708D54216DBA8B400A1ED82 /* Utilities */,
-				872CA63516C05DC20056AF23 /* LD_TumblerBackdrop_1.png */,
-				872CA62716C05DB60056AF23 /* LD_DiceScroll_1.png */,
-				872CA62816C05DB60056AF23 /* LD_DiceScroll_2.png */,
-				872CA62916C05DB60056AF23 /* LD_DiceScroll_3.png */,
-				872CA62A16C05DB60056AF23 /* LD_DiceScroll_4.png */,
-				872CA62B16C05DB60056AF23 /* LD_DiceScroll_5.png */,
-				872CA62C16C05DB60056AF23 /* LD_DiceScroll_6.png */,
-				872CA62D16C05DB60056AF23 /* LD_DiceScroll_7.png */,
-				872CA62316C05D930056AF23 /* LD_Bracket_1.png */,
-				872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */,
-				87E9554E16C0258F0067F4DF /* Die1.png */,
-				87E9554F16C0258F0067F4DF /* Die2.png */,
-				87E9555016C0258F0067F4DF /* Die3.png */,
-				87E9555116C0258F0067F4DF /* Die4.png */,
-				87E9555216C0258F0067F4DF /* Die5.png */,
-				87E9555316C0258F0067F4DF /* Die6.png */,
+				873D485216E25585007F2959 /* Images */,
 				87E6028116BB470B008E5457 /* LiarsDice-Info.plist */,
 				87E6028216BB470B008E5457 /* InfoPlist.strings */,
 				87E6028516BB470B008E5457 /* main.m */,
 				87E6028716BB470B008E5457 /* LiarsDice-Prefix.pch */,
-				87E6028B16BB470B008E5457 /* Default.png */,
-				87E6028D16BB470B008E5457 /* Default@2x.png */,
-				87E6028F16BB470B008E5457 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1353,6 +1361,7 @@
 				870E515616DE1EA10025A3D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		870E516B16DE1F7B0025A3D9 /* Build configuration list for PBXNativeTarget "LiarsDiceEngineTests" */ = {
 			isa = XCConfigurationList;
@@ -1361,6 +1370,7 @@
 				870E516D16DE1F7B0025A3D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		878E9F0A16DA6CC7008E99A9 /* Build configuration list for PBXNativeTarget "LiarsDiceEngine" */ = {
 			isa = XCConfigurationList;
