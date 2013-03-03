@@ -60,7 +60,6 @@ public:
         TS_ASSERT_EQUALS(string2.compare("A chesty b.  JKingus"), 0);
         TS_ASSERT_EQUALS(string3.compare("  AlbErT  "), 0);
         TS_ASSERT_EQUALS(string4.compare("  A chesty b.  JKingus  "), 0);
-        
     }
     
     void testStringIsInteger(void)

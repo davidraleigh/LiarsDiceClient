@@ -32,14 +32,27 @@
 #define DICE_PIXEL_SEPARATION 2
 // #DEFINES FOR SCROLLINGDICEVIEW
 
+// #DEFINES FOR CURTAIN
 #define Y_MIN_FOR_CURTAIN -258
 #define Y_MAX_FOR_CURTAIN 0
+#define X_ORIGIN_HANDLE 171
+#define Y_ORIGIN_HANDLE 265
+#define WIDTH_HANDLE 138
+#define HEIGHT_HANDLE 56
+#define CURTAIN_DESCENT_ANIMATION_DURATION .25
+#define CURTAIN_DESCENT_ANIMATION_DELAY .05
+#define BOUNCE_DURATION .1
+#define BOUNCE_RANGE 8
+#define LOWEST_BOUNCE 6
+
+// #DEFINES FOR CURTAIN
 
 // #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
-#define ORIGIN_Y                    40
-#define ORIGIN_X                    20
+#define ORIGIN_Y                    42
+#define ORIGIN_X                    17
+#define SEPARATION_BETWEEN_BID_ITEMS 17
 #define LANDSCAPE_WIDTH             460
 //#define LANDSCAPE_HEIGHT			98
 //#define TABLEVIEW_HEIGHT            94
@@ -72,14 +85,9 @@
     {
         CGSize viewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
         tableviewHeight = (int)viewSize.height;
-        tableviewWidth = (int)viewSize.width;
+        tableviewWidth = (int)viewSize.width + SEPARATION_BETWEEN_BID_ITEMS;
         landscapeHeight = (int)tableviewHeight + 4;
         maxRollDuration = 0;
-        BidView_iPhone *bidView = [[BidView_iPhone alloc] init];
-        CGRect bidViewFrame = bidView.frame;
-        bidViewFrame.origin = CGPointMake(0, 143);
-        bidView.frame = bidViewFrame;
-        [self.view addSubview:bidView];
         
         liarsDice = std::make_shared<LiarsDiceEngine>(3, false, 3);
     }
@@ -117,6 +125,13 @@
         
         [self.view insertSubview:scrollingDice atIndex:1 + i];
     }
+    
+    BidView_iPhone *bidView = [[BidView_iPhone alloc] init];
+    CGRect bidViewFrame = bidView.frame;
+    bidViewFrame.origin = CGPointMake(0, 143);
+    bidView.frame = bidViewFrame;
+    [curtainView addSubview:bidView];
+    
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
     currentLowestQuantity = MIN_BID_QUANTITY;
@@ -125,7 +140,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,47 +148,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:self.view];
-    //
-    if (CGRectContainsPoint([[self view] window].frame, touchLocation))
-    {
-        dragging = YES;
-        oldY = touchLocation.y;
-    }
-}
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (dragging)
-    {
-        UITouch *touch = [[event allTouches] anyObject];
-        CGPoint touchLocation = [touch locationInView:self.view];
-        
-        for (UIView *subview in [self.view subviews])
-        {
-            if ([subview tag] == 99)
-            {
-                CGRect workingFrame = subview.frame;
-                workingFrame.origin.y += touchLocation.y - oldY;
-                oldY = touchLocation.y;
-                if (workingFrame.origin.y < Y_MIN_FOR_CURTAIN)
-                    workingFrame.origin.y = Y_MIN_FOR_CURTAIN;
-                else if (workingFrame.origin.y > Y_MAX_FOR_CURTAIN)
-                    workingFrame.origin.y = Y_MAX_FOR_CURTAIN;
-                
-                [subview setFrame:workingFrame];
-            }
-        }
-    }
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{    
-    dragging = NO;
-}
 
 #pragma mark -
 #pragma mark EasyTableView Initialization
@@ -475,5 +449,94 @@
 - (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
 {
     liarsDice = liarsDiceEngine;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    //
+    CGRect handleRect = CGRectMake(X_ORIGIN_HANDLE, Y_ORIGIN_HANDLE, WIDTH_HANDLE, HEIGHT_HANDLE);
+    if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
+    {
+        dragging = YES;
+        oldY = touchLocation.y;
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (dragging)
+    {
+        UITouch *touch = [[event allTouches] anyObject];
+        CGPoint touchLocation = [touch locationInView:self.view];
+        
+        for (UIView *subview in [self.view subviews])
+        {
+            if ([subview tag] == 99)
+            {
+                CGRect workingFrame = subview.frame;
+                workingFrame.origin.y += touchLocation.y - oldY;
+                oldY = touchLocation.y;
+                if (workingFrame.origin.y < Y_MIN_FOR_CURTAIN)
+                    workingFrame.origin.y = Y_MIN_FOR_CURTAIN;
+                else if (workingFrame.origin.y > Y_MAX_FOR_CURTAIN)
+                    workingFrame.origin.y = Y_MAX_FOR_CURTAIN;
+                
+                [subview setFrame:workingFrame];
+            }
+        }
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    dragging = NO;
+    
+    for (UIView *subview in [self.view subviews])
+    {
+        if ([subview tag] == 99)
+        {
+            CGRect workingFrame = subview.frame;
+            int releaseHeight = 0 - workingFrame.origin.y;
+            workingFrame.origin.y = 0;
+            CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
+            
+            [UIView animateWithDuration:CURTAIN_DESCENT_ANIMATION_DURATION delay:CURTAIN_DESCENT_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^{
+                subview.center = center;
+                NSLog(@"Animation Start");
+            }
+            completion:^(BOOL finished) {
+                int bounceCount = (arc4random() % 3) + 1;
+                int bounceHeight = LOWEST_BOUNCE + arc4random() % BOUNCE_RANGE;
+                if (releaseHeight > 100)
+                    [self bounceAnimation:subview withCount:bounceCount andBounceHeight:bounceHeight];
+                NSLog(@"finished animation");
+            }];
+        }
+    }
+}
+
+- (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight
+{
+    if (bounceCount-- > 0)
+    {
+        CGRect workingFrame = view.frame;
+        CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
+        CGPoint centerBounce = CGPointMake(center.x, center.y - bounceHeight);
+        bounceHeight /= 3;
+        [UIView animateWithDuration:BOUNCE_DURATION animations:^{
+            view.center = centerBounce;
+            NSLog(@"Bounce Start");
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:BOUNCE_DURATION animations:^{
+                view.center = center;
+                NSLog(@"Bounce Finish");
+            } completion:^(BOOL finished) {
+                [self bounceAnimation:view withCount:bounceCount andBounceHeight:bounceHeight];
+            }];
+        }];
+    }
+    
 }
 @end

@@ -31,7 +31,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     __weak IBOutlet UILabel *playersOddsLabel;
     __weak IBOutlet UILabel *typicalOddsLabel;
     
-    __weak IBOutlet UIImageView *handleView;
+    __weak IBOutlet UIView *curtainView;
     
     int currentLowestQuantity;
     int selectedQuantity;
@@ -68,9 +68,9 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 - (IBAction)rollDiceButton:(id)sender;
 
-
 - (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
 - (void)rollDice;
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
+- (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
 @end
