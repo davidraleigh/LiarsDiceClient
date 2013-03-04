@@ -153,16 +153,16 @@
 - (void)setupHorizontalView
 {
 	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, landscapeHeight);
-	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:3 ofWidth:tableviewWidth];
+	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:7 ofWidth:tableviewWidth];
 	self.horizontalView = view;
 	
 	horizontalView.delegate						= self;
 	horizontalView.tableView.backgroundColor	= TABLE_BACKGROUND_COLOR;
 	horizontalView.tableView.allowsSelection	= YES;
-	horizontalView.tableView.separatorColor		= [UIColor clearColor];
+	horizontalView.tableView.separatorColor		= [UIColor darkGrayColor];
 	horizontalView.cellBackgroundColor			= [UIColor clearColor];
 	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-	
+    
     UIView *gamePlayView = [self.view viewWithTag:99];
 	[gamePlayView addSubview:horizontalView];
 }
@@ -217,6 +217,16 @@
 	return container;
 }
 
+- (void)easyTableView:(EasyTableView *)easyTableView scrolledToOffset:(CGPoint)contentOffset
+{
+    CGFloat contentOffsetRaw = contentOffset.x;
+    CGFloat newOffsetX = tableviewWidth * (::round(contentOffsetRaw / ((CGFloat)tableviewWidth)));
+    contentOffset.x = newOffsetX;
+    
+    //tableviewWidth
+    [horizontalView setContentOffset:contentOffset];
+}
+
 // Second delegate populates the views with data from a data source
 
 - (void)easyTableView:(EasyTableView *)easyTableView
@@ -225,22 +235,29 @@
 {
     PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
     // this is the index of the last bid
+    // TODO fix this so that it works a bit differently for only two players
     int indexOfBid = [indexPath row];
-    if (indexOfBid == 0)
+    if (indexOfBid == 0 || indexOfBid == 1 ||
+        indexOfBid == liarsDice->GetBidCount() + 5 ||
+        indexOfBid == liarsDice->GetBidCount() + 6)
+    {
+        [playerBidItem setAsEmpty];
+    }
+    else if (indexOfBid == 2)
     {
         unsigned int nextNextPlayerUID = liarsDice->GetNextPlayerUID(liarsDice->GetNextPlayerUID());
         std::string playerNameString = liarsDice->GetPlayerName(nextNextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:-2 bidFaceValue:0 bidOdds:0];
     }
-    else if (indexOfBid == 1)
+    else if (indexOfBid == 3)
     {
         unsigned int nextPlayerUID = liarsDice->GetNextPlayerUID();
         std::string playerNameString = liarsDice->GetPlayerName(nextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:-1 bidFaceValue:0 bidOdds:0];
     }
-    else if (indexOfBid == 2)
+    else if (indexOfBid == 4)
     {
         unsigned int currentPlayerUID = liarsDice->GetCurrentUID();
         std::string playerNameString = liarsDice->GetPlayerName(currentPlayerUID);
@@ -248,9 +265,9 @@
         [playerBidItem setPlayerName:playerName bidQuantity:0
                         bidFaceValue:0 bidOdds:0];
     }
-    else if (indexOfBid > 2 && liarsDice->GetBidCount() + indexOfBid > 3)
+    else if (indexOfBid > 4 && liarsDice->GetBidCount() + indexOfBid > 5)
     {
-        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBid - 3);
+        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBid - 5);
         std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:0];
@@ -274,13 +291,14 @@
 	//bigLabel.text	= label.text;
 }
 
+
 #pragma mark -
 #pragma mark Optional EasyTableView delegate methods for section headers and footers
 
 // Delivers the number of cells in each section, this must be implemented if numberOfSectionsInEasyTableView is implemented
 -(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section
 {
-    return liarsDice->GetBidCount() + 3;
+    return liarsDice->GetBidCount() + 7;
 }
 
 

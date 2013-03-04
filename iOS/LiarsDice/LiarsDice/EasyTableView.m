@@ -104,6 +104,8 @@
 	
 	tableView.showsVerticalScrollIndicator	 = NO;
 	tableView.showsHorizontalScrollIndicator = NO;
+    
+    //tableView.pagingEnabled = YES;
 	
 	[self addSubview:tableView];
 }
@@ -152,7 +154,8 @@
 }
 
 
-- (void)setContentOffset:(CGPoint)offset {
+- (void)setContentOffset:(CGPoint)offset
+{
 	if (_orientation == EasyTableViewOrientationHorizontal)
 		self.tableView.contentOffset = CGPointMake(offset.y, offset.x);
 	else
@@ -323,7 +326,8 @@
 	return indexPath;
 }
 
-- (CGPoint)offsetForView:(UIView *)view {
+- (CGPoint)offsetForView:(UIView *)view
+{
 	// Get the location of the cell
 	CGPoint cellOrigin = [view convertPoint:view.frame.origin toView:self];
 	
@@ -334,7 +338,8 @@
 #pragma mark -
 #pragma mark TableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 	[self setSelectedIndexPath:indexPath];
 }
@@ -367,8 +372,10 @@
 	CGFloat amountScrolled	= self.contentOffset.x;
 	CGFloat maxScrollAmount = [self contentSize].width - self.bounds.size.width;
 	
-	if (amountScrolled > maxScrollAmount) amountScrolled = maxScrollAmount;
-	if (amountScrolled < 0) amountScrolled = 0;
+	if (amountScrolled > maxScrollAmount)
+        amountScrolled = maxScrollAmount;
+	if (amountScrolled < 0)
+        amountScrolled = 0;
 	
 	if ([delegate respondsToSelector:@selector(easyTableView:scrolledToFraction:)])
 		[delegate easyTableView:self scrolledToFraction:amountScrolled/maxScrollAmount];
@@ -418,8 +425,10 @@
 			rotatedView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 			rotatedView.transform = CGAffineTransformMakeRotation(M_PI/2);
 		}
-		else 
+		else
+        {
 			rotatedView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        }
 		
 		// We want to make sure any expanded content is not visible when the cell is deselected
 		rotatedView.clipsToBounds = YES;

@@ -10,6 +10,7 @@
 
 @interface PlayerBidItemView_iPhone : UIView
 {
+    __weak IBOutlet UILabel *timesMarkTextView;
     __weak IBOutlet UITextView *userNameTextView;
     __weak IBOutlet UILabel *bidQuantityLabel;
     __weak IBOutlet UIImageView *bidFaceValueImageView;
@@ -19,5 +20,6 @@
 }
 
 - (void)setPlayerName:(NSString *)name bidQuantity:(int)quantity bidFaceValue:(int)faceValue bidOdds:(int)odds;
+- (void)setAsEmpty;
 - (CGSize)getSize;
 @end

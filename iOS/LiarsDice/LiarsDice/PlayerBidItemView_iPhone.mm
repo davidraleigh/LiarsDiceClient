@@ -35,6 +35,12 @@
 
 - (void)setPlayerName:(NSString *)name bidQuantity:(int)quantity bidFaceValue:(int)faceValue bidOdds:(int)odds
 {
+    timesMarkTextView.hidden = NO;
+    userNameTextView.hidden = NO;
+    bidQuantityLabel.hidden = NO;
+    bidFaceValueImageView.hidden = NO;
+    oddsLabel.hidden = NO;
+    
     if (quantity == 0)
     {
         [oddsLabel setText:@"Current bidder"];
@@ -45,8 +51,6 @@
         [oddsLabel setText:@"Next next bidder"];
     else
         [oddsLabel setText:[[NSString alloc] initWithFormat:@"%d",odds]];
-
-    
     
     [bidQuantityLabel setText:[[NSString alloc] initWithFormat:@"%d",quantity]];
         
@@ -54,6 +58,17 @@
     [bidFaceValueImageView setImage:[UIImage imageNamed:dieImageName]];
     
     [userNameTextView setText:name];
+    topView.alpha = 1.0;
+}
+
+- (void)setAsEmpty
+{
+    timesMarkTextView.hidden = YES;
+    userNameTextView.hidden = YES;
+    bidQuantityLabel.hidden = YES;
+    bidFaceValueImageView.hidden = YES;
+    oddsLabel.hidden = YES;
+    topView.alpha = 0.0;
 }
 
 - (CGSize)getSize
