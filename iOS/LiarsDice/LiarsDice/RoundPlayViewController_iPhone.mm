@@ -248,9 +248,9 @@
         [playerBidItem setPlayerName:playerName bidQuantity:0
                         bidFaceValue:0 bidOdds:0];
     }
-    else if (indexOfBid > 2 && liarsDice->GetBidCount() > indexOfBid + 3)
+    else if (indexOfBid > 2 && liarsDice->GetBidCount() + indexOfBid > 3)
     {
-        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBid + 3);
+        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBid - 3);
         std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:0];
@@ -277,25 +277,17 @@
 #pragma mark -
 #pragma mark Optional EasyTableView delegate methods for section headers and footers
 
-#ifdef SHOW_MULTIPLE_SECTIONS
-
 // Delivers the number of cells in each section, this must be implemented if numberOfSectionsInEasyTableView is implemented
 -(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section
 {
     return liarsDice->GetBidCount() + 3;
 }
 
-// Delivers the number of sections in the TableView
-- (NSUInteger)numberOfSectionsInEasyTableView:(EasyTableView*)easyTableView
-{
-    return NUM_OF_SECTIONS;
-}
 
 
 
 
 
-#endif
 
 
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected
@@ -368,6 +360,7 @@
     unsigned int currentUID = liarsDice->GetCurrentUID();
     RoundDetails::bid_t bidValue = liarsDice->GenerateAIBid(currentUID);
     liarsDice->Bid(bidValue.bidQuantity, bidValue.bidFaceValue);
+    [horizontalView reloadData];
 }
 
 - (IBAction)quantityButton1:(id)sender
