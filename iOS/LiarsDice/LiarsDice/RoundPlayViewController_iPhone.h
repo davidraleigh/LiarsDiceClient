@@ -33,6 +33,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     
     __weak IBOutlet UIView *curtainView;
     
+    unsigned int devicePlayerUID;
+    
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;
@@ -52,6 +54,9 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 @property (nonatomic) EasyTableView *horizontalView;
 
+- (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
+- (IBAction)qaAdvanceGame:(id)sender;
+
 - (IBAction)quantityButton1:(id)sender;
 - (IBAction)quantityButton2:(id)sender;
 - (IBAction)quantityButton3:(id)sender;
@@ -68,7 +73,6 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 - (IBAction)rollDiceButton:(id)sender;
 
-- (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
 - (void)rollDice;
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;

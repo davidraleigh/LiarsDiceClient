@@ -124,6 +124,12 @@ public:
         //TS_ASSERT(false);// Test for JSON
         
     }
+    
+    void testClientUIDs(void)
+    {
+        unsigned int noID = GamePlayers::getInstance().GetClientUID();
+        TS_ASSERT_EQUALS(noID, 0);
+    }
 };
 
 #endif

@@ -16,6 +16,7 @@
 
 #import <LiarsDiceEngine.h>
 #import <Round.h>
+#import <GamePlayers.h>
 
 
 // TODO REPLACE THIS TEST CODE
@@ -28,7 +29,6 @@
 // #DEFINES FOR SCROLLINGDICEVIEW
 #define SCROLLING_DICE_VIEW_X_ORIGIN 10
 #define CENTER_OF_WINDOW_Y 90
-#define DICE_COUNT 7
 #define DICE_PIXEL_SEPARATION 2
 // #DEFINES FOR SCROLLINGDICEVIEW
 
@@ -78,19 +78,20 @@
 
 @synthesize horizontalView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"RoundPlayViewController_iPhone" bundle:nil];
     if (self)
     {
+        liarsDice = liarsDiceEngine;
         CGSize viewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
         tableviewHeight = (int)viewSize.height;
         tableviewWidth = (int)viewSize.width + SEPARATION_BETWEEN_BID_ITEMS;
         landscapeHeight = (int)tableviewHeight + 4;
         maxRollDuration = 0;
-        
-        liarsDice = std::make_shared<LiarsDiceEngine>(3, false, 3);
+        devicePlayerUID = GamePlayers::getInstance().GetClientUID();
     }
+    
     return self;
 }
 
@@ -98,11 +99,11 @@
 {
     [super viewDidLoad];
     
-    //liarsDice->StartRound();
-    //diceCount = liarsDice->GetPlayersDiceCount(liarsDice->GetCurrentUID());
-    //std::vector<int> hand = liarsDice->GetPlayersDice(liarsDice->GetCurrentUID());
     double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
-    for (int i = 0; i < DICE_COUNT; i++)
+    liarsDice->StartRound();
+    int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
+    std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
+    for (int i = 0; i < diceCount; i++)
     {
         NSString *fileName = [[NSString alloc] initWithFormat:@"LD_DiceScroll_%d.png", i + 1];
         UIImage *uiImage = [UIImage imageNamed:fileName];
@@ -110,11 +111,7 @@
         CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, uiImage.size.width / 2, uiImage.size.height / 2);
         xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
         
-        // TODO REPLACE THIS WITH REAL GAME CODE
-        int dieValue = (arc4random()%6)+1;
-        // TODO REPLACE THIS WITH REAL GAME CODE
-        
-        ScrollingDiceView *scrollingDice = [[ScrollingDiceView alloc]initWithFrame:frame andFaceValue:dieValue];
+        ScrollingDiceView *scrollingDice = [[ScrollingDiceView alloc]initWithFrame:frame andFaceValue:playersDice[i]];
         
         [scrollingDice setImage:uiImage];
         [scrollingDice setTag:i + 1];
@@ -234,21 +231,22 @@
         unsigned int nextNextPlayerUID = liarsDice->GetNextPlayerUID(liarsDice->GetNextPlayerUID());
         std::string playerNameString = liarsDice->GetPlayerName(nextNextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        [playerBidItem setPlayerName:playerName bidQuantity:0 bidFaceValue:0 bidOdds:0];
+        [playerBidItem setPlayerName:playerName bidQuantity:-2 bidFaceValue:0 bidOdds:0];
     }
     else if (indexOfBid == 1)
     {
         unsigned int nextPlayerUID = liarsDice->GetNextPlayerUID();
         std::string playerNameString = liarsDice->GetPlayerName(nextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        [playerBidItem setPlayerName:playerName bidQuantity:0 bidFaceValue:0 bidOdds:0];
+        [playerBidItem setPlayerName:playerName bidQuantity:-1 bidFaceValue:0 bidOdds:0];
     }
     else if (indexOfBid == 2)
     {
         unsigned int currentPlayerUID = liarsDice->GetCurrentUID();
         std::string playerNameString = liarsDice->GetPlayerName(currentPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        [playerBidItem setPlayerName:playerName bidQuantity:0 bidFaceValue:0 bidOdds:0];
+        [playerBidItem setPlayerName:playerName bidQuantity:0
+                        bidFaceValue:0 bidOdds:0];
     }
     else if (indexOfBid > 2 && liarsDice->GetBidCount() > indexOfBid + 3)
     {
@@ -298,7 +296,6 @@
 
 
 #endif
-
 
 
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected
@@ -366,6 +363,13 @@
 {
 }
 
+- (IBAction)qaAdvanceGame:(id)sender
+{
+    unsigned int currentUID = liarsDice->GetCurrentUID();
+    RoundDetails::bid_t bidValue = liarsDice->GenerateAIBid(currentUID);
+    liarsDice->Bid(bidValue.bidQuantity, bidValue.bidFaceValue);
+}
+
 - (IBAction)quantityButton1:(id)sender
 {
     //shift -3
@@ -404,6 +408,7 @@
 
 - (IBAction)rollDiceButton:(id)sender
 {
+    //liarsDice->StartRound();
     if ([self.view subviews])
     {
         // Make sure we have a chance to discover devices before showing the user that nothing was found (yet)
@@ -537,6 +542,5 @@
             }];
         }];
     }
-    
 }
 @end

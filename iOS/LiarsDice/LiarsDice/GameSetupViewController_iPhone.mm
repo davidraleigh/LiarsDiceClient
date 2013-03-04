@@ -103,6 +103,12 @@
         [numberOfDiceTextField setText:@""];
         return;
     }
+    else if (GamePlayers::getInstance().PlayerCount() < 2)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Edit Error" message:@"You need at least 2 players to start the game." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     
     GameStartLobbyViewController_iPhone *gslvc = [[GameStartLobbyViewController_iPhone alloc] init];
 

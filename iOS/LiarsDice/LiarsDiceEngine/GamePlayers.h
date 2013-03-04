@@ -61,7 +61,7 @@ public:
     std::string GetPlayerNameAtUID(unsigned int playerUID); // Tested
     
     unsigned int GetPlayerUID(int position); // Tested
-    
+    unsigned int GetClientUID();
     /**
      * Move the player from the source position
      * to the destination position and leave other

@@ -35,6 +35,12 @@ public:
  void runTest() { suite_GamePlayersTestSuite.testGamePlayer(); }
 } testDescription_suite_GamePlayersTestSuite_testGamePlayer;
 
+static class TestDescription_suite_GamePlayersTestSuite_testClientUIDs : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_GamePlayersTestSuite_testClientUIDs() : CxxTest::RealTestDescription( Tests_GamePlayersTestSuite, suiteDescription_GamePlayersTestSuite, 128, "testClientUIDs" ) {}
+ void runTest() { suite_GamePlayersTestSuite.testClientUIDs(); }
+} testDescription_suite_GamePlayersTestSuite_testClientUIDs;
+
 #include "TestLiarsDiceEngine.h"
 
 static LiarsDiceEngineTestSuite suite_LiarsDiceEngineTestSuite;
@@ -196,13 +202,13 @@ public:
 
 static class TestDescription_suite_UtilitiesTestSuite_testStringIsInteger : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_UtilitiesTestSuite_testStringIsInteger() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 66, "testStringIsInteger" ) {}
+ TestDescription_suite_UtilitiesTestSuite_testStringIsInteger() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 65, "testStringIsInteger" ) {}
  void runTest() { suite_UtilitiesTestSuite.testStringIsInteger(); }
 } testDescription_suite_UtilitiesTestSuite_testStringIsInteger;
 
 static class TestDescription_suite_UtilitiesTestSuite_testApplyFriction : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 80, "testApplyFriction" ) {}
+ TestDescription_suite_UtilitiesTestSuite_testApplyFriction() : CxxTest::RealTestDescription( Tests_UtilitiesTestSuite, suiteDescription_UtilitiesTestSuite, 78, "testApplyFriction" ) {}
  void runTest() { suite_UtilitiesTestSuite.testApplyFriction(); }
 } testDescription_suite_UtilitiesTestSuite_testApplyFriction;
 

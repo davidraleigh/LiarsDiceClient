@@ -110,6 +110,15 @@ unsigned int GamePlayers::GetAvailableDummyUID()
     return availableUID;
 }
 
+unsigned int GamePlayers::GetClientUID()
+{
+    std::map<unsigned int, Player>::iterator iter;
+    for (iter = m_playersMap.begin(); iter != m_playersMap.end(); iter++)
+        if (iter->second.GetPlayerType() == Player::Local)
+            return iter->first;
+    return 0;
+}
+
 unsigned int GamePlayers::GetGroupLeaderUID()
 {
     return m_groupLeaderUID;

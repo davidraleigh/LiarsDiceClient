@@ -35,10 +35,21 @@
 
 - (void)setPlayerName:(NSString *)name bidQuantity:(int)quantity bidFaceValue:(int)faceValue bidOdds:(int)odds
 {
+    if (quantity == 0)
+    {
+        [oddsLabel setText:@"Current bidder"];
+    }
+    else if (quantity == -1)
+        [oddsLabel setText:@"Next bidder"];
+    else if (quantity == -2)
+        [oddsLabel setText:@"Next next bidder"];
+    else
+        [oddsLabel setText:[[NSString alloc] initWithFormat:@"%d",odds]];
 
-    [bidQuantityLabel setText:[[NSString alloc] initWithFormat:@"%d",quantity]];
-    [oddsLabel setText:[[NSString alloc] initWithFormat:@"%d",odds]];
     
+    
+    [bidQuantityLabel setText:[[NSString alloc] initWithFormat:@"%d",quantity]];
+        
     NSString *dieImageName = [[NSString alloc] initWithFormat:@"Die%d.png",faceValue];
     [bidFaceValueImageView setImage:[UIImage imageNamed:dieImageName]];
     

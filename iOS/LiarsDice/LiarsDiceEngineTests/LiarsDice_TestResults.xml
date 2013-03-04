@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite name="cxxtest"  tests="19" errors="0" failures="1" time="0" >
+<testsuite name="cxxtest"  tests="20" errors="0" failures="0" time="0" >
     <testcase classname="GamePlayersTestSuite" name="testGamePlayer" line="19" />
+    <testcase classname="GamePlayersTestSuite" name="testClientUIDs" line="128" />
     <testcase classname="LiarsDiceEngineTestSuite" name="testLiarsDiceEngine" line="34" />
     <testcase classname="LiarsDiceEngineTestSuite" name="testDestructor" line="48" />
     <testcase classname="LiarsDiceRESTTestSuite" name="testUserNameUpdate" line="26" />
@@ -17,12 +18,6 @@
     <testcase classname="MyTestSuite1" name="testAddition" line="17" />
     <testcase classname="UtilitiesTestSuite" name="testStringContains" line="29" />
     <testcase classname="UtilitiesTestSuite" name="testCapitalization" line="48" />
-    <testcase classname="UtilitiesTestSuite" name="testStringIsInteger" line="66">
-        <failure file="/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestUtilities.h" line="70" type="failedAssert" >Assertion failed: Utilities::StringIsInteger(&quot;\\0x0A&quot;)</failure>
-        <system-out >
-In UtilitiesTestSuite::testStringIsInteger:
-/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestUtilities.h:70: Error: Assertion failed: Utilities::StringIsInteger(&quot;\\0x0A&quot;)
-</system-out>
-    </testcase>
-    <testcase classname="UtilitiesTestSuite" name="testApplyFriction" line="80" />
+    <testcase classname="UtilitiesTestSuite" name="testStringIsInteger" line="65" />
+    <testcase classname="UtilitiesTestSuite" name="testApplyFriction" line="78" />
 </testsuite>

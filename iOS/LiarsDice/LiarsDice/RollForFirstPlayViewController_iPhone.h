@@ -17,10 +17,15 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 @interface RollForFirstPlayViewController_iPhone : RollForFirstPlayViewController
 {
     std::shared_ptr<LiarsDiceEngine> liarsDice;
+    __weak IBOutlet UILabel *rollResultsLable;
     
+    bool hasRolledDie;
     double maxRollDuration;
+    NSTimer *myTimer;
 }
 
+- (IBAction)startRound:(id)sender;
 - (void)setLiarsDiceGame:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine;
+- (void)rollDice;
 - (IBAction)rollDiceButton:(id)sender;
 @end
