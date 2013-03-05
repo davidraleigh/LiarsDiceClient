@@ -66,6 +66,7 @@ typedef enum {
 	NSUInteger	_numItems;
 }
 
+@property (nonatomic, readonly) CGFloat cellWidthOrHeight;
 @property (nonatomic, unsafe_unretained) id<EasyTableViewDelegate> delegate;
 @property (nonatomic, readonly, unsafe_unretained) UITableView *tableView;
 @property (nonatomic, readonly, unsafe_unretained) NSArray *visibleViews;

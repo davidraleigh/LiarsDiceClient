@@ -45,6 +45,7 @@
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize orientation = _orientation;
 @synthesize numberOfCells = _numItems;
+@synthesize cellWidthOrHeight;
 
 #pragma mark -
 #pragma mark Initialization
@@ -56,6 +57,7 @@
     {
 		_numItems			= numCols;
 		_cellWidthOrHeight	= width;
+        cellWidthOrHeight = width;
 		
 		[self createTableWithOrientation:EasyTableViewOrientationHorizontal];
 	}
@@ -69,6 +71,7 @@
     {
 		_numItems			= numRows;
 		_cellWidthOrHeight	= height;
+        cellWidthOrHeight   = height;
 		
 		[self createTableWithOrientation:EasyTableViewOrientationVertical];
     }
@@ -371,7 +374,7 @@
 	
 	CGFloat amountScrolled	= self.contentOffset.x;
 	CGFloat maxScrollAmount = [self contentSize].width - self.bounds.size.width;
-	
+	NSLog(@"amountScrolled %f", amountScrolled);
 	if (amountScrolled > maxScrollAmount)
         amountScrolled = maxScrollAmount;
 	if (amountScrolled < 0)
@@ -381,6 +384,28 @@
 		[delegate easyTableView:self scrolledToFraction:amountScrolled/maxScrollAmount];
 }
 
+
+- (void)scrollViewDidEndDecelerating:(UITableView *)tableView
+{
+    int offset = (int)self.contentOffset.x;
+   // NSLog(@"columnWidt %d", tableviewColumnWidth);
+    //int tomove = ((int)tableView.contentOffset.y%(int)tableView.rowHeight);
+    int tomove = offset %  (int)cellWidthOrHeight;
+    NSLog(@"tomove %d", tomove);
+    //if(tomove < tableView.rowHeight/2)
+    if (tomove < (int)cellWidthOrHeight / 2)
+        [self setContentOffset:CGPointMake(offset - tomove, 0) animated:YES];
+    else
+        [self setContentOffset:CGPointMake(offset + ((int)cellWidthOrHeight - tomove), 0) animated:YES];
+}
+
+- (void)scrollViewDidEndDragging:(UITableView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(decelerate)
+        return;
+    
+    [self scrollViewDidEndDecelerating:scrollView];
+}
 
 #pragma mark -
 #pragma mark TableViewDataSource

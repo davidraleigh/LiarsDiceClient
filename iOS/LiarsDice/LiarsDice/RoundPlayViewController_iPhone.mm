@@ -217,15 +217,15 @@
 	return container;
 }
 
-- (void)easyTableView:(EasyTableView *)easyTableView scrolledToOffset:(CGPoint)contentOffset
-{
-    CGFloat contentOffsetRaw = contentOffset.x;
-    CGFloat newOffsetX = tableviewWidth * (::round(contentOffsetRaw / ((CGFloat)tableviewWidth)));
-    contentOffset.x = newOffsetX;
-    
-    //tableviewWidth
-    [horizontalView setContentOffset:contentOffset];
-}
+//- (void)easyTableView:(EasyTableView *)easyTableView scrolledToOffset:(CGPoint)contentOffset
+//{
+//    CGFloat contentOffsetRaw = contentOffset.x;
+//    CGFloat newOffsetX = tableviewWidth * (::round(contentOffsetRaw / ((CGFloat)tableviewWidth)));
+//    contentOffset.x = newOffsetX;
+//    
+//    //tableviewWidth
+//    [horizontalView setContentOffset:contentOffset];
+//}
 
 // Second delegate populates the views with data from a data source
 
@@ -292,6 +292,7 @@
 }
 
 
+
 #pragma mark -
 #pragma mark Optional EasyTableView delegate methods for section headers and footers
 
@@ -300,13 +301,6 @@
 {
     return liarsDice->GetBidCount() + 7;
 }
-
-
-
-
-
-
-
 
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected
 {
