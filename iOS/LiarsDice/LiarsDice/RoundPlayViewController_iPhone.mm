@@ -7,6 +7,8 @@
 //
 
 #import "RoundPlayViewController_iPhone.h"
+#import "PlayersShowDiceViewController_iPhone.h"
+
 
 #import "ScrollingDiceView.h"
 #import "EasyTableView.h"
@@ -54,6 +56,7 @@
 #define ORIGIN_X                    17
 #define SEPARATION_BETWEEN_BID_ITEMS 17
 #define LANDSCAPE_WIDTH             460
+#define STARTUP_OFFSET_COUNT        2
 //#define LANDSCAPE_HEIGHT			98
 //#define TABLEVIEW_HEIGHT            94
 //#define TABLEVIEW_WIDTH             164
@@ -90,6 +93,7 @@
         landscapeHeight = (int)tableviewHeight + 4;
         maxRollDuration = 0;
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
+        bidIndexForCenterBidItem = 2;
     }
     
     return self;
@@ -131,14 +135,16 @@
     
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
+
     currentLowestQuantity = MIN_BID_QUANTITY;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
+    CGPoint offsetPoint = CGPointMake(STARTUP_OFFSET_COUNT * tableviewWidth, 0);
+    [horizontalView setContentOffset:offsetPoint];
+    [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:2]];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -158,8 +164,8 @@
 	
 	horizontalView.delegate						= self;
 	horizontalView.tableView.backgroundColor	= TABLE_BACKGROUND_COLOR;
-	horizontalView.tableView.allowsSelection	= YES;
-	horizontalView.tableView.separatorColor		= [UIColor darkGrayColor];
+	//horizontalView.tableView.allowsSelection	= YES;
+	horizontalView.tableView.separatorColor		= [UIColor clearColor];
 	horizontalView.cellBackgroundColor			= [UIColor clearColor];
 	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     
@@ -171,12 +177,12 @@
 #pragma mark -
 #pragma mark Utility Methods
 
-- (void)borderIsSelected:(BOOL)selected forView:(UIView *)view
-{
-	UIImageView *borderView		= (UIImageView *)[view viewWithTag:BORDER_VIEW_TAG];
-	NSString *borderImageName	= (selected) ? @"selected_border.png" : @"image_border.png";
-	borderView.image			= [UIImage imageNamed:borderImageName];
-}
+//- (void)borderIsSelected:(BOOL)selected forView:(UIView *)view
+//{
+//	UIImageView *borderView		= (UIImageView *)[view viewWithTag:BORDER_VIEW_TAG];
+//	NSString *borderImageName	= (selected) ? @"selected_border.png" : @"image_border.png";
+//	borderView.image			= [UIImage imageNamed:borderImageName];
+//}
 
 
 #pragma mark -
@@ -192,40 +198,8 @@
     tempView.tag = PLAYER_BID_ITEM_TAG;
     [container addSubview:tempView];
     
-//	CGRect labelRect		= CGRectMake(10, 10, rect.size.width-20, rect.size.height-20);
-//	UILabel *label			= [[UILabel alloc] initWithFrame:labelRect];
-//#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-//	label.textAlignment		= UITextAlignmentCenter;
-//#else
-//	label.textAlignment		= NSTextAlignmentCenter;
-//#endif
-//	label.textColor			= [UIColor whiteColor];
-//	label.font				= [UIFont boldSystemFontOfSize:60];
-//	
-//	// Use a different color for the two different examples
-//	if (easyTableView == horizontalView)
-//		label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
-//	else
-//		label.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
-//	
-//	UIImageView *borderView		= [[UIImageView alloc] initWithFrame:label.bounds];
-//	borderView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//	borderView.tag				= BORDER_VIEW_TAG;
-//	
-//	[label addSubview:borderView];
-    
 	return container;
 }
-
-//- (void)easyTableView:(EasyTableView *)easyTableView scrolledToOffset:(CGPoint)contentOffset
-//{
-//    CGFloat contentOffsetRaw = contentOffset.x;
-//    CGFloat newOffsetX = tableviewWidth * (::round(contentOffsetRaw / ((CGFloat)tableviewWidth)));
-//    contentOffset.x = newOffsetX;
-//    
-//    //tableviewWidth
-//    [horizontalView setContentOffset:contentOffset];
-//}
 
 // Second delegate populates the views with data from a data source
 
@@ -242,6 +216,7 @@
         indexOfBid == liarsDice->GetBidCount() + 6)
     {
         [playerBidItem setAsEmpty];
+        //playerBidItem.bidIndex = indexOfBid == 1 ? liarsDice->GetBidCount() + 1 : liarsDice->GetBidCount() + 2;
     }
     else if (indexOfBid == 2)
     {
@@ -249,6 +224,7 @@
         std::string playerNameString = liarsDice->GetPlayerName(nextNextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:-2 bidFaceValue:0 bidOdds:0];
+        playerBidItem.bidIndex = liarsDice->GetBidCount() + 2;
     }
     else if (indexOfBid == 3)
     {
@@ -256,6 +232,7 @@
         std::string playerNameString = liarsDice->GetPlayerName(nextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:-1 bidFaceValue:0 bidOdds:0];
+        playerBidItem.bidIndex = liarsDice->GetBidCount() + 1;
     }
     else if (indexOfBid == 4)
     {
@@ -264,6 +241,7 @@
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:0
                         bidFaceValue:0 bidOdds:0];
+        playerBidItem.bidIndex = liarsDice->GetBidCount();
     }
     else if (indexOfBid > 4 && liarsDice->GetBidCount() + indexOfBid > 5)
     {
@@ -271,27 +249,15 @@
         std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:0];
+        playerBidItem.bidIndex = indexOfBid - 5;
     }
     [view addSubview:playerBidItem];
 }
 
-// Optional delegate to track the selection of a particular cell
-
-- (void)easyTableView:(EasyTableView *)easyTableView
-         selectedView:(UIView *)selectedView
-          atIndexPath:(NSIndexPath *)indexPath
-       deselectedView:(UIView *)deselectedView
+- (void)easyTableView:(EasyTableView *)easyTableView viewAtCenter:(UIView *)view
 {
-	[self borderIsSelected:YES forView:selectedView];
-	
-	if (deselectedView)
-		[self borderIsSelected:NO forView:deselectedView];
-	
-	//UILabel *label	= (UILabel *)selectedView;
-	//bigLabel.text	= label.text;
+    [self updateDetailedPlayerInfo:view];    
 }
-
-
 
 #pragma mark -
 #pragma mark Optional EasyTableView delegate methods for section headers and footers
@@ -371,8 +337,20 @@
 {
     unsigned int currentUID = liarsDice->GetCurrentUID();
     RoundDetails::bid_t bidValue = liarsDice->GenerateAIBid(currentUID);
+    if (bidValue.bidFaceValue == -1)
+    {
+        NSString *challenger = [NSString stringWithstring:liarsDice->GetPlayerName(currentUID)];
+        NSString *previousBidder = [NSString stringWithstring:liarsDice->GetPlayerName(liarsDice->GetPreviousPlayerUID())];
+        NSString *message = [[NSString alloc] initWithFormat:@"%@ challenged the bid from %@", challenger, previousBidder];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Challenge" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        PlayersShowDiceViewController_iPhone *psdvc = [[PlayersShowDiceViewController_iPhone alloc] init];
+        [[self navigationController] pushViewController:psdvc animated:YES];
+    }
+    
     liarsDice->Bid(bidValue.bidQuantity, bidValue.bidFaceValue);
     [horizontalView reloadData];
+    [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:2]];
 }
 
 - (IBAction)quantityButton1:(id)sender
@@ -547,5 +525,40 @@
             }];
         }];
     }
+}
+
+- (void)updateDetailedPlayerInfo:(UIView *)view
+{
+    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
+    if (bidIndexForCenterBidItem == playerBidItem.bidIndex)
+        return;
+    
+    bidIndexForCenterBidItem = playerBidItem.bidIndex;
+    // if the current highlighted bid item view is the client and it is the clients turn to bid
+    // then show bid view
+    if (bidIndexForCenterBidItem == liarsDice->GetBidCount() &&
+        GamePlayers::getInstance().GetClientUID() == liarsDice->GetCurrentUID())
+    {
+        // Show bidding view
+        NSLog(@"Show bidding window now %@", [playerBidItem getPlayerName]);
+    }
+    else if (bidIndexForCenterBidItem == liarsDice->GetBidCount() &&
+             GamePlayers::getInstance().GetClientUID() == liarsDice->GetCurrentUID())
+    {
+        NSLog(@"Show challenge option now %@", [playerBidItem getPlayerName]);
+    }
+    else if (bidIndexForCenterBidItem > liarsDice->GetBidCount())
+    {
+        NSLog(@"Show info about potential bids %@", [playerBidItem getPlayerName]);
+    }
+    else if (bidIndexForCenterBidItem == liarsDice->GetBidCount())
+    {
+        NSLog(@"Show current bidder info %@", [playerBidItem getPlayerName]);
+    }
+    else
+    {
+        NSLog(@"Show previous bid info %@",[playerBidItem getPlayerName]);
+    }
+
 }
 @end

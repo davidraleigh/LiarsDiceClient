@@ -39,6 +39,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     int selectedQuantity;
     int selectedFaceValue;
     int currentHighlightedPosition;
+    int bidIndexForCenterBidItem;
     
     int landscapeHeight;
     int tableviewHeight;
@@ -77,4 +78,5 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
 - (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
+- (void)updateDetailedPlayerInfo:(UIView *)view;
 @end

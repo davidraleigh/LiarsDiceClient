@@ -10,6 +10,8 @@
 
 @implementation PlayerBidItemView_iPhone
 
+@synthesize bidIndex;
+
 - (id)init
 {
     self = [super init];
@@ -32,6 +34,10 @@
     return self;
 }
 
+- (NSString *)getPlayerName
+{
+    return [userNameTextView text];
+}
 
 - (void)setPlayerName:(NSString *)name bidQuantity:(int)quantity bidFaceValue:(int)faceValue bidOdds:(int)odds
 {

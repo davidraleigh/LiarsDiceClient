@@ -38,7 +38,8 @@
 #define ROTATED_CELL_VIEW_TAG	801
 #define CELL_CONTENT_TAG		802
 
-typedef enum {
+typedef enum
+{
 	EasyTableViewOrientationVertical,
 	EasyTableViewOrientationHorizontal
 } EasyTableViewOrientation;
@@ -57,6 +58,7 @@ typedef enum {
 - (UIView*)easyTableView:(EasyTableView*)easyTableView viewForHeaderInSection:(NSInteger)section;
 - (UIView*)easyTableView:(EasyTableView*)easyTableView viewForFooterInSection:(NSInteger)section;
 - (CGFloat)easyTableView:(EasyTableView *)easyTableView heightOrWidthForCellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)easyTableView:(EasyTableView *)easyTableView viewAtCenter:(UIView *)view;
 @end
 
 

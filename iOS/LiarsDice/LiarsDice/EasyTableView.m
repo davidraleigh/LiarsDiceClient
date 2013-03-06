@@ -374,21 +374,30 @@
 	
 	CGFloat amountScrolled	= self.contentOffset.x;
 	CGFloat maxScrollAmount = [self contentSize].width - self.bounds.size.width;
-	NSLog(@"amountScrolled %f", amountScrolled);
 	if (amountScrolled > maxScrollAmount)
         amountScrolled = maxScrollAmount;
 	if (amountScrolled < 0)
         amountScrolled = 0;
-	
+	NSLog(@"amountScrolled %f", amountScrolled);
 	if ([delegate respondsToSelector:@selector(easyTableView:scrolledToFraction:)])
 		[delegate easyTableView:self scrolledToFraction:amountScrolled/maxScrollAmount];
+    
+    if ([delegate respondsToSelector:@selector(easyTableView:viewAtCenter:)] &&
+        (int)amountScrolled % (int)cellWidthOrHeight == 0 &&
+        [self.visibleViews count] > 0)
+    {
+        UIView *view = [self.visibleViews objectAtIndex:2];
+        [delegate easyTableView:self viewAtCenter:view];
+        //[delegate easyTableView:self viewAtCenter:view];
+    }
 }
 
 
 - (void)scrollViewDidEndDecelerating:(UITableView *)tableView
 {
     int offset = (int)self.contentOffset.x;
-   // NSLog(@"columnWidt %d", tableviewColumnWidth);
+    
+    // NSLog(@"columnWidt %d", tableviewColumnWidth);
     //int tomove = ((int)tableView.contentOffset.y%(int)tableView.rowHeight);
     int tomove = offset %  (int)cellWidthOrHeight;
     NSLog(@"tomove %d", tomove);
@@ -397,6 +406,8 @@
         [self setContentOffset:CGPointMake(offset - tomove, 0) animated:YES];
     else
         [self setContentOffset:CGPointMake(offset + ((int)cellWidthOrHeight - tomove), 0) animated:YES];
+    
+    NSLog(@"Final Position %f %f", self.center.x, self.center.y);
 }
 
 - (void)scrollViewDidEndDragging:(UITableView *)scrollView willDecelerate:(BOOL)decelerate

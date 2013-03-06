@@ -19,7 +19,10 @@
     
 }
 
+@property (nonatomic) int bidIndex;
+
 - (void)setPlayerName:(NSString *)name bidQuantity:(int)quantity bidFaceValue:(int)faceValue bidOdds:(int)odds;
 - (void)setAsEmpty;
+- (NSString *)getPlayerName;
 - (CGSize)getSize;
 @end
