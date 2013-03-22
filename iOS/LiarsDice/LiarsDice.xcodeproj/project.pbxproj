@@ -36,6 +36,12 @@
 		872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */; };
 		872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */; };
 		876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 876BC51216C5621400589EA4 /* ScrollingDiceView.mm */; };
+		8780BD5316EA570F00B377F7 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8780BD5116EA570F00B377F7 /* HttpClient.cpp */; };
+		8780BD5416EA570F00B377F7 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8780BD5116EA570F00B377F7 /* HttpClient.cpp */; };
+		8780BD5516EA570F00B377F7 /* HttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8780BD5216EA570F00B377F7 /* HttpClient.h */; };
+		8780BD5816EA588400B377F7 /* GreenCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780BD5616EA588400B377F7 /* GreenCheck.png */; };
+		8780BD5916EA588400B377F7 /* redx.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780BD5716EA588400B377F7 /* redx.png */; };
+		8780BD5B16EA58E500B377F7 /* GrayCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780BD5A16EA58E500B377F7 /* GrayCircle.png */; };
 		87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */; };
 		87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */; };
 		878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */; };
@@ -210,6 +216,11 @@
 		872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundPlayViewController_iPhone.xib; sourceTree = "<group>"; };
 		876BC51116C5621400589EA4 /* ScrollingDiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingDiceView.h; sourceTree = "<group>"; };
 		876BC51216C5621400589EA4 /* ScrollingDiceView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollingDiceView.mm; sourceTree = "<group>"; };
+		8780BD5116EA570F00B377F7 /* HttpClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClient.cpp; sourceTree = "<group>"; };
+		8780BD5216EA570F00B377F7 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		8780BD5616EA588400B377F7 /* GreenCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenCheck.png; sourceTree = "<group>"; };
+		8780BD5716EA588400B377F7 /* redx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redx.png; sourceTree = "<group>"; };
+		8780BD5A16EA58E500B377F7 /* GrayCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayCircle.png; sourceTree = "<group>"; };
 		87815ED016C5016500269176 /* PlayerBidItemView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBidItemView_iPhone.h; sourceTree = "<group>"; };
 		87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerBidItemView_iPhone.mm; sourceTree = "<group>"; };
 		87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerBidItemView_iPhone.xib; sourceTree = "<group>"; };
@@ -423,6 +434,9 @@
 		873D485216E25585007F2959 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8780BD5A16EA58E500B377F7 /* GrayCircle.png */,
+				8780BD5616EA588400B377F7 /* GreenCheck.png */,
+				8780BD5716EA588400B377F7 /* redx.png */,
 				87E6028B16BB470B008E5457 /* Default.png */,
 				87E6028D16BB470B008E5457 /* Default@2x.png */,
 				87E6028F16BB470B008E5457 /* Default-568h@2x.png */,
@@ -466,6 +480,8 @@
 			children = (
 				878E9F4516DA6FD8008E99A9 /* GamePlayers.h */,
 				878E9F4416DA6FD8008E99A9 /* GamePlayers.cpp */,
+				8780BD5216EA570F00B377F7 /* HttpClient.h */,
+				8780BD5116EA570F00B377F7 /* HttpClient.cpp */,
 				878E9F1116DA6D16008E99A9 /* LiarsDiceEngine.h */,
 				878E9F1016DA6D16008E99A9 /* LiarsDiceEngine.cpp */,
 				878E9F4216DA6F80008E99A9 /* Utilities.h */,
@@ -743,6 +759,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8780BD5516EA570F00B377F7 /* HttpClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,6 +944,9 @@
 				87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */,
 				87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */,
 				878E9EFC16DA4D5C008E99A9 /* BidView_iPhone.xib in Resources */,
+				8780BD5816EA588400B377F7 /* GreenCheck.png in Resources */,
+				8780BD5916EA588400B377F7 /* redx.png in Resources */,
+				8780BD5B16EA58E500B377F7 /* GrayCircle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +1004,7 @@
 				870E515B16DE1ED70025A3D9 /* PseudoRandom.cpp in Sources */,
 				870E515C16DE1ED70025A3D9 /* Player.cpp in Sources */,
 				870E515D16DE1ED70025A3D9 /* Round.cpp in Sources */,
+				8780BD5416EA570F00B377F7 /* HttpClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1027,7 @@
 				878E9F4316DA6F81008E99A9 /* Utilities.cpp in Sources */,
 				878E9F4616DA6FD8008E99A9 /* GamePlayers.cpp in Sources */,
 				8708D54816DBAF4000A1ED82 /* PlayersInLobby.cpp in Sources */,
+				8780BD5316EA570F00B377F7 /* HttpClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

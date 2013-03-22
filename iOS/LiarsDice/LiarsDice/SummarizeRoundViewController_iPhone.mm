@@ -8,18 +8,33 @@
 
 #import "SummarizeRoundViewController_iPhone.h"
 
+#import "RoundPlayViewController_iPhone.h"
+#include <LiarsDiceEngine.h>
+
 @interface SummarizeRoundViewController_iPhone ()
 
 @end
 
 @implementation SummarizeRoundViewController_iPhone
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (IBAction)continueGameButton:(id)sender
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    NSArray *array = [self.navigationController viewControllers];
+    
+    int rpvc_index = [array count] - 3;
+    RoundPlayViewController_iPhone *rpvc = (RoundPlayViewController_iPhone *)[array objectAtIndex:rpvc_index];
+    
+    [self.navigationController popToViewController:rpvc animated:YES];
+}
+
+- (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
+{
+    self = [super initWithNibName:@"SummarizeRoundViewController_iPhone" bundle:nil];
+    if (self)
+    {
+        liarsDice = liarsDiceEngine;
     }
+    
     return self;
 }
 

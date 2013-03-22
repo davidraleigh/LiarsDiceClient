@@ -9,6 +9,8 @@
 #import "SetUserNameViewController_iPhone.h"
 
 #import "StartViewController_iPhone.h"
+#import "StringConversion.h"
+#include <HttpClient.h>
 
 @interface SetUserNameViewController_iPhone ()
 
@@ -36,17 +38,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)usernameTextFieldChanged:(id)sender
+{
+    if ([[usernameTextField text] length] <= 2)
+        [userFeedbackImageView setImage:[UIImage imageNamed:@"GrayCircle.png"]];
+    else if (HttpClient::PlayerNameIsAvailble([[usernameTextField text] getstringTrimmed]))
+        [userFeedbackImageView setImage:[UIImage imageNamed:@"GreenCheck.png"]];
+    else
+        [userFeedbackImageView setImage:[UIImage imageNamed:@"redx.png"]];
+}
+
 - (IBAction)saveUsernameButton:(id)sender
 {
-    [usernameTextField resignFirstResponder];
-    NSString *newPlayerName = [[usernameTextField text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    if ([newPlayerName length] == 0)
+    if ([[usernameTextField text] length] <= 2 ||
+        !HttpClient::PlayerNameIsAvailble([[usernameTextField text] getstringTrimmed]))
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name Change" message:@"Your name needs to be composed of characters." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [userFeedbackImageView setImage:[UIImage imageNamed:@"redx.png"]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name Change" message:@"The name you have chosen is too short or needs to be composed of more than 2 characters" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
+    
+    
+    [usernameTextField resignFirstResponder];
+    NSString *newPlayerName = [[usernameTextField text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     

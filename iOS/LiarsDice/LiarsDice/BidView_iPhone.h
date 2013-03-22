@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BidView_iPhone : UIView
+{
+    
+}
+- (IBAction)bidButton:(id)sender;
 
 @end

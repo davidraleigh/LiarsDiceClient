@@ -8,6 +8,18 @@
 
 #import "SummarizeRoundViewController.h"
 
-@interface SummarizeRoundViewController_iPhone : SummarizeRoundViewController
+#import <memory>
 
+// forward declaration from this page
+// http://www.zedkep.com/blog/index.php?/archives/247-Forward-declaring-C++-classes-in-Objective-C.html
+struct LiarsDiceEngine;
+typedef struct LiarsDiceEngine LiarsDiceEngine;
+
+@interface SummarizeRoundViewController_iPhone : SummarizeRoundViewController
+{
+    std::shared_ptr<LiarsDiceEngine> liarsDice;
+}
+
+- (IBAction)continueGameButton:(id)sender;
+- (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
 @end

@@ -10,8 +10,10 @@
 
 @interface SetUserNameViewController_iPhone : SetUserNameViewController <UITextFieldDelegate>
 {
+    __weak IBOutlet UIImageView *userFeedbackImageView;
     __weak IBOutlet UITextField *usernameTextField;
 }
+- (IBAction)usernameTextFieldChanged:(id)sender;
 - (IBAction)saveUsernameButton:(id)sender;
 - (IBAction)mainMenuButton:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;

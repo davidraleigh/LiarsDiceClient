@@ -9,18 +9,22 @@
 #import "PlayersShowDiceViewController_iPhone.h"
 
 #import "SummarizeRoundViewController_iPhone.h"
+#include <LiarsDiceEngine.h>
+
 @interface PlayersShowDiceViewController_iPhone ()
 
 @end
 
 @implementation PlayersShowDiceViewController_iPhone
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    self = [super initWithNibName:@"PlayersShowDiceViewController_iPhone" bundle:nil];
+    if (self)
+    {
+        liarsDice = liarsDiceEngine;
     }
+    
     return self;
 }
 

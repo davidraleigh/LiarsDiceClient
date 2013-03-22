@@ -41,4 +41,6 @@
 }
 */
 
+- (IBAction)bidButton:(id)sender {
+}
 @end

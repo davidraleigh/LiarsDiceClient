@@ -49,6 +49,11 @@
 
 // #DEFINES FOR CURTAIN
 
+// #DEFINES FOR BidView
+#define X_ORIGIN_BID_VIEW 0
+#define Y_ORIGIN_BID_VIEW 143
+// #DEFINES FOR BidView
+
 // #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
@@ -127,11 +132,12 @@
         [self.view insertSubview:scrollingDice atIndex:1 + i];
     }
     
-    BidView_iPhone *bidView = [[BidView_iPhone alloc] init];
-    CGRect bidViewFrame = bidView.frame;
-    bidViewFrame.origin = CGPointMake(0, 143);
-    bidView.frame = bidViewFrame;
-    [curtainView addSubview:bidView];
+    bidSelectionView = [[BidView_iPhone alloc] init];
+    CGPoint newCenter = CGPointMake(X_ORIGIN_BID_VIEW + bidSelectionView.frame.size.width / 2, Y_ORIGIN_BID_VIEW + bidSelectionView.frame.size.height / 2);
+    bidSelectionView.center = newCenter;
+    bidSelectionView.hidden = YES;
+    
+    [curtainView addSubview:bidSelectionView];
     
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
@@ -139,18 +145,32 @@
     currentLowestQuantity = MIN_BID_QUANTITY;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    //[super viewWillAppear:animated];
+    NSLog(@"viewWillAppear");
+
+}
+
 - (void) viewDidAppear:(BOOL)animated
 {
+    NSLog(@"viewDidAppear");
     CGPoint offsetPoint = CGPointMake(STARTUP_OFFSET_COUNT * tableviewWidth, 0);
     [horizontalView setContentOffset:offsetPoint];
     [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:2]];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSLog(@"viewDidDisappear");
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 #pragma mark -
@@ -210,15 +230,17 @@
     PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
     // this is the index of the last bid
     // TODO fix this so that it works a bit differently for only two players
-    int indexOfBid = [indexPath row];
-    if (indexOfBid == 0 || indexOfBid == 1 ||
-        indexOfBid == liarsDice->GetBidCount() + 5 ||
-        indexOfBid == liarsDice->GetBidCount() + 6)
+    int indexOfBidOnScreen = [indexPath row];
+    
+    if (indexOfBidOnScreen == 0 ||
+        indexOfBidOnScreen == 1 ||
+        indexOfBidOnScreen == liarsDice->GetBidCount() + 5 ||
+        indexOfBidOnScreen == liarsDice->GetBidCount() + 6)
     {
         [playerBidItem setAsEmpty];
-        //playerBidItem.bidIndex = indexOfBid == 1 ? liarsDice->GetBidCount() + 1 : liarsDice->GetBidCount() + 2;
+        //playerBidItem.bidIndex = indexOfBidOnScreen == 1 ? liarsDice->GetBidCount() + 1 : liarsDice->GetBidCount() + 2;
     }
-    else if (indexOfBid == 2)
+    else if (indexOfBidOnScreen == 2)
     {
         unsigned int nextNextPlayerUID = liarsDice->GetNextPlayerUID(liarsDice->GetNextPlayerUID());
         std::string playerNameString = liarsDice->GetPlayerName(nextNextPlayerUID);
@@ -226,7 +248,7 @@
         [playerBidItem setPlayerName:playerName bidQuantity:-2 bidFaceValue:0 bidOdds:0];
         playerBidItem.bidIndex = liarsDice->GetBidCount() + 2;
     }
-    else if (indexOfBid == 3)
+    else if (indexOfBidOnScreen == 3)
     {
         unsigned int nextPlayerUID = liarsDice->GetNextPlayerUID();
         std::string playerNameString = liarsDice->GetPlayerName(nextPlayerUID);
@@ -234,7 +256,7 @@
         [playerBidItem setPlayerName:playerName bidQuantity:-1 bidFaceValue:0 bidOdds:0];
         playerBidItem.bidIndex = liarsDice->GetBidCount() + 1;
     }
-    else if (indexOfBid == 4)
+    else if (indexOfBidOnScreen == 4)
     {
         unsigned int currentPlayerUID = liarsDice->GetCurrentUID();
         std::string playerNameString = liarsDice->GetPlayerName(currentPlayerUID);
@@ -243,13 +265,13 @@
                         bidFaceValue:0 bidOdds:0];
         playerBidItem.bidIndex = liarsDice->GetBidCount();
     }
-    else if (indexOfBid > 4 && liarsDice->GetBidCount() + indexOfBid > 5)
+    else if (indexOfBidOnScreen > 4 && liarsDice->GetBidCount() + indexOfBidOnScreen > 5)
     {
-        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBid - 5);
+        RoundDetails::bid_t bid = liarsDice->GetBid(indexOfBidOnScreen - 5);
         std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
         [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:0];
-        playerBidItem.bidIndex = indexOfBid - 5;
+        playerBidItem.bidIndex = indexOfBidOnScreen - 5;
     }
     [view addSubview:playerBidItem];
 }
@@ -344,13 +366,15 @@
         NSString *message = [[NSString alloc] initWithFormat:@"%@ challenged the bid from %@", challenger, previousBidder];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Challenge" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        PlayersShowDiceViewController_iPhone *psdvc = [[PlayersShowDiceViewController_iPhone alloc] init];
+        PlayersShowDiceViewController_iPhone *psdvc = [[PlayersShowDiceViewController_iPhone alloc] initWithLiarsDice:liarsDice];
         [[self navigationController] pushViewController:psdvc animated:YES];
     }
-    
-    liarsDice->Bid(bidValue.bidQuantity, bidValue.bidFaceValue);
-    [horizontalView reloadData];
-    [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:2]];
+    else
+    {
+        liarsDice->Bid(bidValue.bidQuantity, bidValue.bidFaceValue);
+        [horizontalView reloadData];
+        [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:2]];
+    }
 }
 
 - (IBAction)quantityButton1:(id)sender
@@ -443,13 +467,17 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
-    //
+    
+    // check that handle has been touched
     CGRect handleRect = CGRectMake(X_ORIGIN_HANDLE, Y_ORIGIN_HANDLE, WIDTH_HANDLE, HEIGHT_HANDLE);
     if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
     {
         dragging = YES;
         oldY = touchLocation.y;
+        return;
     }
+    
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -479,11 +507,11 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    dragging = NO;
+
     
     for (UIView *subview in [self.view subviews])
     {
-        if ([subview tag] == 99)
+        if (dragging == YES && [subview tag] == 99)
         {
             CGRect workingFrame = subview.frame;
             int releaseHeight = 0 - workingFrame.origin.y;
@@ -501,6 +529,7 @@
                     [self bounceAnimation:subview withCount:bounceCount andBounceHeight:bounceHeight];
                 NSLog(@"finished animation");
             }];
+            dragging = NO;
         }
     }
 }
@@ -530,8 +559,8 @@
 - (void)updateDetailedPlayerInfo:(UIView *)view
 {
     PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
-    if (bidIndexForCenterBidItem == playerBidItem.bidIndex)
-        return;
+//    if (bidIndexForCenterBidItem == playerBidItem.bidIndex)
+//        return;
     
     bidIndexForCenterBidItem = playerBidItem.bidIndex;
     // if the current highlighted bid item view is the client and it is the clients turn to bid
@@ -541,23 +570,28 @@
     {
         // Show bidding view
         NSLog(@"Show bidding window now %@", [playerBidItem getPlayerName]);
+        bidSelectionView.hidden = NO;
     }
-    else if (bidIndexForCenterBidItem == liarsDice->GetBidCount() &&
+    else if (bidIndexForCenterBidItem == liarsDice->GetBidCount() -1 &&
              GamePlayers::getInstance().GetClientUID() == liarsDice->GetCurrentUID())
     {
         NSLog(@"Show challenge option now %@", [playerBidItem getPlayerName]);
+        bidSelectionView.hidden = YES;
     }
     else if (bidIndexForCenterBidItem > liarsDice->GetBidCount())
     {
         NSLog(@"Show info about potential bids %@", [playerBidItem getPlayerName]);
+        bidSelectionView.hidden = YES;
     }
     else if (bidIndexForCenterBidItem == liarsDice->GetBidCount())
     {
         NSLog(@"Show current bidder info %@", [playerBidItem getPlayerName]);
+        bidSelectionView.hidden = YES;
     }
     else
     {
         NSLog(@"Show previous bid info %@",[playerBidItem getPlayerName]);
+        bidSelectionView.hidden = YES;
     }
 
 }

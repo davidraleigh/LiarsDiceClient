@@ -8,7 +8,19 @@
 
 #import "PlayersShowDiceViewController.h"
 
-@interface PlayersShowDiceViewController_iPhone : PlayersShowDiceViewController
+#import <memory>
 
+// forward declaration from this page
+// http://www.zedkep.com/blog/index.php?/archives/247-Forward-declaring-C++-classes-in-Objective-C.html
+struct LiarsDiceEngine;
+typedef struct LiarsDiceEngine LiarsDiceEngine;
+
+@interface PlayersShowDiceViewController_iPhone : PlayersShowDiceViewController
+{
+    std::shared_ptr<LiarsDiceEngine> liarsDice;
+}
+
+- (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
 - (IBAction)QAButtonThrowAWayDice:(id)sender;
 @end
+
