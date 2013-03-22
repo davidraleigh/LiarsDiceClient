@@ -73,6 +73,8 @@
 		1E7D269616FCF027006048D5 /* LD_PlayerInfoFrame_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D265416FCF027006048D5 /* LD_PlayerInfoFrame_001.png */; };
 		1E7D269716FCF027006048D5 /* LD_PlayerTile_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D265516FCF027006048D5 /* LD_PlayerTile_001.png */; };
 		1E7D269816FCF027006048D5 /* LD_StatusFeedBar_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D265616FCF027006048D5 /* LD_StatusFeedBar_001.png */; };
+		1E7D269D16FCF19E006048D5 /* CooperGameplayLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7D269B16FCF19E006048D5 /* CooperGameplayLayoutViewController.m */; };
+		1E7D269E16FCF19E006048D5 /* CooperGameplayLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D269C16FCF19E006048D5 /* CooperGameplayLayoutViewController.xib */; };
 		8708D54516DBA8CF00A1ED82 /* StringConversion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8708D54416DBA8CF00A1ED82 /* StringConversion.mm */; };
 		8708D54816DBAF4000A1ED82 /* PlayersInLobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8708D54616DBAF4000A1ED82 /* PlayersInLobby.cpp */; };
 		870E515716DE1ED70025A3D9 /* GamePlayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F4416DA6FD8008E99A9 /* GamePlayers.cpp */; };
@@ -313,6 +315,9 @@
 		1E7D265416FCF027006048D5 /* LD_PlayerInfoFrame_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_PlayerInfoFrame_001.png; path = ../../../../../Resources/LiarsDice/LD_PlayerInfoFrame_001.png; sourceTree = "<group>"; };
 		1E7D265516FCF027006048D5 /* LD_PlayerTile_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_PlayerTile_001.png; path = ../../../../../Resources/LiarsDice/LD_PlayerTile_001.png; sourceTree = "<group>"; };
 		1E7D265616FCF027006048D5 /* LD_StatusFeedBar_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_StatusFeedBar_001.png; path = ../../../../../Resources/LiarsDice/LD_StatusFeedBar_001.png; sourceTree = "<group>"; };
+		1E7D269A16FCF19E006048D5 /* CooperGameplayLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CooperGameplayLayoutViewController.h; sourceTree = "<group>"; };
+		1E7D269B16FCF19E006048D5 /* CooperGameplayLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CooperGameplayLayoutViewController.m; sourceTree = "<group>"; };
+		1E7D269C16FCF19E006048D5 /* CooperGameplayLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CooperGameplayLayoutViewController.xib; sourceTree = "<group>"; };
 		8708D54316DBA8CF00A1ED82 /* StringConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringConversion.h; sourceTree = "<group>"; };
 		8708D54416DBA8CF00A1ED82 /* StringConversion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StringConversion.mm; sourceTree = "<group>"; };
 		8708D54616DBAF4000A1ED82 /* PlayersInLobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayersInLobby.cpp; sourceTree = "<group>"; };
@@ -841,6 +846,9 @@
 				87E9554216C000790067F4DF /* PlayersGameSettingsViewController_iPhone.h */,
 				87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm */,
 				87E9554416C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib */,
+				1E7D269A16FCF19E006048D5 /* CooperGameplayLayoutViewController.h */,
+				1E7D269B16FCF19E006048D5 /* CooperGameplayLayoutViewController.m */,
+				1E7D269C16FCF19E006048D5 /* CooperGameplayLayoutViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1220,6 +1228,7 @@
 				1E7D269616FCF027006048D5 /* LD_PlayerInfoFrame_001.png in Resources */,
 				1E7D269716FCF027006048D5 /* LD_PlayerTile_001.png in Resources */,
 				1E7D269816FCF027006048D5 /* LD_StatusFeedBar_001.png in Resources */,
+				1E7D269E16FCF19E006048D5 /* CooperGameplayLayoutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1359,7 @@
 				876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */,
 				878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */,
 				8708D54516DBA8CF00A1ED82 /* StringConversion.mm in Sources */,
+				1E7D269D16FCF19E006048D5 /* CooperGameplayLayoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1475,7 +1485,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiarsDiceEngine/LiarsDiceEngine-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1489,7 +1499,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiarsDiceEngine/LiarsDiceEngine-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1503,7 +1513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONcpp/JSONcpp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1517,7 +1527,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONcpp/JSONcpp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/JSONcpp/include\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

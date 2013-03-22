@@ -10,6 +10,7 @@
 
 #import "LiarsDiceLobbyViewController_iPhone.h"
 #import "GeneralSettingsViewController_iPhone.h"
+#import "CooperGameplayLayoutViewController.h"
 
 @interface StartViewController_iPhone ()
 
@@ -51,6 +52,12 @@
 {
     GeneralSettingsViewController_iPhone *gsvc = [[GeneralSettingsViewController_iPhone alloc] init];
     [[self navigationController] pushViewController:gsvc animated:YES];
+}
+
+- (IBAction)cooperButton:(id)sender
+{
+    CooperGameplayLayoutViewController *cglvc = [[CooperGameplayLayoutViewController alloc] init];
+    [[self navigationController] pushViewController:cglvc animated:YES];
 }
 
 - (void)viewDidLoad
