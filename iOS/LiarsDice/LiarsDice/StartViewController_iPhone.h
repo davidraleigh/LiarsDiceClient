@@ -13,5 +13,6 @@
 - (IBAction)onlineGameButton:(id)sender;
 - (IBAction)settingsButton:(id)sender;
 - (IBAction)cooperButton:(id)sender;
+- (IBAction)roundPlayButton:(id)sender;
 
 @end

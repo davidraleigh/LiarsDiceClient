@@ -57,9 +57,9 @@
 // #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
-#define ORIGIN_Y                    42
+#define ORIGIN_Y                    20
 #define ORIGIN_X                    17
-#define SEPARATION_BETWEEN_BID_ITEMS 17
+#define SEPARATION_BETWEEN_BID_ITEMS 13
 #define LANDSCAPE_WIDTH             460
 #define STARTUP_OFFSET_COUNT        2
 //#define LANDSCAPE_HEIGHT			98

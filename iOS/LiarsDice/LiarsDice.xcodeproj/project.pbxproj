@@ -103,6 +103,8 @@
 		872CA63916C14CCB0056AF23 /* RoundPlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63816C14CCB0056AF23 /* RoundPlayViewController.mm */; };
 		872CA63D16C14CF80056AF23 /* RoundPlayViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */; };
 		872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */; };
+		874D24EC16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24EA16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png */; };
+		874D24ED16FD0A1D00E69B6C /* LD_GutterTopCover_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24EB16FD0A1D00E69B6C /* LD_GutterTopCover_001.png */; };
 		876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 876BC51216C5621400589EA4 /* ScrollingDiceView.mm */; };
 		8780BD5316EA570F00B377F7 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8780BD5116EA570F00B377F7 /* HttpClient.cpp */; };
 		8780BD5416EA570F00B377F7 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8780BD5116EA570F00B377F7 /* HttpClient.cpp */; };
@@ -351,6 +353,8 @@
 		872CA63A16C14CF30056AF23 /* RoundPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundPlayViewController_iPhone.h; sourceTree = "<group>"; };
 		872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RoundPlayViewController_iPhone.mm; sourceTree = "<group>"; };
 		872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundPlayViewController_iPhone.xib; sourceTree = "<group>"; };
+		874D24EA16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_GutterBackDrop_001.png; path = ../../../../../Resources/LiarsDice/LD_GutterBackDrop_001.png; sourceTree = "<group>"; };
+		874D24EB16FD0A1D00E69B6C /* LD_GutterTopCover_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_GutterTopCover_001.png; path = ../../../../../Resources/LiarsDice/LD_GutterTopCover_001.png; sourceTree = "<group>"; };
 		876BC51116C5621400589EA4 /* ScrollingDiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingDiceView.h; sourceTree = "<group>"; };
 		876BC51216C5621400589EA4 /* ScrollingDiceView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollingDiceView.mm; sourceTree = "<group>"; };
 		8780BD5116EA570F00B377F7 /* HttpClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClient.cpp; sourceTree = "<group>"; };
@@ -619,6 +623,8 @@
 		873D485216E25585007F2959 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				874D24EA16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png */,
+				874D24EB16FD0A1D00E69B6C /* LD_GutterTopCover_001.png */,
 				1E7D261416FCF027006048D5 /* Numbers */,
 				1E7D263D16FCF027006048D5 /* LD_BidArrowGreen_001_Highlight.png */,
 				1E7D263E16FCF027006048D5 /* LD_BidArrowGreen_001.png */,
@@ -1229,6 +1235,8 @@
 				1E7D269716FCF027006048D5 /* LD_PlayerTile_001.png in Resources */,
 				1E7D269816FCF027006048D5 /* LD_StatusFeedBar_001.png in Resources */,
 				1E7D269E16FCF19E006048D5 /* CooperGameplayLayoutViewController.xib in Resources */,
+				874D24EC16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png in Resources */,
+				874D24ED16FD0A1D00E69B6C /* LD_GutterTopCover_001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

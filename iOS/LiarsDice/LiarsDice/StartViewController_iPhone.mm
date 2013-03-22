@@ -11,7 +11,11 @@
 #import "LiarsDiceLobbyViewController_iPhone.h"
 #import "GeneralSettingsViewController_iPhone.h"
 #import "CooperGameplayLayoutViewController.h"
+#import "RoundPlayViewController_iPhone.h"
 
+#include <LiarsDiceEngine.h>
+#include <GamePlayers.h>
+#include <memory>
 @interface StartViewController_iPhone ()
 
 @end
@@ -58,6 +62,17 @@
 {
     CooperGameplayLayoutViewController *cglvc = [[CooperGameplayLayoutViewController alloc] init];
     [[self navigationController] pushViewController:cglvc animated:YES];
+}
+
+- (IBAction)roundPlayButton:(id)sender
+{
+    GamePlayers::getInstance().AddPlayer("David", 1911, true, false);
+    GamePlayers::getInstance().AddPlayer("Bob", 1922, false, true);
+    GamePlayers::getInstance().AddPlayer("Chief Wiggum", 1933, false, true);
+    GamePlayers::getInstance().AddPlayer("Spartacus", 1944, false, true);
+    std::shared_ptr<LiarsDiceEngine> liarsDice = std::make_shared<LiarsDiceEngine>(5, true, 1977);
+    RoundPlayViewController_iPhone *rpvc = [[RoundPlayViewController_iPhone alloc] initWithLiarsDice:liarsDice];
+    [[self navigationController] pushViewController:rpvc animated:YES];
 }
 
 - (void)viewDidLoad
