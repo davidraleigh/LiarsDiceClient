@@ -77,7 +77,7 @@
 								<string key="NSFrameSize">{480, 320}</string>
 								<reference key="NSSuperview" ref="150983669"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="622123858"/>
+								<reference key="NSNextKeyView" ref="114292163"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -86,7 +86,7 @@
 									<string key="NSResourceName">LD_Curtain_Blank_1.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="831624378">
+							<object class="IBUIImageView" id="114292163">
 								<reference key="NSNextResponder" ref="150983669"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{12, 10}, {457, 78}}</string>
@@ -165,7 +165,7 @@
 								<string key="NSFrame">{{285, 4}, {195, 110}}</string>
 								<reference key="NSSuperview" ref="150983669"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="835952836"/>
+								<reference key="NSNextKeyView" ref="153871613"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -174,15 +174,15 @@
 									<string key="NSResourceName">LD_BracketGreenRed_001.png</string>
 								</object>
 							</object>
-							<object class="IBUIView" id="622123858">
+							<object class="IBUIView" id="153871613">
 								<reference key="NSNextResponder" ref="150983669"/>
 								<int key="NSvFlags">292</int>
 								<array class="NSMutableArray" key="NSSubviews">
-									<object class="IBUIImageView" id="686521417">
-										<reference key="NSNextResponder" ref="622123858"/>
+									<object class="IBUIImageView" id="684922404">
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{377, 148}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="878433722"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -198,184 +198,172 @@
 										</object>
 									</object>
 									<object class="IBUIButton" id="878433722">
-										<reference key="NSNextResponder" ref="622123858"/>
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{10, 14}, {57, 57}}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="607003350"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUITag">701</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 										<string key="IBUINormalTitle">1</string>
 										<reference key="IBUIHighlightedTitleColor" ref="943006425"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="984861749"/>
+										<object class="NSColor" key="IBUINormalTitleShadowColor" id="845782561">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MCAwAA</bytes>
+										</object>
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DieONE_001.png</string>
-										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DieONE_001_Highlight.png</string>
+											<string key="NSResourceName">LD_Die_1.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="163229297"/>
 										<reference key="IBUIFont" ref="1001203601"/>
 									</object>
 									<object class="IBUIButton" id="607003350">
-										<reference key="NSNextResponder" ref="622123858"/>
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{67, 14}, {57, 57}}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="56960189"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUITag">702</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 										<string key="IBUINormalTitle">2</string>
 										<reference key="IBUIHighlightedTitleColor" ref="943006425"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="984861749"/>
+										<reference key="IBUINormalTitleShadowColor" ref="845782561"/>
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIETWO_001.png</string>
-										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DieTWO_001_Highlight.png</string>
+											<string key="NSResourceName">LD_Die_2.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="163229297"/>
 										<reference key="IBUIFont" ref="1001203601"/>
 									</object>
 									<object class="IBUIButton" id="56960189">
-										<reference key="NSNextResponder" ref="622123858"/>
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{123, 14}, {57, 57}}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="846197503"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUITag">703</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 										<string key="IBUINormalTitle">3</string>
 										<reference key="IBUIHighlightedTitleColor" ref="943006425"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="984861749"/>
+										<reference key="IBUINormalTitleShadowColor" ref="845782561"/>
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIETHREE_001.png</string>
-										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIETHREE_001_Highlight.png</string>
+											<string key="NSResourceName">LD_Die_3.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="163229297"/>
 										<reference key="IBUIFont" ref="1001203601"/>
 									</object>
 									<object class="IBUIButton" id="846197503">
-										<reference key="NSNextResponder" ref="622123858"/>
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{180, 14}, {57, 57}}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="441351228"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUITag">704</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 										<string key="IBUINormalTitle">4</string>
 										<reference key="IBUIHighlightedTitleColor" ref="943006425"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="984861749"/>
+										<reference key="IBUINormalTitleShadowColor" ref="845782561"/>
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIEFOUR_001.png</string>
-										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIEFOUR_001_Highlight.png</string>
+											<string key="NSResourceName">LD_Die_4.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="163229297"/>
 										<reference key="IBUIFont" ref="1001203601"/>
 									</object>
 									<object class="IBUIButton" id="441351228">
-										<reference key="NSNextResponder" ref="622123858"/>
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{237, 14}, {57, 57}}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="666932573"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUITag">705</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 										<string key="IBUINormalTitle">5</string>
 										<reference key="IBUIHighlightedTitleColor" ref="943006425"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="984861749"/>
+										<reference key="IBUINormalTitleShadowColor" ref="845782561"/>
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIEFIVE_001.png</string>
-										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIEFIVE_001_Highlight.png</string>
+											<string key="NSResourceName">LD_Die_5.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="163229297"/>
 										<reference key="IBUIFont" ref="1001203601"/>
 									</object>
 									<object class="IBUIButton" id="666932573">
-										<reference key="NSNextResponder" ref="622123858"/>
+										<reference key="NSNextResponder" ref="153871613"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{294, 14}, {57, 57}}</string>
-										<reference key="NSSuperview" ref="622123858"/>
+										<reference key="NSSuperview" ref="153871613"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="831624378"/>
+										<reference key="NSNextKeyView" ref="835952836"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUITag">706</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 										<string key="IBUINormalTitle">6</string>
 										<reference key="IBUIHighlightedTitleColor" ref="943006425"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<object class="NSColor" key="IBUINormalTitleShadowColor" id="631001611">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MCAwAA</bytes>
-										</object>
+										<reference key="IBUINormalTitleShadowColor" ref="845782561"/>
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIESIX_001.png</string>
-										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">LD_DIESIX_001_Highlight.png</string>
+											<string key="NSResourceName">LD_Die_6.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="163229297"/>
 										<reference key="IBUIFont" ref="1001203601"/>
@@ -384,9 +372,9 @@
 								<string key="NSFrame">{{7, 121}, {377, 148}}</string>
 								<reference key="NSSuperview" ref="150983669"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="686521417"/>
+								<reference key="NSNextKeyView" ref="684922404"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<reference key="IBUIBackgroundColor" ref="631001611"/>
+								<reference key="IBUIBackgroundColor" ref="845782561"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</array>
@@ -1036,9 +1024,9 @@
 							<reference ref="496990663"/>
 							<reference ref="524180314"/>
 							<reference ref="835952836"/>
-							<reference ref="622123858"/>
+							<reference ref="153871613"/>
 							<reference ref="645315715"/>
-							<reference ref="831624378"/>
+							<reference ref="114292163"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -1147,9 +1135,9 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">534</int>
-						<reference key="object" ref="622123858"/>
+						<reference key="object" ref="153871613"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="686521417"/>
+							<reference ref="684922404"/>
 							<reference ref="878433722"/>
 							<reference ref="607003350"/>
 							<reference ref="56960189"/>
@@ -1161,42 +1149,42 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">535</int>
-						<reference key="object" ref="686521417"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="object" ref="684922404"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">92</int>
 						<reference key="object" ref="607003350"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">87</int>
 						<reference key="object" ref="878433722"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">359</int>
 						<reference key="object" ref="56960189"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">90</int>
 						<reference key="object" ref="846197503"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">89</int>
 						<reference key="object" ref="441351228"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">88</int>
 						<reference key="object" ref="666932573"/>
-						<reference key="parent" ref="622123858"/>
+						<reference key="parent" ref="153871613"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">536</int>
-						<reference key="object" ref="831624378"/>
+						<reference key="object" ref="114292163"/>
 						<reference key="parent" ref="150983669"/>
 					</object>
 				</array>
@@ -1400,18 +1388,12 @@
 			<string key="LD_BracketGreenRed_001.png">{389, 221}</string>
 			<string key="LD_Bracket_1.png">{960, 640}</string>
 			<string key="LD_Curtain_Blank_1.png">{960, 640}</string>
-			<string key="LD_DIEFIVE_001.png">{114, 114}</string>
-			<string key="LD_DIEFIVE_001_Highlight.png">{114, 114}</string>
-			<string key="LD_DIEFOUR_001.png">{114, 114}</string>
-			<string key="LD_DIEFOUR_001_Highlight.png">{114, 114}</string>
-			<string key="LD_DIESIX_001.png">{114, 114}</string>
-			<string key="LD_DIESIX_001_Highlight.png">{114, 114}</string>
-			<string key="LD_DIETHREE_001.png">{114, 114}</string>
-			<string key="LD_DIETHREE_001_Highlight.png">{114, 114}</string>
-			<string key="LD_DIETWO_001.png">{114, 114}</string>
-			<string key="LD_DieONE_001.png">{114, 114}</string>
-			<string key="LD_DieONE_001_Highlight.png">{114, 114}</string>
-			<string key="LD_DieTWO_001_Highlight.png">{114, 114}</string>
+			<string key="LD_Die_1.png">{114, 114}</string>
+			<string key="LD_Die_2.png">{114, 114}</string>
+			<string key="LD_Die_3.png">{114, 114}</string>
+			<string key="LD_Die_4.png">{114, 114}</string>
+			<string key="LD_Die_5.png">{114, 114}</string>
+			<string key="LD_Die_6.png">{114, 114}</string>
 			<string key="LD_GutterBackDrop_001.png">{913, 155}</string>
 			<string key="LD_TumblerBackdrop_1.png">{960, 640}</string>
 		</dictionary>

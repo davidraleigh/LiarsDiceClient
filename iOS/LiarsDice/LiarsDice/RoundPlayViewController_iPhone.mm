@@ -21,6 +21,15 @@
 #import <GamePlayers.h>
 
 
+// BID FACE VALUE
+#define FACE_VALUE_1_TAG 701
+#define FACE_VALUE_2_TAG 702
+#define FACE_VALUE_3_TAG 703
+#define FACE_VALUE_4_TAG 704
+#define FACE_VALUE_5_TAG 705
+#define FACE_VALUE_6_TAG 706
+// BID FACE VALUE
+
 // TODO REPLACE THIS TEST CODE
 #define MAX_BID_QUANTITY 32
 #define MIN_FACE_VALUE 3
@@ -99,6 +108,7 @@
         maxRollDuration = 0;
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
         bidIndexForCenterBidItem = 2;
+        selectedFaceValue = 0;
     }
     
     return self;
@@ -331,28 +341,71 @@
 
 }
 
+- (void)deselectFaceValue:(int)faceValue
+{
+    UIButton *view = (UIButton*)[self searchSubviewsForTaggedView:700 + selectedFaceValue inSubviews:self.view];
+    NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_%d.png", selectedFaceValue];
+    [view setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
+}
+
+- (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button
+{
+    NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_Highlight_%d.png", faceValue];
+    [button setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
+}
+
+- (void)updateButton:(UIButton *)button withFaceValue:(int)faceValue
+{
+    if (selectedFaceValue != faceValue)
+    {
+        // deselect button
+        if (selectedFaceValue != 0)
+            [self deselectFaceValue:selectedFaceValue];
+        
+        [self selectFaceValue:faceValue withButton:button];
+        selectedFaceValue = faceValue;
+    }
+    else
+    {
+        [self deselectFaceValue:selectedFaceValue];
+        selectedFaceValue = 0;
+    }
+}
+
 - (IBAction)faceValueButton1:(id)sender
 {
+    UIButton *theButton = (UIButton*)sender;
+    [self updateButton:theButton withFaceValue:1];
 }
 
 - (IBAction)faceValueButton2:(id)sender
 {
+    UIButton *theButton = (UIButton*)sender;
+    [self updateButton:theButton withFaceValue:2];
 }
 
 - (IBAction)faceValueButton3:(id)sender
 {
+    UIButton *theButton = (UIButton*)sender;
+    [self updateButton:theButton withFaceValue:3];
 }
 
 - (IBAction)faceValueButton4:(id)sender
 {
+    UIButton *theButton = (UIButton*)sender;
+    [self updateButton:theButton withFaceValue:4];
 }
 
 - (IBAction)faceValueButton5:(id)sender
 {
+    UIButton *theButton = (UIButton*)sender;
+    [self updateButton:theButton withFaceValue:5];
 }
 
 - (IBAction)faceValueButton6:(id)sender
 {
+    UIButton *theButton = (UIButton*)sender;
+    [self updateButton:theButton withFaceValue:6];
 }
 
 - (IBAction)qaAdvanceGame:(id)sender

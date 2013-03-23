@@ -40,6 +40,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;
+    
     int currentHighlightedPosition;
     int bidIndexForCenterBidItem;
     
@@ -73,6 +74,10 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)faceValueButton4:(id)sender;
 - (IBAction)faceValueButton5:(id)sender;
 - (IBAction)faceValueButton6:(id)sender;
+
+- (void)deselectFaceValue:(int)faceValue;
+- (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button;
+- (void)updateButton:(UIButton *)button withFaceValue:(int)faceValue;
 
 - (IBAction)rollDiceButton:(id)sender;
 
