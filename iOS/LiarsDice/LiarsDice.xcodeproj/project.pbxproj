@@ -116,6 +116,7 @@
 		8780BD5816EA588400B377F7 /* GreenCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780BD5616EA588400B377F7 /* GreenCheck.png */; };
 		8780BD5916EA588400B377F7 /* redx.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780BD5716EA588400B377F7 /* redx.png */; };
 		8780BD5B16EA58E500B377F7 /* GrayCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780BD5A16EA58E500B377F7 /* GrayCircle.png */; };
+		8780E6BB16FE3A8200D230CF /* LD_AppIcon_Beige_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780E6BA16FE3A8000D230CF /* LD_AppIcon_Beige_001.png */; };
 		87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */; };
 		87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */; };
 		878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */; };
@@ -169,12 +170,6 @@
 		87E9554116C0005C0067F4DF /* PlayersGameSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554016C0005C0067F4DF /* PlayersGameSettingsViewController.mm */; };
 		87E9554516C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm */; };
 		87E9554616C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E9554416C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib */; };
-		87E9555416C0258F0067F4DF /* Die1.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9554E16C0258F0067F4DF /* Die1.png */; };
-		87E9555516C0258F0067F4DF /* Die2.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9554F16C0258F0067F4DF /* Die2.png */; };
-		87E9555616C0258F0067F4DF /* Die3.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9555016C0258F0067F4DF /* Die3.png */; };
-		87E9555716C0258F0067F4DF /* Die4.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9555116C0258F0067F4DF /* Die4.png */; };
-		87E9555816C0258F0067F4DF /* Die5.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9555216C0258F0067F4DF /* Die5.png */; };
-		87E9555916C0258F0067F4DF /* Die6.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9555316C0258F0067F4DF /* Die6.png */; };
 		87F4730016BBFFF7009E90B5 /* RollForFirstPlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */; };
 		87F4730C16BC01A6009E90B5 /* PlayersShowDiceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730B16BC01A5009E90B5 /* PlayersShowDiceViewController.mm */; };
 		87F4730F16BC01D0009E90B5 /* SummarizeRoundViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4730E16BC01D0009E90B5 /* SummarizeRoundViewController.mm */; };
@@ -370,6 +365,7 @@
 		8780BD5616EA588400B377F7 /* GreenCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenCheck.png; sourceTree = "<group>"; };
 		8780BD5716EA588400B377F7 /* redx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redx.png; sourceTree = "<group>"; };
 		8780BD5A16EA58E500B377F7 /* GrayCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayCircle.png; sourceTree = "<group>"; };
+		8780E6BA16FE3A8000D230CF /* LD_AppIcon_Beige_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LD_AppIcon_Beige_001.png; sourceTree = "<group>"; };
 		87815ED016C5016500269176 /* PlayerBidItemView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBidItemView_iPhone.h; sourceTree = "<group>"; };
 		87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerBidItemView_iPhone.mm; sourceTree = "<group>"; };
 		87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerBidItemView_iPhone.xib; sourceTree = "<group>"; };
@@ -462,12 +458,6 @@
 		87E9554216C000790067F4DF /* PlayersGameSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersGameSettingsViewController_iPhone.h; sourceTree = "<group>"; };
 		87E9554316C000790067F4DF /* PlayersGameSettingsViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayersGameSettingsViewController_iPhone.mm; sourceTree = "<group>"; };
 		87E9554416C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayersGameSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
-		87E9554E16C0258F0067F4DF /* Die1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die1.png; path = ../../../../Resources/LiarsDice/Die1.png; sourceTree = SOURCE_ROOT; };
-		87E9554F16C0258F0067F4DF /* Die2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die2.png; path = ../../../../Resources/LiarsDice/Die2.png; sourceTree = SOURCE_ROOT; };
-		87E9555016C0258F0067F4DF /* Die3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die3.png; path = ../../../../Resources/LiarsDice/Die3.png; sourceTree = SOURCE_ROOT; };
-		87E9555116C0258F0067F4DF /* Die4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die4.png; path = ../../../../Resources/LiarsDice/Die4.png; sourceTree = SOURCE_ROOT; };
-		87E9555216C0258F0067F4DF /* Die5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die5.png; path = ../../../../Resources/LiarsDice/Die5.png; sourceTree = SOURCE_ROOT; };
-		87E9555316C0258F0067F4DF /* Die6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Die6.png; path = ../../../../Resources/LiarsDice/Die6.png; sourceTree = SOURCE_ROOT; };
 		87F472FE16BBFFF7009E90B5 /* RollForFirstPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollForFirstPlayViewController.h; sourceTree = "<group>"; };
 		87F472FF16BBFFF7009E90B5 /* RollForFirstPlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RollForFirstPlayViewController.mm; sourceTree = "<group>"; };
 		87F4730A16BC01A5009E90B5 /* PlayersShowDiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersShowDiceViewController.h; sourceTree = "<group>"; };
@@ -666,12 +656,6 @@
 				872CA62D16C05DB60056AF23 /* LD_DiceScroll_7.png */,
 				872CA62316C05D930056AF23 /* LD_Bracket_1.png */,
 				872CA62416C05D930056AF23 /* LD_Curtain_Blank_1.png */,
-				87E9554E16C0258F0067F4DF /* Die1.png */,
-				87E9554F16C0258F0067F4DF /* Die2.png */,
-				87E9555016C0258F0067F4DF /* Die3.png */,
-				87E9555116C0258F0067F4DF /* Die4.png */,
-				87E9555216C0258F0067F4DF /* Die5.png */,
-				87E9555316C0258F0067F4DF /* Die6.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -897,6 +881,7 @@
 		87E6026D16BB470B008E5457 = {
 			isa = PBXGroup;
 			children = (
+				8780E6BA16FE3A8000D230CF /* LD_AppIcon_Beige_001.png */,
 				874D24F516FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png */,
 				87E6027F16BB470B008E5457 /* LiarsDice */,
 				87E6029D16BB470B008E5457 /* LiarsDiceTests */,
@@ -1181,12 +1166,6 @@
 				87E9553616BFFFAF0067F4DF /* GameStartLobbyViewController_iPhone.xib in Resources */,
 				87E9553E16C0000E0067F4DF /* SummarizeGameViewController_iPhone.xib in Resources */,
 				87E9554616C000790067F4DF /* PlayersGameSettingsViewController_iPhone.xib in Resources */,
-				87E9555416C0258F0067F4DF /* Die1.png in Resources */,
-				87E9555516C0258F0067F4DF /* Die2.png in Resources */,
-				87E9555616C0258F0067F4DF /* Die3.png in Resources */,
-				87E9555716C0258F0067F4DF /* Die4.png in Resources */,
-				87E9555816C0258F0067F4DF /* Die5.png in Resources */,
-				87E9555916C0258F0067F4DF /* Die6.png in Resources */,
 				872CA62516C05D930056AF23 /* LD_Bracket_1.png in Resources */,
 				872CA62616C05D930056AF23 /* LD_Curtain_Blank_1.png in Resources */,
 				872CA62E16C05DB60056AF23 /* LD_DiceScroll_1.png in Resources */,
@@ -1277,6 +1256,7 @@
 				874D24F316FD111000E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */,
 				874D24F416FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png in Resources */,
 				874D24F616FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */,
+				8780E6BB16FE3A8200D230CF /* LD_AppIcon_Beige_001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

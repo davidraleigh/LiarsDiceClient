@@ -21,14 +21,15 @@
 #import <GamePlayers.h>
 
 
-// BID FACE VALUE
+// BID VIEW
+#define BID_VIEW_TAG 88
 #define FACE_VALUE_1_TAG 701
 #define FACE_VALUE_2_TAG 702
 #define FACE_VALUE_3_TAG 703
 #define FACE_VALUE_4_TAG 704
 #define FACE_VALUE_5_TAG 705
 #define FACE_VALUE_6_TAG 706
-// BID FACE VALUE
+// BID VIEW
 
 // TODO REPLACE THIS TEST CODE
 #define MAX_BID_QUANTITY 32
@@ -66,7 +67,7 @@
 // #DEFINES FOR EASYTABLEVIEW
 //#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
 
-#define ORIGIN_Y                    20
+#define ORIGIN_Y                    12
 #define ORIGIN_X                    17
 #define SEPARATION_BETWEEN_BID_ITEMS 13
 #define LANDSCAPE_WIDTH             460
@@ -142,12 +143,9 @@
         [self.view insertSubview:scrollingDice atIndex:1 + i];
     }
     
-    bidSelectionView = [[BidView_iPhone alloc] init];
-    CGPoint newCenter = CGPointMake(X_ORIGIN_BID_VIEW + bidSelectionView.frame.size.width / 2, Y_ORIGIN_BID_VIEW + bidSelectionView.frame.size.height / 2);
-    bidSelectionView.center = newCenter;
+    // Get the bid selection view
+    bidSelectionView = [self searchSubviewsForTaggedView:BID_VIEW_TAG inSubviews:self.view];
     bidSelectionView.hidden = YES;
-    
-    [curtainView addSubview:bidSelectionView];
     
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
@@ -194,7 +192,6 @@
 	
 	horizontalView.delegate						= self;
 	horizontalView.tableView.backgroundColor	= TABLE_BACKGROUND_COLOR;
-	//horizontalView.tableView.allowsSelection	= YES;
 	horizontalView.tableView.separatorColor		= [UIColor clearColor];
 	horizontalView.cellBackgroundColor			= [UIColor clearColor];
 	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
@@ -207,37 +204,32 @@
 #pragma mark -
 #pragma mark Utility Methods
 
-//- (void)borderIsSelected:(BOOL)selected forView:(UIView *)view
-//{
-//	UIImageView *borderView		= (UIImageView *)[view viewWithTag:BORDER_VIEW_TAG];
-//	NSString *borderImageName	= (selected) ? @"selected_border.png" : @"image_border.png";
-//	borderView.image			= [UIImage imageNamed:borderImageName];
-//}
-
 
 #pragma mark -
 #pragma mark EasyTableViewDelegate
 
-// These delegate methods support both example views - first delegate method creates the necessary views
-
+// The first delegate method creates the necessary views
 - (UIView *)easyTableView:(EasyTableView *)easyTableView viewForRect:(CGRect)rect
 {
+    // PlayerBidItemView is a subview of the container.
+    // The container is larger and clear
     UIView *container = [[UIView alloc] initWithFrame:rect];
     
-    PlayerBidItemView_iPhone *tempView = [[PlayerBidItemView_iPhone alloc] init];
-    tempView.tag = PLAYER_BID_ITEM_TAG;
-    [container addSubview:tempView];
+    PlayerBidItemView_iPhone *playerBidItemView = [[PlayerBidItemView_iPhone alloc] init];
+    playerBidItemView.tag = PLAYER_BID_ITEM_TAG;
+    [container addSubview:playerBidItemView];
     
 	return container;
 }
 
 // Second delegate populates the views with data from a data source
-
 - (void)easyTableView:(EasyTableView *)easyTableView
        setDataForView:(UIView *)view
          forIndexPath:(NSIndexPath *)indexPath
 {
+    
     PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
+    
     // this is the index of the last bid
     // TODO fix this so that it works a bit differently for only two players
     int indexOfBidOnScreen = [indexPath row];
@@ -247,6 +239,7 @@
         indexOfBidOnScreen == liarsDice->GetBidCount() + 5 ||
         indexOfBidOnScreen == liarsDice->GetBidCount() + 6)
     {
+        // make the view invisible
         [playerBidItem setAsEmpty];
         //playerBidItem.bidIndex = indexOfBidOnScreen == 1 ? liarsDice->GetBidCount() + 1 : liarsDice->GetBidCount() + 2;
     }
@@ -560,8 +553,6 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
-    
     for (UIView *subview in [self.view subviews])
     {
         if (dragging == YES && [subview tag] == 99)
@@ -647,5 +638,10 @@
         bidSelectionView.hidden = YES;
     }
 
+}
+- (void)viewDidUnload
+{
+    bidSelectionView = nil;
+    [super viewDidUnload];
 }
 @end

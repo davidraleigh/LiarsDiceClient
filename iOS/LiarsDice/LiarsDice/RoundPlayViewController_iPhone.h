@@ -8,7 +8,6 @@
 
 #import "RoundPlayViewController.h"
 #import "EasyTableView.h"
-#import "BidView_iPhone.h"
 
 #import <memory>
 
@@ -33,7 +32,6 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     __weak IBOutlet UILabel *typicalOddsLabel;
     
     __weak IBOutlet UIView *curtainView;
-    BidView_iPhone *bidSelectionView;
     
     unsigned int devicePlayerUID;
     
@@ -54,6 +52,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     float oldY;
     
     NSTimer *myTimer;
+    __weak IBOutlet UIView *bidSelectionView;
 }
 
 @property (nonatomic) EasyTableView *horizontalView;

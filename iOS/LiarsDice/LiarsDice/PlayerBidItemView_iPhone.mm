@@ -12,17 +12,6 @@
 
 @synthesize bidIndex;
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code
-//        NSArray *screens = [[NSBundle mainBundle] loadNibNamed:@"PlayerBidItemView_iPhone" owner:self options:nil];
-//        [self addSubview:[screens objectAtIndex:0]];
-    }
-    return self;
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -48,19 +37,20 @@
     oddsLabel.hidden = NO;
     
     if (quantity == 0)
-    {
         [oddsLabel setText:@"Current bidder"];
-    }
     else if (quantity == -1)
         [oddsLabel setText:@"Next bidder"];
     else if (quantity == -2)
         [oddsLabel setText:@"Next next bidder"];
     else
         [oddsLabel setText:[[NSString alloc] initWithFormat:@"%d",odds]];
-    
-    [bidQuantityLabel setText:[[NSString alloc] initWithFormat:@"%d",quantity]];
-        
-    NSString *dieImageName = [[NSString alloc] initWithFormat:@"Die%d.png",faceValue];
+
+    if (quantity > 0)
+        [bidQuantityLabel setText:[[NSString alloc] initWithFormat:@"%d",quantity]];
+    else
+        [bidQuantityLabel setText:@""];
+
+    NSString *dieImageName = [[NSString alloc] initWithFormat:@"LD_Die_Highlight_%d.png",faceValue];
     [bidFaceValueImageView setImage:[UIImage imageNamed:dieImageName]];
     
     [userNameTextView setText:name];
