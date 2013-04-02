@@ -16,7 +16,6 @@
     __weak IBOutlet UIImageView *bidFaceValueImageView;
     __weak IBOutlet UILabel *oddsLabel;
     IBOutlet UIView *topView;
-    
 }
 
 @property (nonatomic) int bidIndex;

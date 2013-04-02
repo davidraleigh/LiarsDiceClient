@@ -119,8 +119,6 @@
 		8780E6BB16FE3A8200D230CF /* LD_AppIcon_Beige_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8780E6BA16FE3A8000D230CF /* LD_AppIcon_Beige_001.png */; };
 		87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */; };
 		87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */; };
-		878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */; };
-		878E9EFC16DA4D5C008E99A9 /* BidView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878E9EFB16DA4D5C008E99A9 /* BidView_iPhone.xib */; };
 		878E9F0216DA6CC7008E99A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		878E9F0F16DA6CE9008E99A9 /* PseudoRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F0D16DA6CE9008E99A9 /* PseudoRandom.cpp */; };
 		878E9F1616DA6D16008E99A9 /* LiarsDiceEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878E9F1016DA6D16008E99A9 /* LiarsDiceEngine.cpp */; };
@@ -369,9 +367,6 @@
 		87815ED016C5016500269176 /* PlayerBidItemView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBidItemView_iPhone.h; sourceTree = "<group>"; };
 		87815ED116C5016500269176 /* PlayerBidItemView_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerBidItemView_iPhone.mm; sourceTree = "<group>"; };
 		87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerBidItemView_iPhone.xib; sourceTree = "<group>"; };
-		878E9EF416DA4CF2008E99A9 /* BidView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidView_iPhone.h; sourceTree = "<group>"; };
-		878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BidView_iPhone.mm; sourceTree = "<group>"; };
-		878E9EFB16DA4D5C008E99A9 /* BidView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidView_iPhone.xib; sourceTree = "<group>"; };
 		878E9F0116DA6CC7008E99A9 /* libLiarsDiceEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLiarsDiceEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		878E9F0516DA6CC7008E99A9 /* LiarsDiceEngine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiarsDiceEngine-Prefix.pch"; sourceTree = "<group>"; };
 		878E9F0D16DA6CE9008E99A9 /* PseudoRandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PseudoRandom.cpp; sourceTree = "<group>"; };
@@ -705,9 +700,6 @@
 				87815ED316C5017C00269176 /* PlayerBidItemView_iPhone.xib */,
 				876BC51116C5621400589EA4 /* ScrollingDiceView.h */,
 				876BC51216C5621400589EA4 /* ScrollingDiceView.mm */,
-				878E9EF416DA4CF2008E99A9 /* BidView_iPhone.h */,
-				878E9EF516DA4CF2008E99A9 /* BidView_iPhone.mm */,
-				878E9EFB16DA4D5C008E99A9 /* BidView_iPhone.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1179,7 +1171,6 @@
 				872CA63E16C14CF80056AF23 /* RoundPlayViewController_iPhone.xib in Resources */,
 				87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */,
 				87815ED416C5017C00269176 /* PlayerBidItemView_iPhone.xib in Resources */,
-				878E9EFC16DA4D5C008E99A9 /* BidView_iPhone.xib in Resources */,
 				8780BD5816EA588400B377F7 /* GreenCheck.png in Resources */,
 				8780BD5916EA588400B377F7 /* redx.png in Resources */,
 				8780BD5B16EA58E500B377F7 /* GrayCircle.png in Resources */,
@@ -1385,7 +1376,6 @@
 				87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm in Sources */,
 				87815ED216C5016500269176 /* PlayerBidItemView_iPhone.mm in Sources */,
 				876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */,
-				878E9EF616DA4CF2008E99A9 /* BidView_iPhone.mm in Sources */,
 				8708D54516DBA8CF00A1ED82 /* StringConversion.mm in Sources */,
 				1E7D269D16FCF19E006048D5 /* CooperGameplayLayoutViewController.m in Sources */,
 			);

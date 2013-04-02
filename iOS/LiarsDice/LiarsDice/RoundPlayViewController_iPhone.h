@@ -32,15 +32,21 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     __weak IBOutlet UILabel *typicalOddsLabel;
     
     __weak IBOutlet UIView *curtainView;
+    __weak IBOutlet UIImageView *nonBidHighlight;
+    __weak IBOutlet UIImageView *bidHighlight;
+    __weak IBOutlet UIView *bullshitView;
     
+    // TODO change this to be a list of
+    // the current players using this device
     unsigned int devicePlayerUID;
     
+    //
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;
     
     int currentHighlightedPosition;
-    int bidIndexForCenterBidItem;
+    int bidIndexForSelectedBidItem;
     
     int landscapeHeight;
     int tableviewHeight;
@@ -58,14 +64,23 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 @property (nonatomic) EasyTableView *horizontalView;
 
 - (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDice;
+
 - (IBAction)qaAdvanceGame:(id)sender;
 
-- (IBAction)quantityButton1:(id)sender;
-- (IBAction)quantityButton2:(id)sender;
-- (IBAction)quantityButton3:(id)sender;
-- (IBAction)quantityButton4:(id)sender;
-- (IBAction)quantityButton5:(id)sender;
-- (IBAction)quantityButton6:(id)sender;
+- (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
+- (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
+- (void)deselectFaceValue:(int)faceValue;
+- (void)deselectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
+
+- (void)rollDice;
+- (IBAction)rollDiceButton:(id)sender;
+
+- (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
+- (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button;
+- (void)selectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
+
+- (void)updateButtonFace:(UIButton *)button withValue:(int)faceValue;
+- (void)updateDetailedPlayerInfo:(UIView *)view;
 
 - (IBAction)faceValueButton1:(id)sender;
 - (IBAction)faceValueButton2:(id)sender;
@@ -74,15 +89,15 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)faceValueButton5:(id)sender;
 - (IBAction)faceValueButton6:(id)sender;
 
-- (void)deselectFaceValue:(int)faceValue;
-- (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button;
-- (void)updateButton:(UIButton *)button withFaceValue:(int)faceValue;
+- (IBAction)leftArrowButton:(id)sender;
 
-- (IBAction)rollDiceButton:(id)sender;
+- (IBAction)quantityPositionButton1:(id)sender;
+- (IBAction)quantityPositionButton2:(id)sender;
+- (IBAction)quantityPositionButton3:(id)sender;
+- (IBAction)quantityPositionButton4:(id)sender;
+- (IBAction)quantityPositionButton5:(id)sender;
 
-- (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
-- (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
-- (void)rollDice;
-- (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
-- (void)updateDetailedPlayerInfo:(UIView *)view;
+- (IBAction)rightArrowButton:(id)sender;
+
+
 @end

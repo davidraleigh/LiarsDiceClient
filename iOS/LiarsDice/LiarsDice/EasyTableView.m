@@ -386,7 +386,7 @@
         (int)amountScrolled % (int)cellWidthOrHeight == 0 &&
         [self.visibleViews count] > 0)
     {
-        UIView *view = [self.visibleViews objectAtIndex:2];
+        UIView *view = [self.visibleViews objectAtIndex:3];
         [delegate easyTableView:self viewAtCenter:view];
         //[delegate easyTableView:self viewAtCenter:view];
     }
