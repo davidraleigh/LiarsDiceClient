@@ -348,11 +348,19 @@
         
         if (newSelectedPosition != currentHighlightedPosition &&
             currentHighlightedPosition == currentPosition)
+        {
             [self deselectQuantityValue:buttonValue withButton:button];
+            selectedQuantity = 0;
+        }
         else if (newSelectedPosition == currentPosition)
+        {
             [self selectQuantityValue:buttonValue withButton:button];
+            selectedQuantity = buttonValue;
+        }
         else
+        {
             [self deselectQuantityValue:buttonValue withButton:button];
+        }
 
     }
     currentHighlightedPosition = newSelectedPosition;
@@ -438,9 +446,6 @@
     [self updateButtonFace:theButton withValue:6];
 }
 
-- (IBAction)leftArrowButton:(id)sender {
-}
-
 - (IBAction)quantityPositionButton1:(id)sender
 {
     [self changeButtonTexts:-2 withButtonPosition:1];
@@ -466,7 +471,27 @@
     [self changeButtonTexts:2 withButtonPosition:5];
 }
 
-- (IBAction)rightArrowButton:(id)sender {
+- (IBAction)qaBidButton:(id)sender
+{
+    if (selectedFaceValue == 0 || selectedQuantity == 0)
+        return;
+    int faceValue = selectedFaceValue;
+    int quantity = selectedQuantity;
+    
+    if (!liarsDice->IsBidValid(faceValue, quantity))
+    {
+        // post an error statement
+        return;
+    }
+    
+    liarsDice->Bid(quantity, faceValue);
+    [horizontalView reloadData];
+    [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+    
+}
+
+- (IBAction)qaChallengeButton:(id)sender
+{
 }
 
 - (IBAction)qaAdvanceGame:(id)sender

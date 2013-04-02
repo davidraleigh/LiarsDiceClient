@@ -89,15 +89,14 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)faceValueButton5:(id)sender;
 - (IBAction)faceValueButton6:(id)sender;
 
-- (IBAction)leftArrowButton:(id)sender;
-
 - (IBAction)quantityPositionButton1:(id)sender;
 - (IBAction)quantityPositionButton2:(id)sender;
 - (IBAction)quantityPositionButton3:(id)sender;
 - (IBAction)quantityPositionButton4:(id)sender;
 - (IBAction)quantityPositionButton5:(id)sender;
 
-- (IBAction)rightArrowButton:(id)sender;
+- (IBAction)qaBidButton:(id)sender;
+- (IBAction)qaChallengeButton:(id)sender;
 
 
 @end
