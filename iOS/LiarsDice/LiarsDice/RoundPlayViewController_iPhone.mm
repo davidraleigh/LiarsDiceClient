@@ -93,6 +93,7 @@
 // #DEFINES FOR EASYTABLEVIEW
 
 #define NUM_OF_SELECTABLE_QUANTITIES 5
+#define QUANTITY_TAG_BASE 660
 
 @interface RoundPlayViewController_iPhone (MyPrivateMethods)
 - (void)setupHorizontalView;
@@ -311,7 +312,7 @@
     return liarsDice->GetBidCount() + 7;
 }
 
-- (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected
+- (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected
 {
     RoundDetails::bid_t lowestBid = liarsDice->GetLowestPossibleBid();
     int remainingDice = liarsDice->GetTotalDieLeft();
@@ -332,40 +333,41 @@
     int newSelectedPosition = buttonPositionSelected - shiftValue;
     currentLowestQuantity += shiftValue;
     
-    for (int tag = 661; tag < 666; tag++)
+    int firstTag = QUANTITY_TAG_BASE + 1;
+    for (int position = 1; position <= NUM_OF_SELECTABLE_QUANTITIES; position++)
     {
-        UIView *view = [self searchSubviewsForTaggedView:tag inSubviews:self.view];
-        if (!view || ![view isKindOfClass:[UIView class]])
+        int tag = QUANTITY_TAG_BASE + position;
+        UIButton *button = (UIButton *)[self searchSubviewsForTaggedView:tag inSubviews:self.view];
+        if (!button || ![button isKindOfClass:[UIView class]])
         {
             NSLog(@"One of the tag numbers is not associated with a view or a tag is not properly associated with a UIButton");
             continue;
         }
-        UIButton *button = (UIButton *)view;
-        int additionalShift = tag - 661;
-        int currentPosition = additionalShift + 1;
-        int buttonValue = currentLowestQuantity + additionalShift;
-        NSLog(@"Button position: %d and button value: %d", currentPosition, buttonValue);
+        
+        int quantityValue = currentLowestQuantity + position - 1;
+        NSLog(@"Button position: %d and button value: %d", position, quantityValue);
         
         if (newSelectedPosition != currentHighlightedPosition &&
-            currentHighlightedPosition == currentPosition)
+            currentHighlightedPosition == position)
         {
-            [self deselectQuantityValue:buttonValue withButton:button];
+            [self deselectQuantityValue:quantityValue withButton:button];
             selectedQuantity = 0;
         }
-        else if (newSelectedPosition == currentPosition)
+        else if (newSelectedPosition == position)
         {
-            [self selectQuantityValue:buttonValue withButton:button];
-            selectedQuantity = buttonValue;
+            [self selectQuantityValue:quantityValue withButton:button];
+            selectedQuantity = quantityValue;
         }
         else
         {
-            [self deselectQuantityValue:buttonValue withButton:button];
+            [self deselectQuantityValue:quantityValue withButton:button];
         }
-
+        
     }
     currentHighlightedPosition = newSelectedPosition;
-
 }
+
+
 
 - (void)deselectFaceValue:(int)faceValue
 {
@@ -380,6 +382,12 @@
     [button setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
 }
 
+- (void)deselectQuantityValue:(int)quantityValue atPosition:(int)position
+{
+    UIButton *view = (UIButton *)[self searchSubviewsForTaggedView:QUANTITY_TAG_BASE + position inSubviews:self.view];
+    [self deselectQuantityValue:quantityValue withButton:view];
+}
+
 - (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button
 {
     NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_Highlight_%d.png", faceValue];
@@ -392,7 +400,7 @@
     [button setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
 }
 
-- (void)updateButtonFace:(UIButton *)button withValue:(int)faceValue
+- (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue
 {
     if (selectedFaceValue != faceValue)
     {
@@ -413,62 +421,79 @@
 - (IBAction)faceValueButton1:(id)sender
 {
     UIButton *theButton = (UIButton*)sender;
-    [self updateButtonFace:theButton withValue:1];
+    [self updateDieFaceButton:theButton withValue:1];
 }
 
 - (IBAction)faceValueButton2:(id)sender
 {
     UIButton *theButton = (UIButton*)sender;
-    [self updateButtonFace:theButton withValue:2];
+    [self updateDieFaceButton:theButton withValue:2];
 }
 
 - (IBAction)faceValueButton3:(id)sender
 {
     UIButton *theButton = (UIButton*)sender;
-    [self updateButtonFace:theButton withValue:3];
+    [self updateDieFaceButton:theButton withValue:3];
 }
 
 - (IBAction)faceValueButton4:(id)sender
 {
     UIButton *theButton = (UIButton*)sender;
-    [self updateButtonFace:theButton withValue:4];
+    [self updateDieFaceButton:theButton withValue:4];
 }
 
 - (IBAction)faceValueButton5:(id)sender
 {
     UIButton *theButton = (UIButton*)sender;
-    [self updateButtonFace:theButton withValue:5];
+    [self updateDieFaceButton:theButton withValue:5];
 }
 
 - (IBAction)faceValueButton6:(id)sender
 {
     UIButton *theButton = (UIButton*)sender;
-    [self updateButtonFace:theButton withValue:6];
+    [self updateDieFaceButton:theButton withValue:6];
+}
+
+- (void)updateQuantityButton:(UIButton *)button withPosition:(int)position
+{
+    // the shift value is based off of the number of selectable quantities.
+    // and the position of the current button
+    int shiftValue = position - (1 + NUM_OF_SELECTABLE_QUANTITIES / 2);
+    if (currentHighlightedPosition != position)
+    {
+        [self changeQuantityPositionBy:shiftValue atButtonPosition:position];
+    }
+    else
+    {
+        [self deselectQuantityValue:selectedQuantity atPosition:position];
+        selectedQuantity = 0;
+        currentHighlightedPosition = 0;
+    }
 }
 
 - (IBAction)quantityPositionButton1:(id)sender
 {
-    [self changeButtonTexts:-2 withButtonPosition:1];
+    [self updateQuantityButton:sender withPosition:1];
 }
 
 - (IBAction)quantityPositionButton2:(id)sender
 {
-    [self changeButtonTexts:-1 withButtonPosition:2];
+    [self updateQuantityButton:sender withPosition:2];
 }
 
 - (IBAction)quantityPositionButton3:(id)sender
 {
-    [self changeButtonTexts:0 withButtonPosition:3];
+    [self updateQuantityButton:sender withPosition:3];
 }
 
 - (IBAction)quantityPositionButton4:(id)sender
 {
-    [self changeButtonTexts:1 withButtonPosition:4];
+    [self updateQuantityButton:sender withPosition:4];
 }
 
 - (IBAction)quantityPositionButton5:(id)sender
 {
-    [self changeButtonTexts:2 withButtonPosition:5];
+    [self updateQuantityButton:sender withPosition:5];
 }
 
 - (IBAction)qaBidButton:(id)sender
@@ -487,6 +512,7 @@
     liarsDice->Bid(quantity, faceValue);
     [horizontalView reloadData];
     [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+    
     
 }
 

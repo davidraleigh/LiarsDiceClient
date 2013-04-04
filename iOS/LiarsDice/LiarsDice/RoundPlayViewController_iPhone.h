@@ -68,9 +68,10 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)qaAdvanceGame:(id)sender;
 
 - (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
-- (void)changeButtonTexts:(int)shiftValue withButtonPosition:(int)buttonPositionSelected;
+- (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected;
 - (void)deselectFaceValue:(int)faceValue;
 - (void)deselectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
+- (void)deselectQuantityValue:(int)quantityValue atPosition:(int)position;
 
 - (void)rollDice;
 - (IBAction)rollDiceButton:(id)sender;
@@ -79,7 +80,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button;
 - (void)selectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
 
-- (void)updateButtonFace:(UIButton *)button withValue:(int)faceValue;
+- (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue;
+- (void)updateQuantityButton:(UIButton *)button withPosition:(int)position;
 - (void)updateDetailedPlayerInfo:(UIView *)view;
 
 - (IBAction)faceValueButton1:(id)sender;
