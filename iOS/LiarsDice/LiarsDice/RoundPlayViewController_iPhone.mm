@@ -333,7 +333,6 @@
     int newSelectedPosition = buttonPositionSelected - shiftValue;
     currentLowestQuantity += shiftValue;
     
-    int firstTag = QUANTITY_TAG_BASE + 1;
     for (int position = 1; position <= NUM_OF_SELECTABLE_QUANTITIES; position++)
     {
         int tag = QUANTITY_TAG_BASE + position;
@@ -351,7 +350,7 @@
             currentHighlightedPosition == position)
         {
             [self deselectQuantityValue:quantityValue withButton:button];
-            selectedQuantity = 0;
+//            selectedQuantity = 0;
         }
         else if (newSelectedPosition == position)
         {
@@ -498,26 +497,34 @@
 
 - (IBAction)qaBidButton:(id)sender
 {
-    if (selectedFaceValue == 0 || selectedQuantity == 0)
-        return;
     int faceValue = selectedFaceValue;
     int quantity = selectedQuantity;
     
+    if (faceValue == 0 || quantity == 0)
+    {
+        NSString *message = [[NSString alloc] initWithFormat:@"Your bid is %d of face value %d. This isn't a permissable bid", quantity, faceValue];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bid Error" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
     if (!liarsDice->IsBidValid(faceValue, quantity))
     {
-        // post an error statement
+        NSString *message = [[NSString alloc] initWithFormat:@"Your bid is %d of face value %d. This isn't a permissable bid", quantity, faceValue];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bid Error" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
         return;
     }
     
     liarsDice->Bid(quantity, faceValue);
     [horizontalView reloadData];
     [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
-    
-    
 }
 
 - (IBAction)qaChallengeButton:(id)sender
 {
+    liarsDice->Challenge();
+    // do some other stuff
 }
 
 - (IBAction)qaAdvanceGame:(id)sender
