@@ -119,7 +119,8 @@
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
         bidIndexForSelectedBidItem = HIGHLIGHTED_BID_ITEM;
         selectedFaceValue = 0;
-        isCurtainLocked = NO;
+        bIsCurtainLocked = NO;
+        bHasRolled = NO;
     }
     
     return self;
@@ -176,6 +177,7 @@
         
         [self.view insertSubview:scrollingDice atIndex:i];
     }
+    bHasRolled = NO;
 }
 
 - (void)resetDiceToOnePosition
@@ -205,6 +207,8 @@
         if (tempMaxDuration > maxRollDuration)
             maxRollDuration = tempMaxDuration;
     }
+
+    bHasRolled = NO;
 }
 
 - (void)qaButtonResetDice:(id)sender
@@ -219,6 +223,21 @@
     CGPoint offsetPoint = CGPointMake(STARTUP_OFFSET_COUNT * tableviewWidth, 0);
     [horizontalView setContentOffset:offsetPoint];
     //[self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+    
+    //UIVIEW *curtainView = [self searchSubviewsForTaggedView:99 inSubviews:self.view];
+    CGRect workingFrame = curtainView.frame;
+    // animate curtain up for roll
+    workingFrame.origin.y = -Y_ORIGIN_HANDLE;
+    CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
+    
+    [UIView animateWithDuration:CURTAIN_DESCENT_ANIMATION_DURATION delay:CURTAIN_DESCENT_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^
+     {
+         curtainView.center = center;
+         NSLog(@"Animation Start");
+     }
+    completion:nil];
+
+    bIsCurtainLocked = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -572,6 +591,8 @@
 {
     liarsDice->Challenge();
     
+    bHasRolled = false;
+    
     // if the player lost then set the last scrollingDiceView to hidden
     // do some other stuff
 }
@@ -601,11 +622,12 @@
 - (IBAction)rollDiceButton:(id)sender
 {
     //liarsDice->StartRound();
-    if ([self.view subviews])
+    if ([self.view subviews] && !bHasRolled && !myTimer)
     {
         // Make sure we have a chance to discover devices before showing the user that nothing was found (yet)
         double interval = 1.0 / [ScrollingDiceView animationHZ];
         myTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(rollDice) userInfo:nil repeats:YES];
+        bHasRolled = true;
     }
 }
 
@@ -657,7 +679,7 @@
     CGRect handleRect = CGRectMake(X_ORIGIN_HANDLE, Y_ORIGIN_HANDLE, WIDTH_HANDLE, HEIGHT_HANDLE);
     
     // if the curtain locked in the up position
-    if (isCurtainLocked == YES)
+    if (bIsCurtainLocked == YES)
         handleRect = CGRectMake(X_ORIGIN_HANDLE, 0, WIDTH_HANDLE, HEIGHT_HANDLE);
     
     if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
@@ -707,9 +729,9 @@
         {
             CGRect workingFrame = subview.frame;
             
-            if (workingFrame.origin.y == Y_MIN_FOR_CURTAIN && !isCurtainLocked)
+            if (workingFrame.origin.y == Y_MIN_FOR_CURTAIN && !bIsCurtainLocked)
             {
-                isCurtainLocked = YES;
+                bIsCurtainLocked = YES;
             }
             else
             {
@@ -728,7 +750,7 @@
                         [self bounceAnimation:subview withCount:bounceCount andBounceHeight:bounceHeight];
                     NSLog(@"finished animation");
                 }];
-                isCurtainLocked = NO;
+                bIsCurtainLocked = NO;
             }
             dragging = NO;
         }

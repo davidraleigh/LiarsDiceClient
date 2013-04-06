@@ -50,7 +50,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     
     BOOL dragging;
     float oldY;
-    BOOL isCurtainLocked;
+    BOOL bIsCurtainLocked;
+    BOOL bHasRolled;
     
     NSTimer *myTimer;
     __weak IBOutlet UIView *bidSelectionView;
