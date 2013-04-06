@@ -28,6 +28,7 @@
 
 - (id)initWithFrame:(CGRect)frame andFaceValue:(int)faceValue;
 
+- (void)scrollSetup:(CGRect)frame andFaceValue:(int)faceValue;
 - (void)scroll;
 - (double)getCompleteDuration;
 + (int)maxIterationCount;

@@ -68,12 +68,16 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (void)deselectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
 - (void)deselectQuantityValue:(int)quantityValue atPosition:(int)position;
 
+- (void)resetDiceToOnePosition;
+
 - (void)rollDice;
 - (IBAction)rollDiceButton:(id)sender;
 
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
 - (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button;
 - (void)selectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
+
+- (void)setDiceToOnePosition;
 
 - (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue;
 - (void)updateQuantityButton:(UIButton *)button withPosition:(int)position;
@@ -95,5 +99,6 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)qaBidButton:(id)sender;
 - (IBAction)qaChallengeButton:(id)sender;
 
+- (IBAction)qaButtonResetDice:(id)sender;
 
 @end

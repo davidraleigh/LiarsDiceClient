@@ -39,7 +39,7 @@
 #define MAX_BID_QUANTITY 32
 #define MIN_FACE_VALUE 3
 #define MIN_BID_QUANTITY 1
-#define DICE_COUNT 7
+#define MAX_DICE_COUNT 7
 // TODO REPLACE THIS TEST CODE
 
 // #DEFINES FOR SCROLLINGDICEVIEW
@@ -95,6 +95,7 @@
 
 #define NUM_OF_SELECTABLE_QUANTITIES 5
 #define QUANTITY_TAG_BASE 660
+#define SCROLLING_VIEW_TAG_BASE 900
 
 @interface RoundPlayViewController_iPhone (MyPrivateMethods)
 - (void)setupHorizontalView;
@@ -127,30 +128,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
+
     liarsDice->StartRound();
-    int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
-    std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
-    for (int i = 0; i < diceCount; i++)
-    {
-        NSString *fileName = [[NSString alloc] initWithFormat:@"LD_DiceScroll_%d.png", i + 1];
-        UIImage *uiImage = [UIImage imageNamed:fileName];
-        
-        CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, uiImage.size.width / 2, uiImage.size.height / 2);
-        xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
-        
-        ScrollingDiceView *scrollingDice = [[ScrollingDiceView alloc]initWithFrame:frame andFaceValue:playersDice[i]];
-        
-        [scrollingDice setImage:uiImage];
-        [scrollingDice setTag:i + 1];
-        
-        double tempMaxDuration = [scrollingDice getCompleteDuration];
-        if (tempMaxDuration > maxRollDuration)
-            maxRollDuration = tempMaxDuration;
-        
-        [self.view insertSubview:scrollingDice atIndex:1 + i];
-    }
+    
+    [self setDiceToOnePosition];
     
     // Get the bid selection view
     bidSelectionView.hidden = YES;
@@ -166,6 +147,70 @@
     //[super viewWillAppear:animated];
     NSLog(@"viewWillAppear");
 
+}
+
+- (void)setDiceToOnePosition
+{
+    double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
+    int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
+    std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
+    for (int i = 1; i <= MAX_DICE_COUNT; i++)
+    {
+        if (i > diceCount)
+            break;
+        
+        NSString *fileName = [[NSString alloc] initWithFormat:@"LD_DiceScroll_%d.png", 1];
+        UIImage *uiImage = [UIImage imageNamed:fileName];
+        
+        CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, uiImage.size.width / 2, uiImage.size.height / 2);
+        xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
+        
+        ScrollingDiceView *scrollingDice = [[ScrollingDiceView alloc]initWithFrame:frame andFaceValue:playersDice[i - 1]];
+        
+        [scrollingDice setImage:uiImage];
+        [scrollingDice setTag:SCROLLING_VIEW_TAG_BASE + i];
+        
+        double tempMaxDuration = [scrollingDice getCompleteDuration];
+        if (tempMaxDuration > maxRollDuration)
+            maxRollDuration = tempMaxDuration;
+        
+        [self.view insertSubview:scrollingDice atIndex:i];
+    }
+}
+
+- (void)resetDiceToOnePosition
+{
+    if(myTimer)
+    {
+        [myTimer invalidate];
+        myTimer = nil;
+    }
+    
+    double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
+    int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
+    std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
+    for (int i = 1; i <= MAX_DICE_COUNT; i++)
+    {
+        if (i > diceCount)
+            break;
+        ScrollingDiceView *scrollingDice = (ScrollingDiceView *)[self searchSubviewsForTaggedView:SCROLLING_VIEW_TAG_BASE + i inSubviews:self.view];
+        
+        CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, scrollingDice.frame.size.width, scrollingDice.frame.size.height);
+        xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
+        [scrollingDice setFrame:frame];
+        
+        [scrollingDice scrollSetup:frame andFaceValue:playersDice[i - 1]];
+        
+        double tempMaxDuration = [scrollingDice getCompleteDuration];
+        if (tempMaxDuration > maxRollDuration)
+            maxRollDuration = tempMaxDuration;
+    }
+}
+
+- (void)qaButtonResetDice:(id)sender
+{
+    
+    [self resetDiceToOnePosition];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -526,6 +571,8 @@
 - (IBAction)qaChallengeButton:(id)sender
 {
     liarsDice->Challenge();
+    
+    // if the player lost then set the last scrollingDiceView to hidden
     // do some other stuff
 }
 
