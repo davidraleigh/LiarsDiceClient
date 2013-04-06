@@ -49,10 +49,11 @@
 // #DEFINES FOR SCROLLINGDICEVIEW
 
 // #DEFINES FOR CURTAIN
-#define Y_MIN_FOR_CURTAIN -258
-#define Y_MAX_FOR_CURTAIN 0
+#define Y_HEIGHT 320
 #define X_ORIGIN_HANDLE 171
 #define Y_ORIGIN_HANDLE 265
+#define Y_MIN_FOR_CURTAIN -Y_ORIGIN_HANDLE
+#define Y_MAX_FOR_CURTAIN 0
 #define WIDTH_HANDLE 138
 #define HEIGHT_HANDLE 56
 #define CURTAIN_DESCENT_ANIMATION_DURATION .25
@@ -117,6 +118,7 @@
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
         bidIndexForSelectedBidItem = HIGHLIGHTED_BID_ITEM;
         selectedFaceValue = 0;
+        isCurtainLocked = NO;
     }
     
     return self;
@@ -606,6 +608,11 @@
     
     // check that handle has been touched
     CGRect handleRect = CGRectMake(X_ORIGIN_HANDLE, Y_ORIGIN_HANDLE, WIDTH_HANDLE, HEIGHT_HANDLE);
+    
+    // if the curtain locked in the up position
+    if (isCurtainLocked == YES)
+        handleRect = CGRectMake(X_ORIGIN_HANDLE, 0, WIDTH_HANDLE, HEIGHT_HANDLE);
+    
     if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
     {
         dragging = YES;
@@ -631,9 +638,13 @@
                 workingFrame.origin.y += touchLocation.y - oldY;
                 oldY = touchLocation.y;
                 if (workingFrame.origin.y < Y_MIN_FOR_CURTAIN)
+                {
                     workingFrame.origin.y = Y_MIN_FOR_CURTAIN;
+                }
                 else if (workingFrame.origin.y > Y_MAX_FOR_CURTAIN)
+                {
                     workingFrame.origin.y = Y_MAX_FOR_CURTAIN;
+                }
                 
                 [subview setFrame:workingFrame];
             }
@@ -648,21 +659,30 @@
         if (dragging == YES && [subview tag] == 99)
         {
             CGRect workingFrame = subview.frame;
-            int releaseHeight = 0 - workingFrame.origin.y;
-            workingFrame.origin.y = 0;
-            CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
             
-            [UIView animateWithDuration:CURTAIN_DESCENT_ANIMATION_DURATION delay:CURTAIN_DESCENT_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^{
-                subview.center = center;
-                NSLog(@"Animation Start");
+            if (workingFrame.origin.y == Y_MIN_FOR_CURTAIN && !isCurtainLocked)
+            {
+                isCurtainLocked = YES;
             }
-            completion:^(BOOL finished) {
-                int bounceCount = (arc4random() % 3) + 1;
-                int bounceHeight = LOWEST_BOUNCE + arc4random() % BOUNCE_RANGE;
-                if (releaseHeight > 100)
-                    [self bounceAnimation:subview withCount:bounceCount andBounceHeight:bounceHeight];
-                NSLog(@"finished animation");
-            }];
+            else
+            {
+                int releaseHeight = 0 - workingFrame.origin.y;
+                workingFrame.origin.y = 0;
+                CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
+                
+                [UIView animateWithDuration:CURTAIN_DESCENT_ANIMATION_DURATION delay:CURTAIN_DESCENT_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^{
+                    subview.center = center;
+                    NSLog(@"Animation Start");
+                }
+                completion:^(BOOL finished) {
+                    int bounceCount = (arc4random() % 3) + 1;
+                    int bounceHeight = LOWEST_BOUNCE + arc4random() % BOUNCE_RANGE;
+                    if (releaseHeight > 100)
+                        [self bounceAnimation:subview withCount:bounceCount andBounceHeight:bounceHeight];
+                    NSLog(@"finished animation");
+                }];
+                isCurtainLocked = NO;
+            }
             dragging = NO;
         }
     }

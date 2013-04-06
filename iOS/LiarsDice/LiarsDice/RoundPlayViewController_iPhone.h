@@ -21,12 +21,6 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     std::shared_ptr<LiarsDiceEngine> liarsDice;
     
 	EasyTableView *horizontalView;
-    __weak IBOutlet UIButton *quantityButtonText1;
-    __weak IBOutlet UIButton *quantityButtonText2;
-    __weak IBOutlet UIButton *quantityButtonText3;
-    __weak IBOutlet UIButton *quantityButtonText4;
-    __weak IBOutlet UIButton *quantityButtonText5;
-    __weak IBOutlet UIButton *quantityButtonText6;
  
     __weak IBOutlet UILabel *playersOddsLabel;
     __weak IBOutlet UILabel *typicalOddsLabel;
@@ -56,6 +50,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     
     BOOL dragging;
     float oldY;
+    BOOL isCurtainLocked;
     
     NSTimer *myTimer;
     __weak IBOutlet UIView *bidSelectionView;
