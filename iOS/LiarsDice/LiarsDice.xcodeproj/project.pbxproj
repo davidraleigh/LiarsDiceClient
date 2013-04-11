@@ -139,6 +139,7 @@
 		87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */; };
 		87E026CF1715E614009C52AD /* LD_BracketGreen_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E026CD1715E614009C52AD /* LD_BracketGreen_001.png */; };
 		87E026D01715E614009C52AD /* LD_BracketRed_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E026CE1715E614009C52AD /* LD_BracketRed_001.png */; };
+		87E026D317176807009C52AD /* HelperFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E026D217176807009C52AD /* HelperFunctions.m */; };
 		87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
 		87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027D16BB470B008E5457 /* CoreGraphics.framework */; };
@@ -407,6 +408,8 @@
 		87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
 		87E026CD1715E614009C52AD /* LD_BracketGreen_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_BracketGreen_001.png; path = ../../../../../Resources/LiarsDice/LD_BracketGreen_001.png; sourceTree = "<group>"; };
 		87E026CE1715E614009C52AD /* LD_BracketRed_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_BracketRed_001.png; path = ../../../../../Resources/LiarsDice/LD_BracketRed_001.png; sourceTree = "<group>"; };
+		87E026D117176807009C52AD /* HelperFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunctions.h; sourceTree = "<group>"; };
+		87E026D217176807009C52AD /* HelperFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperFunctions.m; sourceTree = "<group>"; };
 		87E6027616BB470B008E5457 /* LiarsDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiarsDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E6027916BB470B008E5457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87E6027B16BB470B008E5457 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -589,6 +592,8 @@
 				87F4736416BC82DF009E90B5 /* EasyTableView.m */,
 				8708D54316DBA8CF00A1ED82 /* StringConversion.h */,
 				8708D54416DBA8CF00A1ED82 /* StringConversion.mm */,
+				87E026D117176807009C52AD /* HelperFunctions.h */,
+				87E026D217176807009C52AD /* HelperFunctions.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1376,6 +1381,7 @@
 				876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */,
 				8708D54516DBA8CF00A1ED82 /* StringConversion.mm in Sources */,
 				1E7D269D16FCF19E006048D5 /* CooperGameplayLayoutViewController.m in Sources */,
+				87E026D317176807009C52AD /* HelperFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

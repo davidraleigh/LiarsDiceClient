@@ -76,7 +76,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
 - (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected;
 
-- (void)resetDiceToOnePosition;
+- (void)resetPlayersDiceToAllOnes;
 
 - (void)rollDice;
 - (IBAction)rollDiceButton:(id)sender;
@@ -90,7 +90,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (void)setSelectedQuantityValueImage:(int)quantityValue atButton:(UIButton *)button;
 - (void)setSelectedQuantityValueImage:(int)quantityValue atPosition:(int)position;
 
-- (void)setDiceToOnePosition;
+- (void)setPlayersDiceToAllOnes;
 
 - (void)shiftQuantityButtonRange:(int)newLowestQuantity;
 

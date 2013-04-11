@@ -13,6 +13,7 @@
 #import "PlayerBidItemView_iPhone.h"
 #import "StringConversion.h"
 
+#include <GamePlayers.h>
 #include <LiarsDiceEngine.h>
 
 // PlayerBitItem defines for EasyTableView Layout
@@ -57,6 +58,11 @@
     if (self)
     {
         liarsDice = liarsDiceEngine;
+        CGSize bidItemViewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
+        bidItemViewHeight = (int)bidItemViewSize.height;
+        bidItemViewWidth = (int)bidItemViewSize.width;
+        devicePlayerUID = GamePlayers::getInstance().GetClientUID();
+
     }
     
     return self;

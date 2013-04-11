@@ -13,16 +13,11 @@
 #import "EasyTableView.h"
 #import "PlayerBidItemView_iPhone.h"
 #import "StringConversion.h"
+#import "HelperFunctions.h"
 
 #import <LiarsDiceEngine.h>
 #import <Round.h>
 #import <GamePlayers.h>
-
-
-
-
-
-
 
 
 // #DEFINES FOR SCROLLINGDICEVIEW
@@ -124,7 +119,7 @@
 
     liarsDice->StartRound();
     
-    [self setDiceToOnePosition];
+    [self setPlayersDiceToAllOnes];
     
     // Get the bid selection view
     bidSelectionView.hidden = YES;
@@ -143,7 +138,7 @@
 
 }
 
-- (void)setDiceToOnePosition
+- (void)setPlayersDiceToAllOnes
 {
     double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
     int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
@@ -173,7 +168,7 @@
     bHasRolled = NO;
 }
 
-- (void)resetDiceToOnePosition
+- (void)resetPlayersDiceToAllOnes
 {
     if(animationTimer)
     {
@@ -206,7 +201,7 @@
 
 - (void)qaButtonResetDice:(id)sender
 {
-    [self resetDiceToOnePosition];
+    [self resetPlayersDiceToAllOnes];
 }
 
 - (void) viewDidAppear:(BOOL)animated
