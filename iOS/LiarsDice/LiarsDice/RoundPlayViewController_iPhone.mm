@@ -35,12 +35,7 @@
 #define FACE_VALUE_TAGS 700
 // BID VIEW
 
-// TODO REPLACE THIS TEST CODE
-#define MAX_BID_QUANTITY 32
-#define MIN_FACE_VALUE 3
-#define MIN_BID_QUANTITY 1
 #define MAX_DICE_COUNT 7
-// TODO REPLACE THIS TEST CODE
 
 // #DEFINES FOR SCROLLINGDICEVIEW
 #define SCROLLING_DICE_VIEW_X_ORIGIN 10
@@ -129,6 +124,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // hide all the brackets to start with and then let the updateDetailedPlayerInfo method
+    // sort out which should be shown
+    activeBidOrChallengeItemHighlight.hidden = YES;
+    activeBidItemHighlight.hidden = YES;
+    activeChallengeItemHighlight.hidden = YES;
+    inactiveBidItemHighlight.hidden = YES;
+    bidSelectionView.hidden = YES;
+    challengeView.hidden = YES;
 
     liarsDice->StartRound();
     
@@ -140,7 +144,8 @@
     // Do any additional setup after loading the view from its nib.
 	[self setupHorizontalView];
 
-    currentLowestQuantity = MIN_BID_QUANTITY;
+    
+    currentLowestQuantity = liarsDice->GetLowestPossibleBid().bidQuantity;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -213,7 +218,6 @@
 
 - (void)qaButtonResetDice:(id)sender
 {
-    
     [self resetDiceToOnePosition];
 }
 
@@ -401,68 +405,73 @@
     
     for (int position = 1; position <= NUM_OF_SELECTABLE_QUANTITIES; position++)
     {
-        int tag = QUANTITY_TAG_BASE + position;
-        UIButton *button = (UIButton *)[self searchSubviewsForTaggedView:tag inSubviews:self.view];
-        if (!button || ![button isKindOfClass:[UIView class]])
-        {
-            NSLog(@"One of the tag numbers is not associated with a view or a tag is not properly associated with a UIButton");
-            continue;
-        }
-        
         int quantityValue = currentLowestQuantity + position - 1;
         NSLog(@"Button position: %d and button value: %d", position, quantityValue);
         
-        if (newSelectedPosition != currentHighlightedPosition &&
-            currentHighlightedPosition == position)
+        if (newSelectedPosition != currentHighlightedQuantityPosition &&
+            currentHighlightedQuantityPosition == position)
         {
-            [self deselectQuantityValue:quantityValue withButton:button];
-//            selectedQuantity = 0;
+            [self setDeselectedQuantityValueImage:quantityValue atPosition:position];
         }
         else if (newSelectedPosition == position)
         {
-            [self selectQuantityValue:quantityValue withButton:button];
+            [self setSelectedQuantityValueImage:quantityValue atPosition:position];
             selectedQuantity = quantityValue;
         }
         else
         {
-            [self deselectQuantityValue:quantityValue withButton:button];
+            [self setDeselectedQuantityValueImage:quantityValue atPosition:position];
         }
-        
     }
-    currentHighlightedPosition = newSelectedPosition;
+    currentHighlightedQuantityPosition = newSelectedPosition;
 }
 
-
-
-- (void)deselectFaceValue:(int)faceValue
+- (void)setDeselectedFaceValueImage:(int)faceValue
 {
-    UIButton *view = (UIButton*)[self searchSubviewsForTaggedView:FACE_VALUE_TAGS + selectedFaceValue inSubviews:self.view];
+    UIButton *view = (UIButton*)[self searchSubviewsForTaggedView:FACE_VALUE_TAGS + selectedFaceValue inSubviews:bidSelectionView];
     NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_%d.png", selectedFaceValue];
     [view setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
 }
 
-- (void)deselectQuantityValue:(int)quantityValue withButton:(UIButton *)button
+- (void)setDeselectedQuantityValueImage:(int)quantityValue atButton:(UIButton *)button
 {
     NSString *fileName = [[NSString alloc] initWithFormat:@"LD_BidNumber_%d.png", quantityValue];
     [button setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
 }
 
-- (void)deselectQuantityValue:(int)quantityValue atPosition:(int)position
+- (void)setDeselectedQuantityValueImage:(int)quantityValue atPosition:(int)position
 {
-    UIButton *view = (UIButton *)[self searchSubviewsForTaggedView:QUANTITY_TAG_BASE + position inSubviews:self.view];
-    [self deselectQuantityValue:quantityValue withButton:view];
+    UIButton *view = (UIButton *)[self searchSubviewsForTaggedView:QUANTITY_TAG_BASE + position inSubviews:bidSelectionView];
+    [self setDeselectedQuantityValueImage:quantityValue atButton:view];
 }
 
-- (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button
+- (void)setSelectedFaceValueImage:(int)faceValue atButton:(UIButton *)button
 {
     NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_Highlight_%d.png", faceValue];
     [button setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
 }
 
-- (void)selectQuantityValue:(int)quantityValue withButton:(UIButton *)button
+- (void)setSelectedQuantityValueImage:(int)quantityValue atButton:(UIButton *)button
 {
     NSString *fileName = [[NSString alloc] initWithFormat:@"LD_BidNumber_Highlight_%d.png", quantityValue];
     [button setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
+}
+
+- (void)setSelectedQuantityValueImage:(int)quantityValue atPosition:(int)position
+{
+    UIButton *button = (UIButton *)[self searchSubviewsForTaggedView:QUANTITY_TAG_BASE + position inSubviews:bidSelectionView];
+    [self setSelectedQuantityValueImage:quantityValue atButton:button];
+}
+- (void)shiftQuantityButtonRange:(int)newLowestQuantity
+{
+    if (newLowestQuantity == currentLowestQuantity)
+        return;
+    
+    for (int position = 1; position <= NUM_OF_SELECTABLE_QUANTITIES; position++)
+        [self setDeselectedQuantityValueImage:newLowestQuantity + position - 1 atPosition:position];
+
+    currentHighlightedQuantityPosition = 0;
+    currentLowestQuantity = newLowestQuantity;
 }
 
 - (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue
@@ -471,14 +480,14 @@
     {
         // deselect button
         if (selectedFaceValue != 0)
-            [self deselectFaceValue:selectedFaceValue];
+            [self setDeselectedFaceValueImage:selectedFaceValue];
         
-        [self selectFaceValue:faceValue withButton:button];
+        [self setSelectedFaceValueImage:faceValue atButton:button];
         selectedFaceValue = faceValue;
     }
     else
     {
-        [self deselectFaceValue:selectedFaceValue];
+        [self setDeselectedFaceValueImage:selectedFaceValue];
         selectedFaceValue = 0;
     }
 }
@@ -524,15 +533,15 @@
     // the shift value is based off of the number of selectable quantities.
     // and the position of the current button
     int shiftValue = position - (1 + NUM_OF_SELECTABLE_QUANTITIES / 2);
-    if (currentHighlightedPosition != position)
+    if (currentHighlightedQuantityPosition != position)
     {
         [self changeQuantityPositionBy:shiftValue atButtonPosition:position];
     }
     else
     {
-        [self deselectQuantityValue:selectedQuantity atPosition:position];
+        [self setDeselectedQuantityValueImage:selectedQuantity atPosition:position];
         selectedQuantity = 0;
-        currentHighlightedPosition = 0;
+        currentHighlightedQuantityPosition = 0;
     }
 }
 
@@ -583,8 +592,14 @@
     }
     
     liarsDice->Bid(quantity, faceValue);
+    [self setDeselectedQuantityValueImage:selectedQuantity atPosition:currentHighlightedQuantityPosition];
+    [self setDeselectedFaceValueImage:selectedFaceValue];
     [horizontalView reloadData];
     [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+    
+    selectedQuantity = 0;
+    selectedFaceValue = 0;
+    currentHighlightedQuantityPosition = 0;
 }
 
 - (IBAction)qaChallengeButton:(id)sender
@@ -794,53 +809,87 @@
     {
         // Show bidding view
         NSLog(@"Show bidding window now %@", [playerBidItem getPlayerName]);
-        bidHighlight.hidden = NO;
-        bidSelectionView.hidden = NO;
-        bullshitView.hidden = NO;
-        nonBidHighlight.hidden = YES;
+        if (liarsDice->GetBidCount() == 0)
+        {
+            int newLowestQuantity = liarsDice->GetLowestPossibleBid().bidQuantity;
+            [self shiftQuantityButtonRange:newLowestQuantity];
+            activeBidItemHighlight.hidden = NO;
+            bidSelectionView.hidden = NO;
+        }
+        else if (liarsDice->LastBidTerminatesRound())
+        {
+            activeChallengeItemHighlight.hidden = NO;
+            challengeView.hidden = NO;
+        }
+        else
+        {
+            int newLowestQuantity = liarsDice->GetLowestPossibleBid().bidQuantity;
+            [self shiftQuantityButtonRange:newLowestQuantity];
+            activeBidOrChallengeItemHighlight.hidden = NO;
+            bidSelectionView.hidden = NO;
+            challengeView.hidden = NO;
+        }
+        
+        inactiveBidItemHighlight.hidden = YES;
     }
     else if (bidIndexForSelectedBidItem == liarsDice->GetBidCount() -1 &&
              GamePlayers::getInstance().GetClientUID() == liarsDice->GetCurrentUID())
     {
         NSLog(@"Show challenge option now %@", [playerBidItem getPlayerName]);
-        bidHighlight.hidden = YES;
+        activeBidItemHighlight.hidden = YES;
+        activeChallengeItemHighlight.hidden = YES;
+        activeBidOrChallengeItemHighlight.hidden = YES;
+        
         bidSelectionView.hidden = YES;
-        bullshitView.hidden = YES;
-        nonBidHighlight.hidden = NO;
+        challengeView.hidden = YES;
+        inactiveBidItemHighlight.hidden = NO;
 
     }
     else if (bidIndexForSelectedBidItem > liarsDice->GetBidCount())
     {
         NSLog(@"Show info about potential bids %@", [playerBidItem getPlayerName]);
-        bidHighlight.hidden = YES;
+        activeBidItemHighlight.hidden = YES;
+        activeChallengeItemHighlight.hidden = YES;
+        activeBidOrChallengeItemHighlight.hidden = YES;
+        
         bidSelectionView.hidden = YES;
-        bullshitView.hidden = YES;
-        nonBidHighlight.hidden = NO;
+        challengeView.hidden = YES;
+        inactiveBidItemHighlight.hidden = NO;
     }
     else if (bidIndexForSelectedBidItem == liarsDice->GetBidCount())
     {
         NSLog(@"Show current bidder info %@", [playerBidItem getPlayerName]);
-        bidHighlight.hidden = YES;
+        activeBidItemHighlight.hidden = YES;
+        activeChallengeItemHighlight.hidden = YES;
+        activeBidOrChallengeItemHighlight.hidden = YES;
         bidSelectionView.hidden = YES;
-        bullshitView.hidden = YES;
-        nonBidHighlight.hidden = NO;
+        challengeView.hidden = YES;
+        inactiveBidItemHighlight.hidden = NO;
     }
     else
     {
         NSLog(@"Show previous bid info %@",[playerBidItem getPlayerName]);
-        bidHighlight.hidden = YES;
+        activeBidItemHighlight.hidden = YES;
+        activeChallengeItemHighlight.hidden = YES;
+        activeBidOrChallengeItemHighlight.hidden = YES;
         bidSelectionView.hidden = YES;
-        bullshitView.hidden = YES;
-        nonBidHighlight.hidden = NO;
+        challengeView.hidden = YES;
+        inactiveBidItemHighlight.hidden = NO;
     }
 
 }
 - (void)viewDidUnload
 {
     bidSelectionView = nil;
-    nonBidHighlight = nil;
-    bidHighlight = nil;
-    bullshitView = nil;
+    selectPosition1ButtonView = nil;
+    activeBidItemHighlight = nil;
+    inactiveBidItemHighlight = nil;
+    challengeView = nil;
+    activeBidOrChallengeItemHighlight = nil;
+    activeChallengeItemHighlight = nil;
+    activeChallengeItemHighlight = nil;
+    activeBidItemHighlight = nil;
+    activeChallengeItemHighlight = nil;
     [super viewDidUnload];
 }
 @end

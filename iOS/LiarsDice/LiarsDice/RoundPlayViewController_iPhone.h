@@ -18,17 +18,27 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 @interface RoundPlayViewController_iPhone : RoundPlayViewController <EasyTableViewDelegate>
 {
+    // This is the reference to the game
     std::shared_ptr<LiarsDiceEngine> liarsDice;
     
+    // horizontalTableView of all the playerBidItems
 	EasyTableView *horizontalView;
- 
-    __weak IBOutlet UILabel *playersOddsLabel;
-    __weak IBOutlet UILabel *typicalOddsLabel;
-    
+
+    // the curtain view is the overlaying view where player
+    // can review bids and make their own bids and challenges
     __weak IBOutlet UIView *curtainView;
-    __weak IBOutlet UIImageView *nonBidHighlight;
-    __weak IBOutlet UIImageView *bidHighlight;
-    __weak IBOutlet UIView *bullshitView;
+    
+    // green, red, or green and red highlight for the 
+
+    __weak IBOutlet UIImageView *activeBidItemHighlight;
+    __weak IBOutlet UIImageView *activeChallengeItemHighlight;
+    __weak IBOutlet UIImageView *activeBidOrChallengeItemHighlight;
+    __weak IBOutlet UIImageView *inactiveBidItemHighlight;
+    __weak IBOutlet UIView *bidSelectionView;
+    __weak IBOutlet UIView *challengeView;
+    
+    __weak IBOutlet UIButton *selectPosition1ButtonView;
+    
     
     // TODO change this to be a list of
     // the current players using this device
@@ -39,7 +49,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     int selectedQuantity;
     int selectedFaceValue;
     
-    int currentHighlightedPosition;
+    int currentHighlightedQuantityPosition;
     int bidIndexForSelectedBidItem;
     
     int landscapeHeight;
@@ -54,7 +64,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     BOOL bHasRolled;
     
     NSTimer *myTimer;
-    __weak IBOutlet UIView *bidSelectionView;
+
 }
 
 @property (nonatomic) EasyTableView *horizontalView;
@@ -65,9 +75,7 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 - (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
 - (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected;
-- (void)deselectFaceValue:(int)faceValue;
-- (void)deselectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
-- (void)deselectQuantityValue:(int)quantityValue atPosition:(int)position;
+
 
 - (void)resetDiceToOnePosition;
 
@@ -75,10 +83,17 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)rollDiceButton:(id)sender;
 
 - (UIView *)searchSubviewsForTaggedView:(int)tag inSubviews:(UIView *)view;
-- (void)selectFaceValue:(int)faceValue withButton:(UIButton *)button;
-- (void)selectQuantityValue:(int)quantityValue withButton:(UIButton *)button;
+
+- (void)setDeselectedFaceValueImage:(int)faceValue;
+- (void)setDeselectedQuantityValueImage:(int)quantityValue atButton:(UIButton *)button;
+- (void)setDeselectedQuantityValueImage:(int)quantityValue atPosition:(int)position;
+- (void)setSelectedFaceValueImage:(int)faceValue atButton:(UIButton *)button;
+- (void)setSelectedQuantityValueImage:(int)quantityValue atButton:(UIButton *)button;
+- (void)setSelectedQuantityValueImage:(int)quantityValue atPosition:(int)position;
 
 - (void)setDiceToOnePosition;
+
+- (void)shiftQuantityButtonRange:(int)newLowestQuantity;
 
 - (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue;
 - (void)updateQuantityButton:(UIButton *)button withPosition:(int)position;

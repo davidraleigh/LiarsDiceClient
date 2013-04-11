@@ -307,9 +307,8 @@ public:
     bool LastProbabiltyIsZero();
     
     /**
-	 * Check to see if the last bid terminated the round
-	 * I can't really remember what this does.  Ohhh, if
-	 * the last bid was a six and the number of die bid
+	 * Check to see if the last bid terminated the round.
+	 * If the last bid was a six and the number of die bid
 	 * is equal to the total number of die left, then the
 	 * next player is forced to call the last player's bid
 	 * @return false if the last bid did not terminate the round, true if it does

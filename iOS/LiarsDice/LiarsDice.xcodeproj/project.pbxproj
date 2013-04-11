@@ -137,6 +137,8 @@
 		87B09BA916C27C8C006F6E81 /* GeneralSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BA816C27C8C006F6E81 /* GeneralSettingsViewController.mm */; };
 		87B09BAD16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm */; };
 		87B09BAE16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */; };
+		87E026CF1715E614009C52AD /* LD_BracketGreen_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E026CD1715E614009C52AD /* LD_BracketGreen_001.png */; };
+		87E026D01715E614009C52AD /* LD_BracketRed_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E026CE1715E614009C52AD /* LD_BracketRed_001.png */; };
 		87E6027A16BB470B008E5457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027916BB470B008E5457 /* UIKit.framework */; };
 		87E6027C16BB470B008E5457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027B16BB470B008E5457 /* Foundation.framework */; };
 		87E6027E16BB470B008E5457 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E6027D16BB470B008E5457 /* CoreGraphics.framework */; };
@@ -405,6 +407,8 @@
 		87B09BAA16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingsViewController_iPhone.h; sourceTree = "<group>"; };
 		87B09BAB16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeneralSettingsViewController_iPhone.mm; sourceTree = "<group>"; };
 		87B09BAC16C27CB0006F6E81 /* GeneralSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
+		87E026CD1715E614009C52AD /* LD_BracketGreen_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_BracketGreen_001.png; path = ../../../../../Resources/LiarsDice/LD_BracketGreen_001.png; sourceTree = "<group>"; };
+		87E026CE1715E614009C52AD /* LD_BracketRed_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_BracketRed_001.png; path = ../../../../../Resources/LiarsDice/LD_BracketRed_001.png; sourceTree = "<group>"; };
 		87E6027616BB470B008E5457 /* LiarsDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiarsDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E6027916BB470B008E5457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87E6027B16BB470B008E5457 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -616,6 +620,8 @@
 		873D485216E25585007F2959 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				87E026CD1715E614009C52AD /* LD_BracketGreen_001.png */,
+				87E026CE1715E614009C52AD /* LD_BracketRed_001.png */,
 				874D24F816FDB67300E69B6C /* RoundPlay */,
 				874D24F716FDB50100E69B6C /* Dice */,
 				874D24EE16FD10FD00E69B6C /* Icons */,
@@ -1248,6 +1254,8 @@
 				874D24F416FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png in Resources */,
 				874D24F616FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */,
 				8780E6BB16FE3A8200D230CF /* LD_AppIcon_Beige_001.png in Resources */,
+				87E026CF1715E614009C52AD /* LD_BracketGreen_001.png in Resources */,
+				87E026D01715E614009C52AD /* LD_BracketRed_001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
