@@ -179,8 +179,6 @@
 		87F4732216BC052D009E90B5 /* SetUserNameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4732016BC052D009E90B5 /* SetUserNameViewController_iPhone.xib */; };
 		87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm */; };
 		87F4733E16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */; };
-		87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm */; };
-		87F4735216BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */; };
 		87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm */; };
 		87F4735716BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */; };
 		87F4736516BC82DF009E90B5 /* EasyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F4736416BC82DF009E90B5 /* EasyTableView.m */; };
@@ -472,9 +470,6 @@
 		87F4733A16BC0663009E90B5 /* RollForFirstPlayViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollForFirstPlayViewController_iPhone.h; sourceTree = "<group>"; };
 		87F4733B16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RollForFirstPlayViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4733C16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollForFirstPlayViewController_iPhone.xib; sourceTree = "<group>"; };
-		87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersShowDiceViewController_iPhone.h; sourceTree = "<group>"; };
-		87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayersShowDiceViewController_iPhone.mm; sourceTree = "<group>"; };
-		87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayersShowDiceViewController_iPhone.xib; sourceTree = "<group>"; };
 		87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarizeRoundViewController_iPhone.h; sourceTree = "<group>"; };
 		87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SummarizeRoundViewController_iPhone.mm; sourceTree = "<group>"; };
 		87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummarizeRoundViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -857,9 +852,6 @@
 				872CA63A16C14CF30056AF23 /* RoundPlayViewController_iPhone.h */,
 				872CA63B16C14CF40056AF23 /* RoundPlayViewController_iPhone.mm */,
 				872CA63C16C14CF60056AF23 /* RoundPlayViewController_iPhone.xib */,
-				87F4734E16BC06E5009E90B5 /* PlayersShowDiceViewController_iPhone.h */,
-				87F4734F16BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm */,
-				87F4735016BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib */,
 				87F4735316BC0713009E90B5 /* SummarizeRoundViewController_iPhone.h */,
 				87F4735416BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm */,
 				87F4735516BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib */,
@@ -1157,7 +1149,6 @@
 				87F4731D16BC03F0009E90B5 /* StartViewController_iPhone.xib in Resources */,
 				87F4732216BC052D009E90B5 /* SetUserNameViewController_iPhone.xib in Resources */,
 				87F4733E16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.xib in Resources */,
-				87F4735216BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.xib in Resources */,
 				87F4735716BC0714009E90B5 /* SummarizeRoundViewController_iPhone.xib in Resources */,
 				87E9552616BFFEE80067F4DF /* LiarsDiceLobbyViewController_iPhone.xib in Resources */,
 				87E9552E16BFFF4C0067F4DF /* GameSetupViewController_iPhone.xib in Resources */,
@@ -1365,7 +1356,6 @@
 				87F4731C16BC03F0009E90B5 /* StartViewController_iPhone.mm in Sources */,
 				87F4732116BC052D009E90B5 /* SetUserNameViewController_iPhone.mm in Sources */,
 				87F4733D16BC0664009E90B5 /* RollForFirstPlayViewController_iPhone.mm in Sources */,
-				87F4735116BC06E6009E90B5 /* PlayersShowDiceViewController_iPhone.mm in Sources */,
 				87F4735616BC0714009E90B5 /* SummarizeRoundViewController_iPhone.mm in Sources */,
 				87F4736516BC82DF009E90B5 /* EasyTableView.m in Sources */,
 				87E9552116BFFEB00067F4DF /* LiarsDiceLobbyViewController.mm in Sources */,

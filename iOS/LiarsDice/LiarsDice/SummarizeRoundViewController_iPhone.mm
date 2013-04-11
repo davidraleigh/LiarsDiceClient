@@ -9,7 +9,26 @@
 #import "SummarizeRoundViewController_iPhone.h"
 
 #import "RoundPlayViewController_iPhone.h"
+#import "EasyTableView.h"
+#import "PlayerBidItemView_iPhone.h"
+#import "StringConversion.h"
+
 #include <LiarsDiceEngine.h>
+
+// PlayerBitItem defines for EasyTableView Layout
+#define NUM_OF_VSISIBLE_BID_ITEMS 5
+#define BLANK_BID_ITEMS_TO_RIGHT 1
+#define BLANK_BID_ITEMS_TO_LEFT 3
+#define NEXT_NEXT_PLAYER_BID_ITEM BLANK_BID_ITEMS_TO_LEFT
+#define NEXT_PLAYER_BID_ITEM NEXT_NEXT_PLAYER_BID_ITEM + 1
+#define CURRENT_BIDDER_BID_ITEM NEXT_PLAYER_BID_ITEM + 1
+#define HIGHLIGHTED_BID_ITEM 3
+// PlayerBitItem defines for EasyTableView Layout
+
+// BID VIEW
+#define PLAYER_BID_ITEM_VIEW_TAG 88
+#define FACE_VALUE_TAGS 700
+// BID VIEW
 
 @interface SummarizeRoundViewController_iPhone ()
 

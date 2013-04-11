@@ -7,9 +7,8 @@
 //
 
 #import "RoundPlayViewController_iPhone.h"
-#import "PlayersShowDiceViewController_iPhone.h"
 
-
+#import "SummarizeRoundViewController_iPhone.h"
 #import "ScrollingDiceView.h"
 #import "EasyTableView.h"
 #import "PlayerBidItemView_iPhone.h"
@@ -623,8 +622,8 @@
         NSString *message = [[NSString alloc] initWithFormat:@"%@ challenged the bid from %@", challenger, previousBidder];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Challenge" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        PlayersShowDiceViewController_iPhone *psdvc = [[PlayersShowDiceViewController_iPhone alloc] initWithLiarsDice:liarsDice];
-        [[self navigationController] pushViewController:psdvc animated:YES];
+        SummarizeRoundViewController_iPhone *srvc = [[SummarizeRoundViewController_iPhone alloc] initWithLiarsDice:liarsDice];
+        [[self navigationController] pushViewController:srvc animated:YES];
     }
     else
     {
@@ -890,6 +889,8 @@
     activeChallengeItemHighlight = nil;
     activeBidItemHighlight = nil;
     activeChallengeItemHighlight = nil;
+    leftSideLabel = nil;
+    rightSideLabel = nil;
     [super viewDidUnload];
 }
 @end

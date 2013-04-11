@@ -38,6 +38,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     __weak IBOutlet UIView *challengeView;
     
     __weak IBOutlet UIButton *selectPosition1ButtonView;
+    __weak IBOutlet UILabel *leftSideLabel;
+    __weak IBOutlet UILabel *rightSideLabel;
     
     
     // TODO change this to be a list of
