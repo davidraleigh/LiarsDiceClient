@@ -46,7 +46,6 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     // the current players using this device
     unsigned int devicePlayerUID;
     
-    //
     int currentLowestQuantity;
     int selectedQuantity;
     int selectedFaceValue;
@@ -54,19 +53,18 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     int currentHighlightedQuantityPosition;
     int bidIndexForSelectedBidItem;
     
-    int landscapeHeight;
-    int tableviewHeight;
-    int tableviewWidth;
+    int bidItemViewHeight;
+    int bidItemViewWidth;
     
     double maxRollDuration;
     
-    BOOL dragging;
-    float oldY;
+    BOOL bIsDragging;
     BOOL bIsCurtainLocked;
     BOOL bHasRolled;
     
-    NSTimer *myTimer;
-
+    float curtainOldY;
+    
+    NSTimer *animationTimer;
 }
 
 @property (nonatomic) EasyTableView *horizontalView;
@@ -77,7 +75,6 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 - (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
 - (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected;
-
 
 - (void)resetDiceToOnePosition;
 

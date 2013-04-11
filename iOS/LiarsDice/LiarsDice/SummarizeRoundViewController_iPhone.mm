@@ -30,21 +30,26 @@
 #define FACE_VALUE_TAGS 700
 // BID VIEW
 
+// #DEFINES FOR BidView
+#define X_ORIGIN_BID_VIEW 0
+#define Y_ORIGIN_BID_VIEW 143
+// #DEFINES FOR BidView
+
+// #DEFINES FOR EASYTABLEVIEW
+#define ORIGIN_Y                    12
+#define ORIGIN_X                    17
+#define SEPARATION_BETWEEN_BID_ITEMS 13
+#define LANDSCAPE_WIDTH             460
+#define STARTUP_OFFSET_COUNT        2
+#define TABLE_BACKGROUND_COLOR		[UIColor clearColor]
+// #DEFINES FOR EASYTABLEVIEW
+
 @interface SummarizeRoundViewController_iPhone ()
 
 @end
 
 @implementation SummarizeRoundViewController_iPhone
 
-- (IBAction)continueGameButton:(id)sender
-{
-    NSArray *array = [self.navigationController viewControllers];
-    
-    int rpvc_index = [array count] - 3;
-    RoundPlayViewController_iPhone *rpvc = (RoundPlayViewController_iPhone *)[array objectAtIndex:rpvc_index];
-    
-    [self.navigationController popToViewController:rpvc animated:YES];
-}
 
 - (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
 {
@@ -69,4 +74,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)continueGameButton:(id)sender
+{
+    NSArray *array = [self.navigationController viewControllers];
+    
+    int rpvc_index = [array count] - 3;
+    RoundPlayViewController_iPhone *rpvc = (RoundPlayViewController_iPhone *)[array objectAtIndex:rpvc_index];
+    
+    [self.navigationController popToViewController:rpvc animated:YES];
+}
 @end

@@ -19,27 +19,18 @@
 #import <GamePlayers.h>
 
 
-// PlayerBitItem defines for EasyTableView Layout
-#define NUM_OF_VSISIBLE_BID_ITEMS 5
-#define BLANK_BID_ITEMS_TO_RIGHT 1
-#define BLANK_BID_ITEMS_TO_LEFT 3
-#define NEXT_NEXT_PLAYER_BID_ITEM BLANK_BID_ITEMS_TO_LEFT
-#define NEXT_PLAYER_BID_ITEM NEXT_NEXT_PLAYER_BID_ITEM + 1
-#define CURRENT_BIDDER_BID_ITEM NEXT_PLAYER_BID_ITEM + 1
-#define HIGHLIGHTED_BID_ITEM 3
-// PlayerBitItem defines for EasyTableView Layout
 
-// BID VIEW
-#define PLAYER_BID_ITEM_VIEW_TAG 88
-#define FACE_VALUE_TAGS 700
-// BID VIEW
 
-#define MAX_DICE_COUNT 7
+
+
+
 
 // #DEFINES FOR SCROLLINGDICEVIEW
+#define MAX_DICE_COUNT 7
 #define SCROLLING_DICE_VIEW_X_ORIGIN 10
 #define CENTER_OF_WINDOW_Y 90
 #define DICE_PIXEL_SEPARATION 2
+#define SCROLLING_VIEW_TAG_BASE 900
 // #DEFINES FOR SCROLLINGDICEVIEW
 
 // #DEFINES FOR CURTAIN
@@ -55,41 +46,40 @@
 #define BOUNCE_DURATION .1
 #define BOUNCE_RANGE 8
 #define LOWEST_BOUNCE 6
-
 // #DEFINES FOR CURTAIN
 
 // #DEFINES FOR BidView
 #define X_ORIGIN_BID_VIEW 0
 #define Y_ORIGIN_BID_VIEW 143
+#define NUM_OF_SELECTABLE_QUANTITIES 5
+#define QUANTITY_TAG_BASE 660
 // #DEFINES FOR BidView
 
-// #DEFINES FOR EASYTABLEVIEW
-//#define SHOW_MULTIPLE_SECTIONS		1		// If commented out, multiple sections with header and footer views are not shown
+// PlayerBitItem defines for EasyTableView Layout
+#define NUM_OF_VSISIBLE_BID_ITEMS 5
+#define BLANK_BID_ITEMS_TO_RIGHT 1
+#define BLANK_BID_ITEMS_TO_LEFT 3
+#define NUM_OF_USED_BID_ITEMS_AT_START 3
+#define NUM_OF_BID_ITEMS_AT_START BLANK_BID_ITEMS_TO_RIGHT + BLANK_BID_ITEMS_TO_LEFT + NUM_OF_USED_BID_ITEMS_AT_START
 
+#define NEXT_NEXT_PLAYER_BID_ITEM BLANK_BID_ITEMS_TO_LEFT
+#define NEXT_PLAYER_BID_ITEM NEXT_NEXT_PLAYER_BID_ITEM + 1
+#define CURRENT_BIDDER_BID_ITEM NEXT_PLAYER_BID_ITEM + 1
+#define HIGHLIGHTED_BID_ITEM 3
+#define FACE_VALUE_TAGS 700
+#define PLAYER_BID_ITEM_TAG         11
+// PlayerBitItem defines for EasyTableView Layout
+
+// #DEFINES FOR EASYTABLEVIEW
 #define ORIGIN_Y                    12
 #define ORIGIN_X                    17
 #define SEPARATION_BETWEEN_BID_ITEMS 13
+#define EXTRA_VERT_FOR_BID_ITEMS 4
 #define LANDSCAPE_WIDTH             460
 #define STARTUP_OFFSET_COUNT        2
-//#define LANDSCAPE_HEIGHT			98
-//#define TABLEVIEW_HEIGHT            94
-//#define TABLEVIEW_WIDTH             164
 #define TABLE_BACKGROUND_COLOR		[UIColor clearColor]
-
-#define BORDER_VIEW_TAG				10
-#define PLAYER_BID_ITEM_TAG         11
-
-#ifdef SHOW_MULTIPLE_SECTIONS
-#define NUM_OF_CELLS			10
-#define NUM_OF_SECTIONS			2
-#else
-#define NUM_OF_CELLS			21
-#endif
 // #DEFINES FOR EASYTABLEVIEW
 
-#define NUM_OF_SELECTABLE_QUANTITIES 5
-#define QUANTITY_TAG_BASE 660
-#define SCROLLING_VIEW_TAG_BASE 900
 
 @interface RoundPlayViewController_iPhone (MyPrivateMethods)
 - (void)setupHorizontalView;
@@ -106,9 +96,8 @@
     {
         liarsDice = liarsDiceEngine;
         CGSize viewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
-        tableviewHeight = (int)viewSize.height;
-        tableviewWidth = (int)viewSize.width + SEPARATION_BETWEEN_BID_ITEMS;
-        landscapeHeight = (int)tableviewHeight + 4;
+        bidItemViewHeight = (int)viewSize.height;
+        bidItemViewWidth = (int)viewSize.width + SEPARATION_BETWEEN_BID_ITEMS;
         maxRollDuration = 0;
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
         bidIndexForSelectedBidItem = HIGHLIGHTED_BID_ITEM;
@@ -186,10 +175,10 @@
 
 - (void)resetDiceToOnePosition
 {
-    if(myTimer)
+    if(animationTimer)
     {
-        [myTimer invalidate];
-        myTimer = nil;
+        [animationTimer invalidate];
+        animationTimer = nil;
     }
     
     double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
@@ -223,7 +212,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     NSLog(@"viewDidAppear");
-    CGPoint offsetPoint = CGPointMake(STARTUP_OFFSET_COUNT * tableviewWidth, 0);
+    CGPoint offsetPoint = CGPointMake(STARTUP_OFFSET_COUNT * bidItemViewWidth, 0);
     [horizontalView setContentOffset:offsetPoint];
     //[self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
     
@@ -261,8 +250,8 @@
 
 - (void)setupHorizontalView
 {
-	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, landscapeHeight);
-	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:7 ofWidth:tableviewWidth];
+	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, bidItemViewHeight + EXTRA_VERT_FOR_BID_ITEMS);
+	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:NUM_OF_BID_ITEMS_AT_START ofWidth:bidItemViewWidth];
 	self.horizontalView = view;
 	
 	horizontalView.delegate						= self;
@@ -636,11 +625,11 @@
 - (IBAction)rollDiceButton:(id)sender
 {
     //liarsDice->StartRound();
-    if ([self.view subviews] && !bHasRolled && !myTimer)
+    if ([self.view subviews] && !bHasRolled && !animationTimer)
     {
         // Make sure we have a chance to discover devices before showing the user that nothing was found (yet)
         double interval = 1.0 / [ScrollingDiceView animationHZ];
-        myTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(rollDice) userInfo:nil repeats:YES];
+        animationTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(rollDice) userInfo:nil repeats:YES];
         bHasRolled = true;
     }
 }
@@ -698,8 +687,8 @@
     
     if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
     {
-        dragging = YES;
-        oldY = touchLocation.y;
+        bIsDragging = YES;
+        curtainOldY = touchLocation.y;
         return;
     }
     
@@ -708,7 +697,7 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (dragging)
+    if (bIsDragging)
     {
         UITouch *touch = [[event allTouches] anyObject];
         CGPoint touchLocation = [touch locationInView:self.view];
@@ -718,8 +707,8 @@
             if ([subview tag] == 99)
             {
                 CGRect workingFrame = subview.frame;
-                workingFrame.origin.y += touchLocation.y - oldY;
-                oldY = touchLocation.y;
+                workingFrame.origin.y += touchLocation.y - curtainOldY;
+                curtainOldY = touchLocation.y;
                 if (workingFrame.origin.y < Y_MIN_FOR_CURTAIN)
                 {
                     workingFrame.origin.y = Y_MIN_FOR_CURTAIN;
@@ -739,7 +728,7 @@
 {
     for (UIView *subview in [self.view subviews])
     {
-        if (dragging == YES && [subview tag] == 99)
+        if (bIsDragging == YES && [subview tag] == 99)
         {
             CGRect workingFrame = subview.frame;
             
@@ -766,7 +755,7 @@
                 }];
                 bIsCurtainLocked = NO;
             }
-            dragging = NO;
+            bIsDragging = NO;
         }
     }
 }
