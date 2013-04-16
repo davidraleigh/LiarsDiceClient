@@ -20,69 +20,84 @@
 #import <GamePlayers.h>
 
 
-// #DEFINES FOR SCROLLINGDICEVIEW
-#define MAX_DICE_COUNT 7
-#define SCROLLING_DICE_VIEW_X_ORIGIN 10
-#define CENTER_OF_WINDOW_Y 90
-#define DICE_PIXEL_SEPARATION 2
-#define SCROLLING_VIEW_TAG_BASE 900
-// #DEFINES FOR SCROLLINGDICEVIEW
+// #Defines for ScrollingDiceView (SDV)
+// number of dice a player can have
+#define SDV_MAX_DICE_COUNT 7
+// the x origin of the leftmost SDV
+#define SDV_X_ORIGIN 10
+// the center of the SDV with position centered at 1
+#define SDV_CENTER_OF_WINDOW_Y 90
+// the separation between each SDV
+#define SDV_X_SEPARATION 2
+// the base for tags which number from 901 to SDV_TAG_BASE + SDV_MAX_DICE_COUNT
+#define SDV_TAG_BASE 900
+// #Defines for ScrollingDiceView (SDV)
 
-// #DEFINES FOR CURTAIN
-#define Y_HEIGHT 320
-#define X_ORIGIN_HANDLE 171
-#define Y_ORIGIN_HANDLE 265
-#define Y_MIN_FOR_CURTAIN -Y_ORIGIN_HANDLE
-#define Y_MAX_FOR_CURTAIN 0
-#define WIDTH_HANDLE 138
-#define HEIGHT_HANDLE 56
-#define CURTAIN_DESCENT_ANIMATION_DURATION .25
-#define CURTAIN_DESCENT_ANIMATION_DELAY .05
-#define BOUNCE_DURATION .1
-#define BOUNCE_RANGE 8
-#define LOWEST_BOUNCE 6
-// #DEFINES FOR CURTAIN
+// #Defines for Curtain View
+// the handle's width
+#define CV_HANDLE_WIDTH 138
+// the handle's height
+#define CV_HANDLE_HEIGHT 56
+// x origin for the view's handle
+#define CV_HANDLE_X_ORIGIN 171
+// y origin for the view's handle
+#define CV_HANDLE_Y_ORIGIN 265
+// when the curtain is at it's highest position the handle must show
+#define CV_Y_MIN -CV_HANDLE_Y_ORIGIN
+// when the curtain is at it's lowest position it's origin at at the vc's origin
+#define CV_Y_MAX 0
+// the duration of the animation for the curtain slamming down
+#define CV_ANIMATION_DURATION .25
+// the delay before the animation begins
+#define CV_ANIMATION_DELAY .05
+// the duration of the bounce animations
+#define CV_BOUNCE_DURATION .1
+// the lowest height from which to animate a bounce
+#define CV_LOWEST_BOUNCE 6
+// the range is from the Lowest height to CV_LOWEST_BOUNCE + CV_BOUNCE_RANGE
+#define CV_BOUNCE_RANGE 8
 
-// #DEFINES FOR BidView
-#define X_ORIGIN_BID_VIEW 0
-#define Y_ORIGIN_BID_VIEW 143
-#define NUM_OF_SELECTABLE_QUANTITIES 5
-#define QUANTITY_TAG_BASE 660
+// #DEFINES FOR Bid View
+// the numer of quantity buttons
+#define BV_NUM_QUANTITIES 5
+// the bid view quantity button view base value for the tags
+#define BV_QBV_TAG_BASE 660
+// the bid view face button view base value for the tags
+#define BV_FBV_TAG_BASE 700
 // #DEFINES FOR BidView
 
 // PlayerBitItem defines for EasyTableView Layout
-#define NUM_OF_VSISIBLE_BID_ITEMS 5
-#define BLANK_BID_ITEMS_TO_RIGHT 1
-#define BLANK_BID_ITEMS_TO_LEFT 3
-#define NUM_OF_USED_BID_ITEMS_AT_START 3
-#define NUM_OF_BID_ITEMS_AT_START BLANK_BID_ITEMS_TO_RIGHT + BLANK_BID_ITEMS_TO_LEFT + NUM_OF_USED_BID_ITEMS_AT_START
 
-#define NEXT_NEXT_PLAYER_BID_ITEM BLANK_BID_ITEMS_TO_LEFT
-#define NEXT_PLAYER_BID_ITEM NEXT_NEXT_PLAYER_BID_ITEM + 1
-#define CURRENT_BIDDER_BID_ITEM NEXT_PLAYER_BID_ITEM + 1
-#define HIGHLIGHTED_BID_ITEM 3
-#define FACE_VALUE_TAGS 700
-#define PLAYER_BID_ITEM_TAG         11
+// the startup position of the PBIV in the ETV is defined by the offset of the PBIVs from 0
+#define ETV_PBIV_STARTUP_OFFSET_COUNT              2
+// the number of blank spaces to the right of the visible PBIV
+#define ETV_BLANK_PBIV_AT_RIGHT 1
+// the number of blank spaces to the left of the visible PBIV
+#define ETV_BLANK_PBIV_AT_LEFT 3
+// the number of pending PBIV.  The current, the next player and the next after next player are all pending PBIV.
+#define ETV_NUM_PENDING_PBIV 3
+// the total number of PBIV which don't contain bid information
+#define ETV_NUM_NON_BID_PBIV ETV_BLANK_PBIV_AT_RIGHT + ETV_BLANK_PBIV_AT_LEFT + ETV_NUM_PENDING_PBIV
+
+// index of the Next after next PBIV
+#define PBIV_NEXT_AFTER_NEXT_IDX ETV_BLANK_PBIV_AT_LEFT
+// index of the Next player PBIV
+#define PBIV_NEXT_IDX PBIV_NEXT_AFTER_NEXT_IDX + 1
+// index of the current player[
+#define PBIV_CURRENT_IDX PBIV_NEXT_IDX + 1
+// the position index among the all the visible PBIV in the ETV
+#define ETV_PBIV_HIGHLIGHTED_IDX 3
+
 // PlayerBitItem defines for EasyTableView Layout
-
-// #DEFINES FOR EASYTABLEVIEW
-#define ORIGIN_Y                    12
-#define ORIGIN_X                    17
-#define SEPARATION_BETWEEN_BID_ITEMS 13
-#define EXTRA_VERT_FOR_BID_ITEMS 4
-#define LANDSCAPE_WIDTH             460
-#define STARTUP_OFFSET_COUNT        2
-#define TABLE_BACKGROUND_COLOR		[UIColor clearColor]
-// #DEFINES FOR EASYTABLEVIEW
 
 
 @interface RoundPlayViewController_iPhone (MyPrivateMethods)
-- (void)setupHorizontalView;
+- (void)setupEasyTableView;
 @end
 
 @implementation RoundPlayViewController_iPhone
 
-@synthesize horizontalView;
+@synthesize easyTableView;
 
 - (id)initWithLiarsDice:(std::shared_ptr<LiarsDiceEngine>)liarsDiceEngine
 {
@@ -92,10 +107,10 @@
         liarsDice = liarsDiceEngine;
         CGSize viewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
         bidItemViewHeight = (int)viewSize.height;
-        bidItemViewWidth = (int)viewSize.width + SEPARATION_BETWEEN_BID_ITEMS;
+        bidItemViewWidth = (int)viewSize.width + RPVC_ETV_SEPARATION_BETWEEN_PBIV;
         maxRollDuration = 0;
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
-        bidIndexForSelectedBidItem = HIGHLIGHTED_BID_ITEM;
+        bidIndexForSelectedBidItem = ETV_PBIV_HIGHLIGHTED_IDX;
         selectedFaceValue = 0;
         bIsCurtainLocked = NO;
         bHasRolled = NO;
@@ -125,7 +140,7 @@
     bidSelectionView.hidden = YES;
     
     // Do any additional setup after loading the view from its nib.
-	[self setupHorizontalView];
+	[self setupEasyTableView];
 
     
     currentLowestQuantity = liarsDice->GetLowestPossibleBid().bidQuantity;
@@ -140,10 +155,10 @@
 
 - (void)setPlayersDiceToAllOnes
 {
-    double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
+    double xOrigin = SDV_X_ORIGIN;
     int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
     std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
-    for (int i = 1; i <= MAX_DICE_COUNT; i++)
+    for (int i = 1; i <= SDV_MAX_DICE_COUNT; i++)
     {
         if (i > diceCount)
             break;
@@ -151,13 +166,13 @@
         NSString *fileName = [[NSString alloc] initWithFormat:@"LD_DiceScroll_%d.png", 1];
         UIImage *uiImage = [UIImage imageNamed:fileName];
         
-        CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, uiImage.size.width / 2, uiImage.size.height / 2);
-        xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
+        CGRect frame = CGRectMake(xOrigin, SDV_CENTER_OF_WINDOW_Y, uiImage.size.width / 2, uiImage.size.height / 2);
+        xOrigin += frame.size.width + SDV_X_SEPARATION;
         
         ScrollingDiceView *scrollingDice = [[ScrollingDiceView alloc]initWithFrame:frame andFaceValue:playersDice[i - 1]];
         
         [scrollingDice setImage:uiImage];
-        [scrollingDice setTag:SCROLLING_VIEW_TAG_BASE + i];
+        [scrollingDice setTag: SDV_TAG_BASE + i];
         
         double tempMaxDuration = [scrollingDice getCompleteDuration];
         if (tempMaxDuration > maxRollDuration)
@@ -176,17 +191,17 @@
         animationTimer = nil;
     }
     
-    double xOrigin = SCROLLING_DICE_VIEW_X_ORIGIN;
+    double xOrigin = SDV_X_ORIGIN;
     int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
     std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
-    for (int i = 1; i <= MAX_DICE_COUNT; i++)
+    for (int i = 1; i <= SDV_MAX_DICE_COUNT; i++)
     {
         if (i > diceCount)
             break;
-        ScrollingDiceView *scrollingDice = (ScrollingDiceView *)[self searchSubviewsForTaggedView:SCROLLING_VIEW_TAG_BASE + i inSubviews:self.view];
+        ScrollingDiceView *scrollingDice = (ScrollingDiceView *)[self searchSubviewsForTaggedView:SDV_TAG_BASE + i inSubviews:self.view];
         
-        CGRect frame = CGRectMake(xOrigin, CENTER_OF_WINDOW_Y, scrollingDice.frame.size.width, scrollingDice.frame.size.height);
-        xOrigin += frame.size.width + DICE_PIXEL_SEPARATION;
+        CGRect frame = CGRectMake(xOrigin, SDV_CENTER_OF_WINDOW_Y, scrollingDice.frame.size.width, scrollingDice.frame.size.height);
+        xOrigin += frame.size.width + SDV_X_SEPARATION;
         [scrollingDice setFrame:frame];
         
         [scrollingDice scrollSetup:frame andFaceValue:playersDice[i - 1]];
@@ -207,17 +222,17 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     NSLog(@"viewDidAppear");
-    CGPoint offsetPoint = CGPointMake(STARTUP_OFFSET_COUNT * bidItemViewWidth, 0);
-    [horizontalView setContentOffset:offsetPoint];
-    //[self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+    CGPoint offsetPoint = CGPointMake(ETV_PBIV_STARTUP_OFFSET_COUNT * bidItemViewWidth, 0);
+    [easyTableView setContentOffset:offsetPoint];
+    //[self updateDetailedPlayerInfo:[easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX]];
     
     //UIVIEW *curtainView = [self searchSubviewsForTaggedView:99 inSubviews:self.view];
     CGRect workingFrame = curtainView.frame;
     // animate curtain up for roll
-    workingFrame.origin.y = -Y_ORIGIN_HANDLE;
+    workingFrame.origin.y = -CV_HANDLE_Y_ORIGIN;
     CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
     
-    [UIView animateWithDuration:CURTAIN_DESCENT_ANIMATION_DURATION delay:CURTAIN_DESCENT_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^
+    [UIView animateWithDuration:CV_ANIMATION_DURATION delay:CV_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^
      {
          curtainView.center = center;
          NSLog(@"Animation Start");
@@ -243,20 +258,20 @@
 #pragma mark -
 #pragma mark EasyTableView Initialization
 
-- (void)setupHorizontalView
+- (void)setupEasyTableView
 {
-	CGRect frameRect	= CGRectMake(ORIGIN_X, ORIGIN_Y, LANDSCAPE_WIDTH, bidItemViewHeight + EXTRA_VERT_FOR_BID_ITEMS);
-	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:NUM_OF_BID_ITEMS_AT_START ofWidth:bidItemViewWidth];
-	self.horizontalView = view;
+	CGRect frameRect	= CGRectMake(RPVC_ETV_ORIGIN_X, RPVC_ETV_ORIGIN_Y, RPVC_ETV_WIDTH, bidItemViewHeight + RPVC_ETV_EXTRA_VERT_FOR_PBIV);
+	EasyTableView *view	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:ETV_NUM_NON_BID_PBIV ofWidth:bidItemViewWidth];
+	self.easyTableView = view;
 	
-	horizontalView.delegate						= self;
-	horizontalView.tableView.backgroundColor	= TABLE_BACKGROUND_COLOR;
-	horizontalView.tableView.separatorColor		= [UIColor clearColor];
-	horizontalView.cellBackgroundColor			= [UIColor clearColor];
-	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+	easyTableView.delegate						= self;
+	easyTableView.tableView.backgroundColor	= RPVC_ETV_BACKGROUND_COLOR;
+	easyTableView.tableView.separatorColor	= [UIColor clearColor];
+	easyTableView.cellBackgroundColor			= [UIColor clearColor];
+	easyTableView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     
     UIView *gamePlayView = [self.view viewWithTag:99];
-	[gamePlayView addSubview:horizontalView];
+	[gamePlayView addSubview:easyTableView];
 }
 
 
@@ -275,7 +290,7 @@
     UIView *container = [[UIView alloc] initWithFrame:rect];
     
     PlayerBidItemView_iPhone *playerBidItemView = [[PlayerBidItemView_iPhone alloc] init];
-    playerBidItemView.tag = PLAYER_BID_ITEM_TAG;
+    playerBidItemView.tag = PBIV_TAG;
     [container addSubview:playerBidItemView];
     
 	return container;
@@ -286,7 +301,7 @@
        setDataForView:(UIView *)view
          forIndexPath:(NSIndexPath *)indexPath
 {
-    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
+    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PBIV_TAG];
     
     // this is the index of the last bid
     // TODO fix this so that it works a bit differently for only two players
@@ -294,8 +309,8 @@
     
     int currentBidCount = liarsDice->GetBidCount();
     
-    if (indexOfBidInEasyTable < BLANK_BID_ITEMS_TO_LEFT ||
-        indexOfBidInEasyTable >= currentBidCount + NUM_OF_VSISIBLE_BID_ITEMS + BLANK_BID_ITEMS_TO_RIGHT)
+    if (indexOfBidInEasyTable < ETV_BLANK_PBIV_AT_LEFT ||
+        indexOfBidInEasyTable >= currentBidCount + RPVC_ETV_NUM_VISIBLE_PBIV + ETV_BLANK_PBIV_AT_RIGHT)
     {
         // first we check to make sure the first two and
         // the last two playerBidItems are invisible
@@ -303,7 +318,7 @@
         //playerBidItem.bidIndex = indexOfBidOnScreen == 1 ? liarsDice->GetBidCount() + 1 : liarsDice->GetBidCount() + 2;
     }
     
-    else if (indexOfBidInEasyTable == NEXT_NEXT_PLAYER_BID_ITEM)
+    else if (indexOfBidInEasyTable == PBIV_NEXT_AFTER_NEXT_IDX)
     {
         // This is for the case of the player after the next player
         unsigned int nextNextPlayerUID = liarsDice->GetNextPlayerUID(liarsDice->GetNextPlayerUID());
@@ -314,7 +329,7 @@
         
         playerBidItem.bidIndex = currentBidCount + 2;
     }
-    else if (indexOfBidInEasyTable == NEXT_PLAYER_BID_ITEM)
+    else if (indexOfBidInEasyTable == PBIV_NEXT_IDX)
     {
         // This is the case of the next player
         unsigned int nextPlayerUID = liarsDice->GetNextPlayerUID();
@@ -325,7 +340,7 @@
         
         playerBidItem.bidIndex = currentBidCount + 1;
     }
-    else if (indexOfBidInEasyTable == CURRENT_BIDDER_BID_ITEM)
+    else if (indexOfBidInEasyTable == PBIV_CURRENT_IDX)
     {
         // the case where the player bid view is the currently bidding player
         unsigned int currentPlayerUID = liarsDice->GetCurrentUID();
@@ -336,11 +351,11 @@
 
         playerBidItem.bidIndex = currentBidCount;
     }
-    else if (indexOfBidInEasyTable > CURRENT_BIDDER_BID_ITEM &&
-             currentBidCount + indexOfBidInEasyTable > CURRENT_BIDDER_BID_ITEM + 1)
+    else if (indexOfBidInEasyTable > PBIV_CURRENT_IDX &&
+             currentBidCount + indexOfBidInEasyTable > PBIV_CURRENT_IDX + 1)
     {
         // all other cases of bids that have already been made
-        int bidIndex = indexOfBidInEasyTable - (CURRENT_BIDDER_BID_ITEM + 1);
+        int bidIndex = indexOfBidInEasyTable - (PBIV_CURRENT_IDX + 1);
         RoundDetails::bid_t bid = liarsDice->GetBid(bidIndex);
         std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
@@ -362,7 +377,7 @@
 // Delivers the number of cells in each section, this must be implemented if numberOfSectionsInEasyTableView is implemented
 -(NSUInteger)numberOfCellsForEasyTableView:(EasyTableView *)view inSection:(NSInteger)section
 {
-    return liarsDice->GetBidCount() + 7;
+    return liarsDice->GetBidCount() + ETV_NUM_NON_BID_PBIV;
 }
 
 - (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected
@@ -372,21 +387,21 @@
     
     if (shiftValue + currentLowestQuantity < lowestBid.bidQuantity && shiftValue < 0)
         shiftValue = lowestBid.bidQuantity - currentLowestQuantity;
-    else if(shiftValue + currentLowestQuantity + (NUM_OF_SELECTABLE_QUANTITIES - 1) > remainingDice)
-        shiftValue = remainingDice - (NUM_OF_SELECTABLE_QUANTITIES - 1) - currentLowestQuantity;
+    else if(shiftValue + currentLowestQuantity + (BV_NUM_QUANTITIES - 1) > remainingDice)
+        shiftValue = remainingDice - (BV_NUM_QUANTITIES - 1) - currentLowestQuantity;
     
     if ((currentLowestQuantity == lowestBid.bidQuantity && shiftValue < 0) ||
-        (currentLowestQuantity + (NUM_OF_SELECTABLE_QUANTITIES - 1) == remainingDice && shiftValue > 0))
+        (currentLowestQuantity + (BV_NUM_QUANTITIES - 1) == remainingDice && shiftValue > 0))
         shiftValue = 0;
     
-    int largestShiftOffset = (NUM_OF_SELECTABLE_QUANTITIES / 2);
+    int largestShiftOffset = (BV_NUM_QUANTITIES / 2);
     if (shiftValue > largestShiftOffset || shiftValue < -largestShiftOffset)
         NSLog(@"Shift Value should never be greater than %d or less than -%d", largestShiftOffset, largestShiftOffset);
     
     int newSelectedPosition = buttonPositionSelected - shiftValue;
     currentLowestQuantity += shiftValue;
     
-    for (int position = 1; position <= NUM_OF_SELECTABLE_QUANTITIES; position++)
+    for (int position = 1; position <= BV_NUM_QUANTITIES; position++)
     {
         int quantityValue = currentLowestQuantity + position - 1;
         NSLog(@"Button position: %d and button value: %d", position, quantityValue);
@@ -411,7 +426,7 @@
 
 - (void)setDeselectedFaceValueImage:(int)faceValue
 {
-    UIButton *view = (UIButton*)[self searchSubviewsForTaggedView:FACE_VALUE_TAGS + selectedFaceValue inSubviews:bidSelectionView];
+    UIButton *view = (UIButton*)[self searchSubviewsForTaggedView:BV_FBV_TAG_BASE + selectedFaceValue inSubviews:bidSelectionView];
     NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_%d.png", selectedFaceValue];
     [view setImage:[UIImage imageNamed:fileName] forState:UIControlStateNormal];
 }
@@ -424,7 +439,7 @@
 
 - (void)setDeselectedQuantityValueImage:(int)quantityValue atPosition:(int)position
 {
-    UIButton *view = (UIButton *)[self searchSubviewsForTaggedView:QUANTITY_TAG_BASE + position inSubviews:bidSelectionView];
+    UIButton *view = (UIButton *)[self searchSubviewsForTaggedView:BV_QBV_TAG_BASE + position inSubviews:bidSelectionView];
     [self setDeselectedQuantityValueImage:quantityValue atButton:view];
 }
 
@@ -442,7 +457,7 @@
 
 - (void)setSelectedQuantityValueImage:(int)quantityValue atPosition:(int)position
 {
-    UIButton *button = (UIButton *)[self searchSubviewsForTaggedView:QUANTITY_TAG_BASE + position inSubviews:bidSelectionView];
+    UIButton *button = (UIButton *)[self searchSubviewsForTaggedView:BV_QBV_TAG_BASE + position inSubviews:bidSelectionView];
     [self setSelectedQuantityValueImage:quantityValue atButton:button];
 }
 - (void)shiftQuantityButtonRange:(int)newLowestQuantity
@@ -450,7 +465,7 @@
     if (newLowestQuantity == currentLowestQuantity)
         return;
     
-    for (int position = 1; position <= NUM_OF_SELECTABLE_QUANTITIES; position++)
+    for (int position = 1; position <= BV_NUM_QUANTITIES; position++)
         [self setDeselectedQuantityValueImage:newLowestQuantity + position - 1 atPosition:position];
 
     currentHighlightedQuantityPosition = 0;
@@ -515,7 +530,7 @@
 {
     // the shift value is based off of the number of selectable quantities.
     // and the position of the current button
-    int shiftValue = position - (1 + NUM_OF_SELECTABLE_QUANTITIES / 2);
+    int shiftValue = position - (1 + BV_NUM_QUANTITIES / 2);
     if (currentHighlightedQuantityPosition != position)
     {
         [self changeQuantityPositionBy:shiftValue atButtonPosition:position];
@@ -577,8 +592,8 @@
     liarsDice->Bid(quantity, faceValue);
     [self setDeselectedQuantityValueImage:selectedQuantity atPosition:currentHighlightedQuantityPosition];
     [self setDeselectedFaceValueImage:selectedFaceValue];
-    [horizontalView reloadData];
-    [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+    [easyTableView reloadData];
+    [self updateDetailedPlayerInfo:[easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX]];
     
     selectedQuantity = 0;
     selectedFaceValue = 0;
@@ -612,8 +627,8 @@
     else
     {
         liarsDice->Bid(bidValue.bidQuantity, bidValue.bidFaceValue);
-        [horizontalView reloadData];
-        [self updateDetailedPlayerInfo:[horizontalView.visibleViews objectAtIndex:HIGHLIGHTED_BID_ITEM]];
+        [easyTableView reloadData];
+        [self updateDetailedPlayerInfo:[easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX]];
     }
 }
 
@@ -674,11 +689,11 @@
     CGPoint touchLocation = [touch locationInView:self.view];
     
     // check that handle has been touched
-    CGRect handleRect = CGRectMake(X_ORIGIN_HANDLE, Y_ORIGIN_HANDLE, WIDTH_HANDLE, HEIGHT_HANDLE);
+    CGRect handleRect = CGRectMake(CV_HANDLE_X_ORIGIN, CV_HANDLE_Y_ORIGIN, CV_HANDLE_WIDTH, CV_HANDLE_HEIGHT);
     
     // if the curtain locked in the up position
     if (bIsCurtainLocked == YES)
-        handleRect = CGRectMake(X_ORIGIN_HANDLE, 0, WIDTH_HANDLE, HEIGHT_HANDLE);
+        handleRect = CGRectMake(CV_HANDLE_X_ORIGIN, 0, CV_HANDLE_WIDTH, CV_HANDLE_HEIGHT);
     
     if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
     {
@@ -704,13 +719,13 @@
                 CGRect workingFrame = subview.frame;
                 workingFrame.origin.y += touchLocation.y - curtainOldY;
                 curtainOldY = touchLocation.y;
-                if (workingFrame.origin.y < Y_MIN_FOR_CURTAIN)
+                if (workingFrame.origin.y < CV_Y_MIN)
                 {
-                    workingFrame.origin.y = Y_MIN_FOR_CURTAIN;
+                    workingFrame.origin.y = CV_Y_MIN;
                 }
-                else if (workingFrame.origin.y > Y_MAX_FOR_CURTAIN)
+                else if (workingFrame.origin.y > CV_Y_MAX)
                 {
-                    workingFrame.origin.y = Y_MAX_FOR_CURTAIN;
+                    workingFrame.origin.y = CV_Y_MAX;
                 }
                 
                 [subview setFrame:workingFrame];
@@ -727,7 +742,7 @@
         {
             CGRect workingFrame = subview.frame;
             
-            if (workingFrame.origin.y == Y_MIN_FOR_CURTAIN && !bIsCurtainLocked)
+            if (workingFrame.origin.y == CV_Y_MIN && !bIsCurtainLocked)
             {
                 bIsCurtainLocked = YES;
             }
@@ -737,13 +752,13 @@
                 workingFrame.origin.y = 0;
                 CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
                 
-                [UIView animateWithDuration:CURTAIN_DESCENT_ANIMATION_DURATION delay:CURTAIN_DESCENT_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^{
+                [UIView animateWithDuration:CV_ANIMATION_DURATION delay:CV_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^{
                     subview.center = center;
                     NSLog(@"Animation Start");
                 }
                 completion:^(BOOL finished) {
                     int bounceCount = (arc4random() % 3) + 1;
-                    int bounceHeight = LOWEST_BOUNCE + arc4random() % BOUNCE_RANGE;
+                    int bounceHeight = CV_LOWEST_BOUNCE + arc4random() % CV_BOUNCE_RANGE;
                     if (releaseHeight > 100)
                         [self bounceAnimation:subview withCount:bounceCount andBounceHeight:bounceHeight];
                     NSLog(@"finished animation");
@@ -763,11 +778,11 @@
         CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
         CGPoint centerBounce = CGPointMake(center.x, center.y - bounceHeight);
         bounceHeight /= 3;
-        [UIView animateWithDuration:BOUNCE_DURATION animations:^{
+        [UIView animateWithDuration:CV_BOUNCE_DURATION animations:^{
             view.center = centerBounce;
             NSLog(@"Bounce Start");
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:BOUNCE_DURATION animations:^{
+            [UIView animateWithDuration:CV_BOUNCE_DURATION animations:^{
                 view.center = center;
                 NSLog(@"Bounce Finish");
             } completion:^(BOOL finished) {
@@ -779,7 +794,7 @@
 
 - (void)updateDetailedPlayerInfo:(UIView *)view
 {
-    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PLAYER_BID_ITEM_TAG];
+    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PBIV_TAG];
 //    if (bidIndexForSelectedBidItem == playerBidItem.bidIndex)
 //        return;
     

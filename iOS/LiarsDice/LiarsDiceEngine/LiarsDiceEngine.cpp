@@ -234,7 +234,17 @@ int LiarsDiceEngine::GetBidCount()
     return 0;
 }
 
-int LiarsDiceEngine::GetBidCount(int roundIndex)
+int LiarsDiceEngine::GetBidCountForGame()
+{
+    int bidCount = 0;
+    if (m_roundDetails.size() == 0)
+        return bidCount;
+    
+    for (int i = 0; i < m_roundDetails.size(); i++)
+        bidCount += GetBidCountForRound(i);
+    return bidCount;
+}
+int LiarsDiceEngine::GetBidCountForRound(int roundIndex)
 {
     if (roundIndex < m_roundDetails.size() && roundIndex >= 0)
         return m_roundDetails[roundIndex].GetBidCount();

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define PBIV_TAG         11
+
 @interface PlayerBidItemView_iPhone : UIView
 {
     __weak IBOutlet UILabel *timesMarkTextView;

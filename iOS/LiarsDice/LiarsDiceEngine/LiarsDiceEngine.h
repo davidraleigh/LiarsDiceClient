@@ -101,15 +101,12 @@ public:
      * round index
      * @return the number of bids in the round specified
      */
-    int GetBidCount(int roundIndex);
+    int GetBidCountForRound(int roundIndex);
     
-    //    /**
-    //     * Get the bid struct from the round specified
-    //     * @param bidNumber
-    //     * @param roundNumber
-    //     * @return the bid struct that has the playerUID, the quantity and facevalue
-    //     */
-    //    LiarsDiceEngine::bid_t GetBid(int bidIndex, int roundNumber);
+    /**
+     * Get the bid count for the entire game
+     */
+    int GetBidCountForGame();
     
     /**
      * Get the cycle count for the current player's move
