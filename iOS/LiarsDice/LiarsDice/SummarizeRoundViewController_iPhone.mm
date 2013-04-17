@@ -31,7 +31,7 @@
     {
         liarsDice = liarsDiceEngine;
         CGSize bidItemViewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
-        bidItemViewWidth = (int)bidItemViewSize.width;
+        bidItemViewWidth = (int)bidItemViewSize.width + RPVC_ETV_SEPARATION_BETWEEN_PBIV;
         bidItemViewHeight = (int)bidItemViewSize.height;
 
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
@@ -70,12 +70,12 @@
 
 - (IBAction)continueGameButton:(id)sender
 {
-    NSArray *array = [self.navigationController viewControllers];
-    
-    int rpvc_index = [array count] - 3;
-    RoundPlayViewController_iPhone *rpvc = (RoundPlayViewController_iPhone *)[array objectAtIndex:rpvc_index];
-    
-    [self.navigationController popToViewController:rpvc animated:YES];
+//    NSArray *array = [self.navigationController viewControllers];
+//    
+//    int rpvc_index = [array count] - 3;
+//    RoundPlayViewController_iPhone *rpvc = (RoundPlayViewController_iPhone *)[array objectAtIndex:rpvc_index];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popToViewController:rpvc animated:YES];
 }
 
 // The first delegate method creates the necessary views
@@ -95,47 +95,28 @@
 // The height of the header section view MUST be the same as your HORIZONTAL_TABLEVIEW_HEIGHT (horizontal EasyTableView only)
 - (UIView *)easyTableView:(EasyTableView*)easyTableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *label = [[UILabel alloc] init];
-	label.text = [[NSString alloc] initWithFormat:@"Round #%d -->",section + 1];
-	label.textColor = [UIColor whiteColor];
-
-	label.textAlignment		= NSTextAlignmentCenter;
-
-    label.frame = CGRectMake(0, 0, bidItemViewWidth, bidItemViewHeight);
-
+    CGRect rect = CGRectMake(0, 0, bidItemViewWidth, bidItemViewHeight);
+    UIView *container = [[UIView alloc] initWithFrame:rect];
     
-    switch (section)
-    {
-        case 0:
-            label.backgroundColor = [UIColor redColor];
-            break;
-        default:
-            label.backgroundColor = [UIColor blueColor];
-            break;
-    }
-    return label;
+    PlayerBidItemView_iPhone *playerBidItem = [[PlayerBidItemView_iPhone alloc] init];
+    playerBidItem.tag = PBIV_TAG;
+    [playerBidItem setAsHeader:section +1];
+    [container addSubview:playerBidItem];
+    
+    return container;
 }
 
 - (UIView *)easyTableView:(EasyTableView*)easyTableView viewForFooterInSection:(NSInteger)section
 {
-    UILabel *label = [[UILabel alloc] init];
-	label.text = [[NSString alloc] initWithFormat:@"<-- Round #%d",section + 1];
-	label.textColor = [UIColor yellowColor];
+    CGRect rect = CGRectMake(0, 0, bidItemViewWidth, bidItemViewHeight);
+    UIView *container = [[UIView alloc] initWithFrame:rect];
     
-	label.textAlignment		= NSTextAlignmentCenter;
+    PlayerBidItemView_iPhone *playerBidItem = [[PlayerBidItemView_iPhone alloc] init];
+    playerBidItem.tag = PBIV_TAG;
+    [playerBidItem setAsFooter:section +1];
+    [container addSubview:playerBidItem];
     
-    label.frame = CGRectMake(0, 0, bidItemViewWidth, bidItemViewHeight);
-	
-    switch (section) {
-        case 0:
-            label.backgroundColor = [UIColor purpleColor];
-            break;
-        default:
-            label.backgroundColor = [UIColor brownColor];
-            break;
-    }
-    
-    return label;
+    return container;
 }
 
 // Second delegate populates the views with data from a data source

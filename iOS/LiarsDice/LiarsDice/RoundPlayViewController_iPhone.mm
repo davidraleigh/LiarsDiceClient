@@ -106,8 +106,9 @@
     {
         liarsDice = liarsDiceEngine;
         CGSize viewSize = [[[PlayerBidItemView_iPhone alloc] init] getSize];
-        bidItemViewHeight = (int)viewSize.height;
         bidItemViewWidth = (int)viewSize.width + RPVC_ETV_SEPARATION_BETWEEN_PBIV;
+        bidItemViewHeight = (int)viewSize.height;
+
         maxRollDuration = 0;
         devicePlayerUID = GamePlayers::getInstance().GetClientUID();
         bidIndexForSelectedBidItem = ETV_PBIV_HIGHLIGHTED_IDX;
@@ -324,9 +325,7 @@
         unsigned int nextNextPlayerUID = liarsDice->GetNextPlayerUID(liarsDice->GetNextPlayerUID());
         std::string playerNameString = liarsDice->GetPlayerName(nextNextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        // TODO replace with setEmpty method
-        [playerBidItem setPlayerName:playerName bidQuantity:-2 bidFaceValue:0 bidOdds:0];
-        
+        [playerBidItem setNextAfterNextBidderName:playerName];
         playerBidItem.bidIndex = currentBidCount + 2;
     }
     else if (indexOfBidInEasyTable == PBIV_NEXT_IDX)
@@ -335,9 +334,7 @@
         unsigned int nextPlayerUID = liarsDice->GetNextPlayerUID();
         std::string playerNameString = liarsDice->GetPlayerName(nextPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        // TODO replace with setEmpty method
-        [playerBidItem setPlayerName:playerName bidQuantity:-1 bidFaceValue:0 bidOdds:0];
-        
+        [playerBidItem setNextBidderName:playerName];
         playerBidItem.bidIndex = currentBidCount + 1;
     }
     else if (indexOfBidInEasyTable == PBIV_CURRENT_IDX)
@@ -346,9 +343,7 @@
         unsigned int currentPlayerUID = liarsDice->GetCurrentUID();
         std::string playerNameString = liarsDice->GetPlayerName(currentPlayerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        [playerBidItem setPlayerName:playerName bidQuantity:0
-                        bidFaceValue:0 bidOdds:0];
-
+        [playerBidItem setCurrentBidderName:playerName];
         playerBidItem.bidIndex = currentBidCount;
     }
     else if (indexOfBidInEasyTable > PBIV_CURRENT_IDX &&
@@ -359,7 +354,10 @@
         RoundDetails::bid_t bid = liarsDice->GetBid(bidIndex);
         std::string playerNameString = liarsDice->GetPlayerName(bid.playerUID);
         NSString *playerName = [NSString stringWithstring: playerNameString];
-        [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:0];
+        // it is important to note that you need to use the devicePlayerUID to demonstrate
+        // the probability vs. your hand
+        int bidOdds = liarsDice->GetProbabilityForPlayer(bid.bidQuantity, bid.bidFaceValue, devicePlayerUID);
+        [playerBidItem setPlayerName:playerName bidQuantity:bid.bidQuantity bidFaceValue:bid.bidFaceValue bidOdds:bidOdds];
         
         playerBidItem.bidIndex = bidIndex;
     }
@@ -472,7 +470,7 @@
     currentLowestQuantity = newLowestQuantity;
 }
 
-- (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue
+- (void)updateDieFaceButton:(UIButton *)button atValue:(int)faceValue
 {
     if (selectedFaceValue != faceValue)
     {
@@ -492,41 +490,41 @@
 
 - (IBAction)faceValueButton1:(id)sender
 {
-    UIButton *theButton = (UIButton*)sender;
-    [self updateDieFaceButton:theButton withValue:1];
+    [self updateDieFaceButton:sender atValue:1];
+    [self updateCurrentPlayerBidItemFaceValue:selectedFaceValue];
 }
 
 - (IBAction)faceValueButton2:(id)sender
 {
-    UIButton *theButton = (UIButton*)sender;
-    [self updateDieFaceButton:theButton withValue:2];
+    [self updateDieFaceButton:sender atValue:2];
+    [self updateCurrentPlayerBidItemFaceValue:selectedFaceValue];
 }
 
 - (IBAction)faceValueButton3:(id)sender
 {
-    UIButton *theButton = (UIButton*)sender;
-    [self updateDieFaceButton:theButton withValue:3];
+    [self updateDieFaceButton:sender atValue:3];
+    [self updateCurrentPlayerBidItemFaceValue:selectedFaceValue];
 }
 
 - (IBAction)faceValueButton4:(id)sender
 {
-    UIButton *theButton = (UIButton*)sender;
-    [self updateDieFaceButton:theButton withValue:4];
+    [self updateDieFaceButton:sender atValue:4];
+    [self updateCurrentPlayerBidItemFaceValue:selectedFaceValue];
 }
 
 - (IBAction)faceValueButton5:(id)sender
 {
-    UIButton *theButton = (UIButton*)sender;
-    [self updateDieFaceButton:theButton withValue:5];
+    [self updateDieFaceButton:sender atValue:5];
+    [self updateCurrentPlayerBidItemFaceValue:selectedFaceValue];
 }
 
 - (IBAction)faceValueButton6:(id)sender
 {
-    UIButton *theButton = (UIButton*)sender;
-    [self updateDieFaceButton:theButton withValue:6];
+    [self updateDieFaceButton:sender atValue:6];
+    [self updateCurrentPlayerBidItemFaceValue:selectedFaceValue];
 }
 
-- (void)updateQuantityButton:(UIButton *)button withPosition:(int)position
+- (void)updateQuantityButton:(UIButton *)button atPosition:(int)position
 {
     // the shift value is based off of the number of selectable quantities.
     // and the position of the current button
@@ -545,27 +543,32 @@
 
 - (IBAction)quantityPositionButton1:(id)sender
 {
-    [self updateQuantityButton:sender withPosition:1];
+    [self updateQuantityButton:sender atPosition:1];
+    [self updateCurrentPlayerBidItemQuantity:selectedQuantity];
 }
 
 - (IBAction)quantityPositionButton2:(id)sender
 {
-    [self updateQuantityButton:sender withPosition:2];
+    [self updateQuantityButton:sender atPosition:2];
+    [self updateCurrentPlayerBidItemQuantity:selectedQuantity];
 }
 
 - (IBAction)quantityPositionButton3:(id)sender
 {
-    [self updateQuantityButton:sender withPosition:3];
+    [self updateQuantityButton:sender atPosition:3];
+    [self updateCurrentPlayerBidItemQuantity:selectedQuantity];
 }
 
 - (IBAction)quantityPositionButton4:(id)sender
 {
-    [self updateQuantityButton:sender withPosition:4];
+    [self updateQuantityButton:sender atPosition:4];
+    [self updateCurrentPlayerBidItemQuantity:selectedQuantity];
 }
 
 - (IBAction)quantityPositionButton5:(id)sender
 {
-    [self updateQuantityButton:sender withPosition:5];
+    [self updateQuantityButton:sender atPosition:5];
+    [self updateCurrentPlayerBidItemQuantity:selectedQuantity];
 }
 
 - (IBAction)qaBidButton:(id)sender
@@ -792,9 +795,17 @@
     }
 }
 
+- (BOOL)isPBIVDeviceAndCurrentBidder:(PlayerBidItemView_iPhone *)pbiView
+{
+    return (pbiView.bidIndex == liarsDice->GetBidCount() &&
+            GamePlayers::getInstance().GetClientUID() == liarsDice->GetCurrentUID());
+}
+
 - (void)updateDetailedPlayerInfo:(UIView *)view
 {
+    // extract playerBidItem view from the container view 
     PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PBIV_TAG];
+    
 //    if (bidIndexForSelectedBidItem == playerBidItem.bidIndex)
 //        return;
     
@@ -876,6 +887,39 @@
     }
 
 }
+
+- (void)updateCurrentPlayerBidItemFaceValue:(int)faceValue
+{
+//    if (faceValue < 1)
+//        return;
+    
+    UIView *view = [easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX];
+    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PBIV_TAG];
+    [playerBidItem updateBidFaceValue:faceValue];
+    
+    if (selectedFaceValue > 0 && selectedQuantity > 0)
+    {
+        int bidOdds = liarsDice->GetProbabilityForPlayer(selectedQuantity, selectedFaceValue, devicePlayerUID);
+        [playerBidItem updateBidOdds:bidOdds];
+    }
+}
+
+- (void)updateCurrentPlayerBidItemQuantity:(int)quantity
+{
+    if (quantity < 1)
+        return;
+    
+    UIView *view = [easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX];
+    PlayerBidItemView_iPhone *playerBidItem = (PlayerBidItemView_iPhone *)[view viewWithTag:PBIV_TAG];
+    [playerBidItem updateBidQuantity:quantity];
+    
+    if (selectedFaceValue > 0 && selectedQuantity > 0)
+    {
+        int bidOdds = liarsDice->GetProbabilityForPlayer(selectedQuantity, selectedFaceValue, devicePlayerUID);
+        [playerBidItem updateBidOdds:bidOdds];
+    }
+}
+
 - (void)viewDidUnload
 {
     bidSelectionView = nil;

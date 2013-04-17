@@ -11,6 +11,7 @@
 
 #import <memory>
 
+@class PlayerBidItemView_iPhone;
 // #DEFINES FOR EasyTableView
 // The number of visible PlayerBidItemView in the EasyTableView
 #define RPVC_ETV_NUM_VISIBLE_PBIV 5
@@ -106,6 +107,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (void)bounceAnimation:(UIView *)view withCount:(int)bounceCount andBounceHeight:(int)bounceHeight;
 - (void)changeQuantityPositionBy:(int)shiftValue atButtonPosition:(int)buttonPositionSelected;
 
+- (BOOL)isPBIVDeviceAndCurrentBidder:(PlayerBidItemView_iPhone *)pbiView;
+
 - (void)resetPlayersDiceToAllOnes;
 
 - (void)rollDice;
@@ -124,9 +127,12 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 - (void)shiftQuantityButtonRange:(int)newLowestQuantity;
 
-- (void)updateDieFaceButton:(UIButton *)button withValue:(int)faceValue;
-- (void)updateQuantityButton:(UIButton *)button withPosition:(int)position;
+- (void)updateDieFaceButton:(UIButton *)button atValue:(int)faceValue;
+- (void)updateQuantityButton:(UIButton *)button atPosition:(int)position;
 - (void)updateDetailedPlayerInfo:(UIView *)view;
+
+- (void)updateCurrentPlayerBidItemFaceValue:(int)faceValue;
+- (void)updateCurrentPlayerBidItemQuantity:(int)quantity;
 
 - (IBAction)faceValueButton1:(id)sender;
 - (IBAction)faceValueButton2:(id)sender;
