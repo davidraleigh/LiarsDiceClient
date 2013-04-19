@@ -87,9 +87,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     double maxRollDuration;
     
     // is the curtain currently being dragged around the screen
-    BOOL bIsDragging;
-    //
-
+    BOOL bIsCurtainBeingDragged;
+    // the curtain is locked in the up position when the player has left it at the top of the screen
     BOOL bIsCurtainLocked;
     BOOL bHasRolled;
     
@@ -149,7 +148,5 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 
 - (IBAction)qaBidButton:(id)sender;
 - (IBAction)qaChallengeButton:(id)sender;
-
-- (IBAction)qaButtonResetDice:(id)sender;
 
 @end

@@ -81,8 +81,10 @@ bool LiarsDiceEngine::Bid(int bidQuantity, int bidFaceValue)
 //    else if (GetBidCount() == 0)
 //        m_bWildOneUsedThisRound = false;
     
+    
+    RoundDetails::BidType bidType = LiarsDiceEngine::_GetBidType(m_currentPlayerUID, bidFaceValue);
     // TODO place bid info in Round class
-    m_roundDetails.back().RecordBid(m_currentPlayerUID, bidQuantity, bidFaceValue);
+    m_roundDetails.back().RecordBid(m_currentPlayerUID, bidQuantity, bidFaceValue, bidType);
     
     // increment player ID
     // TODO Prep for a player having dropped
@@ -104,16 +106,7 @@ unsigned int LiarsDiceEngine::Challenge()
     
     std::vector<unsigned int>::iterator iter;
     for (iter = m_orderedPlayerList.begin(); iter != m_orderedPlayerList.end(); iter++)
-    {
-        Player *player = GamePlayers::getInstance().GetPlayerAtUID(*iter);
-        for (int i = 0; i < player->GetDiceCount(); i++)
-        {
-            if (player->GetDieFaceValue(i) == lastBid.bidFaceValue)
-                numberOfDieInHands++;
-            else if (m_roundDetails.back().IsRoundWild() && player->GetDieFaceValue(i) == 1)
-                numberOfDieInHands++;
-        }
-    }
+        numberOfDieInHands += GetPlayersDiceCountForFaceValue(*iter, lastBid.bidFaceValue);
     
     // if the last bid was successful return the
     // bidder's number and set the next rounds current bidder
@@ -251,6 +244,24 @@ int LiarsDiceEngine::GetBidCountForRound(int roundIndex)
     return 0;
 }
 
+RoundDetails::BidType LiarsDiceEngine::_GetBidType(unsigned int playerUID, int bidFaceValue)
+{
+    int handQuantity = GetPlayersDiceCountForFaceValue(playerUID, bidFaceValue);
+    if (handQuantity == 0)
+        return RoundDetails::HardLieBid;
+    int maxQuantity = 0;
+    for (int faceValue = 1; faceValue <= 6; faceValue++)
+    {
+        int testQuantity = GetPlayersDiceCountForFaceValue(playerUID, faceValue);
+        if (GetPlayersDiceCountForFaceValue(playerUID, faceValue) > maxQuantity)
+            maxQuantity = testQuantity;
+    }
+    
+    if (maxQuantity == handQuantity)
+        return RoundDetails::HonestBid;
+    return RoundDetails::SoftLieBid;
+}
+
 int LiarsDiceEngine::GetCurrentCycle()
 {
     int bidCount = (int)m_roundDetails.size();
@@ -310,6 +321,21 @@ std::vector<int> LiarsDiceEngine::GetPlayersDice(unsigned int playerUID)
 int LiarsDiceEngine::GetPlayersDiceCount(unsigned int playerUID)
 {
     return GamePlayers::getInstance().GetPlayerAtUID(playerUID)->GetDiceCount();
+}
+
+int LiarsDiceEngine::GetPlayersDiceCountForFaceValue(unsigned int playerUID, int faceValue)
+{
+    int numberOfDieInHands = 0;
+    Player *player = GamePlayers::getInstance().GetPlayerAtUID(playerUID);
+    for (int i = 0; i < player->GetDiceCount(); i++)
+    {
+        if (player->GetDieFaceValue(i) == faceValue)
+            numberOfDieInHands++;
+        else if (m_roundDetails.back().IsRoundWild() && player->GetDieFaceValue(i) == 1)
+            numberOfDieInHands++;
+    }
+
+    return numberOfDieInHands;
 }
 
 unsigned int LiarsDiceEngine::GetPreviousPlayerUID(unsigned int playerUID)

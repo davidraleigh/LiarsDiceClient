@@ -57,6 +57,7 @@ RoundDetails::bid_t RoundDetails::_EmptyBid()
     bid.playerUID = 0;
     bid.bidFaceValue = -1;
     bid.bidQuantity = -1;
+    bid.bidType = BidType::UnknownBid;
     return bid;
 }
 
@@ -116,12 +117,13 @@ RoundDetails::bid_t RoundDetails::GetLowestPossibleBid()
     return lowestBid;
 }
 
-void RoundDetails::RecordBid(unsigned int playerUID, int bidQuantity, int bidFaceValue)
+void RoundDetails::RecordBid(unsigned int playerUID, int bidQuantity, int bidFaceValue, BidType bidType)
 {
     bid_t bid;
     bid.playerUID = playerUID;
     bid.bidFaceValue = bidFaceValue;
     bid.bidQuantity = bidQuantity;
+    bid.bidType = bidType;
     m_bidsInRound.push_front(bid);
 }
 

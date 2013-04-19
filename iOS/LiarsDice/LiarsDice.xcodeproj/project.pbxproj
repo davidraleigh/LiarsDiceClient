@@ -106,8 +106,6 @@
 		874D24EC16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24EA16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png */; };
 		874D24ED16FD0A1D00E69B6C /* LD_GutterTopCover_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24EB16FD0A1D00E69B6C /* LD_GutterTopCover_001.png */; };
 		874D24F216FD111000E69B6C /* LD_AppIcon_Beige_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24EF16FD111000E69B6C /* LD_AppIcon_Beige_001.png */; };
-		874D24F316FD111000E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24F016FD111000E69B6C /* LD_AppIcon_BlueOnBeige.png */; };
-		874D24F416FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24F116FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png */; };
 		874D24F616FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */ = {isa = PBXBuildFile; fileRef = 874D24F516FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png */; };
 		876BC51316C5621400589EA4 /* ScrollingDiceView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 876BC51216C5621400589EA4 /* ScrollingDiceView.mm */; };
 		8780BD5316EA570F00B377F7 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8780BD5116EA570F00B377F7 /* HttpClient.cpp */; };
@@ -354,8 +352,6 @@
 		874D24EA16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_GutterBackDrop_001.png; path = ../../../../../Resources/LiarsDice/LD_GutterBackDrop_001.png; sourceTree = "<group>"; };
 		874D24EB16FD0A1D00E69B6C /* LD_GutterTopCover_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_GutterTopCover_001.png; path = ../../../../../Resources/LiarsDice/LD_GutterTopCover_001.png; sourceTree = "<group>"; };
 		874D24EF16FD111000E69B6C /* LD_AppIcon_Beige_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_AppIcon_Beige_001.png; path = ../../../../../Resources/LiarsDice/LD_AppIcon_Beige_001.png; sourceTree = "<group>"; };
-		874D24F016FD111000E69B6C /* LD_AppIcon_BlueOnBeige.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_AppIcon_BlueOnBeige.png; path = ../../../../../Resources/LiarsDice/LD_AppIcon_BlueOnBeige.png; sourceTree = "<group>"; };
-		874D24F116FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LD_AppIcon_BlueOnWhite_001.png; path = ../../../../../Resources/LiarsDice/LD_AppIcon_BlueOnWhite_001.png; sourceTree = "<group>"; };
 		874D24F516FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LD_AppIcon_BlueOnBeige.png; sourceTree = "<group>"; };
 		876BC51116C5621400589EA4 /* ScrollingDiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingDiceView.h; sourceTree = "<group>"; };
 		876BC51216C5621400589EA4 /* ScrollingDiceView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollingDiceView.mm; sourceTree = "<group>"; };
@@ -665,8 +661,6 @@
 			isa = PBXGroup;
 			children = (
 				874D24EF16FD111000E69B6C /* LD_AppIcon_Beige_001.png */,
-				874D24F016FD111000E69B6C /* LD_AppIcon_BlueOnBeige.png */,
-				874D24F116FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -1246,8 +1240,6 @@
 				874D24EC16FD0A1D00E69B6C /* LD_GutterBackDrop_001.png in Resources */,
 				874D24ED16FD0A1D00E69B6C /* LD_GutterTopCover_001.png in Resources */,
 				874D24F216FD111000E69B6C /* LD_AppIcon_Beige_001.png in Resources */,
-				874D24F316FD111000E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */,
-				874D24F416FD111000E69B6C /* LD_AppIcon_BlueOnWhite_001.png in Resources */,
 				874D24F616FDACF900E69B6C /* LD_AppIcon_BlueOnBeige.png in Resources */,
 				8780E6BB16FE3A8200D230CF /* LD_AppIcon_Beige_001.png in Resources */,
 				87E026CF1715E614009C52AD /* LD_BracketGreen_001.png in Resources */,

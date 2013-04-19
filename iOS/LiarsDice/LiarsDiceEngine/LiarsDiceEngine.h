@@ -170,6 +170,15 @@ public:
 	int GetPlayersDiceCount(unsigned int playerUID);
     
     /**
+     * Get the total number of dice in the players hand that matches the face value
+     * wilds are counted
+     * @param playerUID the uid of the player in question
+     * @param faceValue the face value of the die to test for
+     * @return the total number of dice in the players hand that matches the face value
+     */
+    int GetPlayersDiceCountForFaceValue(unsigned int playerUID, int faceValue);
+    
+    /**
 	 * Get the playerUID previous to the current playerUID
 	 * @return previous player id
 	 */
@@ -371,6 +380,11 @@ private:
     {
         return find(m_orderedPlayerList.begin(), m_orderedPlayerList.end(), playerUID);
     };
+    
+    /**
+     * Get the bid type for the current round
+     */
+    RoundDetails::BidType _GetBidType(unsigned int playerUID, int bidFaceValue);
     
     /**
 	 * Roll for first play has each player roll their die

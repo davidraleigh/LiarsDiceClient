@@ -19,11 +19,20 @@ class RoundDetails
     
 public:
     
+    typedef enum{
+        HonestBid,
+        SoftLieBid,
+        HardLieBid,
+        BlindBid,
+        UnknownBid
+    }BidType;
+    
     struct bid_t
     {
         unsigned int playerUID;
         int bidFaceValue;
         int bidQuantity;
+        BidType bidType;
     } bid;
     
     RoundDetails();
@@ -57,7 +66,7 @@ public:
     
     inline bool IsRoundWild() { return m_bRoundIsWild; };
     
-    void RecordBid(unsigned int playerUID, int bidQuantity, int bidFaceValue);
+    void RecordBid(unsigned int playerUID, int bidQuantity, int bidFaceValue, BidType bidType);
     
     void RecordChallenge(unsigned int challengerUID, unsigned int lastBidderUID, unsigned int winnerUID);
     

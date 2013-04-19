@@ -143,14 +143,19 @@
     // Do any additional setup after loading the view from its nib.
 	[self setupEasyTableView];
 
-    
     currentLowestQuantity = liarsDice->GetLowestPossibleBid().bidQuantity;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    if (liarsDice->GetBidCountForGame() == 0)
+        return;
     //[super viewWillAppear:animated];
     NSLog(@"viewWillAppear");
+    liarsDice->StartRound();
+    
+    [easyTableView reloadData];
+    [self resetPlayersDiceToAllOnes];
 
 }
 
@@ -191,9 +196,18 @@
         [animationTimer invalidate];
         animationTimer = nil;
     }
+    int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
+    // test to see if the player lost a die last round.
+    int lastRoundIndex = liarsDice->GetRoundCount() - 2;
+    if (liarsDice->GetRoundLoser(lastRoundIndex) == devicePlayerUID)
+    {
+        // hide the highest order scrolling dice
+        ScrollingDiceView *scrollingDice = (ScrollingDiceView *)[self searchSubviewsForTaggedView:SDV_TAG_BASE + diceCount + 1 inSubviews:self.view];
+        scrollingDice.hidden = YES;
+    }
     
     double xOrigin = SDV_X_ORIGIN;
-    int diceCount = liarsDice->GetPlayersDiceCount(devicePlayerUID);
+    
     std::vector<int> playersDice = liarsDice->GetPlayersDice(devicePlayerUID);
     for (int i = 1; i <= SDV_MAX_DICE_COUNT; i++)
     {
@@ -213,11 +227,6 @@
     }
 
     bHasRolled = NO;
-}
-
-- (void)qaButtonResetDice:(id)sender
-{
-    [self resetPlayersDiceToAllOnes];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -619,11 +628,13 @@
     RoundDetails::bid_t bidValue = liarsDice->GenerateAIBid(currentUID);
     if (bidValue.bidFaceValue == -1)
     {
+        
         NSString *challenger = [NSString stringWithstring:liarsDice->GetPlayerName(currentUID)];
         NSString *previousBidder = [NSString stringWithstring:liarsDice->GetPlayerName(liarsDice->GetPreviousPlayerUID())];
         NSString *message = [[NSString alloc] initWithFormat:@"%@ challenged the bid from %@", challenger, previousBidder];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Challenge" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
+        liarsDice->Challenge();
         SummarizeRoundViewController_iPhone *srvc = [[SummarizeRoundViewController_iPhone alloc] initWithLiarsDice:liarsDice];
         [[self navigationController] pushViewController:srvc animated:YES];
     }
@@ -700,7 +711,7 @@
     
     if (CGRectContainsPoint(handleRect, touchLocation))//[[self view] window].frame, touchLocation))
     {
-        bIsDragging = YES;
+        bIsCurtainBeingDragged = YES;
         curtainOldY = touchLocation.y;
         return;
     }
@@ -710,7 +721,7 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (bIsDragging)
+    if (bIsCurtainBeingDragged)
     {
         UITouch *touch = [[event allTouches] anyObject];
         CGPoint touchLocation = [touch locationInView:self.view];
@@ -741,7 +752,7 @@
 {
     for (UIView *subview in [self.view subviews])
     {
-        if (bIsDragging == YES && [subview tag] == 99)
+        if (bIsCurtainBeingDragged == YES && [subview tag] == 99)
         {
             CGRect workingFrame = subview.frame;
             
@@ -768,7 +779,7 @@
                 }];
                 bIsCurtainLocked = NO;
             }
-            bIsDragging = NO;
+            bIsCurtainBeingDragged = NO;
         }
     }
 }
