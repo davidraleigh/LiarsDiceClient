@@ -635,6 +635,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Challenge" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         liarsDice->Challenge();
+        
         SummarizeRoundViewController_iPhone *srvc = [[SummarizeRoundViewController_iPhone alloc] initWithLiarsDice:liarsDice];
         [[self navigationController] pushViewController:srvc animated:YES];
     }
