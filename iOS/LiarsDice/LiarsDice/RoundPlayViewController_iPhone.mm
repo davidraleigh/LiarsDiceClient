@@ -132,6 +132,7 @@
     inactiveBidItemHighlight.hidden = YES;
     bidSelectionView.hidden = YES;
     challengeView.hidden = YES;
+    selectionInstructionsView.hidden = YES;
 
     liarsDice->StartRound();
     
@@ -147,9 +148,10 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated
-{
+{   
     if (liarsDice->GetBidCountForGame() == 0)
         return;
+
     //[super viewWillAppear:animated];
     NSLog(@"viewWillAppear");
     liarsDice->StartRound();
@@ -157,6 +159,7 @@
     [easyTableView reloadData];
     [self resetPlayersDiceToAllOnes];
 
+    [self updateDetailedPlayerInfo:[easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX]];
 }
 
 - (void)setPlayersDiceToAllOnes
@@ -234,9 +237,7 @@
     NSLog(@"viewDidAppear");
     CGPoint offsetPoint = CGPointMake(ETV_PBIV_STARTUP_OFFSET_COUNT * bidItemViewWidth, 0);
     [easyTableView setContentOffset:offsetPoint];
-    //[self updateDetailedPlayerInfo:[easyTableView.visibleViews objectAtIndex:ETV_PBIV_HIGHLIGHTED_IDX]];
     
-    //UIVIEW *curtainView = [self searchSubviewsForTaggedView:99 inSubviews:self.view];
     CGRect workingFrame = curtainView.frame;
     // animate curtain up for roll
     workingFrame.origin.y = -CV_HANDLE_Y_ORIGIN;
@@ -628,7 +629,7 @@
     RoundDetails::bid_t bidValue = liarsDice->GenerateAIBid(currentUID);
     if (bidValue.bidFaceValue == -1)
     {
-        
+        RoundDetails::bid_t lastBid = liarsDice->GetBid(0);
         NSString *challenger = [NSString stringWithstring:liarsDice->GetPlayerName(currentUID)];
         NSString *previousBidder = [NSString stringWithstring:liarsDice->GetPlayerName(liarsDice->GetPreviousPlayerUID())];
         NSString *message = [[NSString alloc] initWithFormat:@"%@ challenged the bid from %@", challenger, previousBidder];
@@ -636,8 +637,10 @@
         [alert show];
         liarsDice->Challenge();
         
-        SummarizeRoundViewController_iPhone *srvc = [[SummarizeRoundViewController_iPhone alloc] initWithLiarsDice:liarsDice];
-        [[self navigationController] pushViewController:srvc animated:YES];
+        [self switchToDiceSelection: lastBid.bidFaceValue];
+        
+//        SummarizeRoundViewController_iPhone *srvc = [[SummarizeRoundViewController_iPhone alloc] initWithLiarsDice:liarsDice];
+//        [[self navigationController] pushViewController:srvc animated:YES];
     }
     else
     {
@@ -932,6 +935,30 @@
     }
 }
 
+- (void)switchToDiceSelection:(int)faceValue
+{
+    CGRect workingFrame = curtainView.frame;
+    // animate curtain up for roll
+    workingFrame.origin.y = -workingFrame.size.height;
+    CGPoint center = CGPointMake(workingFrame.origin.x + workingFrame.size.width/2, workingFrame.origin.y + workingFrame.size.height/2);
+    
+    [UIView animateWithDuration:CV_ANIMATION_DURATION delay:CV_ANIMATION_DELAY options:UIViewAnimationCurveEaseOut animations:^
+     {
+         curtainView.center = center;
+         NSLog(@"Animation Start");
+     }
+                     completion:nil];
+    
+    bIsCurtainLocked = YES;
+    
+    selectionInstructionsView.hidden = NO;
+    
+    NSString *fileName = [[NSString alloc] initWithFormat:@"LD_Die_%d.png", faceValue];
+    
+    [challengedDieView setImage:[UIImage imageNamed:fileName]];
+    
+}
+
 - (void)viewDidUnload
 {
     bidSelectionView = nil;
@@ -946,6 +973,8 @@
     activeChallengeItemHighlight = nil;
     leftSideLabel = nil;
     rightSideLabel = nil;
+    selectionInstructionsView = nil;
+    challengedDieView = nil;
     [super viewDidUnload];
 }
 @end

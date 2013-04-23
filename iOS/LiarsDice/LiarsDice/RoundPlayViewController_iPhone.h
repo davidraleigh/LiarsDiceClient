@@ -62,6 +62,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
     __weak IBOutlet UILabel *leftSideLabel;
     __weak IBOutlet UILabel *rightSideLabel;
     
+    __weak IBOutlet UIView *selectionInstructionsView;
+    __weak IBOutlet UIImageView *challengedDieView;
     
     // TODO change this to be a list of
     // the current players using this device
@@ -139,6 +141,8 @@ typedef struct LiarsDiceEngine LiarsDiceEngine;
 - (IBAction)faceValueButton4:(id)sender;
 - (IBAction)faceValueButton5:(id)sender;
 - (IBAction)faceValueButton6:(id)sender;
+
+- (void)switchToDiceSelection:(int)faceValue;
 
 - (IBAction)quantityPositionButton1:(id)sender;
 - (IBAction)quantityPositionButton2:(id)sender;
