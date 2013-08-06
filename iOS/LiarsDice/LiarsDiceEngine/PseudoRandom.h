@@ -39,6 +39,21 @@ public:
     int GetRandomFromRange(int lowPoint, int highPoint);
     
     CoinSide CoinToss();
+    
+    template <typename Iterator>
+    void ShuffleVector(Iterator first, Iterator last)
+    {
+        if (first + 1 == last)
+            return;
+        
+        typename std::iterator_traits<Iterator>::difference_type i, n, d;
+        n = (last-first);
+        for (i = n - 1; i > 0; --i)
+        {
+            d = GetRandomFromRange(0 , i + 1);
+            std::swap (first[i],first[d]);
+        }
+    };
 };
 
 #endif

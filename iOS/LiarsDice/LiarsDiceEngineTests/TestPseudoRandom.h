@@ -33,6 +33,19 @@ public:
         }
         TS_ASSERT_EQUALS(testVal1, testVal2);
     }
+    
+    void testShuffle(void)
+    {
+        std::shared_ptr<PseudoRandom> randomGen = std::make_shared<PseudoRandom>(123);
+        std::vector<int> vect;
+        vect.push_back(0);
+        vect.push_back(1);
+        vect.push_back(2);
+        vect.push_back(3);
+        randomGen->ShuffleVector(vect.begin(), vect.end());
+        TS_ASSERT_DIFFERS(vect[0], 0);
+        
+    }
 };
 
 #endif

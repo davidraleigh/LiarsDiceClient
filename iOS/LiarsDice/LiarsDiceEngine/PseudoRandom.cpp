@@ -7,7 +7,6 @@
 //
 
 #include "PseudoRandom.h"
-
 #include <ctime>
 
 PseudoRandom::PseudoRandom()

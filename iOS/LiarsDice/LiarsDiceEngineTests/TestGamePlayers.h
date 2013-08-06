@@ -18,6 +18,8 @@ class GamePlayersTestSuite : public CxxTest::TestSuite
 public:
     void testGamePlayer(void)
     {
+        
+        
         //untested : bool AddPlayer(unsigned int playerUID, std::string playerName)
         
         TS_ASSERT_EQUALS(GamePlayers::getInstance().PlayerCount(), 0);

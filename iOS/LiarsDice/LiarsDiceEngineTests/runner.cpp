@@ -15,7 +15,7 @@
 
 int main( int argc, char *argv[] ) {
  int status;
-    std::ofstream ofstr("/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/LiarsDice_TestResults.xml");
+    std::ofstream ofstr("/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/LiarsDice_TestResults.xml");
     CxxTest::XUnitPrinter tmp(ofstr);
     CxxTest::RealWorldDescription::_worldName = "cxxtest";
     status = CxxTest::Main<CxxTest::XUnitPrinter>( tmp, argc, argv );
@@ -27,7 +27,7 @@ bool suite_GamePlayersTestSuite_init = false;
 static GamePlayersTestSuite suite_GamePlayersTestSuite;
 
 static CxxTest::List Tests_GamePlayersTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_GamePlayersTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestGamePlayers.h", 16, "GamePlayersTestSuite", suite_GamePlayersTestSuite, Tests_GamePlayersTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_GamePlayersTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestGamePlayers.h", 16, "GamePlayersTestSuite", suite_GamePlayersTestSuite, Tests_GamePlayersTestSuite );
 
 static class TestDescription_suite_GamePlayersTestSuite_testGamePlayer : public CxxTest::RealTestDescription {
 public:
@@ -37,7 +37,7 @@ public:
 
 static class TestDescription_suite_GamePlayersTestSuite_testClientUIDs : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_GamePlayersTestSuite_testClientUIDs() : CxxTest::RealTestDescription( Tests_GamePlayersTestSuite, suiteDescription_GamePlayersTestSuite, 128, "testClientUIDs" ) {}
+ TestDescription_suite_GamePlayersTestSuite_testClientUIDs() : CxxTest::RealTestDescription( Tests_GamePlayersTestSuite, suiteDescription_GamePlayersTestSuite, 130, "testClientUIDs" ) {}
  void runTest() { suite_GamePlayersTestSuite.testClientUIDs(); }
 } testDescription_suite_GamePlayersTestSuite_testClientUIDs;
 
@@ -46,7 +46,7 @@ public:
 static LiarsDiceEngineTestSuite suite_LiarsDiceEngineTestSuite;
 
 static CxxTest::List Tests_LiarsDiceEngineTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_LiarsDiceEngineTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestLiarsDiceEngine.h", 18, "LiarsDiceEngineTestSuite", suite_LiarsDiceEngineTestSuite, Tests_LiarsDiceEngineTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_LiarsDiceEngineTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestLiarsDiceEngine.h", 18, "LiarsDiceEngineTestSuite", suite_LiarsDiceEngineTestSuite, Tests_LiarsDiceEngineTestSuite );
 
 static class TestDescription_suite_LiarsDiceEngineTestSuite_testLiarsDiceEngine : public CxxTest::RealTestDescription {
 public:
@@ -65,7 +65,7 @@ public:
 static LiarsDiceRESTTestSuite suite_LiarsDiceRESTTestSuite;
 
 static CxxTest::List Tests_LiarsDiceRESTTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_LiarsDiceRESTTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestLiarsDiceREST.h", 15, "LiarsDiceRESTTestSuite", suite_LiarsDiceRESTTestSuite, Tests_LiarsDiceRESTTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_LiarsDiceRESTTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestLiarsDiceREST.h", 15, "LiarsDiceRESTTestSuite", suite_LiarsDiceRESTTestSuite, Tests_LiarsDiceRESTTestSuite );
 
 static class TestDescription_suite_LiarsDiceRESTTestSuite_testUserNameUpdate : public CxxTest::RealTestDescription {
 public:
@@ -78,7 +78,7 @@ public:
 static PlayerTestSuite suite_PlayerTestSuite;
 
 static CxxTest::List Tests_PlayerTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_PlayerTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestPlayer.h", 16, "PlayerTestSuite", suite_PlayerTestSuite, Tests_PlayerTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_PlayerTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestPlayer.h", 16, "PlayerTestSuite", suite_PlayerTestSuite, Tests_PlayerTestSuite );
 
 static class TestDescription_suite_PlayerTestSuite_testPlayerEmpty : public CxxTest::RealTestDescription {
 public:
@@ -103,7 +103,7 @@ public:
 static PlayersInLobbyTestSuite suite_PlayersInLobbyTestSuite;
 
 static CxxTest::List Tests_PlayersInLobbyTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_PlayersInLobbyTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestPlayersInLobby.h", 16, "PlayersInLobbyTestSuite", suite_PlayersInLobbyTestSuite, Tests_PlayersInLobbyTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_PlayersInLobbyTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestPlayersInLobby.h", 16, "PlayersInLobbyTestSuite", suite_PlayersInLobbyTestSuite, Tests_PlayersInLobbyTestSuite );
 
 static class TestDescription_suite_PlayersInLobbyTestSuite_testEmptyLobby : public CxxTest::RealTestDescription {
 public:
@@ -122,7 +122,7 @@ public:
 static PseudoRandomTestSuite suite_PseudoRandomTestSuite;
 
 static CxxTest::List Tests_PseudoRandomTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_PseudoRandomTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestPseudoRandom.h", 16, "PseudoRandomTestSuite", suite_PseudoRandomTestSuite, Tests_PseudoRandomTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_PseudoRandomTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestPseudoRandom.h", 16, "PseudoRandomTestSuite", suite_PseudoRandomTestSuite, Tests_PseudoRandomTestSuite );
 
 static class TestDescription_suite_PseudoRandomTestSuite_testDestructor : public CxxTest::RealTestDescription {
 public:
@@ -130,12 +130,18 @@ public:
  void runTest() { suite_PseudoRandomTestSuite.testDestructor(); }
 } testDescription_suite_PseudoRandomTestSuite_testDestructor;
 
+static class TestDescription_suite_PseudoRandomTestSuite_testShuffle : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_PseudoRandomTestSuite_testShuffle() : CxxTest::RealTestDescription( Tests_PseudoRandomTestSuite, suiteDescription_PseudoRandomTestSuite, 37, "testShuffle" ) {}
+ void runTest() { suite_PseudoRandomTestSuite.testShuffle(); }
+} testDescription_suite_PseudoRandomTestSuite_testShuffle;
+
 #include "TestSuiteBinoCDF.h"
 
 static MyTestSuite2 suite_MyTestSuite2;
 
 static CxxTest::List Tests_MyTestSuite2 = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite2( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestSuiteBinoCDF.h", 17, "MyTestSuite2", suite_MyTestSuite2, Tests_MyTestSuite2 );
+CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite2( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestSuiteBinoCDF.h", 17, "MyTestSuite2", suite_MyTestSuite2, Tests_MyTestSuite2 );
 
 static class TestDescription_suite_MyTestSuite2_testBinoCDF_1 : public CxxTest::RealTestDescription {
 public:
@@ -148,7 +154,7 @@ public:
 static GameStartupTestSuite suite_GameStartupTestSuite;
 
 static CxxTest::List Tests_GameStartupTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_GameStartupTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestSuiteGameStartup.h", 18, "GameStartupTestSuite", suite_GameStartupTestSuite, Tests_GameStartupTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_GameStartupTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestSuiteGameStartup.h", 18, "GameStartupTestSuite", suite_GameStartupTestSuite, Tests_GameStartupTestSuite );
 
 static class TestDescription_suite_GameStartupTestSuite_testAddPlayers : public CxxTest::RealTestDescription {
 public:
@@ -173,7 +179,7 @@ public:
 static MyTestSuite1 suite_MyTestSuite1;
 
 static CxxTest::List Tests_MyTestSuite1 = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite1( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestSuiteJSON.h", 14, "MyTestSuite1", suite_MyTestSuite1, Tests_MyTestSuite1 );
+CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite1( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestSuiteJSON.h", 14, "MyTestSuite1", suite_MyTestSuite1, Tests_MyTestSuite1 );
 
 static class TestDescription_suite_MyTestSuite1_testAddition : public CxxTest::RealTestDescription {
 public:
@@ -186,7 +192,7 @@ public:
 static UtilitiesTestSuite suite_UtilitiesTestSuite;
 
 static CxxTest::List Tests_UtilitiesTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_UtilitiesTestSuite( "/Users/DavidRaleigh/Documents/CODE/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestUtilities.h", 17, "UtilitiesTestSuite", suite_UtilitiesTestSuite, Tests_UtilitiesTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_UtilitiesTestSuite( "/Users/davidraleigh/Documents/Code/MobileProjects/LiarsDiceClient/iOS/LiarsDice/LiarsDiceEngineTests/TestUtilities.h", 17, "UtilitiesTestSuite", suite_UtilitiesTestSuite, Tests_UtilitiesTestSuite );
 
 static class TestDescription_suite_UtilitiesTestSuite_testStringContains : public CxxTest::RealTestDescription {
 public:
